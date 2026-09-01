@@ -205,4 +205,229 @@
             </div>
             <div class="alert-card" id="alert-wind">
                 <i class="fa-solid fa-wind"></i>
-                <div class="alert-info
+                <div class="alert-info">
+                    <h5>الرياح القوية</h5>
+                    <p id="wind-status">الأجواء هادئة</p>
+                </div>
+            </div>
+            <div class="alert-card" id="alert-thunder">
+                <i class="fa-solid fa-bolt"></i>
+                <div class="alert-info">
+                    <h5>البرق والرعد</h5>
+                    <p id="thunder-status">غير رصدي حالياً</p>
+                </div>
+            </div>
+            <div class="alert-card" id="alert-fog">
+                <i class="fa-solid fa-smog"></i>
+                <div class="alert-info">
+                    <h5>تشكل الضباب</h5>
+                    <p id="fog-status">الرؤية جيدة</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="text-align: center;">
+            <div class="location-tag"><i class="fa-solid fa-location-dot"></i> البتراء، وادي موسى</div>
+            <div id="weather-content">
+                <p>جاري تحديث بيانات الطقس الحالية...</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title"><i class="fa-solid fa-satellite-dish"></i> رادار الأمطار المباشر</div>
+            <p style="font-size: 12px; color: #94a3b8; margin-bottom: 10px;">بث وتحديث حي لرادار الأمطار والطقس.</p>
+            <iframe class="radar-frame" src="https://www.weather1.live/radar/"></iframe>
+        </div>
+
+        <div class="card">
+            <div class="section-title"><i class="fa-solid fa-cloud"></i> رادار الغيوم والسحب</div>
+            <iframe class="radar-frame" src="https://embed.windy.com/embed2.html?lat=30.3285&lon=35.4444&zoom=9&level=surface&overlay=clouds&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1"></iframe>
+        </div>
+
+        <div class="card">
+            <div class="section-title"><i class="fa-solid fa-chart-line"></i> توقعات النماذج العددية (مدى مفتوح)</div>
+            <div class="models-tabs">
+                <button class="model-tab-btn active" onclick="switchModel('ecmwf', this)">الوروبي</button>
+                <button class="model-tab-btn" onclick="switchModel('gfs', this)">GFS</button>
+                <button class="model-tab-btn" onclick="switchModel('cosmo', this)">كوزمو</button>
+                <button class="model-tab-btn" onclick="switchModel('cmc', this)">الكندي</button>
+            </div>
+            <div class="model-content-box">
+                <div id="panel-ecmwf" class="model-panel active">
+                    <span class="model-badge">المدى: حتى 15 يوماً (عالي الدقة)</span>
+                    <p class="model-desc">المرجع العالمي الأقوى لتوقع المنخفضات وحالات الاستقرار لمدينة البتراء.</p>
+                    <iframe class="radar-frame" style="height: 220px;" src="https://embed.windy.com/embed2.html?lat=30.3285&lon=35.4444&zoom=8&level=surface&overlay=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1"></iframe>
+                </div>
+                <div id="panel-gfs" class="model-panel">
+                    <span class="model-badge">المدى: حتى 16 يوماً (أمريكي)</span>
+                    <p class="model-desc">ممتاز لمتابعة حركة الكتل الهوائية الضخمة وتغيرات الضغط الجوي والرياح العلوية.</p>
+                    <iframe class="radar-frame" style="height: 220px;" src="https://embed.windy.com/embed2.html?lat=30.3285&lon=35.4444&zoom=8&level=surface&overlay=gfs&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1"></iframe>
+                </div>
+                <div id="panel-cosmo" class="model-panel">
+                    <span class="model-badge">المدى: قصير الأجل (عالي الدقة الإقليمية)</span>
+                    <p class="model-desc">نموذج إقليمي مخصص للمناطق التضاريسية المعقدة وجبال البتراء والسيق.</p>
+                    <iframe class="radar-frame" style="height: 220px;" src="https://embed.windy.com/embed2.html?lat=30.3285&lon=35.4444&zoom=9&level=surface&overlay=wind&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1"></iframe>
+                </div>
+                <div id="panel-cmc" class="model-panel">
+                    <span class="model-badge">المدى: حتى 10 أيام (كندي GEM)</span>
+                    <p class="model-desc">متميز في رصد موجات الصقيع ودرجات الحرارة الصغرى والهطولات الثلجية للمرتفعات.</p>
+                    <iframe class="radar-frame" style="height: 220px;" src="https://embed.windy.com/embed2.html?lat=30.3285&lon=35.4444&zoom=8&level=surface&overlay=rainAccu&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title"><i class="fa-solid fa-clock"></i> درجات الحرارة خلال 24 ساعة القادمة</div>
+            <div class="hourly-container" id="hourly-forecast">
+                <p style="color: #94a3b8; font-size: 13px; text-align: center; width: 100%;">جاري تحميل حالة الساعات...</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title"><i class="fa-solid fa-calendar-days"></i> توقعات الطقس لـ 10 أيام قادمة</div>
+            <div class="forecast-list" id="ten-days-forecast">
+                <p style="text-align: center; color: #94a3b8; font-size: 13px;">جاري تحميل التوقعات...</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        جميع الحقوق محفوظة &copy; فريق طقس البتراء 2026
+    </footer>
+
+    <script>
+        function switchModel(modelName, btnElement) {
+            document.querySelectorAll('.model-panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+            document.querySelectorAll('.model-tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('panel-' + modelName).classList.add('active');
+            btnElement.classList.add('active');
+        }
+
+        async function fetchWeatherData() {
+            try {
+                const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=30.3285&longitude=35.4444&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,precipitation&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&timezone=auto');
+                const data = await response.json();
+                
+                const temp = Math.round(data.current.temperature_2m);
+                const feelsLike = Math.round(data.current.apparent_temperature);
+                const humidity = data.current.relative_humidity_2m;
+                const windSpeed = Math.round(data.current.wind_speed_10m);
+                const precipitation = data.current.precipitation || 0;
+                
+                const maxToday = Math.round(data.daily.temperature_2m_max[0]);
+                const minToday = Math.round(data.daily.temperature_2m_min[0]);
+
+                const now = new Date();
+                const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+                document.getElementById('update-time').innerText = `آخر تحديث: ${now.toLocaleDateString('ar-JO', options)}`;
+
+                document.getElementById('weather-content').innerHTML = `
+                    <div class="temp-box">${temp}°C</div>
+                    <div class="condition">المحسوسة: ${feelsLike}°C</div>
+                    
+                    <div class="today-high-low">
+                        <div>العظمى اليوم: <span>${maxToday}°C</span></div>
+                        <div>الصغرى اليوم: <span>${minToday}°C</span></div>
+                    </div>
+
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <i class="fa-solid fa-wind"></i>
+                            <span>الرياح</span>
+                            <strong>${windSpeed} كم/س</strong>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fa-solid fa-droplet"></i>
+                            <span>الرطوبة</span>
+                            <strong>${humidity}%</strong>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fa-solid fa-cloud-rain"></i>
+                            <span>الهطول</span>
+                            <strong>${precipitation} مم</strong>
+                        </div>
+                    </div>
+                `;
+
+                const rainCard = document.getElementById('alert-rain');
+                const rainStatus = document.getElementById('rain-status');
+                if (precipitation > 0) {
+                    rainCard.classList.add('active-alert');
+                    rainStatus.innerText = `هطول أمطار (${precipitation} مم)`;
+                } else {
+                    rainCard.classList.remove('active-alert');
+                    rainStatus.innerText = 'لا توجد أمطار حالياً';
+                }
+
+                const windCard = document.getElementById('alert-wind');
+                const windStatus = document.getElementById('wind-status');
+                if (windSpeed > 35) {
+                    windCard.classList.add('active-alert');
+                    windStatus.innerText = `رياح نشطة (${windSpeed} كم/س)`;
+                } else {
+                    windCard.classList.remove('active-alert');
+                    windStatus.innerText = 'الأجواء هادئة';
+                }
+
+                const fogCard = document.getElementById('alert-fog');
+                const fogStatus = document.getElementById('fog-status');
+                if (humidity > 90) {
+                    fogCard.classList.add('active-alert');
+                    fogStatus.innerText = 'تشكل ضباب محتمل';
+                } else {
+                    fogCard.classList.remove('active-alert');
+                    fogStatus.innerText = 'الرؤية جيدة';
+                }
+
+                let hourlyHTML = '';
+                const currentHourIndex = new Date().getHours();
+                for (let i = currentHourIndex; i < currentHourIndex + 24; i++) {
+                    if (i < data.hourly.time.length) {
+                        let timeString = new Date(data.hourly.time[i]).toLocaleTimeString('en-US', {hour: 'numeric', hour12: true});
+                        let hourlyTemp = Math.round(data.hourly.temperature_2m[i]);
+                        
+                        hourlyHTML += `
+                            <div class="hourly-item">
+                                <div class="hourly-time">${i === currentHourIndex ? 'الآن' : timeString}</div>
+                                <div class="hourly-icon"><i class="fa-solid fa-sun"></i></div>
+                                <div class="hourly-temp">${hourlyTemp}°</div>
+                            </div>
+                        `;
+                    }
+                }
+                document.getElementById('hourly-forecast').innerHTML = hourlyHTML;
+
+                let forecastHTML = '';
+                const daysOfWeek = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
+                for (let i = 0; i < 10; i++) {
+                    let dateObj = new Date(data.daily.time[i]);
+                    let dayName = i === 0 ? 'اليوم' : daysOfWeek[dateObj.getDay()];
+                    let maxT = Math.round(data.daily.temperature_2m_max[i]);
+                    let minT = Math.round(data.daily.temperature_2\nm_min[i]);
+
+                    forecastHTML += `
+                        <div class="forecast-item">
+                            <div class="forecast-day">${dayName} (${dateObj.toLocaleDateString('ar-JO', {month: 'numeric', day: 'numeric'})})</div>
+                            <div style="font-size: 12px; color: #cbd5e1;"><i class="fa-solid fa-sun" style="color: #facc15;"></i> مستقر</div>
+                            <div class="forecast-temps">${maxT}° <span class="min">${minT}°</span></div>
+                        </div>
+                    `;
+                }
+                document.getElementById('ten-days-forecast').innerHTML = forecastHTML;
+
+            } catch (error) {
+                document.getElementById('weather-content').innerHTML = '<p style="color: #ef4444;">عفواً، تعذر جلب التحديثات اللحظية حالياً.</p>';
+            }
+        }
+
+        fetchWeatherData();
+        setInterval(fetchWeatherData, 600000);
+    </script>
+
+</body>
+</html>
