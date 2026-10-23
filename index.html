@@ -402,6 +402,23 @@ footer{background:#0c131e!important;border-top:1px solid #263244!important}
 .season-progress-labels strong{color:#164e63}
 @media(max-width:640px){.season-progress{padding:12px}.season-progress-heading{align-items:flex-start;flex-direction:column}.season-progress-labels{display:grid;grid-template-columns:1fr 1fr}.season-progress-labels span:last-child{grid-column:1/-1}}
 
+
+/* Theme switcher and dark mode */
+#themeToggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;margin:12px auto 0;padding:9px 15px;border:1px solid rgba(255,255,255,.62);border-radius:999px;background:rgba(8,20,40,.24);color:#fff;font:700 .9rem 'Cairo',sans-serif;cursor:pointer;box-shadow:0 4px 12px #0002;position:relative;z-index:2}
+#themeToggle:hover{background:rgba(8,20,40,.42)}
+body.dark-mode{--text:#e5edf7;--gray:#a8b7ca;--blue:#b9d8ff;--border:rgba(148,163,184,.24);background:#0b1220!important;color:#e5edf7!important;background-image:radial-gradient(circle at 10% 5%,rgba(56,189,248,.08),transparent 30%),radial-gradient(circle at 90% 25%,rgba(99,102,241,.07),transparent 28%)!important;color-scheme:dark}
+body.dark-mode .container{background:rgba(15,23,42,.88);border-color:#263449}
+body.dark-mode .panel,body.dark-mode .weather-now-box,body.dark-mode .early-warning-box,body.dark-mode .social-footer-box{background:rgba(22,33,52,.96)!important;border-color:#334155!important;color:#e5edf7!important}
+body.dark-mode .weather-now-box{background:linear-gradient(135deg,#152b3d,#172235)!important}
+body.dark-mode .weather-details-text,body.dark-mode .w-item,body.dark-mode .hourly-item,body.dark-mode .alert-card,body.dark-mode .forecast-table,body.dark-mode .external-radar-card,body.dark-mode .link-list a,body.dark-mode .wo-toolbar,body.dark-mode .wo-btn{background:#172235!important;color:#e5edf7!important;border-color:#34445b!important}
+body.dark-mode .panel h2,body.dark-mode .early-warning-box h2,body.dark-mode .weather-now-box h3,body.dark-mode .w-item strong,body.dark-mode .hourly-temp,body.dark-mode .external-radar-card h3,body.dark-mode .social-footer-box h3,body.dark-mode .link-list a,body.dark-mode .forecast-table td{color:#dbeafe!important}
+body.dark-mode .alert-card .distance,body.dark-mode .alert-card .time,body.dark-mode .hourly-time,body.dark-mode .w-item span,body.dark-mode .external-radar-card p,body.dark-mode .social-footer-box p{color:#b5c4d8!important}
+body.dark-mode .forecast-table td{border-color:#34445b!important}
+body.dark-mode .forecast-table th{background:linear-gradient(135deg,#163354,#075985)!important}
+body.dark-mode footer{background:rgba(15,23,42,.94)!important;color:#a8b7ca!important;border-color:#334155!important}
+body.dark-mode input,body.dark-mode select,body.dark-mode textarea{background:#111c2e!important;color:#e5edf7!important;border-color:#40516a!important}
+body.dark-mode .notification-status,body.dark-mode .location-status{color:#b8c7da!important}
+
 </style>
 <!-- WASM Weather-inspired visual redesign; all original sections and scripts retained -->
 <style id="wasm-inspired-theme">
@@ -647,11 +664,52 @@ body, body *{
     unicode-bidi: isolate;
   }
 </style>
+<style id="official-cap-warning-style">
+.bulletin-warning-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:14px;align-items:stretch;margin-bottom:14px;grid-column:1/-1;min-width:0}
+.bulletin-warning-grid>section{margin:0!important;min-width:0}
+.official-cap-warning{border:1px solid #e3b75a!important;border-top:4px solid #e3a008!important;background:linear-gradient(145deg,#fffdf5,#fff7df)!important;color:#3e3218!important}
+.official-cap-warning h2{color:#7a4a00!important;border-bottom-color:#f1d99b!important}
+.cap-warning-source{font-size:.84rem;line-height:1.65;color:#715d35;margin:-2px 0 10px}
+.cap-warning-status{padding:9px 11px;border-radius:9px;background:#fff1c2;color:#79530a;font-weight:800;font-size:.86rem;margin:8px 0}
+.cap-warning-items{font-size:.9rem;line-height:1.75;overflow-wrap:anywhere}
+.cap-warning-item{padding:10px 11px;margin:8px 0;background:rgba(255,255,255,.8);border:1px solid #f0dca8;border-right:4px solid #e3a008;border-radius:9px}
+.cap-warning-item h3{font-size:.98rem;line-height:1.55;margin:0 0 5px;color:#714500}
+.cap-warning-item p{margin:5px 0;white-space:pre-line}
+.cap-warning-meta{font-size:.76rem;color:#786b51;margin-top:7px}
+.cap-warning-footer{font-size:.76rem;line-height:1.8;color:#786b51;border-top:1px solid #f0dfb2;padding-top:9px;margin-top:10px;overflow-wrap:anywhere}
+.cap-warning-footer a{color:#145d85;text-decoration:underline}
+body.dark-mode .official-cap-warning{background:#251f12!important;color:#f5e9c9!important;border-color:#59451c!important}
+body.dark-mode .official-cap-warning h2,body.dark-mode .cap-warning-item h3{color:#ffdb85!important}
+body.dark-mode .cap-warning-source,body.dark-mode .cap-warning-footer,body.dark-mode .cap-warning-meta{color:#d6c69e!important}
+body.dark-mode .cap-warning-item{background:#302817;border-color:#59451c}
+@media(max-width:940px){.bulletin-warning-grid{grid-template-columns:minmax(0,1fr)}}
+</style>
 <style id="weather-notifications-style">
 .notification-subscribe-panel{border:1px solid rgba(33,163,102,.28)!important;background:linear-gradient(145deg,#f7fffb,#eef8f4)!important;color:#17372b!important}
 .notification-panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.notification-eyebrow{font-size:.68rem;letter-spacing:.12em;font-weight:900;color:#16804a;margin:0 0 4px}.notification-panel-head h2{margin-top:0;color:#14532d!important}.notification-intro{font-size:.9rem;line-height:1.7;color:#476456;margin:0 0 12px}.notification-bell{font-size:2rem;background:#e0f5e8;border-radius:14px;padding:9px}.notification-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px 0}.notification-options label{display:flex;align-items:flex-start;gap:8px;border:1px solid #d5e9dd;background:#fff;border-radius:10px;padding:11px;font-size:.86rem;line-height:1.5}.notification-options input{accent-color:#16804a;margin-top:4px;flex:0 0 auto}.notification-actions{display:flex;flex-wrap:wrap;gap:8px}.notification-actions button{border:0;border-radius:10px;padding:11px 15px;font-weight:800;cursor:pointer}.notification-primary{background:#16804a;color:white}.notification-secondary{background:#e5eee8;color:#17412c}.notification-status{font-size:.85rem;font-weight:700;color:#315b43;margin:11px 0 5px}.notification-disclaimer{font-size:.76rem;line-height:1.65;color:#64796d;margin:7px 0 0}.notification-subscribe-panel button:focus-visible,.notification-options input:focus-visible{outline:3px solid #86efac;outline-offset:2px}
 @media(max-width:560px){.notification-options{grid-template-columns:1fr}.notification-actions button{flex:1 1 100%}.notification-bell{font-size:1.5rem;padding:7px}}
 body.dark-mode .notification-subscribe-panel{background:#10251d!important;color:#e8fff0!important}body.dark-mode .notification-options label{background:#142c22;color:#e8fff0;border-color:#315641}body.dark-mode .notification-intro,body.dark-mode .notification-disclaimer{color:#b1cdbb}
+</style>
+
+<style id="compact-weather-notification-banner">
+/* Compact horizontal notification banner */
+#weatherNotificationPanel.notification-subscribe-panel{padding:12px 15px!important;margin:12px 0!important;border-radius:14px!important;box-shadow:0 4px 14px rgba(20,83,45,.07)!important}
+#weatherNotificationPanel .notification-panel-head{align-items:center;gap:10px;margin:0}
+#weatherNotificationPanel .notification-panel-head>div{min-width:0;flex:1}
+#weatherNotificationPanel .notification-eyebrow{font-size:.62rem;margin:0 0 2px;letter-spacing:.08em}
+#weatherNotificationPanel .notification-panel-head h2{font-size:1.05rem!important;margin:0 0 3px!important;line-height:1.35}
+#weatherNotificationPanel .notification-intro{font-size:.78rem;line-height:1.45;margin:0;color:#476456}
+#weatherNotificationPanel .notification-bell{font-size:1.35rem;padding:7px;border-radius:11px;flex:0 0 auto}
+#weatherNotificationPanel .notification-options{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:9px 0}
+#weatherNotificationPanel .notification-options label{align-items:center;gap:6px;padding:7px 9px;min-height:39px;border-radius:9px;font-size:.77rem;line-height:1.35}
+#weatherNotificationPanel .notification-options input{margin:0;flex:0 0 auto}
+#weatherNotificationPanel .notification-actions{gap:6px;align-items:center}
+#weatherNotificationPanel .notification-actions button{padding:8px 11px;border-radius:8px;font-size:.78rem}
+#weatherNotificationPanel .notification-status{font-size:.76rem;margin:6px 0 2px;line-height:1.4}
+#weatherNotificationPanel .notification-disclaimer{font-size:.68rem;line-height:1.45;margin:4px 0 0}
+#weatherNotificationPanel .notify-icon{display:inline-flex;align-items:center;justify-content:center;width:1.35em;min-width:1.35em;font-size:1.08em;margin-inline-end:3px}
+@media(max-width:800px){#weatherNotificationPanel .notification-options{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){#weatherNotificationPanel.notification-subscribe-panel{padding:10px!important}#weatherNotificationPanel .notification-options{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}#weatherNotificationPanel .notification-options label{padding:6px;font-size:.72rem;min-height:36px}#weatherNotificationPanel .notification-panel-head h2{font-size:.98rem!important}#weatherNotificationPanel .notification-intro{font-size:.74rem}#weatherNotificationPanel .notification-actions button{flex:1 1 auto;padding:8px 9px;font-size:.74rem}}
 </style>
 <style id="petra-responsive-search-upgrade">
 :root{--petra-content-max:1280px}
@@ -722,208 +780,182 @@ main,.container,.page-container,.content,.main-content{width:min(100% - 32px,var
 .gfs-forecast-panel .gfs-forecast-header>div{flex:1;min-width:220px}
 .gfs-forecast-panel .gfs-open-link{white-space:nowrap}
 </style>
-<style id="wasm-inspired-theme-adapted">
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
-:root{
-  --wasm-ink:#172b3a;
-  --wasm-muted:#647785;
-  --wasm-blue:#0e7490;
-  --wasm-blue-dark:#164e63;
-  --wasm-sky:#e8f5f8;
-  --wasm-line:#dce7eb;
-  --wasm-card:#ffffff;
-  --wasm-bg:#f4f8fa;
-  --wasm-orange:#f59e0b;
-}
-html{background:var(--wasm-bg)!important;scroll-behavior:smooth}
-body{
-  margin:0!important;padding:0!important;
-  background:linear-gradient(180deg,#f8fbfc 0%,#eef5f7 100%)!important;
-  color:var(--wasm-ink)!important;
-  font-family:'IBM Plex Sans Arabic','Cairo',Tahoma,Arial,sans-serif!important;
-  line-height:1.7!important;
-}
-#mainHeader,header#mainHeader{
-  max-width:1120px!important;margin:20px auto 12px!important;
-  padding:28px 24px 24px!important;
-  border:1px solid var(--wasm-line)!important;
-  border-radius:24px!important;
-  background:linear-gradient(135deg,#fff 0%,#f0f9fb 100%)!important;
-  color:var(--wasm-ink)!important;
-  box-shadow:0 10px 35px rgba(23,43,58,.06)!important;
-  text-align:center!important;
-}
-#mainHeader h1,header#mainHeader h1{
-  color:#12384a!important;font-weight:800!important;
-  font-size:clamp(1.55rem,3vw,2.25rem)!important;
-  line-height:1.35!important;letter-spacing:-.025em!important;
-}
-#mainHeader p,header#mainHeader p{color:var(--wasm-muted)!important;font-size:1rem!important}
-.site-logo{max-width:94px!important;max-height:94px!important;object-fit:contain!important;filter:none!important}
-.date-badge{
-  display:inline-flex!important;align-items:center!important;justify-content:center!important;
-  background:#e6f4f7!important;color:#155e75!important;border:1px solid #c5e5eb!important;
-  border-radius:999px!important;padding:6px 14px!important;font-size:.84rem!important;
-}
-.container{max-width:1120px!important;margin:0 auto!important;padding:12px 18px 26px!important;gap:16px!important}
-.location-toolbar{
-  display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;
-  gap:10px!important;padding:14px!important;
-  border:1px solid var(--wasm-line)!important;border-radius:18px!important;
-  background:#fff!important;box-shadow:0 6px 22px rgba(23,43,58,.045)!important;
-}
-.location-search-wrap{display:flex!important;gap:8px!important}
-.location-toolbar input,.location-toolbar select{
-  background:#f8fbfc!important;color:var(--wasm-ink)!important;
-  border:1px solid #d2e1e6!important;border-radius:12px!important;
-  min-height:46px!important;font-family:inherit!important;
-}
-.location-toolbar input:focus,.location-toolbar select:focus{outline:3px solid #ccecf2!important;border-color:var(--wasm-blue)!important}
-.location-toolbar button,.location-toolbar .gps-btn{
-  min-height:46px!important;border:0!important;border-radius:12px!important;
-  padding:10px 17px!important;background:var(--wasm-blue)!important;
-  color:#fff!important;font-family:inherit!important;font-weight:700!important;
-  box-shadow:none!important;transition:transform .15s ease,background .15s ease!important;
-}
-.location-toolbar button:hover{background:var(--wasm-blue-dark)!important;transform:translateY(-1px)!important}
-.location-toolbar .gps-btn{background:#176b55!important}
-.location-status{color:var(--wasm-muted)!important;font-size:.86rem!important}
-.panel,.weather-now-box,.early-warning-box,.social-footer-box{
-  background:var(--wasm-card)!important;color:var(--wasm-ink)!important;
-  border:1px solid var(--wasm-line)!important;border-radius:20px!important;
-  box-shadow:0 8px 28px rgba(23,43,58,.045)!important;
-  padding:22px!important;overflow:hidden!important;
-}
-.panel h2,.weather-now-box h2,.weather-now-box h3,.early-warning-box h2,.social-footer-box h3{
-  color:#163b4c!important;font-weight:800!important;line-height:1.45!important;
-}
-.panel h2{font-size:clamp(1.05rem,2vw,1.35rem)!important;margin-top:0!important}
-.live-bulletin{
-  border-top:4px solid var(--wasm-blue)!important;
-  background:linear-gradient(135deg,#fff 0%,#f1fafb 100%)!important;
-}
-#bulletinText{font-size:1rem!important;line-height:2!important;color:#2f4858!important}
-.live-data-meta{color:var(--wasm-muted)!important;font-size:.8rem!important}
-.gfs-live-panel{padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
-.gfs-live-card{
-  background:linear-gradient(120deg,#fff,#f0f9fb)!important;
-  color:var(--wasm-ink)!important;border:1px solid #cfe3e9!important;
-  border-radius:18px!important;box-shadow:0 8px 28px rgba(23,43,58,.05)!important;
-  padding:18px!important;gap:16px!important;
-}
-.gfs-live-card:before{height:4px!important;background:linear-gradient(90deg,#0e7490,#38bdf8,#f59e0b)!important}
-.gfs-brand-icon{background:#e1f2f6!important;border:1px solid #c3e4eb!important;color:#155e75!important;border-radius:14px!important}
-.gfs-brand-icon span{color:#155e75!important}.gfs-brand-icon small{color:#477181!important}
-.gfs-title-row h2{color:#163b4c!important}.gfs-live-card .gfs-meta,.gfs-description{color:var(--wasm-muted)!important}
-.gfs-live-badge{background:#fff7e6!important;border:1px solid #f5d48b!important;color:#925b00!important}
-.gfs-open-link,.direct-link-btn{
-  background:var(--wasm-blue)!important;color:#fff!important;border-radius:12px!important;
-  padding:10px 15px!important;font-weight:700!important;text-decoration:none!important;
-}
-.gfs-open-link:hover,.direct-link-btn:hover{background:var(--wasm-blue-dark)!important}
-.weather-grid{gap:12px!important}
-.w-item{
-  background:#f8fbfc!important;border:1px solid var(--wasm-line)!important;
-  border-radius:15px!important;padding:15px!important;box-shadow:none!important;
-}
-.w-item span{color:var(--wasm-muted)!important}.w-item strong{color:#12384a!important;font-size:1.35rem!important}
-.hourly-scroll{gap:10px!important;padding:8px 2px 12px!important}
-.hourly-item{
-  background:#fff!important;border:1px solid var(--wasm-line)!important;
-  border-radius:15px!important;color:var(--wasm-ink)!important;
-  box-shadow:0 3px 10px rgba(23,43,58,.035)!important;
-}
-.hourly-item .day,.hourly-item .time{color:var(--wasm-muted)!important}
-.forecast-table{border-collapse:separate!important;border-spacing:0!important;overflow:hidden!important;border:1px solid var(--wasm-line)!important;border-radius:14px!important}
-.forecast-table th{background:#e8f4f7!important;color:#164e63!important;border-color:var(--wasm-line)!important}
-.forecast-table td{background:#fff!important;color:var(--wasm-ink)!important;border-color:var(--wasm-line)!important}
-.forecast-table tr:nth-child(even) td{background:#f8fbfc!important}
-.alert-card{
-  background:#fff!important;border:1px solid var(--wasm-line)!important;
-  border-radius:15px!important;box-shadow:none!important;color:var(--wasm-ink)!important;
-}
-.alert-card .title{color:#173d4e!important}.alert-card .distance,.alert-card .time{color:var(--wasm-muted)!important}
-.alert-card.alert-active{border-color:#f3c5a7!important;background:#fffaf6!important}
-.wo-toolbar{gap:8px!important}
-.wo-btn{border:1px solid #d5e4e9!important;border-radius:11px!important;background:#f7fbfc!important;color:#31505f!important;font-family:inherit!important}
-.wo-btn.active{background:#e1f2f6!important;color:#155e75!important;border-color:#b9dfe8!important}
-.radar-frame-container,.external-radar-card{border-radius:16px!important;border:1px solid var(--wasm-line)!important;overflow:hidden!important}
-.external-radar-card{background:#f8fbfc!important;color:var(--wasm-ink)!important;padding:18px!important}
-.social-footer-box{max-width:1084px!important;margin:0 auto 18px!important}
-.social-btn{background:#e8f4f7!important;color:#155e75!important;border:1px solid #cde5eb!important;border-radius:12px!important}
-footer{background:transparent!important;color:var(--wasm-muted)!important;padding:12px 18px 28px!important}
-footer p{font-size:.85rem!important}
-a{transition:color .15s ease,background .15s ease}
-@media(max-width:700px){
-  #mainHeader,header#mainHeader{margin:10px 10px 8px!important;padding:20px 14px!important;border-radius:18px!important}
-  .container{padding:8px 10px 18px!important;gap:12px!important}
-  .location-toolbar{grid-template-columns:1fr!important;padding:11px!important}
-  .location-search-wrap{grid-column:auto!important}
-  .location-toolbar .gps-btn{width:100%!important}
-  .panel,.weather-now-box,.early-warning-box,.social-footer-box{padding:15px!important;border-radius:16px!important}
-  .gfs-live-card{grid-template-columns:48px minmax(0,1fr)!important;padding:14px!important;gap:11px!important}
-  .gfs-open-link{grid-column:1/-1!important;text-align:center!important}
-  .forecast-table{font-size:.82rem!important}
-}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
-</style><style id="wasm-professional-layout">
-:root{--wasm-ink:#172b3a;--wasm-muted:#647785;--wasm-blue:#0e7490;--wasm-blue-dark:#164e63;--wasm-line:#dce7eb;--wasm-card:#fff;--wasm-bg:#f4f8fa}
-html{background:var(--wasm-bg)!important;scroll-behavior:smooth;overflow-x:hidden}
-body{margin:0!important;padding:0!important;background:linear-gradient(180deg,#f8fbfc 0%,#eef5f7 100%)!important;color:var(--wasm-ink)!important;font-family:'IBM Plex Sans Arabic','Cairo',Tahoma,Arial,sans-serif!important;line-height:1.75!important;overflow-x:hidden}
-header,#mainHeader{max-width:1120px!important;margin:20px auto 12px!important;padding:28px 24px 24px!important;border:1px solid var(--wasm-line)!important;border-radius:24px!important;background:linear-gradient(135deg,#fff 0%,#f0f9fb 100%)!important;color:var(--wasm-ink)!important;box-shadow:0 10px 35px rgba(23,43,58,.06)!important;text-align:center!important}
-header h1{color:#12384a!important;font-weight:800!important;line-height:1.35!important;letter-spacing:-.025em!important}
-header p{color:var(--wasm-muted)!important}
-.date-badge{background:#e6f4f7!important;color:#155e75!important;border:1px solid #c5e5eb!important;border-radius:999px!important}
-.container{max-width:1120px!important;width:calc(100% - 24px)!important;margin:0 auto!important;padding:12px 18px 26px!important;display:grid!important;grid-template-columns:minmax(0,1.7fr) minmax(280px,1fr)!important;align-items:start!important;gap:16px!important;background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important}
-.container>main,.container>aside{min-width:0!important;width:100%!important}
-.container>main{grid-column:1;grid-row:1}
-.container>aside{grid-column:2;grid-row:1;display:flex!important;flex-direction:column!important;gap:0!important}
-.container>main>.location-toolbar,.container>main>#weatherNotificationPanel,.container>main>#writtenBulletin{width:100%!important}
-.panel,.weather-now-box,.early-warning-box,.social-footer-box{background:#fff!important;color:var(--wasm-ink)!important;border:1px solid var(--wasm-line)!important;border-radius:18px!important;box-shadow:0 8px 28px rgba(23,43,58,.045)!important;padding:20px!important;margin:0 0 16px!important;min-width:0!important;overflow:hidden}
-.panel h2,.weather-now-box h2,.weather-now-box h3,.early-warning-box h2,.social-footer-box h3{color:#163b4c!important;font-weight:800!important;line-height:1.5!important;border-bottom:1px solid #e4edf0!important;padding-bottom:10px!important}
-#bulletinText{font-size:1rem!important;line-height:2!important;color:#2f4858!important;overflow-wrap:anywhere}
-.location-toolbar{display:grid!important;grid-template-columns:minmax(0,1fr) auto auto!important;gap:10px!important;padding:14px!important;border:1px solid var(--wasm-line)!important;border-radius:18px!important;background:#fff!important;box-shadow:0 6px 22px rgba(23,43,58,.045)!important;margin:0 0 16px!important}
+<style id="petraweather-clean-layout">
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap');
+:root{--pw-ink:#193342;--pw-muted:#647985;--pw-teal:#087e8b;--pw-teal-dark:#145563;--pw-line:#dce8ec;--pw-bg:#f3f7f9;--pw-card:#fff}
+*{box-sizing:border-box}html{background:var(--pw-bg)!important;overflow-x:hidden;scroll-behavior:smooth}
+body{margin:0!important;padding:0 0 24px!important;background:linear-gradient(180deg,#f7fafb 0%,#edf4f6 100%)!important;color:var(--pw-ink)!important;font-family:'IBM Plex Sans Arabic','Cairo',Tahoma,Arial,sans-serif!important;line-height:1.75!important;overflow-x:hidden}
+header,#mainHeader{max-width:1240px!important;width:calc(100% - 32px)!important;margin:22px auto 14px!important;padding:26px 22px!important;border:1px solid var(--pw-line)!important;border-radius:22px!important;background:linear-gradient(135deg,#fff,#eff8fa)!important;color:var(--pw-ink)!important;box-shadow:0 8px 28px rgba(25,51,66,.06)!important;text-align:center!important}
+header h1{color:#153c4c!important;font-size:clamp(1.45rem,3vw,2.15rem)!important;font-weight:800!important;line-height:1.4!important}header p{color:var(--pw-muted)!important}
+.site-logo{max-width:90px!important;max-height:90px!important;object-fit:contain!important}
+.date-badge{display:inline-flex!important;justify-content:center!important;max-width:100%;background:#e6f4f6!important;color:#155e68!important;border:1px solid #c7e5e9!important;border-radius:999px!important;white-space:normal!important}
+.container{max-width:1240px!important;width:calc(100% - 32px)!important;margin:0 auto!important;padding:0!important;display:grid!important;grid-template-columns:minmax(0,1.72fr) minmax(290px,.9fr)!important;align-items:start!important;gap:18px!important;background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important}
+.container>main,.container>aside{min-width:0!important;width:100%!important}.container>main{grid-column:1;grid-row:1}.container>aside{grid-column:2;grid-row:1;display:flex!important;flex-direction:column!important;gap:0!important}
+.panel,.weather-now-box,.early-warning-box,.social-footer-box{min-width:0!important;margin:0 0 16px!important;padding:20px!important;background:var(--pw-card)!important;color:var(--pw-ink)!important;border:1px solid var(--pw-line)!important;border-radius:18px!important;box-shadow:0 5px 20px rgba(25,51,66,.045)!important;overflow:hidden}
+.panel h2,.weather-now-box h2,.weather-now-box h3,.early-warning-box h2,.social-footer-box h3{color:#174353!important;font-weight:800!important;line-height:1.5!important;border-bottom:1px solid #e5eef1!important;padding-bottom:10px!important}
+.live-bulletin{border-top:4px solid var(--pw-teal)!important;background:linear-gradient(135deg,#fff,#f2fafb)!important}#bulletinText{color:#2e4b58!important;font-size:1rem!important;line-height:2!important;overflow-wrap:anywhere}
+.live-data-meta,.gfs-meta,.gfs-description,.location-status{color:var(--pw-muted)!important}
+.location-toolbar{display:grid!important;grid-template-columns:minmax(0,1fr) auto auto!important;align-items:center!important;gap:9px!important;margin:0 0 16px!important;padding:14px!important;border:1px solid var(--pw-line)!important;border-radius:16px!important;background:#fff!important;box-shadow:0 4px 16px rgba(25,51,66,.035)!important}
 .location-search-wrap{display:flex!important;gap:8px!important;min-width:0!important}
-.location-toolbar input,.location-toolbar select{background:#f8fbfc!important;color:var(--wasm-ink)!important;border:1px solid #d2e1e6!important;border-radius:12px!important;min-height:44px!important;font-family:inherit!important;min-width:0!important}
-.location-toolbar button{min-height:44px!important;border:0!important;border-radius:12px!important;padding:10px 14px!important;background:var(--wasm-blue)!important;color:#fff!important;font-family:inherit!important;font-weight:700!important;white-space:nowrap}
-.location-toolbar .gps-btn{background:#176b55!important}
-.weather-grid{gap:12px!important}
-.w-item{background:#f8fbfc!important;border:1px solid var(--wasm-line)!important;border-radius:15px!important;padding:14px!important;box-shadow:none!important;color:var(--wasm-ink)!important;min-width:0!important}
-.w-item span,.live-data-meta,.gfs-meta,.gfs-description,footer{color:var(--wasm-muted)!important}
-.w-item strong{color:#12384a!important}
-.hourly-item{border:1px solid var(--wasm-line)!important;border-radius:14px!important}
-.forecast-table{border-collapse:separate!important;border-spacing:0!important;border:1px solid var(--wasm-line)!important;border-radius:14px!important;overflow:hidden!important}
-.forecast-table th{background:#e8f4f7!important;color:#164e63!important}
-.forecast-table td{background:#fff!important;color:var(--wasm-ink)!important}
-.alert-card{background:#fff!important;border:1px solid var(--wasm-line)!important;border-radius:15px!important;box-shadow:none!important;color:var(--wasm-ink)!important}
-.gfs-live-panel,.gfs-forecast-panel{background:#fff!important;border:1px solid #cfe3e9!important;border-radius:18px!important;box-shadow:0 8px 28px rgba(23,43,58,.05)!important;padding:18px!important}
-.gfs-live-card{background:linear-gradient(120deg,#fff,#f0f9fb)!important;border:1px solid #cfe3e9!important;border-radius:16px!important;box-shadow:none!important}
-.gfs-brand-icon{background:#e1f2f6!important;border:1px solid #c3e4eb!important;color:#155e75!important}
-.gfs-title-row h2{color:#163b4c!important}
-.gfs-open-link,.direct-link-btn{background:var(--wasm-blue)!important;color:#fff!important;border-radius:12px!important;text-decoration:none!important}
-.gfs-forecast-panel p{line-height:1.8!important;color:var(--wasm-muted)!important}
-#zoomEarthSatellitePanel,#sat24StormPanel{width:100%!important}
-.social-footer-box{max-width:1120px!important;margin:16px auto!important}
-.social-btn{background:#e8f4f7!important;color:#155e75!important;border:1px solid #cde5eb!important;border-radius:12px!important}
-footer{max-width:1120px!important;margin:0 auto!important;background:transparent!important;padding:12px 18px 28px!important}
-@media(max-width:900px){
- .container{grid-template-columns:minmax(0,1fr)!important;width:calc(100% - 12px)!important;padding:8px 4px 18px!important}
- .container>main,.container>aside{grid-column:1!important;grid-row:auto!important}
- .container>aside{display:grid!important;grid-template-columns:minmax(0,1fr)!important}
-}
-@media(max-width:620px){
- header,#mainHeader{margin:10px 8px 8px!important;padding:20px 14px!important;border-radius:18px!important}
- .container{gap:12px!important}
- .panel,.weather-now-box,.early-warning-box,.social-footer-box{padding:14px!important;border-radius:15px!important}
- .location-toolbar{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;padding:11px!important}
- .location-search-wrap{grid-column:1/-1!important}
- .location-toolbar select{grid-column:1/-1!important;width:100%!important}
- .location-toolbar button{padding:10px 8px!important;font-size:.86rem!important}
- .gfs-live-card{grid-template-columns:46px minmax(0,1fr)!important;gap:10px!important;padding:13px!important}
- .gfs-open-link{grid-column:1/-1!important;width:100%!important;white-space:normal!important;text-align:center!important}
-}
+.location-toolbar input,.location-toolbar select{min-width:0!important;width:100%!important;min-height:44px!important;background:#f8fbfc!important;color:var(--pw-ink)!important;border:1px solid #d3e2e7!important;border-radius:10px!important;font:inherit!important;padding:9px 11px!important}
+.location-toolbar button{min-height:44px!important;padding:9px 13px!important;border:0!important;border-radius:10px!important;background:var(--pw-teal)!important;color:white!important;font:inherit!important;font-weight:700!important;white-space:nowrap}.location-toolbar .gps-btn{background:#176b55!important}
+.weather-grid{gap:10px!important}.w-item{min-width:0!important;padding:13px 8px!important;background:#f7fafb!important;border:1px solid var(--pw-line)!important;border-radius:13px!important;box-shadow:none!important;overflow-wrap:anywhere}
+.w-item span,.hourly-time{color:var(--pw-muted)!important}.w-item strong,.hourly-temp{color:#174353!important}.hourly-scroll{padding:6px 2px 12px!important;scrollbar-width:thin}
+.hourly-item{background:#fff!important;color:var(--pw-ink)!important;border:1px solid var(--pw-line)!important;border-radius:13px!important;box-shadow:none!important}
+.forecast-table{border-collapse:separate!important;border-spacing:0!important;border:1px solid var(--pw-line)!important;border-radius:12px!important;overflow:hidden!important}.forecast-table th{background:#e5f2f5!important;color:#174c5b!important}.forecast-table td{background:#fff!important;color:var(--pw-ink)!important}.forecast-table tr:nth-child(even) td{background:#f8fbfc!important}
+.alert-card{min-width:0!important;background:#fff!important;color:var(--pw-ink)!important;border:1px solid var(--pw-line)!important;border-radius:13px!important;box-shadow:none!important;overflow-wrap:anywhere}.alert-card .distance,.alert-card .time{color:var(--pw-muted)!important}
+.gfs-live-panel,.gfs-forecast-panel{width:100%!important;padding:16px!important;background:#fff!important;border:1px solid #d5e7eb!important;border-radius:17px!important;box-shadow:0 5px 18px rgba(25,51,66,.045)!important}
+.gfs-live-card{grid-template-columns:54px minmax(0,1fr)!important;gap:12px!important;padding:14px!important;background:linear-gradient(120deg,#fff,#f1f9fa)!important;border:1px solid #d5e7eb!important;border-radius:14px!important;box-shadow:none!important}
+.gfs-brand-icon{width:50px!important;height:50px!important;background:#e4f3f6!important;color:#155e68!important;border:1px solid #c8e4e9!important}.gfs-brand-icon span,.gfs-brand-icon small{color:#155e68!important}.gfs-title-row{gap:7px!important;flex-wrap:wrap!important}.gfs-title-row h2{font-size:1rem!important;color:#174353!important}.gfs-live-badge{font-size:.76rem!important}
+.gfs-open-link,.direct-link-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;background:var(--pw-teal)!important;color:#fff!important;border-radius:10px!important;padding:10px 13px!important;text-decoration:none!important;white-space:normal!important;text-align:center!important}
+#zoomEarthSatellitePanel,#sat24StormPanel{width:100%!important}.gfs-forecast-panel p{line-height:1.8!important;color:var(--pw-muted)!important}
+.social-footer-box{max-width:1240px!important;margin:18px auto!important}.social-btn{background:#e7f3f6!important;color:#155e68!important;border:1px solid #cde5e9!important;border-radius:10px!important}
+footer{max-width:1240px!important;margin:12px auto 0!important;padding:16px!important;background:transparent!important;color:var(--pw-muted)!important}
+@media(max-width:940px){.container{grid-template-columns:minmax(0,1fr)!important;width:calc(100% - 24px)!important;gap:12px!important}.container>main,.container>aside{grid-column:1!important;grid-row:auto!important}.container>aside{display:grid!important;grid-template-columns:minmax(0,1fr)!important}}
+@media(max-width:620px){header,#mainHeader{width:calc(100% - 16px)!important;margin:10px auto!important;padding:19px 13px!important;border-radius:17px!important}.container{width:calc(100% - 16px)!important}.panel,.weather-now-box,.early-warning-box,.social-footer-box{padding:14px!important;border-radius:14px!important;margin-bottom:12px!important}.location-toolbar{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;padding:10px!important}.location-search-wrap{grid-column:1/-1!important}.location-toolbar select{grid-column:1/-1!important}.location-toolbar button{font-size:.84rem!important;padding:9px 7px!important;white-space:normal!important}.gfs-live-panel,.gfs-forecast-panel{padding:12px!important}.gfs-live-card{grid-template-columns:44px minmax(0,1fr)!important;padding:11px!important;gap:9px!important}.gfs-brand-icon{width:42px!important;height:42px!important}.gfs-open-link{grid-column:1/-1!important;width:100%!important}.alerts-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media(max-width:360px){.alerts-grid{grid-template-columns:minmax(0,1fr)!important}.location-toolbar{grid-template-columns:minmax(0,1fr)!important}.location-search-wrap{grid-column:1!important}}
-</style></head>
+</style><style id="arabic-live-cap-banner-style">
+.official-cap-warning{border:1px solid #e8b4a5!important;border-top:4px solid #c62828!important;background:linear-gradient(145deg,#fffafa,#fff0ed)!important;color:#452323!important}
+.official-cap-warning h2{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#8d1b1b!important;border-bottom-color:#f1c6bf!important}
+.cap-live-badge{display:inline-flex;align-items:center;gap:5px;background:#b91c1c;color:#fff;border-radius:6px;padding:4px 9px;font-size:.78rem;font-weight:900;white-space:nowrap;animation:capLiveBlink 1s steps(2,start) infinite}
+.cap-live-badge:before{content:"●";font-size:.65rem}
+@keyframes capLiveBlink{to{visibility:hidden}}
+.cap-warning-status{padding:8px 10px;border-radius:8px;background:#fee2e2;color:#991b1b;font-weight:800;font-size:.84rem;margin:8px 0}
+.cap-warning-items{font-size:.93rem;line-height:1.9;overflow-wrap:anywhere}
+.cap-warning-item{padding:12px;margin:9px 0;background:#fff;border:1px solid #f0c6c0;border-right:5px solid #c62828;border-radius:9px}
+.cap-warning-item h3{font-size:1rem;line-height:1.7;margin:0 0 7px;color:#8d1b1b}
+.cap-warning-item p{margin:5px 0;white-space:pre-line}
+.cap-warning-meta{font-size:.78rem;color:#725252;margin-top:8px;border-top:1px solid #f5d9d5;padding-top:7px}
+.cap-alert-badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 8px}
+.cap-alert-badge{display:inline-block;border-radius:5px;padding:3px 8px;font-size:.73rem;font-weight:900;line-height:1.6}
+.cap-alert-new{background:#dcfce7;color:#166534;border:1px solid #86efac}
+.cap-alert-active{background:#dbeafe;color:#1d4ed8;border:1px solid #93c5fd}
+.cap-alert-old{background:#e5e7eb;color:#4b5563;border:1px solid #cbd5e1}
+.cap-alert-expired{background:#f3f4f6;color:#6b7280;border:1px solid #d1d5db}
+
+/* Official JMD warning states: new warnings pulse green; warnings older than 24h are clearly marked red. */
+.cap-warning-item.cap-alert-card-new{background:#f0fdf4!important;border:2px solid #16a34a!important;border-right:6px solid #15803d!important;animation:capNewWarningPulse 1.25s ease-in-out infinite}
+.cap-warning-item.cap-alert-card-old{background:#fff1f2!important;border:2px solid #dc2626!important;border-right:6px solid #b91c1c!important;animation:capOldWarningPulse 1.25s ease-in-out infinite}
+.cap-alert-card-new .cap-alert-new{background:#15803d!important;color:#fff!important;border-color:#166534!important;animation:capBadgePulseGreen 1s steps(2,start) infinite}
+.cap-alert-card-old .cap-alert-old{background:#b91c1c!important;color:#fff!important;border-color:#991b1b!important;animation:capBadgePulseRed 1s steps(2,start) infinite}
+@keyframes capNewWarningPulse{0%,100%{box-shadow:0 0 0 0 rgba(22,163,74,.12)}50%{box-shadow:0 0 0 4px rgba(22,163,74,.22)}}
+@keyframes capOldWarningPulse{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.12)}50%{box-shadow:0 0 0 4px rgba(220,38,38,.22)}}
+@keyframes capBadgePulseGreen{to{visibility:hidden}}
+@keyframes capBadgePulseRed{to{visibility:hidden}}
+@media(prefers-reduced-motion:reduce){.cap-warning-item.cap-alert-card-new,.cap-warning-item.cap-alert-card-old,.cap-alert-card-new .cap-alert-new,.cap-alert-card-old .cap-alert-old{animation:none!important}}
+
+.cap-alert-severity-extreme{border-right-color:#7f1d1d!important;background:#fff1f2!important}
+.cap-alert-severity-severe{border-right-color:#dc2626!important}
+.cap-alert-severity-moderate{border-right-color:#f59e0b!important}
+.cap-alert-severity-minor{border-right-color:#eab308!important}
+.cap-alert-severity-unknown{border-right-color:#9ca3af!important}
+body.dark-mode .cap-alert-new{background:#123b25;color:#bbf7d0;border-color:#166534}
+body.dark-mode .cap-alert-active{background:#172554;color:#bfdbfe;border-color:#1d4ed8}
+body.dark-mode .cap-alert-old,body.dark-mode .cap-alert-expired{background:#374151;color:#e5e7eb;border-color:#4b5563}
+.cap-warning-footer{font-size:.76rem;color:#786b51;border-top:1px solid #f0dfb2;padding-top:8px;margin-top:10px}
+body.dark-mode .official-cap-warning{background:#2a1718!important;color:#f9e8e8!important;border-color:#6b3030!important}
+body.dark-mode .official-cap-warning h2,body.dark-mode .cap-warning-item h3{color:#ffb4ab!important}
+body.dark-mode .cap-warning-item{background:#321e20;border-color:#6b3030}
+body.dark-mode .cap-warning-meta,body.dark-mode .cap-warning-footer{color:#d5b4b4!important}
+@media(prefers-reduced-motion:reduce){.cap-live-badge{animation:none}}
+</style>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script src="push-config.js"></script>
+<script>
+window.OneSignalDeferred = window.OneSignalDeferred || [];
+OneSignalDeferred.push(async function(OneSignal) {
+  const cfg = window.PETRA_PUSH_CONFIG || {};
+  if (!cfg.appId) { console.warn('Push is not configured: add OneSignal App ID to push-config.js'); return; }
+  try {
+    await OneSignal.init({
+      appId: cfg.appId,
+      serviceWorkerPath: '/petraweather/OneSignalSDKWorker.js',
+      serviceWorkerParam: { scope: '/petraweather/' },
+      notifyButton: { enable: false }
+    });
+    window.PetraOneSignal = OneSignal;
+  } catch (e) { console.error('OneSignal init failed', e); }
+});
+</script>
+
+<style id="dark-mode-contrast-fix">
+/* Improve contrast for all text in dark mode */
+body.dark-mode { color:#f3f7ff !important; }
+body.dark-mode p, body.dark-mode li, body.dark-mode label,
+body.dark-mode small, body.dark-mode .muted, body.dark-mode .description,
+body.dark-mode .meta, body.dark-mode .subtitle, body.dark-mode .status,
+body.dark-mode .notification-disclaimer, body.dark-mode .notification-intro,
+body.dark-mode .location-status, body.dark-mode .notification-status,
+body.dark-mode .gfs-meta, body.dark-mode .gfs-description,
+body.dark-mode .weather-details-text, body.dark-mode .cap-warning-source,
+body.dark-mode .cap-warning-footer, body.dark-mode .cap-warning-meta {
+  color:#dbe7f5 !important;
+}
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4,
+body.dark-mode h5, body.dark-mode h6, body.dark-mode strong,
+body.dark-mode b, body.dark-mode .title, body.dark-mode .section-title {
+  color:#ffffff !important;
+}
+body.dark-mode a:not(.gfs-open-link):not(.direct-link-btn) { color:#7dd3fc !important; }
+body.dark-mode a:hover { color:#bae6fd !important; }
+body.dark-mode button, body.dark-mode .button, body.dark-mode input,
+body.dark-mode select, body.dark-mode textarea {
+  color:#f8fafc !important;
+}
+body.dark-mode input::placeholder, body.dark-mode textarea::placeholder {
+  color:#aebed1 !important; opacity:1 !important;
+}
+body.dark-mode table th { color:#ffffff !important; }
+body.dark-mode table td { color:#e7eef8 !important; }
+body.dark-mode .panel, body.dark-mode .card, body.dark-mode section,
+body.dark-mode .weather-now-box, body.dark-mode .early-warning-box,
+body.dark-mode .external-radar-card, body.dark-mode .notification-subscribe-panel {
+  text-shadow:none !important;
+}
+body.dark-mode .notification-options label,
+body.dark-mode .jordan-places-heading,
+body.dark-mode .location-toolbar,
+body.dark-mode .forecast-table th { color:#f8fafc !important; }
+body.dark-mode .alert-card, body.dark-mode .cap-warning-item,
+body.dark-mode .w-item, body.dark-mode .hourly-item { color:#f1f5f9 !important; }
+body.dark-mode .theme-toggle, body.dark-mode #themeToggle {
+  color:#ffffff !important; border-color:#94a3b8 !important;
+}
+</style>
+
+
+<style id="force-light-theme">
+/* Dark mode removed: enforce the site's light appearance across all sections. */
+html, body { background:#f3f7f9 !important; background-image:none !important; color-scheme:light !important; color:#193342 !important; }
+body { color:#193342 !important; }
+header { background:linear-gradient(135deg,#123b66,#168aad) !important; color:#fff !important; border:0 !important; border-bottom:3px solid #0e7490 !important; box-shadow:0 10px 28px rgba(18,59,102,.16) !important; }
+header h1, header p { color:#fff !important; }
+header p { opacity:.96 !important; }
+.date-badge { background:rgba(255,255,255,.17) !important; color:#fff !important; border-color:rgba(255,255,255,.35) !important; }
+.container { background:rgba(255,255,255,.96) !important; color:#193342 !important; border-color:#dce8ec !important; box-shadow:0 12px 34px rgba(18,59,102,.08) !important; }
+.panel,.weather-now-box,.early-warning-box,.social-footer-box { background:#fff !important; color:#193342 !important; border-color:#dce8ec !important; box-shadow:0 6px 18px rgba(18,59,102,.07) !important; }
+.panel h2,.early-warning-box h2,.weather-now-box h3,.live-bulletin h2,.social-footer-box h3 { color:#164e63 !important; border-bottom-color:#dce8ec !important; }
+.weather-now-box { background:#f8fbfc !important; color:#193342 !important; }
+.weather-details-text,.w-item,.hourly-item:not(.nighttime):not(.night-hour),.alert-card,.forecast-table,.external-radar-card,.link-list a,.wo-toolbar,.wo-btn { background:#f8fbfc !important; color:#193342 !important; border-color:#dce8ec !important; }
+.w-item strong,.hourly-temp,.forecast-table td,.external-radar-card h3,.link-list a { color:#164e63 !important; }
+.w-item span,.hourly-time,.gfs-meta,.gfs-description,.live-data-meta,.external-radar-card p,.social-footer-box p,.location-status { color:#526b78 !important; }
+.forecast-table th { background:linear-gradient(135deg,#123b66,#168aad) !important; color:#fff !important; }
+.forecast-table td { border-color:#dce8ec !important; }
+footer { background:#f8fbfc !important; color:#526b78 !important; border-color:#dce8ec !important; }
+input,select,textarea,.location-toolbar input,.location-toolbar select { background:#fff !important; color:#193342 !important; border-color:#cbd5e1 !important; }
+input::placeholder,textarea::placeholder { color:#647985 !important; }
+#bulletinText { color:#193342 !important; }
+.gfs-live-card { background:linear-gradient(125deg,#eef7fb,#fff) !important; border-color:#cbdfe8 !important; box-shadow:0 8px 22px rgba(18,59,102,.08) !important; }
+.gfs-title-row h2,.gfs-live-card .gfs-meta,.gfs-description { color:#193342 !important; }
+.radar-frame-container,.external-radar-card { background:#fff !important; color:#193342 !important; border-color:#dce8ec !important; }
+.location-toolbar { background:#fff !important; border-color:#dce8ec !important; }
+.location-status { color:#526b78 !important; }
+.official-cap-warning { color:#463715 !important; }
+/* Preserve intentionally dark night-hour cards for legibility. */
+.hourly-item.nighttime,.hourly-item.night-hour { color:#fff !important; }
+</style>
+
+</head>
 <body>
 <header id="mainHeader">
 <img alt="شعار فريق طقس البتراء" class="site-logo" onerror="this.style.display='none'" src="logo-petra-weather.png"/>
@@ -939,25 +971,35 @@ footer{max-width:1120px!important;margin:0 auto!important;background:transparent
 
 
 
-<main><section aria-live="polite" class="weather-now-box live-bulletin" id="writtenBulletin">
+<main><div class="bulletin-warning-grid"><section aria-live="polite" class="weather-now-box live-bulletin" id="writtenBulletin">
 <h2>📝 النشرة الجوية المكتوبة – <span id="bulletinLocationName">لواء البترا</span></h2>
 <p id="bulletinText">جارٍ جلب أحدث بيانات الطقس لإعداد النشرة تلقائياً...</p>
 <div class="live-data-meta">المصدر: Open-Meteo Forecast API | آخر تحديث للبيانات: <span id="dataUpdatedAt">بانتظار الاتصال</span> | تحديث تلقائي كل 15 دقيقة</div>
-</section><section aria-labelledby="weatherNotificationTitle" class="panel notification-subscribe-panel" id="weatherNotificationPanel">
+</section><section class="panel official-cap-warning" id="officialCapWarning" aria-live="polite" aria-labelledby="officialCapWarningTitle">
+<h2 id="officialCapWarningTitle">⚠️ تحذيرات مباشرة <span class="cap-live-badge">مباشر</span></h2>
+<div id="capWarningStatus" class="cap-warning-status">جارٍ التحقق من التحذيرات الجوية…</div>
+<div id="capWarningItems" class="cap-warning-items"><p>جارٍ تحميل نص التحذير باللغة العربية…</p></div>
+<div class="cap-warning-footer"><span id="capWarningUpdated">بانتظار أول تحديث</span></div>
+</section></div><section aria-labelledby="weatherNotificationTitle" class="panel notification-subscribe-panel" id="weatherNotificationPanel">
 <div class="notification-panel-head">
 <div><p class="notification-eyebrow">WEATHER ALERTS</p><h2 id="weatherNotificationTitle">🔔 الاشتراك بتنبيهات الطقس</h2>
-<p class="notification-intro">فعّل التنبيهات لتصلك إشعارات على جهازك عند رصد مؤشرات جوية مهمة أثناء فتح الموقع.</p></div>
+<p class="notification-intro">اشترك لتصلك التحذيرات الرسمية الجديدة الصادرة للأردن حتى عند إغلاق الموقع، مع تمييز التحذيرات التي تشمل البتراء. تتطلب الخدمة تفعيل الاشتراك مرة واحدة على هذا الجهاز.</p></div>
 <span aria-hidden="true" class="notification-bell">🔔</span>
 </div>
 <div class="notification-options">
-<label><input checked="" id="notifyRain" type="checkbox"/> أمطار واحتمال هطول مرتفع (60% فأكثر)</label>
-<label><input checked="" id="notifyStorm" type="checkbox"/> عواصف رعدية</label>
-<label><input checked="" id="notifyWind" type="checkbox"/> رياح قوية (45 كم/س فأكثر)</label>
-<label><input checked="" id="notifyFrost" type="checkbox"/> صقيع أو درجات حرارة منخفضة (2° أو أقل)</label>
+<label><input checked="" id="notifyRain" type="checkbox"/> <span class="notify-icon" aria-hidden="true">🌧️</span>أمطار واحتمال هطول مرتفع (60% فأكثر)</label>
+<label><input checked="" id="notifyStorm" type="checkbox"/> <span class="notify-icon" aria-hidden="true">⛈️</span>عواصف رعدية</label>
+<label><input checked="" id="notifyWind" type="checkbox"/> <span class="notify-icon" aria-hidden="true">💨</span>رياح قوية (45 كم/س فأكثر)</label>
+<label><input checked="" id="notifyFrost" type="checkbox"/> <span class="notify-icon" aria-hidden="true">🥶</span>صقيع أو درجات حرارة منخفضة (2° أو أقل)</label>
+<label><input checked="" id="notifyFog" type="checkbox"/> <span class="notify-icon" aria-hidden="true">🌫️</span>الضباب وضعف الرؤية</label>
+<label><input checked="" id="notifyDust" type="checkbox"/> <span class="notify-icon" aria-hidden="true">🌪️</span>الغبار والأتربة (مؤشر غير مباشر)</label>
+<label><input checked="" id="notifyHeavyRain" type="checkbox"/> <span class="notify-icon" aria-hidden="true">🌧️</span>أمطار غزيرة</label>
+<label><input checked="" id="notifyFlood" type="checkbox"/> <span class="notify-icon" aria-hidden="true">🌊</span>احتمال السيول (مؤشر هطول تراكمي)</label>
+<label><input checked="" id="notifySnow" type="checkbox"/> <span class="notify-icon" aria-hidden="true">❄️</span>الثلوج والانجماد</label>
 </div>
-<div class="notification-actions"><button class="notification-primary" id="enableWeatherNotifications" type="button">تفعيل الاشتراك بالتنبيهات</button><button class="notification-secondary" id="testWeatherNotification" type="button">تجربة الإشعار</button><button class="notification-secondary" hidden="" id="disableWeatherNotifications" type="button">إيقاف التنبيهات</button></div>
+<div class="notification-actions"><button class="notification-primary" id="enableWeatherNotifications" type="button">تفعيل الإشعارات الفورية</button><button class="notification-secondary" id="testWeatherNotification" type="button">تجربة الإشعار</button><button class="notification-secondary" hidden="" id="disableWeatherNotifications" type="button">إيقاف التنبيهات</button></div>
 <p aria-live="polite" class="notification-status" id="notificationStatus" role="status">التنبيهات غير مفعّلة. اضغط على زر التفعيل واسمح بالإشعارات من المتصفح.</p>
-<p class="notification-disclaimer">مهم: هذه تنبيهات آلية إرشادية مبنية على بيانات التوقعات، وليست تحذيرات رسمية. تعمل عندما يكون الموقع مفتوحاً في المتصفح؛ أما إرسال إشعارات عند إغلاق الموقع فيتطلب خادم Push وإعدادات إضافية.</p>
+<p class="notification-disclaimer">التحذيرات الرسمية تُرسل عبر خدمة إشعارات فورية بعد إعداد OneSignal وGitHub Actions. أما مؤشرات الطقس المحلية فهي استرشادية. قد يتأخر الإشعار قليلًا بحسب تحديث الخلاصة وجدولة GitHub Actions.</p>
 </section><section aria-label="اختيار موقع الطقس" class="location-toolbar">
 <div class="location-search-wrap"><input aria-label="ابحث عن المنطقة" id="locationSearch" placeholder="ابحث عن محافظة أو مدينة أو قرية أردنية…" type="search"/><button id="searchLocationBtn" type="button">بحث</button></div>
 <div aria-label="المحافظات والمدن والمناطق الأردنية" class="jordan-places-panel" id="jordanPlacesPanel">
@@ -1161,18 +1203,26 @@ footer{max-width:1120px!important;margin:0 auto!important;background:transparent
   loadLeaflet();
 })();
 </script>
-<section class="panel gfs-forecast-panel" id="openRainForecastMapPanel">
-<div class="gfs-forecast-header">
-<div>
-<h2>🌧️ خريطة توقعات الأمطار خلال 24 ساعة</h2>
-<p class="live-data-meta">خرائط توقعات الهطول المطري من مصادر مفتوحة.</p>
-</div>
-<a aria-label="فتح مصدر توقعات الأمطار Open-Meteo" class="gfs-open-link" href="https://open-meteo.com/" rel="noopener noreferrer" target="_blank">
-      فتح توقعات الأمطار <span aria-hidden="true">↗</span>
-</a>
-</div>
-</section></main>
+</main>
 <aside>
+<section class="panel" id="petraRainViewerPanel" style="padding:16px;border:1px solid #d5e7eb;border-radius:17px;background:#fff;margin:0 0 16px;box-shadow:0 5px 18px rgba(25,51,66,.045)">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px"><div><h2 style="margin:0 0 5px;font-size:1.2rem">🌧️ رادار الأمطار المباشر – البتراء</h2><p style="margin:0;color:#607783;font-size:.9rem">مشاهدة صور الرادار السابقة وتحريكها زمنيًا</p></div><button type="button" id="petraRadarRefresh" style="border:0;border-radius:10px;padding:9px 13px;background:#087f8c;color:#fff;font-weight:700">تحديث الرادار</button></div>
+<div id="petraRadarMap" role="application" aria-label="خريطة رادار الأمطار لمنطقة البتراء" style="height:360px;min-height:280px;border-radius:12px;overflow:hidden;background:#eaf1f3"></div>
+<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px"><button id="petraRadarPlay" type="button" style="border:0;border-radius:9px;padding:8px 13px;background:#173f58;color:#fff">▶ تشغيل الحركة</button><input id="petraRadarTimeline" type="range" min="0" max="0" value="0" step="1" aria-label="وقت صورة الرادار" style="flex:1;min-width:140px"><span id="petraRadarTime" style="font-size:.85rem;color:#345">جارٍ تحميل صور الرادار…</span></div>
+<p id="petraRadarStatus" role="status" aria-live="polite" style="margin:9px 0 0;color:#607783;font-size:.85rem">يتم التحقق من توفر صور الرادار فوق البتراء.</p>
+<p style="margin:7px 0 0;font-size:.78rem;color:#71828a">المصدر: <a href="https://www.rainviewer.com/" target="_blank" rel="noopener">RainViewer</a> · الخريطة: © OpenStreetMap. هذه صور رادار سابقة وليست توقعًا مستقبليًا، وقد لا تتوفر تغطية رادارية دقيقة لجنوب الأردن.</p>
+</section>
+<section class="panel" id="petraLightningMapPanel" style="padding:16px;border:1px solid #d5e7eb;border-radius:17px;background:#fff;margin:0 0 16px;box-shadow:0 5px 18px rgba(25,51,66,.045)">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px">
+    <div><h2 style="margin:0 0 5px;font-size:1.2rem">⚡ خريطة البرق المباشر – لواء البتراء</h2><p style="margin:0;color:#607783;font-size:.9rem">رصد ومتابعة مواقع ضربات البرق حول وادي موسى والبتراء</p></div>
+    <a href="https://www.lightningmaps.org/#6/30.32/35.48" target="_blank" rel="noopener noreferrer" style="display:inline-block;border-radius:10px;padding:9px 13px;background:#087f8c;color:#fff;font-weight:700;text-decoration:none">فتح خريطة البرق ↗</a>
+  </div>
+  <div style="height:430px;min-height:320px;border-radius:12px;overflow:hidden;background:#eef4f6;border:1px solid #dce8eb">
+    <iframe title="خريطة البرق المباشر حول لواء البتراء" src="https://map.blitzortung.org/index.php?interactive=1&NavigationControl=1&FullScreenControl=1&ScaleControl=1&Cookies=0&InfoDiv=1&MenuButtonDiv=1&MapStyle=2&LightningCheckboxChecked=1&LightningRangeValue=10#6/30.32/35.48" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" style="width:100%;height:100%;border:0" allowfullscreen></iframe>
+  </div>
+  <p style="margin:9px 0 0;color:#607783;font-size:.85rem">الخريطة مضبوطة لتبدأ من إحداثيات لواء البتراء تقريبًا (30.32° شمالًا، 35.48° شرقًا). حرّك الخريطة أو كبّرها لرؤية المناطق المحيطة. قد تختلف دقة الرصد حسب تغطية شبكة كواشف البرق، ولا تُستخدم الخريطة وحدها لاتخاذ قرارات السلامة.</p>
+  <p style="margin:6px 0 0;font-size:.78rem;color:#71828a">المصدر: <a href="https://www.lightningmaps.org/#6/30.32/35.48" target="_blank" rel="noopener noreferrer">LightningMaps.org</a> · بيانات الرصد من شبكة Blitzortung.</p>
+</section>
 <section class="panel gfs-live-panel">
 <div class="gfs-live-card">
 <div aria-label="نموذج GFS العالمي" class="gfs-brand-icon" role="img"><span>GFS</span><small>GLOBAL MODEL</small></div>
@@ -1259,7 +1309,7 @@ document.addEventListener('DOMContentLoaded', function(){
 <script>
 (function(){
  let LAT=30.32, LON=35.48, selectedLocation='لواء البترا', REFRESH_MS=15*60*1000;
- const forecastUrl=()=> 'https://api.open-meteo.com/v1/forecast?latitude='+LAT+'&longitude='+LON+'&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,rain,showers,weather_code,cloud_cover,pressure_msl,wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=temperature_2m,precipitation_probability,precipitation,weather_code,wind_speed_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,wind_speed_10m_max,wind_direction_10m_dominant&timezone=auto&forecast_days=10';
+ const forecastUrl=()=> 'https://api.open-meteo.com/v1/forecast?latitude='+LAT+'&longitude='+LON+'&models=ecmwf_ifs&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,rain,showers,weather_code,cloud_cover,pressure_msl,wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=temperature_2m,precipitation_probability,precipitation,weather_code,wind_speed_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,wind_speed_10m_max,wind_direction_10m_dominant&timezone=Asia%2FAmman&forecast_days=10';
  const $=id=>document.getElementById(id);
  const num=(v,d=0)=>Number(v).toFixed(d);
  const weatherName=code=>({0:'صحو',1:'صحو غالباً',2:'غائم جزئياً',3:'غائم',45:'ضباب',48:'ضباب متجمد',51:'رذاذ خفيف',53:'رذاذ متوسط',55:'رذاذ كثيف',56:'رذاذ متجمد خفيف',57:'رذاذ متجمد كثيف',61:'مطر خفيف',63:'مطر متوسط',65:'مطر غزير',66:'مطر متجمد خفيف',67:'مطر متجمد غزير',71:'ثلوج خفيفة',73:'ثلوج متوسطة',75:'ثلوج كثيفة',77:'حبيبات ثلجية',80:'زخات مطر خفيفة',81:'زخات مطر متوسطة',82:'زخات مطر غزيرة',85:'زخات ثلجية خفيفة',86:'زخات ثلجية كثيفة',95:'عواصف رعدية',96:'عواصف رعدية مع برد خفيف',99:'عواصف رعدية مع برد كثيف'})[code]||'حالة جوية متغيرة';
@@ -1486,9 +1536,9 @@ document.addEventListener('DOMContentLoaded', function(){
       july:'07', jul:'07', يوليو:'07', تموز:'07',
       august:'08', aug:'08', أغسطس:'08', آب:'08',
       september:'09', sep:'09', sept:'09', سبتمبر:'09', أيلول:'09',
-      october:'10', oct:'10', أكتوبر:'10', تشرين الأول:'10',
-      november:'11', nov:'11', نوفمبر:'11', تشرين الثاني:'11',
-      december:'12', dec:'12', ديسمبر:'12', كانون الأول:'12'
+      october:'10', oct:'10', أكتوبر:'10', 'تشرين الأول':'10',
+      november:'11', nov:'11', نوفمبر:'11', 'تشرين الثاني':'11',
+      december:'12', dec:'12', ديسمبر:'12', 'كانون الأول':'12'
     };
     var lower = s.toLowerCase();
     for (var month in months) {
@@ -1534,22 +1584,81 @@ document.addEventListener('DOMContentLoaded', function(){
   else start();
 })();
 </script>
+<script id="official-jmd-cap-warning-logic">
+(function(){
+  'use strict';
+  const FEED='https://cap-sources.s3.amazonaws.com/jo-meteo-en/rss.xml';
+  const $=id=>document.getElementById(id);
+  const status=$('capWarningStatus'),items=$('capWarningItems'),updated=$('capWarningUpdated');
+  let lastFingerprint='';
+  function clean(s){const d=document.createElement('div');d.innerHTML=s||'';return (d.textContent||d.innerText||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();}
+  function formatDate(s){if(!s)return '';const d=new Date(s);return Number.isNaN(d.getTime())?s:d.toLocaleString('ar-JO',{timeZone:'Asia/Amman',dateStyle:'medium',timeStyle:'short'});}
+  function field(node,name){const all=Array.from(node.getElementsByTagName('*'));const el=all.find(x=>x.localName&&x.localName.toLowerCase()===name.toLowerCase())||node.getElementsByTagName(name)[0];return el?clean(el.textContent):'';}
+  function translate(text){
+    let t=String(text||'').replace(/\s+/g,' ').trim();
+    const phrases=[[/severe weather warning/gi,'تحذير من أحوال جوية شديدة'],[/weather warning/gi,'تحذير جوي'],[/thunderstorms?/gi,'عواصف رعدية'],[/heavy rainfall|heavy rain/gi,'أمطار غزيرة'],[/flash flood(?:ing)?/gi,'سيول مفاجئة'],[/flood(?:ing)?/gi,'فيضانات وسيول'],[/strong winds?/gi,'رياح قوية'],[/high winds?/gi,'رياح شديدة'],[/dust storm(?:s)?/gi,'عواصف غبارية'],[/sand storm(?:s)?/gi,'عواصف رملية'],[/dust haze/gi,'غبار عالق في الجو'],[/fog/gi,'ضباب'],[/snowfall|snow/gi,'تساقط الثلوج'],[/ice|icy conditions/gi,'انجماد'],[/frost/gi,'صقيع'],[/heatwave|heat wave/gi,'موجة حر'],[/extreme heat/gi,'حرارة شديدة'],[/cold wave/gi,'موجة برد'],[/heavy showers/gi,'زخات مطرية غزيرة'],[/rain showers/gi,'زخات مطرية'],[/valid from/gi,'ساري اعتبارًا من'],[/valid until/gi,'ساري حتى'],[/issued/gi,'وقت الإصدار'],[/expires/gi,'ينتهي'],[/warning/gi,'تحذير'],[/watch/gi,'مراقبة جوية'],[/advisory/gi,'تنبيه جوي'],[/expected/gi,'متوقع'],[/possible/gi,'محتمل'],[/local time/gi,'التوقيت المحلي'],[/jordan/gi,'الأردن'],[/governorate/gi,'محافظة'],[/area/gi,'المنطقة'],[/no active warnings?/gi,'لا توجد تحذيرات سارية'],[/orange level/gi,'المستوى البرتقالي'],[/red level/gi,'المستوى الأحمر'],[/yellow level/gi,'المستوى الأصفر']];
+    for(const [re,ar] of phrases)t=t.replace(re,ar);
+    return t||'لم يتوفر وصف نصي للتحذير.';
+  }
+  async function translateToArabic(text){
+    const source=String(text||'').trim();if(!source)return '';
+    try{const url='https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ar&dt=t&q='+encodeURIComponent(source.slice(0,3500));const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('translation unavailable');const data=await r.json();const result=(data[0]||[]).map(part=>part&&part[0]||'').join('').trim();if(result)return result;}catch(e){console.warn('Arabic alert translation unavailable',e);}
+    const local=translate(source);return /[A-Za-z]{4,}/.test(local)?'ورد تحذير جوي باللغة الإنجليزية، وتعذرت ترجمته تلقائيًا في الوقت الحالي.':'تحذير جوي: '+local;
+  }
+  function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  function classify(e){
+    const now=Date.now(), sent=Date.parse(e.sent||e.date||''), effective=Date.parse(e.effective||e.onset||e.sent||e.date||''), expires=Date.parse(e.expires||'');
+    // Ignore any warning/update whose issue time is older than 3 days.
+    if(Number.isFinite(sent)&&(now-sent)>3*24*3600000)return {...e,state:'stale',sentMs:sent,expiresMs:expires};
+    if(Number.isFinite(expires)&&expires<now)return {...e,state:'expired',sentMs:sent,expiresMs:expires};
+    const isNew=Number.isFinite(sent)&&(now-sent)<=6*3600000&&(now-sent)>=-5*60000;
+    const isOld=Number.isFinite(sent)&&(now-sent)>24*3600000;
+    const notYet=Number.isFinite(effective)&&effective>now;
+    return {...e,state:isNew?'new':isOld?'old':notYet?'scheduled':'active',sentMs:sent,expiresMs:expires};
+  }
+  function severityInfo(level){const v=String(level||'').toLowerCase();if(v==='extreme')return {label:'خطورة قصوى',cls:'extreme',rank:5};if(v==='severe')return {label:'خطورة شديدة',cls:'severe',rank:4};if(v==='moderate')return {label:'خطورة متوسطة',cls:'moderate',rank:3};if(v==='minor')return {label:'خطورة محدودة',cls:'minor',rank:2};return {label:'درجة الخطورة غير محددة',cls:'unknown',rank:1};}
+  async function render(rawEntries){
+    const all=rawEntries.map(classify);
+    const active=all.filter(e=>e.state!=='expired'&&e.state!=='stale');
+    const expired=all.filter(e=>e.state==='expired');
+    const stale=all.filter(e=>e.state==='stale');
+    active.sort((a,b)=>{const sa=severityInfo(a.severity).rank,sb=severityInfo(b.severity).rank;if(sa!==sb)return sb-sa;const order={new:0,active:1,scheduled:2,old:3};if(order[a.state]!==order[b.state])return order[a.state]-order[b.state];return (b.sentMs||0)-(a.sentMs||0);});
+    if(!active.length){items.innerHTML='<p>لا توجد تحديثات سارية حاليًا.</p>';status.textContent='التحديثات السارية فقط: 0';return;}
+    const translated=await Promise.all(active.slice(0,8).map(async e=>({...e,title:await translateToArabic(e.title||'تحذير جوي'),description:await translateToArabic(e.description||e.summary||'لم يتوفر وصف نصي للتحذير.'),area:e.area?await translateToArabic(e.area):''})));
+    items.innerHTML=translated.map(e=>{
+      const sev=severityInfo(e.severity);const stateLabel=e.state==='new'?'جديد':e.state==='old'?'تحذير قديم':e.state==='scheduled'?'يبدأ لاحقًا':'تحذير ساري';const stateClass=e.state==='new'?'cap-alert-new':e.state==='old'?'cap-alert-old':'cap-alert-active';
+      const details=[];if(e.area)details.push('المنطقة: '+e.area);if(e.sent||e.date)details.push('وقت الإصدار: '+formatDate(e.sent||e.date));if(e.effective)details.push('بداية السريان: '+formatDate(e.effective));if(e.expires)details.push('انتهاء الصلاحية: '+formatDate(e.expires));if(e.urgency)details.push('الاستعجال: '+translate(e.urgency));
+      const cardStateClass=e.state==='new'?'cap-alert-card-new':e.state==='old'?'cap-alert-card-old':'';return '<article class="cap-warning-item '+cardStateClass+' cap-alert-severity-'+sev.cls+'"><div class="cap-alert-badges"><span class="cap-alert-badge '+stateClass+'">'+stateLabel+'</span><span class="cap-alert-badge cap-alert-severity-'+sev.cls+'">'+sev.label+'</span></div><h3>'+escapeHtml(e.title)+'</h3><p dir="rtl" lang="ar">'+escapeHtml(e.description.slice(0,1800))+'</p>'+(details.length?'<div class="cap-warning-meta">'+escapeHtml(details.join(' · '))+'</div>':'')+'</article>';
+    }).join('');
+    const currentCount=active.filter(e=>e.state!=='old'&&e.state!=='scheduled').length;status.textContent='التحديثات السارية فقط: '+currentCount;
+  }
+  function parseXml(xml){
+    const doc=new DOMParser().parseFromString(xml,'application/xml');if(doc.querySelector('parsererror'))throw new Error('XML parse error');
+    return Array.from(doc.querySelectorAll('item, entry')).map(n=>({title:field(n,'title'),description:field(n,'description')||field(n,'summary')||field(n,'content'),date:field(n,'pubDate')||field(n,'published')||field(n,'updated'),sent:field(n,'sent')||field(n,'issued')||field(n,'pubDate')||field(n,'published')||field(n,'updated'),effective:field(n,'effective'),onset:field(n,'onset'),expires:field(n,'expires'),severity:field(n,'severity'),urgency:field(n,'urgency'),certainty:field(n,'certainty'),area:field(n,'areaDesc')||field(n,'area')}));
+  }
+  async function load(){
+    try{const url=FEED+(FEED.includes('?')?'&':'?')+'_='+Date.now();const response=await fetch(url,{cache:'no-store',mode:'cors',headers:{'Accept':'application/rss+xml, application/xml, text/xml'}});if(!response.ok)throw new Error('HTTP '+response.status);const entries=parseXml(await response.text());const fingerprint=entries.map(e=>e.title+e.sent+e.expires+e.description).join('|');await render(entries);if(fingerprint!==lastFingerprint&&lastFingerprint&&window.PetraWeatherNotifications&&window.PetraWeatherNotifications.officialAlert){const newest=entries[0];if(newest){const c=classify(newest);if(c.state==='new'||c.state==='active')window.PetraWeatherNotifications.officialAlert(await translateToArabic(newest.title),(await translateToArabic(newest.description)).slice(0,220));}}lastFingerprint=fingerprint;if(updated)updated.textContent='آخر تحديث: '+new Date().toLocaleString('ar-JO',{timeZone:'Asia/Amman'});
+    }catch(err){console.warn('Official JMD CAP feed unavailable:',err);if(status)status.textContent='تعذّر تحديث التحذيرات حاليًا';if(items)items.innerHTML='<p>لم نتمكن من جلب التحذيرات في هذه المحاولة. سيُعاد التحقق تلقائيًا.</p>';if(updated)updated.textContent='آخر محاولة: '+new Date().toLocaleString('ar-JO',{timeZone:'Asia/Amman'});}
+  }
+  if(status&&items){load();setInterval(load,5*60*1000);}
+})();
+</script>
 <script id="weather-notifications-logic">
 (function(){
   'use strict';
   const KEY='petraWeatherNotificationSettingsV1';
   const LAST='petraWeatherNotificationLastAlertV1';
   const $=id=>document.getElementById(id);
-  const defaults={enabled:false,rain:true,storm:true,wind:true,frost:true};
+  const defaults={enabled:false,rain:true,storm:true,wind:true,frost:true,fog:true,dust:true,heavyrain:true,flood:true,snow:true};
   let settings={...defaults};
   let firstCheck=true;
   try{settings={...defaults,...JSON.parse(localStorage.getItem(KEY)||'{}')};}catch(e){}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(settings));}catch(e){}}
   function status(msg){const el=$('notificationStatus');if(el)el.textContent=msg;}
   function updateUI(){
-    ['Rain','Storm','Wind','Frost'].forEach(k=>{const el=$('notify'+k);if(el)el.checked=!!settings[k.toLowerCase()];});
+    ['Rain','Storm','Wind','Frost','Fog','Dust','HeavyRain','Flood','Snow'].forEach(k=>{const el=$('notify'+k);if(el)el.checked=!!settings[k.toLowerCase()];});
     const on=$('enableWeatherNotifications'),off=$('disableWeatherNotifications');
-    if(on)on.textContent=settings.enabled?'التنبيهات مفعّلة ✓':'تفعيل الاشتراك بالتنبيهات';
+    if(on)on.textContent=settings.enabled?'التنبيهات مفعّلة ✓':'تفعيل الإشعارات الفورية';
     if(off)off.hidden=!settings.enabled;
     if(settings.enabled)status('الاشتراك مفعّل على هذا الجهاز. ستظهر الإشعارات عند توفر مؤشرات جديدة أثناء فتح الموقع.');
   }
@@ -1558,13 +1667,20 @@ document.addEventListener('DOMContentLoaded', function(){
     try{const n=new Notification(title,{body,tag:'petra-'+tag,icon:'logo-petra-weather.png',badge:'logo-petra-weather.png'});n.onclick=()=>{window.focus();n.close();};}catch(e){console.warn('Notification error',e);}
   }
   async function enable(){
-    if(!('Notification' in window)){status('هذا المتصفح لا يدعم إشعارات الويب. جرّب فتح الموقع في Chrome.');return;}
-    if(!window.isSecureContext && location.protocol!=='file:'){status('يلزم فتح الموقع عبر HTTPS لتفعيل إشعارات المتصفح.');return;}
+    if(!('Notification' in window)){status('هذا المتصفح لا يدعم إشعارات الويب. جرّب Chrome أو متصفحًا يدعم Push.');return;}
+    if(!window.isSecureContext && location.protocol!=='file:'){status('يلزم فتح الموقع عبر HTTPS لتفعيل الإشعارات.');return;}
     try{
       const permission=await Notification.requestPermission();
       if(permission!=='granted'){status(permission==='denied'?'تم رفض الإشعارات. غيّر الإذن من إعدادات المتصفح للموقع.':'لم يتم منح إذن الإشعارات.');return;}
-      settings.enabled=true;save();updateUI();notify('تم تفعيل تنبيهات طقس البتراء','سيتم تنبيهك عند رصد مؤشرات جوية جديدة أثناء فتح الموقع.','subscribed');
-    }catch(e){status('تعذّر تفعيل الإشعارات. تأكد من إعدادات المتصفح واتصالك الآمن.');}
+      settings.enabled=true;save();updateUI();
+      if(window.PetraOneSignal){
+        await window.PetraOneSignal.User.PushSubscription.optIn();
+        status('تم تفعيل الإشعارات على هذا الجهاز. ستصلك التحذيرات الرسمية الجديدة حتى عند إغلاق الموقع بعد اكتمال إعداد الخدمة الخلفية.');
+      } else {
+        status('تم تفعيل إشعارات المتصفح المفتوح، لكن الإشعارات الفورية بالخلفية لم تُجهّز بعد. أكمل إعداد OneSignal في ملف push-config.js ثم أعد تحميل الموقع.');
+      }
+      notify('تم تفعيل تنبيهات طقس البتراء','تم تفعيل التنبيهات المحلية على هذا الجهاز.','subscribed');
+    }catch(e){console.error(e);status('تعذّر تفعيل Push. تأكد من إعداد OneSignal وملف عامل الخدمة ثم أعد المحاولة.');}
   }
   function test(){
     if(!('Notification' in window)){status('المتصفح لا يدعم إشعارات الويب.');return;}
@@ -1575,29 +1691,48 @@ document.addEventListener('DOMContentLoaded', function(){
     if(!data||!data.current||!data.daily)return;
     const c=data.current,h=data.hourly||{},d=data.daily;
     const events=[];
+    const arr=(key)=>Array.isArray(h[key])?h[key]:[];
+    const now=Date.now();
+    let future=[];
+    const times=arr('time');
+    for(let i=0;i<times.length;i++) if(new Date(times[i]).getTime()>=now-60*60*1000) future.push(i);
+    if(!future.length) future=times.map((_,i)=>i).slice(0,24);
+    const maxOf=(key)=>Math.max(0,...future.map(i=>Number(arr(key)[i]||0)));
+    const sumOf=(key)=>future.reduce((sum,i)=>sum+Number(arr(key)[i]||0),0);
+    const codes=future.map(i=>Number(arr('weather_code')[i]||0));
     const rainProb=Number((d.precipitation_probability_max||[])[0]||0);
-    const wind=Math.max(Number(c.wind_speed_10m||0),Number(c.wind_gusts_10m||0),Number((d.wind_speed_10m_max||[])[0]||0));
+    const hourlyRain=maxOf('precipitation');
+    const rain24=sumOf('precipitation');
+    const wind=Math.max(Number(c.wind_speed_10m||0),Number(c.wind_gusts_10m||0),Number((d.wind_speed_10m_max||[])[0]||0),maxOf('wind_speed_10m'));
     const code=Number(c.weather_code||0);
-    const minTemp=Number((d.temperature_2m_min||[])[0]??99);
-    if(settings.rain&&rainProb>=60)events.push({id:'rain',title:'🌧️ تنبيه احتمال أمطار',body:'احتمال الهطول المتوقع '+Math.round(rainProb)+'% في '+(window.selectedLocation||'الموقع المختار')+'.'});
-    if(settings.storm&&[95,96,99].includes(code))events.push({id:'storm',title:'⛈️ تنبيه عواصف رعدية',body:'تُظهر بيانات الطقس الحالية مؤشراً لعواصف رعدية. تابع الجهات الرسمية.'});
-    if(settings.wind&&wind>=45)events.push({id:'wind',title:'💨 تنبيه رياح قوية',body:'سرعة الرياح أو الهبات المتوقعة تقارب '+Math.round(wind)+' كم/س.'});
-    if(settings.frost&&minTemp<=2)events.push({id:'frost',title:'❄️ تنبيه برودة وصقيع محتمل',body:'الحرارة الصغرى المتوقعة '+Math.round(minTemp)+'° مئوية أو أقل.'});
+    const allCodes=[code,...codes];
+    const minTemp=Math.min(Number((d.temperature_2m_min||[])[0]??99),...future.map(i=>Number(arr('temperature_2m')[i]??99)));
+    const where=window.selectedLocation||'لواء البترا';
+    if(settings.rain&&rainProb>=60)events.push({id:'rain',title:'🌧️ تنبيه احتمال أمطار',body:'احتمال الهطول المتوقع '+Math.round(rainProb)+'% في '+where+'.'});
+    if(settings.storm&&allCodes.some(x=>[95,96,99].includes(x)))events.push({id:'storm',title:'⛈️ تنبيه عواصف رعدية',body:'تظهر التوقعات مؤشراً لعواصف رعدية في '+where+'. تابع النشرات الرسمية.'});
+    if(settings.wind&&wind>=45)events.push({id:'wind',title:'💨 تنبيه رياح قوية',body:'سرعة الرياح أو الهبات المتوقعة تصل إلى نحو '+Math.round(wind)+' كم/س في '+where+'.'});
+    if(settings.frost&&minTemp<=2)events.push({id:'frost',title:'❄️ تنبيه برودة وصقيع محتمل',body:'الحرارة المتوقعة قد تصل إلى '+Math.round(minTemp)+'°م في '+where+'.'});
+    if(settings.fog&&allCodes.some(x=>[45,48].includes(x)))events.push({id:'fog',title:'🌫️ تنبيه ضباب محتمل',body:'تشير رموز الطقس إلى ضباب أو ضباب متجمد محتمل في '+where+'.'});
+    if(settings.dust) { /* No dust/aerosol feed is currently connected; avoid issuing unsupported dust alerts. */ }
+    if(settings.heavyrain&&hourlyRain>=7)events.push({id:'heavyrain',title:'🌧️ تنبيه أمطار غزيرة',body:'قد يتجاوز الهطول الساعي '+hourlyRain.toFixed(1)+' مم/ساعة في '+where+'.'});
+    if(settings.flood&&rain24>=20)events.push({id:'flood',title:'⚠️ تنبيه احتمال سيول',body:'تُظهر التوقعات مجموع هطول يقارب '+rain24.toFixed(1)+' مم خلال الساعات المتاحة القادمة في '+where+'. هذا مؤشر مطري وليس تنبؤاً مؤكداً بالسيول.'});
+    if(settings.snow&&(allCodes.some(x=>[71,73,75,77,85,86].includes(x))||minTemp<=0&&allCodes.some(x=>[56,57,66,67].includes(x))))events.push({id:'snow',title:'❄️ تنبيه ثلوج أو انجماد محتمل',body:'تظهر التوقعات مؤشرات ثلوج أو هطول متجمد/درجات تجمد في '+where+'.'});
     let previous={};try{previous=JSON.parse(localStorage.getItem(LAST)||'{}');}catch(e){}
     const nowKey=new Date().toISOString().slice(0,13);
+    const activeIds=new Set(events.map(ev=>ev.id));
     events.forEach(ev=>{const sig=ev.id+'-'+nowKey;if(previous[ev.id]!==sig){if(!firstCheck)notify(ev.title,ev.body,sig);previous[ev.id]=sig;}});
-    // Keep last few signatures only.
     try{localStorage.setItem(LAST,JSON.stringify(previous));}catch(e){}
     firstCheck=false;
   }
-  document.addEventListener('DOMContentLoaded',function(){
+  function initNotifications(){
     updateUI();
-    ['Rain','Storm','Wind','Frost'].forEach(k=>{const el=$('notify'+k);if(el)el.addEventListener('change',()=>{settings[k.toLowerCase()]=el.checked;save();});});
+    ['Rain','Storm','Wind','Frost','Fog','Dust','HeavyRain','Flood','Snow'].forEach(k=>{const el=$('notify'+k);if(el)el.addEventListener('change',()=>{settings[k.toLowerCase()]=el.checked;save();});});
     if($('enableWeatherNotifications'))$('enableWeatherNotifications').addEventListener('click',enable);
     if($('testWeatherNotification'))$('testWeatherNotification').addEventListener('click',test);
     if($('disableWeatherNotifications'))$('disableWeatherNotifications').addEventListener('click',()=>{settings.enabled=false;save();updateUI();status('تم إيقاف التنبيهات على هذا الجهاز.');});
     if(settings.enabled&&('Notification' in window)&&Notification.permission==='granted')status('الاشتراك مفعّل على هذا الجهاز.');
-  });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initNotifications,{once:true});else initNotifications();
   window.PetraWeatherNotifications={check:check};
 })();
 </script>
@@ -1777,4 +1912,44 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 })();
 </script>
+
+<script>
+(function(){
+ const mapEl=document.getElementById('petraRadarMap'); if(!mapEl || mapEl.dataset.ready) return; mapEl.dataset.ready='1';
+ const status=document.getElementById('petraRadarStatus'), timeLabel=document.getElementById('petraRadarTime'), slider=document.getElementById('petraRadarTimeline'), playBtn=document.getElementById('petraRadarPlay'), refreshBtn=document.getElementById('petraRadarRefresh');
+ let map=null, frames=[], overlay=null, timer=null, index=0;
+ function loadLeaflet(){if(window.L){init();return;} if(!document.querySelector('link[data-petra-radar]')){const l=document.createElement('link');l.rel='stylesheet';l.href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';l.dataset.petraRadar='1';document.head.appendChild(l);} const existing=document.querySelector('script[data-petra-radar]');if(existing){existing.addEventListener('load',init,{once:true});return;}const sc=document.createElement('script');sc.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';sc.dataset.petraRadar='1';sc.onload=init;sc.onerror=()=>status.textContent='تعذر تحميل مكتبة الخريطة. تحقق من اتصال الإنترنت.';document.head.appendChild(sc);}
+ function init(){if(map||!window.L)return;map=L.map(mapEl,{scrollWheelZoom:false}).setView([30.32,35.48],7);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);setTimeout(()=>map.invalidateSize(),200);loadFrames();}
+ async function loadFrames(){status.textContent='جارٍ جلب أحدث صور الرادار…';refreshBtn.disabled=true;try{const r=await fetch('https://api.rainviewer.com/public/weather-maps.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);const d=await r.json();frames=(d.radar&&Array.isArray(d.radar.past)?d.radar.past:[]).filter(f=>f.path&&f.time);if(!frames.length)throw new Error('No radar frames');slider.max=String(frames.length-1);index=frames.length-1;showFrame(index);status.textContent='تم تحميل '+frames.length+' صورة رادار من الأرشيف المتاح. قد تكون منطقة البتراء خارج التغطية الرادارية.';}catch(e){status.textContent='لم تتوفر صور رادار الآن أو تعذر الوصول إلى المصدر. جرّب التحديث لاحقًا.';timeLabel.textContent='لا توجد بيانات';}finally{refreshBtn.disabled=false;}}
+ function showFrame(i){if(!frames.length||!map)return;index=Math.max(0,Math.min(frames.length-1,i));const f=frames[index];if(overlay)map.removeLayer(overlay);const base='https://tilecache.rainviewer.com'+f.path;overlay=L.tileLayer(base+'/256/{z}/{x}/{y}/2/1_1.png',{tileSize:256,minZoom:0,maxZoom:7,opacity:.72,attribution:'Weather data © RainViewer',errorTileUrl:''}).addTo(map);slider.value=String(index);timeLabel.textContent=new Date(f.time*1000).toLocaleString('ar-JO',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit'});}
+ function stop(){if(timer){clearInterval(timer);timer=null;}playBtn.textContent='▶ تشغيل الحركة';}
+ slider.addEventListener('input',()=>{stop();showFrame(Number(slider.value));});playBtn.addEventListener('click',()=>{if(timer){stop();return;}if(!frames.length)return;playBtn.textContent='⏸ إيقاف الحركة';timer=setInterval(()=>{let next=index+1;if(next>=frames.length)next=0;showFrame(next);},700);});refreshBtn.addEventListener('click',()=>{stop();loadFrames();});loadLeaflet();
+})();
+</script>
+
+
+<style id="dark-mode-global-readability-fix">
+/* Final global contrast override: ensure nested and dynamically-rendered text stays readable. */
+body.dark-mode, body.dark-mode * { color: #f1f5f9 !important; text-shadow: none !important; }
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4,
+body.dark-mode h5, body.dark-mode h6, body.dark-mode strong, body.dark-mode b,
+body.dark-mode .title, body.dark-mode .section-title { color: #ffffff !important; }
+body.dark-mode a:not(.gfs-open-link):not(.direct-link-btn):not(.social-btn) { color: #7dd3fc !important; }
+body.dark-mode a:hover { color: #bae6fd !important; }
+body.dark-mode p, body.dark-mode span, body.dark-mode small, body.dark-mode label,
+body.dark-mode li, body.dark-mode td, body.dark-mode th, body.dark-mode div {
+  text-decoration-color: currentColor;
+}
+body.dark-mode .alert-card .status, body.dark-mode .cap-alert-new,
+body.dark-mode .cap-alert-active, body.dark-mode .cap-alert-old,
+body.dark-mode .cap-alert-expired { color: #ffffff !important; }
+body.dark-mode input, body.dark-mode select, body.dark-mode textarea,
+body.dark-mode option { background-color: #111c2e !important; color: #f8fafc !important; }
+body.dark-mode input::placeholder, body.dark-mode textarea::placeholder { color: #cbd5e1 !important; opacity: 1 !important; }
+body.dark-mode .gfs-live-badge, body.dark-mode .live-badge, body.dark-mode .badge-live {
+  background: #3b1720 !important; color: #fecaca !important; border-color: #fb7185 !important;
+}
+body.dark-mode .hourly-rain { background: #12324b !important; color: #bae6fd !important; }
+</style>
+
 </body></html>
