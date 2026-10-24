@@ -1614,7 +1614,140 @@ html body #zoomEarthSatellitePanel{order:15!important}
 html body #sat24StormPanel{order:16!important}
 html body .container .social-footer-box{order:17!important}
 </style>
+<style id="petra-redesign-v6">
+/* ===== v6: compact animated weather box + prayer times, animated hour/day cards, numeric dates, cleanup ===== */
+/* --- current weather box layout --- */
+html body #currentWeatherSection{display:grid!important;grid-template-columns:minmax(0,1fr) 190px;grid-template-areas:"ttl stage" "sum stage" "grid stage" "meta stage" "pray pray";column-gap:16px;row-gap:8px;min-height:0!important;padding:14px 16px!important;align-items:start}
+html body #currentWeatherSection>h3{grid-area:ttl;margin:0!important;font-size:.92rem!important}
+html body #currentWeatherSection>.weather-details-text{grid-area:sum;margin:0!important;padding:8px 12px!important;font-size:.82rem!important;line-height:1.6!important;min-height:0}
+html body #currentWeatherSection>.weather-grid{grid-area:grid;display:flex!important;flex-wrap:wrap;align-items:center;gap:8px 10px!important}
+html body #currentWeatherSection>.live-data-meta{grid-area:meta;margin:0!important;font-size:.7rem!important}
+html body #currentWeatherSection .weather-grid .w-item{grid-column:auto!important;order:0!important;text-align:right}
+html body #currentWeatherSection .w-item:has(#currentTemp){flex:0 0 auto;padding:0 4px 0 12px!important;background:transparent!important;border:0!important;backdrop-filter:none}
+html body #currentWeatherSection .w-item:has(#currentTemp)>span{display:block!important;font-size:.72rem!important}
+html body #currentTemp{font-size:clamp(2.4rem,5vw,3.3rem)!important}
+html body #currentWeatherSection .w-item:has(#currentCondition){flex:1 1 150px;padding:0!important;background:transparent!important;border:0!important}
+html body #currentWeatherSection .w-item:has(#currentCondition)>span{display:none!important}
+html body #currentCondition{font-size:1.1rem!important;color:#fff!important}
+html body #currentWeatherSection .w-item:has(#currentWind),html body #currentWeatherSection .w-item:has(#currentHumidity){flex:1 1 110px;padding:7px 10px!important;border-radius:12px!important}
+html body #currentWeatherSection .w-item strong{font-size:.95rem!important}
+html body #currentWeatherSection .w-item span{font-size:.7rem!important}
+/* the stage: a clear sun / moon / weather glyph with its own motion (never behind text) */
+.wx-stage{grid-area:stage;position:relative;width:190px;height:158px;border-radius:20px;display:flex;align-items:center;justify-content:center;
+ background:radial-gradient(circle at 50% 42%,var(--halo,rgba(255,214,90,.45)),transparent 68%),rgba(5,12,28,.22);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);overflow:hidden}
+.wx-stage svg{width:100%;height:100%;overflow:visible}
+.wx-stage .rays{transform-box:fill-box;transform-origin:center;animation:wxSpin 30s linear infinite}
+.wx-stage .orb-sun{filter:drop-shadow(0 0 14px rgba(255,190,50,.9));animation:wxSunPulse 4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.wx-stage .orb-moon{filter:drop-shadow(0 0 12px rgba(200,220,255,.85));animation:wxMoonSway 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes wxMoonSway{50%{transform:rotate(-6deg) scale(1.04)}}
+.wx-stage .cld{animation:wxCloudFloat 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.wx-stage .cld.b{animation-duration:8s;animation-direction:reverse}
+@keyframes wxCloudFloat{50%{transform:translateX(7px)}}
+.wx-stage .dp{animation:wxDrop .9s linear infinite;opacity:0}
+@keyframes wxDrop{0%{transform:translate(0,-6px);opacity:0}20%{opacity:.95}100%{transform:translate(-8px,26px);opacity:0}}
+.wx-stage .fk{animation:wxFlake 3.2s linear infinite;opacity:0}
+@keyframes wxFlake{0%{transform:translate(0,-6px);opacity:0}20%{opacity:1}100%{transform:translate(6px,30px);opacity:0}}
+.wx-stage .bolt{animation:wxBoltFlash 2.4s infinite;transform-box:fill-box;transform-origin:center;filter:drop-shadow(0 0 8px #ffe66d)}
+@keyframes wxBoltFlash{0%,55%,100%{opacity:.15}58%,64%{opacity:1}61%{opacity:.3}}
+.wx-stage .st{animation:wxTwinkle 2.6s ease-in-out infinite}
+.wx-stage .fb{animation:wxFogSlide 5s ease-in-out infinite alternate}
+@keyframes wxFogSlide{from{transform:translateX(-10px)}to{transform:translateX(10px)}}
+/* prayer strip */
+.pr-strip{grid-area:pray;display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;margin-top:2px;padding:9px 12px;border-radius:14px;background:rgba(5,12,28,.38);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff}
+.pr-strip .pr-blk{display:flex;flex-direction:column;line-height:1.25}
+.pr-strip .pr-k{font-size:.66rem;color:rgba(255,255,255,.7);font-weight:700}
+.pr-strip b{font-size:.95rem;font-weight:900}
+.pr-strip .pr-next b{color:#ffd78a}
+.pr-strip .pr-cd{font-variant-numeric:tabular-nums;font-size:.8rem;font-weight:800;color:#bff0ff;direction:ltr;display:inline-block}
+.pr-chips{display:flex;gap:6px;margin-inline-start:auto;flex-wrap:wrap}
+.pr-chip{display:flex;flex-direction:column;align-items:center;min-width:58px;padding:4px 8px;border-radius:10px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);font-size:.64rem;color:rgba(255,255,255,.8);line-height:1.3}
+.pr-chip b{font-size:.74rem;color:#fff}
+.pr-chip.cur{background:linear-gradient(160deg,#f59e5b,#e0742c);border-color:transparent;color:#2a1304}.pr-chip.cur b{color:#1b0f06}
+.pr-chip.nxt{border-color:#ffd78a;box-shadow:0 0 0 1px rgba(255,215,138,.45) inset}
+.pr-loc{font-size:.64rem;color:rgba(255,255,255,.6)}
+@media(max-width:760px){
+ html body #currentWeatherSection{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 112px;grid-template-areas:"ttl ttl ttl" "sum sum sum" "temp cond stage" "wind hum stage" "meta meta stage" "pray pray pray";column-gap:8px;row-gap:7px;padding:11px 12px!important}
+ html body #currentWeatherSection>.weather-grid{display:contents!important}
+ html body #currentWeatherSection .w-item:has(#currentTemp){grid-area:temp;padding:0!important}
+ html body #currentWeatherSection .w-item:has(#currentCondition){grid-area:cond;align-self:center;padding:0!important}
+ html body #currentWeatherSection .w-item:has(#currentWind){grid-area:wind}
+ html body #currentWeatherSection .w-item:has(#currentHumidity){grid-area:hum}
+ html body #currentWeatherSection .w-item:has(#currentWind),html body #currentWeatherSection .w-item:has(#currentHumidity){padding:6px 8px!important;text-align:center}
+ .wx-stage{width:112px;height:112px;border-radius:16px;align-self:stretch;height:auto}
+ html body #currentTemp{font-size:2.3rem!important}
+ html body #currentCondition{font-size:.95rem!important}
+ .pr-chips{margin-inline-start:0;flex-wrap:nowrap;overflow-x:auto;width:100%;padding-bottom:2px}
+ .pr-chip{flex:0 0 auto}
+}
+/* background scene: sun/moon now live in the stage, keep clouds subtle behind the text */
+.wx-fx .wx-sun,.wx-fx .wx-moon{display:none!important}
+.wx-fx .wx-cloud{opacity:.35!important}
 
+/* --- animated weather icons + condition-themed cards (hourly "today" box & 10-day) --- */
+html body #hourlyForecast{gap:8px!important;padding-bottom:4px}
+html body #hourlyForecast .hourly-item{flex:1 0 74px!important;max-width:110px;position:relative;overflow:hidden;padding:7px 4px 8px!important;border-radius:14px!important}
+html body #hourlyForecast .hourly-time{font-size:.7rem!important}
+html body #hourlyForecast .hourly-icon{font-size:1.45rem!important;line-height:1.35!important;margin:1px 0!important}
+html body #hourlyForecast .hourly-period{display:none}
+html body #hourlyForecast .hourly-temp{font-size:1rem!important}
+html body #hourlyForecast .hourly-rain{font-size:.66rem!important}
+html body .hourly-item>*,html body #tenDayForecastPanel tr>*{position:relative;z-index:1}
+html body [data-kind]::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.9;z-index:0}
+html body [data-kind="sun"]{background:linear-gradient(180deg,#1d5fae,#123a72)!important}
+html body [data-kind="sun"]::before{background:radial-gradient(circle at 50% 18%,rgba(255,214,90,.5),transparent 60%)}
+html body [data-kind="moon"]{background:linear-gradient(180deg,#0b1636,#06102a)!important}
+html body [data-kind="moon"]::before{background:radial-gradient(circle at 20% 20%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 78% 34%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 56% 12%,#fff 0 1px,transparent 1.5px);animation:wxTwinkle 3s ease-in-out infinite}
+html body [data-kind="partly"]{background:linear-gradient(180deg,#27578f,#183a66)!important}
+html body [data-kind="cloud"]{background:linear-gradient(180deg,#3e506a,#27364d)!important}
+html body [data-kind="rain"]{background:linear-gradient(180deg,#24364f,#14233a)!important}
+html body [data-kind="rain"]::before{background-image:repeating-linear-gradient(100deg,transparent 0 7px,rgba(170,215,255,.45) 7px 8px);background-size:30px 40px;animation:cardRain .7s linear infinite}
+@keyframes cardRain{to{background-position:-10px 40px}}
+html body [data-kind="storm"]{background:linear-gradient(180deg,#241d44,#120f2a)!important}
+html body [data-kind="storm"]::before{background:radial-gradient(circle at 50% 30%,rgba(255,236,150,.55),transparent 55%);animation:cardFlash 3s infinite}
+@keyframes cardFlash{0%,60%,100%{opacity:0}63%,68%{opacity:1}65%{opacity:.2}}
+html body [data-kind="snow"]{background:linear-gradient(180deg,#46627f,#2b415b)!important}
+html body [data-kind="snow"]::before{background-image:radial-gradient(circle,#fff 0 1.4px,transparent 2px);background-size:18px 22px;animation:cardSnow 3s linear infinite}
+@keyframes cardSnow{to{background-position:6px 22px}}
+html body [data-kind="fog"]{background:linear-gradient(180deg,#59646f,#3b4650)!important}
+html body [data-kind="fog"]::before{background:repeating-linear-gradient(180deg,transparent 0 10px,rgba(255,255,255,.12) 10px 16px);animation:cardFog 5s ease-in-out infinite alternate}
+@keyframes cardFog{to{transform:translateX(8px)}}
+/* animated emoji icons */
+.ico{display:inline-block;transform-origin:center;will-change:transform}
+.ico-sun{animation:icoSun 14s linear infinite;filter:drop-shadow(0 0 8px rgba(255,200,60,.85))}
+@keyframes icoSun{to{transform:rotate(360deg)}}
+.ico-moon{animation:icoMoon 5s ease-in-out infinite;filter:drop-shadow(0 0 8px rgba(210,225,255,.8))}
+@keyframes icoMoon{50%{transform:rotate(-12deg) scale(1.08)}}
+.ico-partly,.ico-cloud{animation:icoCloud 5s ease-in-out infinite}
+@keyframes icoCloud{50%{transform:translateX(5px)}}
+.ico-rain{animation:icoRain 1.1s ease-in-out infinite}
+@keyframes icoRain{50%{transform:translateY(3px)}}
+.ico-storm{animation:icoStorm 2.6s infinite}
+@keyframes icoStorm{0%,60%,100%{transform:none;filter:none}63%{transform:scale(1.12);filter:brightness(1.8) drop-shadow(0 0 10px #ffe66d)}66%{transform:translateX(-2px)}69%{transform:translateX(2px)}}
+.ico-snow{animation:icoSnow 4s ease-in-out infinite}
+@keyframes icoSnow{50%{transform:rotate(25deg) translateY(2px)}}
+.ico-fog{animation:icoFog 3s ease-in-out infinite alternate}
+@keyframes icoFog{to{transform:translateX(5px);opacity:.7}}
+/* 10-day cards: numeric date small, day name tiny */
+html body #tenDayForecastPanel .forecast-table td.forecast-day-cell{display:flex!important;flex-direction:column;align-items:center;gap:0;line-height:1.25}
+html body #tenDayForecastPanel .forecast-table .fd-date{font-size:.8rem;font-weight:800;color:#fff;direction:ltr;font-variant-numeric:tabular-nums}
+html body #tenDayForecastPanel .forecast-table .fd-day{font-size:.62rem;font-weight:600;color:var(--p-muted)}
+html body #tenDayForecastPanel .forecast-table tr{overflow:hidden;position:relative}
+html body #tenDayForecastPanel .forecast-weather-icon{animation:none}
+@media(prefers-reduced-motion:reduce){.ico,.wx-stage *,[data-kind]::before{animation:none!important}}
+html body #tenDayForecastPanel .forecast-rain-chance{font-size:.6rem!important}
+html body #tenDayForecastPanel .forecast-weather-icon{font-size:1.7rem!important}
+html body #tenDayForecastPanel .forecast-table tr{gap:2px!important;padding:9px 5px!important}
+html body #tenDayForecastPanel .forecast-table td.forecast-wind-cell{font-size:.6rem!important}
+/* --- remove helper text under maps and the source notes in the hazard box --- */
+html body #petraRainViewerPanel>p,html body #petraLightningMapPanel>p,html body .early-warning-box>.alert-note{display:none!important}
+</style>
+<style id="petra-redesign-v7">
+html body #disableWeatherNotifications{background:rgba(239,68,68,.14)!important;color:#ff4d5e!important;border:1.5px solid #ef4444!important;font-weight:800}
+html body #disableWeatherNotifications:hover{background:rgba(239,68,68,.24)!important}
+html body #testWeatherNotification{background:linear-gradient(135deg,#2f80ed,#1d5fd1)!important;color:#fff!important;border:0!important;font-weight:800;box-shadow:0 6px 16px rgba(47,128,237,.35)}
+html body #testWeatherNotification:hover{filter:brightness(1.1)}
+html body .notification-status{font-weight:700}
+</style>
 </head>
 <body>
 <header id="mainHeader">
@@ -1666,7 +1799,6 @@ html body .container .social-footer-box{order:17!important}
 </div>
 <div class="notification-actions"><button class="notification-primary" id="enableWeatherNotifications" type="button">تفعيل الإشعارات الفورية</button><button class="notification-secondary" id="testWeatherNotification" type="button">تجربة الإشعار</button><button class="notification-secondary" hidden="" id="disableWeatherNotifications" type="button">إيقاف التنبيهات</button></div>
 <p aria-live="polite" class="notification-status" id="notificationStatus" role="status">التنبيهات غير مفعّلة. اضغط على زر التفعيل واسمح بالإشعارات من المتصفح.</p>
-<p class="notification-disclaimer">المصدر: نماذج Open-Meteo المفتوحة وبيانات CAMS. الإشعارات أثناء فتح الموقع (أو تشغيله كتطبيق على الشاشة الرئيسية) فورية؛ وللتحذيرات الرسمية في الخلفية بعد إغلاق المتصفح يلزم إعداد OneSignal. المؤشرات استرشادية وليست بديلًا عن التحذيرات الرسمية.</p>
 </section><section aria-label="اختيار موقع الطقس" class="location-toolbar">
 <div class="location-search-wrap"><input aria-label="ابحث عن المنطقة" id="locationSearch" placeholder="ابحث عن قرية أو مدينة أو محافظة أو معلم أردني…" type="search"/><button id="searchLocationBtn" type="button">بحث</button></div>
 <div aria-label="المحافظات والمدن والمناطق الأردنية" class="jordan-places-panel" id="jordanPlacesPanel">
@@ -1982,6 +2114,7 @@ document.addEventListener('DOMContentLoaded', function(){
  const icon=code=>code===0?'☀️':([1,2].includes(code)?'⛅':code===3?'☁️':([45,48].includes(code)?'🌫️':([95,96,99].includes(code)?'⛈️':([71,73,75,77,85,86].includes(code)?'❄️':'🌧️'))));
  const windDir=d=>{const dirs=['شمالية','شمالية شرقية','شرقية','جنوبية شرقية','جنوبية','جنوبية غربية','غربية','شمالية غربية'];return dirs[Math.round((((d||0)%360)+360)%360/45)%8]};
  const timeLabel=t=>{const part=(String(t).split('T')[1]||'00:00').slice(0,5).split(':');let hh=Number(part[0]||0),mm=part[1]||'00';const period=hh>=12?'م':'ص';hh=hh%12||12;return hh+':'+mm+' '+period};
+ const dateNum=t=>{const p=String(t).split('-');return p[2]+'/'+p[1]};const dayName=t=>new Date(t+'T12:00:00').toLocaleDateString('ar-JO',{timeZone:'Asia/Amman',weekday:'long'});
  const dateLabel=t=>new Date(t+'T12:00:00').toLocaleDateString('ar-JO',{timeZone:'Asia/Amman',weekday:'long',day:'numeric',month:'long'});
  function setText(id,text){const e=$(id);if(e)e.textContent=text}
  function updateDate(){setText('siteDateBadge','📅 '+new Date().toLocaleDateString('ar-JO',{timeZone:'Asia/Amman',weekday:'long',day:'numeric',month:'long',year:'numeric'})+' | التوقيت المحلي');}
@@ -1996,7 +2129,7 @@ document.addEventListener('DOMContentLoaded', function(){
   if(p>=60)bulletin+='فرصة الهطول مرتفعة نسبياً؛ تابع تحديثات النشرة والتنبيهات الرسمية.';else if(p>=30)bulletin+='توجد فرصة لهطول متفرّق؛ تبقى التفاصيل مرتبطة بتطور الحالة.';else bulletin+='فرصة الهطول منخفضة وفق هذه البيانات. ';
   bulletin+=' هذه نشرة آلية مبنية على نموذج التوقعات وليست بديلاً عن التحذيرات الرسمية.';setText('bulletinText',bulletin);
   const hourly=$('hourlyForecast'); if(hourly){let html='';const now=new Date(c.time).getTime();let count=0;for(let i=0;i<h.time.length&&count<10;i++){if(new Date(h.time[i]).getTime()<now-30*60*1000)continue;const hourDate=new Date(h.time[i]);const hourNum=Number((h.time[i].split('T')[1]||'12:00').slice(0,2));const isDay=hourNum>=6&&hourNum<18;const dayIcon=isDay?(h.weather_code[i]===0?'☀️':icon(h.weather_code[i])):(h.weather_code[i]===0?'🌙':([1,2].includes(h.weather_code[i])?'🌙☁️':([45,48].includes(h.weather_code[i])?'🌫️':([95,96,99].includes(h.weather_code[i])?'⛈️':([71,73,75,77,85,86].includes(h.weather_code[i])?'🌨️':'🌧️')))));html+='<div class="hourly-item '+(isDay?'daytime':'nighttime')+'"><div class="hourly-time">'+timeLabel(h.time[i])+'</div><div class="hourly-icon">'+dayIcon+'</div><div class="hourly-period">'+(isDay?'نهار':'ليل')+'</div><div class="hourly-temp">'+Math.round(h.temperature_2m[i])+'°</div><div class="hourly-rain">💧 '+Math.round(h.precipitation_probability[i]||0)+'%</div></div>';count++;}hourly.innerHTML=html||'<div class="hourly-item">لا تتوفر بيانات ساعية حالياً.</div>';}
-  const tbody=$('dailyForecastBody');if(tbody){tbody.innerHTML=d.time.map((day,i)=>'<tr><td class="forecast-day-cell">'+dateLabel(day)+'</td><td class="forecast-condition-cell"><span class="forecast-weather-icon" aria-hidden="true">'+icon(d.weather_code[i])+'</span><span class="forecast-condition-name">'+weatherName(d.weather_code[i])+'</span><small class="forecast-rain-chance">احتمال الهطول '+Math.round(d.precipitation_probability_max[i]||0)+'%</small></td><td class="temp-high">'+Math.round(d.temperature_2m_max[i])+'°</td><td class="temp-low">'+Math.round(d.temperature_2m_min[i])+'°</td><td class="forecast-wind-cell">'+windDir(d.wind_direction_10m_dominant[i])+' · '+Math.round(d.wind_speed_10m_max[i])+' كم/س</td></tr>').join('');}
+  const tbody=$('dailyForecastBody');if(tbody){tbody.innerHTML=d.time.map((day,i)=>'<tr><td class="forecast-day-cell"><span class="fd-date">'+dateNum(day)+'</span><span class="fd-day">'+dayName(day)+'</span></td><td class="forecast-condition-cell"><span class="forecast-weather-icon" aria-hidden="true">'+icon(d.weather_code[i])+'</span><span class="forecast-condition-name">'+weatherName(d.weather_code[i])+'</span><small class="forecast-rain-chance">احتمال الهطول '+Math.round(d.precipitation_probability_max[i]||0)+'%</small></td><td class="temp-high">'+Math.round(d.temperature_2m_max[i])+'°</td><td class="temp-low">'+Math.round(d.temperature_2m_min[i])+'°</td><td class="forecast-wind-cell">'+windDir(d.wind_direction_10m_dominant[i])+' · '+Math.round(d.wind_speed_10m_max[i])+' كم/س</td></tr>').join('');}
   setText('dataUpdatedAt',new Date().toLocaleString('ar-JO',{hour:'2-digit',minute:'2-digit',day:'numeric',month:'short'}));
   const meta=document.querySelector('.live-data-meta');if(meta){meta.classList.remove('offline');meta.setAttribute('title','تم جلب البيانات بنجاح من Open-Meteo');}try{window.dispatchEvent(new CustomEvent('petraWeatherData',{detail:data}));}catch(e){}
  }
@@ -2530,7 +2663,7 @@ document.addEventListener('DOMContentLoaded', function(){
  function paint(res){
   Object.keys(CARDS).forEach(function(k){paintCard(k,res.hazards[k],res.now,res.offset)});
   var u=$('hazardUpdated');
-  if(u){var d=new Date(res.updated);u.textContent='آخر فحص: '+d.toLocaleTimeString('ar-JO',{hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:'Asia/Amman'})+' · '+loc.name+' · تحديث تلقائي كل دقيقة';u.classList.remove('stale')}
+  if(u){var d=new Date(res.updated);u.textContent='آخر تحديث: '+d.toLocaleTimeString('ar-JO',{hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:'Asia/Amman'})+' · '+loc.name;u.classList.remove('stale')}
  }
  /* the old 1-second visual refresher rewrote the card text; replace it so it only keeps the blinking class in sync */
  window.refreshAlertVisuals=function(){};
@@ -2569,7 +2702,7 @@ document.addEventListener('DOMContentLoaded', function(){
   var on=$('enableWeatherNotifications'),off=$('disableWeatherNotifications');
   if(on)on.textContent=enabledNow()?'التنبيهات مفعّلة ✓':'تفعيل الإشعارات الفورية';
   if(off)off.hidden=!settings.enabled;
-  if(enabledNow())status('التنبيهات مفعّلة لموقعك: '+loc.name+'. تُفحص الأحوال كل دقيقة وتصلك كإشعارات المتصفح حسب الأنواع المختارة.');
+  if(enabledNow())status('التنبيهات مفعّلة لموقعك: '+loc.name+'. سوف تصلك إشعارات للحالات التي تم اختيارها عبر المتصفح.');
  }
  async function enable(){
   if(!('Notification' in window)){status('هذا المتصفح لا يدعم إشعارات الويب. جرّب Chrome أو Edge أو Firefox.');return}
@@ -3364,6 +3497,149 @@ body{margin:0!important;overflow-x:hidden!important;}
  window.addEventListener('petraWeatherData',function(e){try{apply(e.detail);tomorrow(e.detail)}catch(err){console.warn('scene',err)}});
  window.PetraScene={apply:apply};
  build('partly',1,'warm',0,false);
+})();
+</script>
+<script id="petra-stage-prayer-motion">
+(function(){
+ 'use strict';
+ var $=function(id){return document.getElementById(id)};
+ var sec=$('currentWeatherSection'); if(!sec)return;
+
+ /* ================= stage: clear animated glyph for the current condition ================= */
+ var stage=document.createElement('div');stage.className='wx-stage';stage.setAttribute('aria-hidden','true');sec.appendChild(stage);
+ var DEFS='<defs><radialGradient id="gSun" cx="40%" cy="38%" r="70%"><stop offset="0" stop-color="#fff7c7"/><stop offset=".55" stop-color="#ffd23f"/><stop offset="1" stop-color="#ff9a1f"/></radialGradient>'+
+  '<radialGradient id="gMoon" cx="38%" cy="34%" r="75%"><stop offset="0" stop-color="#fffdf2"/><stop offset=".7" stop-color="#e9e4cd"/><stop offset="1" stop-color="#c8c3a8"/></radialGradient>'+
+  '<linearGradient id="gCld" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#cfe0f3"/></linearGradient>'+
+  '<linearGradient id="gCldD" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9aa8bd"/><stop offset="1" stop-color="#5a6a82"/></linearGradient>'+
+  '<linearGradient id="gCldS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6d6a96"/><stop offset="1" stop-color="#3b3866"/></linearGradient>'+
+  '<mask id="mMoon"><rect width="140" height="120" fill="#fff"/><circle cx="82" cy="44" r="30" fill="#000"/></mask></defs>';
+ function sun(cx,cy,s){var r='';for(var i=0;i<12;i++){r+='<rect x="'+(cx-2.5*s)+'" y="'+(cy-40*s)+'" width="'+5*s+'" height="'+12*s+'" rx="'+2.5*s+'" fill="#ffc83d" transform="rotate('+i*30+' '+cx+' '+cy+')"/>'}
+  return '<g class="orb-sun"><g class="rays">'+r+'</g><circle cx="'+cx+'" cy="'+cy+'" r="'+25*s+'" fill="url(#gSun)"/></g>'}
+ function moon(cx,cy,s){return '<g class="orb-moon" transform="translate('+(cx-60*s)+' '+(cy-60*s)+') scale('+s+')"><circle cx="60" cy="62" r="38" fill="url(#gMoon)" mask="url(#mMoon)" transform="translate(0,0)"/></g>'}
+ function stars(){var p=[[20,22],[112,18],[104,92],[30,98],[70,10]],o='';p.forEach(function(q,i){o+='<circle class="st" cx="'+q[0]+'" cy="'+q[1]+'" r="2.2" fill="#fff" style="animation-delay:'+(i*.5)+'s"/>'});return o}
+ function cloud(x,y,s,fill,cls){return '<g class="cld '+(cls||'')+'" transform="translate('+x+' '+y+') scale('+s+')"><g style="filter:drop-shadow(0 6px 8px rgba(0,0,0,.25))" fill="url(#'+(fill||'gCld')+')"><circle cx="28" cy="46" r="18"/><circle cx="52" cy="34" r="24"/><circle cx="78" cy="44" r="19"/><rect x="28" y="44" width="50" height="20" rx="10"/><rect x="10" y="46" width="88" height="18" rx="9"/></g></g>'}
+ function drops(n,x0,x1,y){var o='';for(var i=0;i<n;i++){var x=x0+(x1-x0)*i/(n-1);o+='<line class="dp" x1="'+x+'" y1="'+y+'" x2="'+(x-4)+'" y2="'+(y+10)+'" stroke="#9fd3ff" stroke-width="3" stroke-linecap="round" style="animation-delay:'+(i*.17)+'s"/>'}return o}
+ function flakes(n,x0,x1,y){var o='';for(var i=0;i<n;i++){var x=x0+(x1-x0)*i/(n-1);o+='<circle class="fk" cx="'+x+'" cy="'+y+'" r="3" fill="#fff" style="animation-delay:'+(i*.5)+'s"/>'}return o}
+ function glyph(scene,day){
+  var g='';
+  if(scene==='clear')g=day?sun(70,60,1.15):moon(70,60,1.15)+stars();
+  else if(scene==='partly')g=(day?sun(52,46,.85):moon(50,48,.85)+stars())+cloud(24,44,.95);
+  else if(scene==='cloudy')g=cloud(30,18,.8,'gCldD','b')+cloud(10,44,1);
+  else if(scene==='rain')g=cloud(18,10,1,'gCldD')+drops(6,42,102,80);
+  else if(scene==='storm')g=cloud(18,8,1,'gCldS')+'<polygon class="bolt" points="74,62 56,92 70,92 62,116 90,80 75,80 84,62" fill="#ffe66d"/>'+drops(3,34,50,80)+drops(3,96,112,80);
+  else if(scene==='snow')g=cloud(18,10,1,'gCldD')+flakes(6,40,104,78);
+  else if(scene==='fog')g=(day?sun(70,40,.7):moon(70,40,.7))+cloud(20,26,.9,'gCld')+'<g stroke="#e8eef5" stroke-width="6" stroke-linecap="round" opacity=".85"><line class="fb" x1="26" y1="88" x2="114" y2="88"/><line class="fb" x1="36" y1="102" x2="104" y2="102" style="animation-delay:-2s"/></g>';
+  return '<svg viewBox="0 0 140 120" role="img">'+DEFS+g+'</svg>';
+ }
+ function sceneOf(code,cloudCover){
+  if(code===0||code===1)return cloudCover>70?'partly':'clear';
+  if(code===2)return 'partly'; if(code===3)return 'cloudy';
+  if(code===45||code===48)return 'fog';
+  if([95,96,99].indexOf(code)>-1)return 'storm';
+  if([71,73,75,77,85,86].indexOf(code)>-1)return 'snow';
+  if(code>=51)return 'rain'; return 'partly';
+ }
+ var lastS='';
+ function setStage(scene,day){
+  var k=scene+'|'+day;if(k===lastS)return;lastS=k;
+  stage.innerHTML=glyph(scene,day);
+  stage.style.setProperty('--halo',day?(scene==='clear'||scene==='partly'?'rgba(255,214,90,.5)':'rgba(255,255,255,.22)'):'rgba(150,180,255,.32)');
+ }
+ setStage('partly',1);
+ window.addEventListener('petraWeatherData',function(e){var c=e.detail&&e.detail.current;if(!c)return;setStage(sceneOf(c.weather_code,c.cloud_cover||0),c.is_day===0?0:1)});
+
+ /* ================= prayer times: Wadi Musa (Petra) ================= */
+ var LAT=30.3225,LON=35.4733,TZ='Asia/Amman';
+ var NAMES={fajr:'الفجر',sunrise:'الشروق',dhuhr:'الظهر',asr:'العصر',maghrib:'المغرب',isha:'العشاء'};
+ var R=Math.PI/180;
+ function sin(d){return Math.sin(d*R)}function cos(d){return Math.cos(d*R)}function tan(d){return Math.tan(d*R)}
+ function asin(x){return Math.asin(x)/R}function acos(x){return Math.acos(x)/R}function atan2(y,x){return Math.atan2(y,x)/R}function acot(x){return Math.atan(1/x)/R}
+ function fixA(a){a=a-360*Math.floor(a/360);return a<0?a+360:a}
+ function fixH(a){a=a-24*Math.floor(a/24);return a<0?a+24:a}
+ function julian(y,m,d){if(m<=2){y-=1;m+=12}var A=Math.floor(y/100),B=2-A+Math.floor(A/4);return Math.floor(365.25*(y+4716))+Math.floor(30.6001*(m+1))+d+B-1524.5}
+ function sunPos(jd){var D=jd-2451545.0,g=fixA(357.529+.98560028*D),q=fixA(280.459+.98564736*D),L=fixA(q+1.915*sin(g)+.020*sin(2*g)),e=23.439-.00000036*D,RA=atan2(cos(e)*sin(L),cos(L))/15;return {decl:asin(sin(e)*sin(L)),eq:q/15-fixH(RA)}}
+ function compute(y,m,d,tz){
+  var jd=julian(y,m,d)-LON/(15*24);
+  function mid(t){return fixH(12-sunPos(jd+t).eq)}
+  function ang(a,t,ccw){var dec=sunPos(jd+t).decl,n=mid(t),v=acos((-sin(a)-sin(dec)*sin(LAT))/(cos(dec)*cos(LAT)))/15;return n+(ccw?-v:v)}
+  function asr(f,t){var dec=sunPos(jd+t).decl,a=-acot(f+tan(Math.abs(LAT-dec)));return ang(a,t,false)}
+  var t={fajr:5/24,sunrise:6/24,dhuhr:12/24,asr:13/24,maghrib:18/24,isha:18/24};
+  var r={fajr:ang(18,t.fajr,true),sunrise:ang(.833,t.sunrise,true),dhuhr:mid(t.dhuhr),asr:asr(1,t.asr),maghrib:ang(.833,t.maghrib,false),isha:ang(18,t.isha,false)};
+  var adj=tz-LON/15;for(var k in r)r[k]=fixH(r[k]+adj);
+  r.dhuhr=fixH(r.dhuhr+1/60);
+  return r;
+ }
+ function ammanParts(ms){
+  var p=new Intl.DateTimeFormat('en-GB',{timeZone:TZ,hour12:false,year:'numeric',month:'numeric',day:'numeric',hour:'numeric',minute:'numeric',second:'numeric'}).formatToParts(new Date(ms)),o={};
+  p.forEach(function(x){if(x.type!=='literal')o[x.type]=+x.value});if(o.hour===24)o.hour=0;
+  var asUTC=Date.UTC(o.year,o.month-1,o.day,o.hour,o.minute,o.second);o.offset=Math.round((asUTC-Math.floor(ms/1000)*1000)/36e5*2)/2;return o;
+ }
+ function dayTimes(p,add){ /* timestamps (ms) of the prayers for Amman date p (+add days) */
+  var base=Date.UTC(p.year,p.month-1,p.day+add);var dt=new Date(base);
+  var r=compute(dt.getUTCFullYear(),dt.getUTCMonth()+1,dt.getUTCDate(),p.offset),out={};
+  for(var k in r)out[k]=base+r[k]*36e5-p.offset*36e5;
+  return out;
+ }
+ function f12(ms){var p=ammanParts(ms),h=p.hour,m=p.minute,s=h>=12?'م':'ص';h=h%12||12;return h+':'+(m<10?'0':'')+m+' '+s}
+ function cd(ms){var s=Math.max(0,Math.floor(ms/1000)),h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return (h<10?'0':'')+h+':'+(m<10?'0':'')+m+':'+(x<10?'0':'')+x}
+ var strip=document.createElement('div');strip.className='pr-strip';strip.id='prayerStrip';
+ strip.innerHTML='<div class="pr-blk"><span class="pr-k">🕌 الصلاة الحالية</span><b id="prCur">—</b></div><div class="pr-blk pr-next"><span class="pr-k">الصلاة القادمة</span><b id="prNext">—</b></div><div class="pr-blk"><span class="pr-k">المتبقي</span><span class="pr-cd" id="prCd">--:--:--</span></div><div class="pr-chips" id="prChips"></div>';
+ sec.appendChild(strip);
+ var cache={key:'',t:null};
+ function tick(){
+  try{
+   var now=Date.now(),p=ammanParts(now),key=p.year+'-'+p.month+'-'+p.day;
+   if(cache.key!==key){cache={key:key,t:[dayTimes(p,-1),dayTimes(p,0),dayTimes(p,1)]};}
+   var Y=cache.t[0],T=cache.t[1],N=cache.t[2];
+   var seq=[['isha',Y.isha],['fajr',T.fajr],['sunrise',T.sunrise],['dhuhr',T.dhuhr],['asr',T.asr],['maghrib',T.maghrib],['isha',T.isha],['fajr',N.fajr]];
+   var cur=null,next=null;
+   for(var i=0;i<seq.length-1;i++){if(now>=seq[i][1]&&now<seq[i+1][1]){cur=seq[i];break}}
+   var prayersOnly=[['fajr',T.fajr],['dhuhr',T.dhuhr],['asr',T.asr],['maghrib',T.maghrib],['isha',T.isha],['fajr',N.fajr]];
+   for(var j=0;j<prayersOnly.length;j++){if(prayersOnly[j][1]>now){next=prayersOnly[j];break}}
+   var curTxt=cur?(cur[0]==='sunrise'?'بعد الشروق (وقت الضحى)':NAMES[cur[0]]):'—';
+   var set=function(id,t){var e=$(id);if(e&&e.textContent!==t)e.textContent=t};
+   set('prCur',curTxt);
+   if(next){set('prNext',NAMES[next[0]]+' · '+f12(next[1]));set('prCd',cd(next[1]-now))}
+   var chips=$('prChips');
+   if(chips){
+    var sig=key+'|'+(cur?cur[0]:'')+'|'+(next?next[0]:'');
+    if(chips.dataset.sig!==sig){
+     chips.dataset.sig=sig;
+     chips.innerHTML=['fajr','dhuhr','asr','maghrib','isha'].map(function(k){
+      var cls='pr-chip'+(cur&&cur[0]===k?' cur':'')+(next&&next[0]===k&&!(cur&&cur[0]===k)?' nxt':'');
+      return '<div class="'+cls+'"><span>'+NAMES[k]+'</span><b>'+f12(T[k])+'</b></div>'}).join('')+'<div class="pr-chip"><span>'+NAMES.sunrise+'</span><b>'+f12(T.sunrise)+'</b></div>';
+    }
+   }
+  }catch(e){console.warn('prayer',e)}
+ }
+ tick();setInterval(tick,1000);
+ window.PetraPrayer={dayTimes:function(){var p=ammanParts(Date.now());return dayTimes(p,0)},format:f12};
+
+ /* ================= animated weather icons + condition-themed cards ================= */
+ function kindOf(t){
+  t=t||'';
+  if(/⛈/.test(t))return 'storm';
+  if(/❄|🌨/.test(t))return 'snow';
+  if(/🌫/.test(t))return 'fog';
+  if(/🌧|🌦/.test(t))return 'rain';
+  if(/🌙/.test(t)&&/☁/.test(t))return 'partly';
+  if(/🌙/.test(t))return 'moon';
+  if(/⛅|🌤|🌥/.test(t))return 'partly';
+  if(/☁/.test(t))return 'cloud';
+  if(/☀/.test(t))return 'sun';
+  return '';
+ }
+ function decorate(root){
+  root.querySelectorAll('.hourly-icon,.forecast-weather-icon').forEach(function(ic){
+   var k=kindOf(ic.textContent);if(!k)return;
+   var cls='ico ico-'+k;if(ic.dataset.k!==k||ic.className.indexOf('ico ')<0){ic.dataset.k=k;ic.classList.forEach(function(c){if(c.indexOf('ico')===0)ic.classList.remove(c)});ic.classList.add('ico','ico-'+k)}
+   var card=ic.closest('.hourly-item')||ic.closest('tr');if(card&&card.dataset.kind!==k)card.setAttribute('data-kind',k);
+  });
+ }
+ var busy=false;
+ function run(){if(busy)return;busy=true;try{['hourlyForecast','dailyForecastBody'].forEach(function(id){var r=$(id);if(r)decorate(r)})}finally{busy=false}}
+ if(window.MutationObserver){var mo=new MutationObserver(function(){run()});['hourlyForecast','dailyForecastBody'].forEach(function(id){var r=$(id);if(r)mo.observe(r,{childList:true,subtree:true})})}
+ run();
 })();
 </script>
 
