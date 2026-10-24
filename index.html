@@ -978,6 +978,643 @@ input::placeholder,textarea::placeholder { color:#647985 !important; }
 @media(prefers-reduced-motion:reduce){#tenDayForecastPanel .forecast-weather-icon{animation:none!important}}
 </style>
 
+<style id="petra-reference-redesign">
+/* Petra Weather — reference-inspired compact dark dashboard */
+:root{
+ --bg:#06111e;--card:#0a1b2b;--blue:#0c2740;--light:#a9def2;
+ --accent:#25b7e8;--orange:#ff8b2c;--text:#f4f8ff;--gray:#c0cfdd;
+ --border:#193750;--red:#ff233d;--green:#00d56a;
+ --glass-shadow:0 8px 22px rgba(0,0,0,.28);
+}
+html,body{background:#030b14!important;color:#f4f8ff!important}
+body{font-family:"Cairo",system-ui,Tahoma,Arial,sans-serif!important;line-height:1.55!important;padding:0!important;margin:0!important}
+#mainHeader,header#mainHeader{
+ width:100%!important;max-width:1400px!important;min-height:120px!important;
+ margin:0 auto 10px!important;padding:18px clamp(12px,3vw,34px)!important;
+ display:flex!important;align-items:center!important;justify-content:space-between!important;
+ gap:16px!important;text-align:right!important;flex-wrap:wrap!important;
+ border:0!important;border-bottom:1px solid #17364f!important;border-radius:0!important;
+ background:linear-gradient(90deg,rgba(3,13,24,.97),rgba(5,20,34,.86)),radial-gradient(ellipse at 48% 100%,#7b421f,#11253b 58%,#06111e)!important;
+ box-shadow:0 8px 26px #0006!important;
+}
+#mainHeader:before{background:linear-gradient(90deg,#06111e99,transparent 50%,#06111e99)!important}
+#mainHeader .site-logo{width:62px!important;height:62px!important;object-fit:contain!important;background:#0b1b2d!important;border:2px solid #d9b16b!important;margin:0!important;flex:0 0 auto!important}
+#mainHeader h1{font-size:clamp(1.15rem,2.8vw,1.75rem)!important;line-height:1.25!important;font-weight:900!important;margin:0!important;color:#fff!important}
+#mainHeader p{font-size:clamp(.78rem,1.8vw,.95rem)!important;line-height:1.4!important;color:#c5d7e6!important;margin:4px 0!important}
+#mainHeader .date-badge{font-size:.72rem!important;padding:4px 9px!important;background:#071725cc!important;border:1px solid #38536a!important;color:#d8e9f7!important}
+.container{
+ width:100%!important;max-width:1400px!important;margin:0 auto!important;padding:10px clamp(8px,1.8vw,22px)!important;
+ display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:10px!important;
+ background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important
+}
+.container main,.container aside{min-width:0!important}
+.panel,.weather-now-box,.early-warning-box,.social-footer-box,.location-toolbar,.notification-subscribe-panel,#petraRainViewerPanel,#petraLightningMapPanel,.jordan-places-panel{
+ background:linear-gradient(145deg,#0b1c2e,#081625)!important;color:#f3f8ff!important;
+ border:1px solid #193750!important;border-radius:15px!important;
+ box-shadow:0 6px 18px rgba(0,0,0,.22)!important;
+ padding:clamp(10px,1.6vw,16px)!important;margin-bottom:10px!important
+}
+.panel h2,.early-warning-box h2,.weather-now-box h2,.weather-now-box h3,.live-bulletin h2,.social-footer-box h3,#petraRainViewerPanel h2,#petraLightningMapPanel h2{
+ color:#f4f8ff!important;font-size:clamp(.95rem,2vw,1.2rem)!important;line-height:1.35!important;
+ border-bottom:1px solid #24445f!important;padding-bottom:8px!important;margin-bottom:10px!important;gap:7px!important
+}
+body p,body li,body label,body small,body .muted,body .description,body .meta,body .subtitle,body .notification-intro,body .notification-disclaimer,body .location-status,body .gfs-meta,body .gfs-description,body .live-data-meta,body .cap-warning-footer,body .cap-warning-meta,#petraRainViewerPanel p,#petraLightningMapPanel p{
+ color:#c1d2e3!important
+}
+.bulletin-warning-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;align-items:stretch!important}
+#officialCapWarning,#psdPublicSafetyAlerts{min-width:0!important;margin:0!important;padding:12px!important}
+#officialCapWarning h2,#psdPublicSafetyAlerts h2{font-size:clamp(.9rem,1.8vw,1.1rem)!important}
+.cap-warning-status,.psd-alert-status{border-radius:9px!important;padding:9px!important;background:#0a1725!important;color:#f4f8ff!important}
+.cap-warning-items,.psd-alert-items{font-size:.88rem!important}
+.psd-alert-links{display:flex!important;flex-wrap:wrap!important;gap:7px!important}
+.psd-alert-links a,.link-list a{background:#102a40!important;color:#a8e3f8!important;border:1px solid #294a63!important;border-radius:9px!important;padding:8px 10px!important;font-size:.78rem!important}
+.alerts-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important}
+.alert-card{background:linear-gradient(145deg,#0d2235,#081625)!important;color:#f3f8ff!important;border:1px solid #24435c!important;border-radius:12px!important;padding:10px 8px!important;font-size:.78rem!important;box-shadow:none!important}
+.alert-card .title{font-size:clamp(.75rem,1.5vw,.9rem)!important;color:#f4f8ff!important;line-height:1.35!important;margin:0 0 7px!important}
+.alert-card .status{background:#003d2a!important;color:#fff!important;border-color:#00a85a!important;border-radius:7px!important;padding:4px 6px!important;font-size:.72rem!important}
+.alert-card.alert-active{background:linear-gradient(145deg,#580b18,#290610)!important;--alert-color:#ff3049!important;--alert-tint:#570b18!important;border:1px solid #ff3049!important;animation:petraRedBlink 1s ease-in-out infinite!important}
+.alert-card.alert-active .status{background:#8f1022!important;color:#fff!important;border-color:#ff3049!important}
+@keyframes petraRedBlink{0%,100%{box-shadow:0 0 0 0 #ff233d00;border-color:#ff233d}50%{box-shadow:0 0 0 4px #ff233d30;border-color:#ff6575}}
+.weather-now-box{border-right:3px solid #21b9e9!important}
+.weather-details-text,.w-item,.hourly-item,.forecast-table,.wo-toolbar,.wo-btn,.external-radar-card,.radar-frame-container{
+ background:#0b1a2a!important;color:#f4f8ff!important;border-color:#1e3b54!important
+}
+.w-item span,.hourly-time,.gfs-meta{color:#b9cadd!important}
+.w-item strong,.hourly-temp{color:#f4f8ff!important}
+.forecast-table{font-size:.76rem!important;min-width:620px!important}
+.forecast-table th{background:#12314a!important;padding:7px!important}
+.forecast-table td{padding:7px!important;border-color:#1e3549!important}
+.temp-high{color:#ff8c38!important}.temp-low{color:#47b7ff!important}
+#petraLightningMapPanel{background:#091827!important}
+#petraLightningMapPanel h2{color:#f4f8ff!important}
+.radar-frame-container{height:clamp(250px,50vw,420px)!important;min-height:0!important}
+footer{background:#081523!important;color:#b8cadd!important;border-color:#193750!important}
+@media(min-width:900px){
+ .container{grid-template-columns:minmax(0,2fr) minmax(270px,1fr)!important;gap:14px!important}
+ .container>main{min-width:0!important}
+ .bulletin-warning-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:620px){
+ #mainHeader{min-height:0!important;justify-content:flex-start!important;text-align:right!important;gap:10px!important;padding:12px 13px!important}
+ #mainHeader .site-logo{width:48px!important;height:48px!important}
+ #mainHeader h1{font-size:1.08rem!important;width:auto!important;flex:1!important}
+ #mainHeader p{font-size:.75rem!important;width:100%!important;margin:0!important}
+ #mainHeader .date-badge{font-size:.67rem!important}
+ .container{padding:7px!important;gap:7px!important}
+ .panel,.weather-now-box,.early-warning-box,.social-footer-box,.location-toolbar,.notification-subscribe-panel,#petraRainViewerPanel,#petraLightningMapPanel{padding:10px!important;margin-bottom:8px!important;border-radius:12px!important}
+ .panel h2,.early-warning-box h2,.weather-now-box h2,.weather-now-box h3,.live-bulletin h2,.social-footer-box h3{font-size:.91rem!important;padding-bottom:6px!important;margin-bottom:8px!important}
+ .bulletin-warning-grid{grid-template-columns:minmax(0,1fr)!important;gap:8px!important}
+ #officialCapWarning,#psdPublicSafetyAlerts{padding:10px!important}
+ .alerts-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important}
+ .alert-card{padding:8px 6px!important;font-size:.72rem!important}
+ .alert-card .title{font-size:.76rem!important}
+ .alert-card .time,.alert-card .distance{font-size:.68rem!important}
+ .weather-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important}
+ .w-item{padding:8px 4px!important}
+ .radar-frame-container{height:280px!important}
+ .social-links-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important}
+ .social-btn{padding:8px!important;font-size:.75rem!important}
+ .notification-intro,.notification-disclaimer{font-size:.78rem!important;line-height:1.5!important}
+ .location-toolbar{grid-template-columns:minmax(0,1fr)!important}
+ .location-search-wrap,.location-toolbar select{grid-column:1/-1!important}
+}
+@media(max-width:380px){
+ #mainHeader h1{font-size:1rem!important}
+ .alerts-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .alert-card .title{font-size:.7rem!important}
+}
+</style>
+<style id="petra-redesign-v2">
+/* ============ Petra Weather — Redesign v2 (visual layer only; content & logic untouched) ============
+   Concept: "Rose-city dusk" — deep ink-blue canvas, Petra sandstone-rose accent, calm hairline cards,
+   generous spacing, clear type hierarchy. */
+:root{
+ --p-bg:#050b16; --p-surface:#09132a; --p-surface-2:#0b1730; --p-line:#16294a; --p-line-soft:#13233f;
+ --p-text:#eef3f9; --p-muted:#9fb3c8; --p-rose:#f59e5b; --p-rose-2:#e0742c; --p-sky:#5cc8f2; --p-ok:#22c55e; --p-bad:#ef4444;
+ --p-radius:18px; --p-radius-sm:14px;
+}
+html body{
+ background:var(--p-bg)!important;background-image:none!important;
+ font-size:16px!important;line-height:1.7!important;color:var(--p-text)!important;-webkit-font-smoothing:antialiased;
+}
+/* ---------- Header: Petra Treasury photo, title on the right ---------- */
+html body header#mainHeader{
+ width:100%!important;max-width:none!important;margin:0!important;min-height:210px!important;
+ padding:26px clamp(16px,4vw,48px)!important;border:0!important;border-bottom:1px solid var(--p-line)!important;border-radius:0!important;
+ display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:center!important;
+ text-align:right!important;gap:6px!important;position:relative;overflow:hidden;
+ background:#050b16!important;
+ box-shadow:none!important;
+}
+html body header#mainHeader::before{
+ content:""!important;display:block!important;position:absolute!important;inset:0 auto 0 0!important;height:100%;aspect-ratio:485/202;max-width:100%;
+ background:url("hero-petra.jpg") left center/cover no-repeat!important;opacity:1!important;pointer-events:none;
+ -webkit-mask-image:linear-gradient(to right,transparent 0,#000 18%,#000 50%,transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 18%,#000 50%,transparent 100%);
+}
+html body header#mainHeader::after{content:""!important;position:absolute;inset:auto 0 0 0;height:1px;background:linear-gradient(90deg,transparent,rgba(245,158,91,.5),transparent)!important}
+html body header#mainHeader>*{position:relative;max-width:560px}
+html body header#mainHeader .site-logo{
+ width:64px!important;height:64px!important;margin:0 0 4px!important;border:2px solid rgba(245,158,91,.8)!important;
+ background:#0b1624!important;box-shadow:0 6px 20px rgba(0,0,0,.5)!important;
+}
+html body header#mainHeader h1{font-size:clamp(1.5rem,4vw,2.3rem)!important;font-weight:900!important;color:#fff!important;margin:0!important;text-shadow:0 2px 14px rgba(0,0,0,.6)!important}
+html body header#mainHeader p{font-size:clamp(.88rem,2vw,1.05rem)!important;color:#a9b8cf!important;font-weight:600!important;margin:0!important}
+html body header#mainHeader .date-badge{
+ font-size:.8rem!important;padding:5px 14px!important;border-radius:999px!important;margin-top:6px;
+ background:rgba(5,11,22,.6)!important;border:1px solid rgba(255,255,255,.2)!important;color:#e6edf7!important;
+}
+/* ---------- Layout ---------- */
+html body .container{max-width:1320px!important;padding:20px 14px!important;gap:20px!important}
+html body .container>main{display:flex!important;flex-direction:column!important}
+html body .container>main>*{order:2}
+html body .container>main>.bulletin-warning-grid{order:0}
+html body .container>main>#writtenBulletin{order:1}
+@media(min-width:960px){html body .container{grid-template-columns:minmax(0,1.9fr) minmax(300px,1fr)!important;gap:22px!important;padding:18px 14px!important}}
+@media(min-width:960px){html body .container>aside{position:sticky;top:12px;align-self:start;max-height:calc(100vh - 24px);overflow:auto;scrollbar-width:thin;scrollbar-color:var(--p-line) transparent;padding-inline-end:2px}}
+/* ---------- Cards ---------- */
+html body .panel,html body .weather-now-box,html body .early-warning-box,html body .social-footer-box,
+html body .location-toolbar,html body .notification-subscribe-panel,html body #petraRainViewerPanel,
+html body #petraLightningMapPanel,html body .jordan-places-panel{
+ background:linear-gradient(180deg,var(--p-surface-2),var(--p-surface) 55%)!important;
+ border:1px solid var(--p-line)!important;border-radius:var(--p-radius)!important;
+ padding:clamp(16px,2.2vw,24px)!important;margin-bottom:20px!important;
+ box-shadow:0 10px 30px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.04)!important;
+ border-right-width:1px!important;
+}
+html body .weather-now-box{border-right:1px solid var(--p-line)!important}
+/* Section titles: rose marker + hairline */
+html body .panel h2,html body .early-warning-box h2,html body .weather-now-box h2,html body .live-bulletin h2,
+html body #petraRainViewerPanel h2,html body #petraLightningMapPanel h2{
+ position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:8px;
+ font-size:clamp(1.05rem,2.2vw,1.3rem)!important;font-weight:800!important;color:#fff!important;
+ padding:0 16px 14px 0!important;margin:0 0 16px!important;border-bottom:1px solid var(--p-line)!important;
+}
+html body .panel h2::before,html body .early-warning-box h2::before,html body .weather-now-box h2::before,
+html body #petraRainViewerPanel h2::before,html body #petraLightningMapPanel h2::before{
+ content:"";position:absolute;right:0;top:.35em;width:5px;height:1.05em;border-radius:4px;
+ background:linear-gradient(180deg,var(--p-rose),var(--p-rose-2));
+}
+html body #officialCapWarning h2,html body #psdPublicSafetyAlerts h2{font-size:1.05rem!important}
+html body p,html body li,html body label,html body small{color:var(--p-muted)!important}
+html body .panel p,html body .weather-now-box p{line-height:1.85!important}
+html body a{color:var(--p-sky)}
+/* ---------- Bulletin & warnings ---------- */
+html body .live-bulletin{border-top:3px solid var(--p-rose)!important}
+html body #bulletinText{color:#e9f0f8!important;font-size:1.05rem!important;line-height:1.95!important}
+html body .bulletin-warning-grid{grid-template-columns:minmax(0,1fr)!important;gap:16px!important;margin:0 0 20px!important}
+@media(min-width:700px){html body .bulletin-warning-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+html body #officialCapWarning,html body #psdPublicSafetyAlerts{padding:18px!important;margin:0!important;background:var(--p-surface)!important;border-radius:var(--p-radius-sm)!important}
+html body .cap-warning-status,html body .psd-alert-status{background:rgba(255,255,255,.04)!important;border:1px solid var(--p-line-soft)!important;border-radius:12px!important;padding:12px 14px!important;line-height:1.8!important}
+html body .psd-alert-links a,html body .link-list a{
+ background:rgba(92,200,242,.08)!important;color:#a9e3f8!important;border:1px solid rgba(92,200,242,.25)!important;
+ border-radius:999px!important;padding:8px 14px!important;font-size:.82rem!important;font-weight:700;transition:background .2s,transform .2s;
+}
+html body .psd-alert-links a:hover,html body .link-list a:hover{background:rgba(92,200,242,.18)!important;transform:translateY(-1px)}
+/* Warning states (driven by existing JS classes) */
+html body #officialCapWarning,html body #psdPublicSafetyAlerts{border:1.5px solid var(--p-line)!important;border-radius:var(--p-radius)!important}
+html body #officialCapWarning.warning-state-green,html body #psdPublicSafetyAlerts.warning-state-green{border-color:#16a34a!important;background:linear-gradient(160deg,rgba(22,163,74,.18),rgba(5,40,22,.55))!important;box-shadow:0 0 0 1px rgba(34,197,94,.12),0 10px 30px rgba(22,163,74,.12)!important}
+html body #officialCapWarning.warning-state-red,html body #psdPublicSafetyAlerts.warning-state-red{border-color:#dc2626!important;background:linear-gradient(160deg,rgba(220,38,38,.28),rgba(70,8,14,.65))!important;box-shadow:0 0 0 1px rgba(239,68,68,.15),0 10px 30px rgba(220,38,38,.2)!important}
+html body #officialCapWarning.warning-state-unknown,html body #psdPublicSafetyAlerts.warning-state-unknown{border-color:#b45309!important;background:linear-gradient(160deg,rgba(180,83,9,.16),var(--p-surface))!important}
+html body .warning-state-green h2::before{background:var(--p-ok)!important}html body .warning-state-red h2::before{background:var(--p-bad)!important}
+html body .warning-state-green h2,html body .warning-state-red h2{border-bottom-color:rgba(255,255,255,.12)!important}
+/* ---------- Metric tiles ---------- */
+html body .weather-grid{gap:12px!important}
+html body .w-item{
+ background:rgba(255,255,255,.035)!important;border:1px solid var(--p-line-soft)!important;border-radius:16px!important;
+ padding:16px 10px!important;text-align:center;transition:transform .2s,border-color .2s;
+}
+html body .w-item:hover{transform:translateY(-2px);border-color:rgba(232,160,131,.45)!important}
+html body .w-item strong{font-size:1.35rem!important;font-weight:900!important;color:#fff!important;display:block}
+html body .w-item span{font-size:.8rem!important;color:var(--p-muted)!important;font-weight:600}
+html body .weather-details-text{background:rgba(255,255,255,.03)!important;border:1px solid var(--p-line-soft)!important;border-radius:14px!important;padding:14px!important}
+/* ---------- Alert cards ---------- */
+html body .alerts-grid{gap:12px!important}
+html body .alert-card{
+ background:rgba(255,255,255,.03)!important;border:1px solid var(--p-line)!important;border-radius:16px!important;padding:14px 12px!important;
+ transition:transform .2s;
+}
+html body .alert-card:hover{transform:translateY(-2px)}
+html body .alert-card .title{font-size:.95rem!important;font-weight:800!important;margin-bottom:10px!important}
+html body .alert-card .status{border-radius:999px!important;padding:4px 12px!important;font-size:.76rem!important;font-weight:800!important}
+html body .alert-card.alert-active{background:linear-gradient(160deg,rgba(255,48,73,.22),rgba(60,8,18,.6))!important}
+/* ---------- Buttons & inputs ---------- */
+html body button,html body .btn,html body .direct-link-btn,html body .gfs-open-link,html body .wo-btn{font-family:inherit!important;border-radius:12px!important;font-weight:800!important;transition:transform .15s,filter .2s}
+html body button:hover,html body .direct-link-btn:hover,html body .gfs-open-link:hover{transform:translateY(-1px);filter:brightness(1.1)}
+html body button:focus-visible,html body a:focus-visible,html body input:focus-visible,html body select:focus-visible{outline:2px solid var(--p-rose);outline-offset:2px}
+html body input,html body select,html body textarea{
+ background:#0a1523!important;color:#fff!important;border:1px solid var(--p-line)!important;border-radius:12px!important;padding:11px 14px!important;font-family:inherit!important;
+}
+html body input:focus,html body select:focus{border-color:var(--p-rose)!important}
+html body .location-toolbar{padding:16px!important;gap:12px!important}
+/* ---------- Tables & radar frames ---------- */
+html body .forecast-table th{background:#16304a!important;font-weight:800!important}
+html body .forecast-table td{padding:11px 9px!important}
+html body #tenDayForecastPanel .table-responsive{border-radius:16px!important;border-color:var(--p-line)!important}
+html body .radar-frame-container,html body .external-radar-card{border-radius:16px!important;border:1px solid var(--p-line)!important;overflow:hidden}
+html body iframe{border-radius:14px}
+/* ---------- Rainfall panel (dark) ---------- */
+html body .rainfall-totals-panel{background:linear-gradient(180deg,var(--p-surface-2),var(--p-surface))!important;border:1px solid var(--p-line)!important;border-top:3px solid var(--p-sky)!important}
+html body .rainfall-stat,html body .season-progress{background:rgba(255,255,255,.035)!important;border:1px solid var(--p-line-soft)!important;border-radius:16px!important;box-shadow:none!important}
+html body .rainfall-stat-label,html body .season-progress-heading,html body .season-progress-heading *{color:#dbe6f3!important}
+html body .rainfall-value strong{color:#fff!important}
+html body .rainfall-value span,html body .rainfall-stat small,html body .rainfall-subtitle,html body .rainfall-footer,html body .rainfall-note,html body .season-progress-labels,html body .season-progress-labels *{color:var(--p-muted)!important}
+html body .rainfall-footer strong,html body .season-progress-labels strong{color:#fff!important}
+html body .rainfall-eyebrow{color:var(--p-rose)!important}
+html body .rainfall-footer{border-top-color:var(--p-line)!important}
+html body .rainfall-status{background:rgba(34,197,94,.12)!important;color:#7be3a6!important;border-color:rgba(34,197,94,.35)!important}
+html body .season-progress-track{background:rgba(255,255,255,.08)!important}
+/* ---------- Footer & social ---------- */
+html body .social-footer-box{text-align:center}
+html body footer{
+ max-width:1320px;width:calc(100% - 28px);margin:6px auto 24px!important;border-radius:var(--p-radius)!important;
+ background:var(--p-surface)!important;border:1px solid var(--p-line)!important;padding:18px!important;text-align:center;color:var(--p-muted)!important;
+}
+/* ---------- Mobile ---------- */
+@media(max-width:620px){
+ html body header#mainHeader{min-height:190px!important;padding:20px 16px!important;justify-content:flex-end!important}
+ html body header#mainHeader::before{width:100%!important;aspect-ratio:auto!important;-webkit-mask-image:linear-gradient(to bottom,#000 0,rgba(0,0,0,.35) 70%,transparent 100%)!important;mask-image:linear-gradient(to bottom,#000 0,rgba(0,0,0,.35) 70%,transparent 100%)!important;background-position:center top!important}
+ html body header#mainHeader .site-logo{width:68px!important;height:68px!important}
+ html body header#mainHeader h1{font-size:1.35rem!important;width:100%!important;flex:none!important}
+ html body header#mainHeader p{font-size:.84rem!important;width:100%!important}
+ html body .container{padding:8px!important;gap:12px!important}
+ html body .panel,html body .weather-now-box,html body .early-warning-box,html body .social-footer-box,html body .notification-subscribe-panel,
+ html body #petraRainViewerPanel,html body #petraLightningMapPanel,html body .location-toolbar{padding:15px!important;margin-bottom:14px!important;border-radius:18px!important}
+ html body .panel h2,html body .early-warning-box h2,html body .weather-now-box h2{font-size:1.02rem!important;padding-bottom:11px!important;margin-bottom:12px!important}
+ html body #bulletinText{font-size:.98rem!important}
+ html body .w-item strong{font-size:1.15rem!important}
+}
+@media(prefers-reduced-motion:reduce){html body *{transition:none!important}}
+</style>
+<style id="petra-redesign-v3">
+/* ===== Petra Weather v3 — dashboard layout matching the approved reference ===== */
+html body .container{
+ display:grid!important;grid-template-columns:repeat(12,minmax(0,1fr))!important;gap:20px!important;
+ max-width:1360px!important;padding:22px 16px 10px!important;align-items:stretch;
+}
+html body .container>main,html body .container>aside,html body .container .bulletin-warning-grid{display:contents!important}
+html body .container>*{grid-column:1/-1}
+html body .container section,html body .container .location-toolbar{margin:0!important;min-width:0}
+/* order + spans */
+html body #officialCapWarning{order:1;grid-column:span 4}
+html body #psdPublicSafetyAlerts{order:2;grid-column:span 4}
+html body #writtenBulletin{order:3;grid-column:span 4}
+html body .container .location-toolbar{order:4;grid-column:1/-1}
+html body #currentWeatherSection{order:5;grid-column:span 7}
+html body #petraRainViewerPanel{order:6;grid-column:span 5}
+html body #tenDayForecastPanel{order:7;grid-column:1/-1}
+html body #weatherNotificationPanel{order:8;grid-column:1/-1}
+html body .container section:has(#hourlyForecast){order:9;grid-column:1/-1}
+html body #rainfallTotalsPanel{order:10;grid-column:span 5}
+html body .container .early-warning-box{order:11;grid-column:span 7}
+html body #petraLightningMapPanel{order:12;grid-column:span 6}
+html body .container .gfs-live-panel{order:13;grid-column:span 6}
+html body #zoomEarthSatellitePanel{order:14;grid-column:span 6}
+html body #sat24StormPanel{order:15;grid-column:span 6}
+html body #windySatellitePanel{order:16;grid-column:1/-1}
+@media(max-width:1180px){
+ html body #officialCapWarning,html body #psdPublicSafetyAlerts{grid-column:span 6}
+ html body #writtenBulletin{grid-column:1/-1}
+ html body #currentWeatherSection,html body #petraRainViewerPanel,html body #rainfallTotalsPanel,html body .early-warning-box{grid-column:1/-1}
+}
+@media(max-width:760px){
+ html body .container{gap:14px!important;padding:14px 10px!important}
+ html body .container>*,html body .container section{grid-column:1/-1!important}
+ html body #officialCapWarning,html body #psdPublicSafetyAlerts,html body #writtenBulletin,html body #petraLightningMapPanel,html body .gfs-live-panel,html body #zoomEarthSatellitePanel,html body #sat24StormPanel{grid-column:1/-1!important}
+}
+/* ---------- Header: taller hero, title with weather mark ---------- */
+html body header#mainHeader{min-height:250px!important}
+html body header#mainHeader::before{aspect-ratio:485/202}
+html body header#mainHeader h1{font-size:clamp(1.7rem,4.4vw,2.7rem)!important}
+html body header#mainHeader .site-logo{width:76px!important;height:76px!important}
+/* ---------- Top cards: bold status tiles ---------- */
+html body #officialCapWarning,html body #psdPublicSafetyAlerts,html body #writtenBulletin{
+ border-radius:16px!important;padding:20px!important;border-width:1.5px!important;border-style:solid!important;
+}
+html body #writtenBulletin{border-color:#1e6fd9!important;background:linear-gradient(160deg,rgba(30,111,217,.2),rgba(7,18,40,.7))!important;border-top-width:1.5px!important}
+html body #writtenBulletin h2::before{background:#3b82f6!important}
+html body #writtenBulletin #bulletinText{font-size:.98rem!important;line-height:1.85!important}
+/* hide long helper copy inside status tiles on desktop to keep them compact */
+html body .cap-warning-status{font-weight:800!important}
+/* ---------- Current weather: big temperature ---------- */
+html body #currentWeatherSection{background:linear-gradient(180deg,#0c1a36,#08122a)!important}
+html body #currentWeatherSection h3{font-size:1.25rem!important;font-weight:800!important;color:#fff!important;margin:0 0 12px!important;display:flex;gap:8px}
+html body #currentWeatherSection .weather-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important}
+html body #currentWeatherSection .w-item:has(#currentTemp){grid-column:1/-1;background:transparent!important;border:0!important;padding:4px 0 10px!important;text-align:right}
+html body #currentTemp{font-size:clamp(3.6rem,8vw,5.6rem)!important;line-height:1!important;font-weight:900!important;color:#fff!important;letter-spacing:-.02em;text-shadow:0 4px 30px rgba(92,200,242,.25)}
+html body #currentWeatherSection .w-item:has(#currentTemp)>span{font-size:.95rem!important}
+html body #currentWeatherSection .w-item:has(#currentCondition){grid-column:1/-1;order:-1;background:transparent!important;border:0!important;text-align:right;padding:0!important}
+html body #currentCondition{font-size:1.25rem!important;color:#cbd8ea!important;font-weight:700!important}
+html body #currentWeatherSection .w-item:has(#currentCondition)>span{display:none}
+html body #weatherSummary{order:-2}
+html body .weather-details-text{font-size:.92rem!important}
+/* ---------- Radar/embed frames ---------- */
+html body #petraRainViewerPanel .radar-frame-container,html body #petraRainViewerPanel [id*="Map"],html body #petraRainViewerPanel [id*="map"]{border-radius:14px!important;overflow:hidden}
+/* ---------- 10-day forecast as day cards ---------- */
+html body #tenDayForecastPanel .table-responsive{background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible!important}
+html body #tenDayForecastPanel .forecast-table,html body #tenDayForecastPanel .forecast-table tbody{display:block!important;min-width:0!important;background:transparent!important;width:100%}
+html body #tenDayForecastPanel .forecast-table thead{display:none!important}
+html body #tenDayForecastPanel .forecast-table tbody{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+@media(min-width:1180px){html body #tenDayForecastPanel .forecast-table tbody{grid-template-columns:repeat(10,minmax(0,1fr))}}
+@media(max-width:520px){html body #tenDayForecastPanel .forecast-table tbody{grid-template-columns:repeat(2,minmax(0,1fr))}}
+html body #tenDayForecastPanel .forecast-table tr{
+ display:flex!important;flex-direction:column;align-items:center;gap:6px;padding:14px 8px!important;text-align:center;
+ background:linear-gradient(180deg,#0f1f3d,#0a1630)!important;border:1px solid var(--p-line);border-radius:16px;transition:transform .2s,border-color .2s;
+}
+html body #tenDayForecastPanel .forecast-table tr:hover{transform:translateY(-3px);border-color:rgba(245,158,91,.5)}
+html body #tenDayForecastPanel .forecast-table td,html body #tenDayForecastPanel .forecast-table tr:nth-child(even) td{display:block!important;background:transparent!important;border:0!important;padding:0!important;min-width:0!important;width:100%}
+html body #tenDayForecastPanel .forecast-day-cell{font-weight:800!important;font-size:.88rem!important;color:#fff!important;order:1}
+html body #tenDayForecastPanel .forecast-condition-cell{order:2}
+html body #tenDayForecastPanel .forecast-condition-name{font-size:.78rem!important;color:#dbe6f3!important}
+html body #tenDayForecastPanel .forecast-weather-icon{font-size:2.3rem!important;margin:2px auto 4px!important}
+html body #tenDayForecastPanel .temp-high{order:3;font-size:1.45rem!important;color:#ff9a3c!important}
+html body #tenDayForecastPanel .temp-low{order:4;font-size:1.45rem!important;color:#4aa8ff!important}
+html body #tenDayForecastPanel .forecast-wind-cell{order:5;font-size:.7rem!important;color:var(--p-muted)!important;font-weight:600!important}
+/* ---------- Polish ---------- */
+html body .panel,html body .weather-now-box,html body .early-warning-box{background:linear-gradient(180deg,#0c1a36,#08122a)!important}
+html body .early-warning-box .alerts-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))!important}
+html body #windySatellitePanel iframe{min-height:420px}
+html body .container .social-footer-box{order:17;grid-column:1/-1}
+
+html body .container>main>*,html body .container>aside>*{align-self:stretch}
+html body .container .bulletin-warning-grid>*{align-self:stretch}
+html body header#mainHeader>*{max-width:820px!important}
+html body header#mainHeader h1{white-space:nowrap}
+@media(max-width:620px){html body header#mainHeader h1{white-space:normal}}
+html body #tenDayForecastPanel .forecast-rain-chance{font-size:.66rem!important;line-height:1.3}
+html body .container .location-toolbar{order:4}
+</style>
+<style id="petra-redesign-v4">
+/* ===== v4: compact sizing, forecast on top, tomorrow box, live weather scene ===== */
+html body{font-size:15px!important;line-height:1.6!important}
+html body header#mainHeader{min-height:178px!important;padding:18px clamp(14px,4vw,44px)!important;gap:3px!important}
+html body header#mainHeader h1{font-size:clamp(1.25rem,3vw,1.7rem)!important}
+html body header#mainHeader p{font-size:.88rem!important}
+html body header#mainHeader .site-logo{width:56px!important;height:56px!important}
+html body header#mainHeader .date-badge{font-size:.74rem!important;padding:4px 12px!important}
+html body .container{gap:14px!important;padding:16px 14px 6px!important}
+html body .panel,html body .weather-now-box,html body .early-warning-box,html body .social-footer-box,html body .notification-subscribe-panel,html body .location-toolbar,
+html body #petraRainViewerPanel,html body #petraLightningMapPanel,html body #officialCapWarning,html body #psdPublicSafetyAlerts,html body #writtenBulletin{padding:14px 16px!important;border-radius:16px!important}
+html body .panel h2,html body .early-warning-box h2,html body .weather-now-box h2,html body #petraRainViewerPanel h2,html body #petraLightningMapPanel h2{font-size:.98rem!important;padding:0 14px 10px 0!important;margin:0 0 12px!important}
+html body .panel h2::before,html body .early-warning-box h2::before,html body .weather-now-box h2::before{width:4px!important;top:.3em!important}
+html body #officialCapWarning h2,html body #psdPublicSafetyAlerts h2{font-size:.95rem!important}
+html body p,html body li{font-size:.9rem}
+html body .live-data-meta,html body .cap-warning-footer,html body .rainfall-note{font-size:.74rem!important}
+html body #bulletinText{font-size:.92rem!important;line-height:1.8!important}
+html body .alert-card .title{font-size:.86rem!important}
+html body .rainfall-value strong{font-size:1.7rem!important}
+html body .w-item strong{font-size:1.1rem!important}
+/* order: forecast first */
+html body #tenDayForecastPanel{order:-2!important}
+html body #tomorrowForecastPanel{order:-1;grid-column:1/-1}
+html body #tenDayForecastPanel .forecast-weather-icon{font-size:1.9rem!important}
+html body #tenDayForecastPanel .temp-high,html body #tenDayForecastPanel .temp-low{font-size:1.2rem!important}
+html body #tenDayForecastPanel .forecast-table tr{padding:10px 6px!important;gap:3px}
+html body #windySatellitePanel iframe{min-height:340px}
+
+/* ---------- Tomorrow detailed box ---------- */
+.tmr-body{display:grid;gap:12px}
+.tmr-top{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,2fr);gap:14px;align-items:stretch}
+.tmr-hero{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,rgba(245,158,91,.16),rgba(59,130,246,.12));border:1px solid var(--p-line)}
+.tmr-hero .ic{font-size:3rem;line-height:1;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4))}
+.tmr-hero .cond{font-weight:800;font-size:1.05rem;color:#fff}
+.tmr-hero .sum{font-size:.8rem;color:var(--p-muted);margin-top:2px;line-height:1.6}
+.tmr-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.tmr-stat{background:rgba(255,255,255,.04);border:1px solid var(--p-line-soft);border-radius:12px;padding:10px 6px;text-align:center}
+.tmr-stat b{display:block;font-size:1.15rem;font-weight:900;color:#fff;line-height:1.3}
+.tmr-stat span{font-size:.7rem;color:var(--p-muted);font-weight:600}
+.tmr-stat.hi b{color:#ff9a3c}.tmr-stat.lo b{color:#4aa8ff}.tmr-stat.rn b{color:#5cc8f2}
+.tmr-slots{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px}
+.tmr-slot{background:linear-gradient(180deg,#0f1f3d,#0a1630);border:1px solid var(--p-line);border-radius:12px;padding:9px 4px;text-align:center;font-size:.72rem;color:var(--p-muted)}
+.tmr-slot .t{font-weight:800;color:#fff;font-size:.78rem}
+.tmr-slot .i{font-size:1.45rem;line-height:1.5}
+.tmr-slot .d{font-weight:900;color:#fff;font-size:1rem}
+.tmr-slot .r{color:#7dd3fc}
+.tmr-empty{margin:0;color:var(--p-muted)}
+@media(max-width:860px){.tmr-top{grid-template-columns:1fr}}
+@media(max-width:620px){
+ .tmr-stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .tmr-slots{display:flex;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:4px}
+ .tmr-slot{flex:0 0 74px;scroll-snap-align:start}
+}
+
+/* ---------- Live weather scene (current-weather box) ---------- */
+#currentWeatherSection{position:relative;overflow:hidden;isolation:isolate;color:#fff;
+ --tint:rgba(110,220,200,.15);--sky1:#1c64c4;--sky2:#5db4ee}
+#currentWeatherSection[data-temp="cold"]{--tint:rgba(150,205,255,.30)}
+#currentWeatherSection[data-temp="mild"]{--tint:rgba(110,220,200,.16)}
+#currentWeatherSection[data-temp="warm"]{--tint:rgba(255,200,90,.24)}
+#currentWeatherSection[data-temp="hot"]{--tint:rgba(255,125,45,.34)}
+#currentWeatherSection[data-temp="extreme"]{--tint:rgba(255,50,35,.42)}
+#currentWeatherSection[data-scene="clear"][data-day="1"]{--sky1:#1b62c2;--sky2:#62b8f0}
+#currentWeatherSection[data-scene="clear"][data-day="0"]{--sky1:#050b22;--sky2:#17306a}
+#currentWeatherSection[data-scene="partly"][data-day="1"]{--sky1:#2d68ad;--sky2:#78a8d0}
+#currentWeatherSection[data-scene="partly"][data-day="0"]{--sky1:#0a1330;--sky2:#233a6a}
+#currentWeatherSection[data-scene="cloudy"][data-day="1"]{--sky1:#4a5b72;--sky2:#8496ab}
+#currentWeatherSection[data-scene="cloudy"][data-day="0"]{--sky1:#10182a;--sky2:#2b3a52}
+#currentWeatherSection[data-scene="fog"][data-day="1"]{--sky1:#6b7782;--sky2:#a8b2ba}
+#currentWeatherSection[data-scene="fog"][data-day="0"]{--sky1:#1b222c;--sky2:#434f5c}
+#currentWeatherSection[data-scene="rain"][data-day="1"]{--sky1:#27384f;--sky2:#4a6685}
+#currentWeatherSection[data-scene="rain"][data-day="0"]{--sky1:#0b1424;--sky2:#22344f}
+#currentWeatherSection[data-scene="storm"][data-day="1"]{--sky1:#1a1a32;--sky2:#3d3862}
+#currentWeatherSection[data-scene="storm"][data-day="0"]{--sky1:#0a0a18;--sky2:#2a2650}
+#currentWeatherSection[data-scene="snow"][data-day="1"]{--sky1:#5c7898;--sky2:#aec3d8}
+#currentWeatherSection[data-scene="snow"][data-day="0"]{--sky1:#18233a;--sky2:#4a6285}
+html body #currentWeatherSection{background:linear-gradient(170deg,var(--sky1),var(--sky2))!important;border:1px solid rgba(255,255,255,.14)!important;transition:background .8s}
+.wx-fx{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.wx-fx>*{position:absolute}
+.wx-tint{inset:0;background:radial-gradient(120% 90% at 85% 100%,var(--tint),transparent 70%),radial-gradient(80% 60% at 10% 0,var(--tint),transparent 70%)}
+.wx-vig{inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.38))}
+html body #currentWeatherSection h3,html body #currentWeatherSection #currentTemp,html body #currentWeatherSection #currentCondition{text-shadow:0 2px 14px rgba(0,0,0,.45)}
+html body #currentWeatherSection .weather-details-text{background:rgba(5,12,28,.38)!important;border:1px solid rgba(255,255,255,.14)!important;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#f2f7ff!important}
+html body #currentWeatherSection .w-item{background:rgba(5,12,28,.36)!important;border:1px solid rgba(255,255,255,.14)!important;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+html body #currentWeatherSection .w-item span,html body #currentWeatherSection .live-data-meta{color:rgba(255,255,255,.82)!important}
+html body #currentTemp{font-size:clamp(2.8rem,6vw,4rem)!important}
+html body #currentWeatherSection h3{font-size:.98rem!important}
+/* sun */
+.wx-sun{width:92px;height:92px;top:14px;left:7%;border-radius:50%;background:radial-gradient(circle at 40% 38%,#fff6c4,#ffd24a 55%,#ff9f1c);box-shadow:0 0 40px 14px rgba(255,200,70,.55),0 0 110px 40px rgba(255,170,40,.28);animation:wxSunPulse 5s ease-in-out infinite}
+.wx-sun::before{content:"";position:absolute;inset:-34px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(255,225,120,.55) 0 4deg,transparent 4deg 22deg);-webkit-mask:radial-gradient(circle,transparent 46px,#000 48px,#000 70px,transparent 74px);mask:radial-gradient(circle,transparent 46px,#000 48px,#000 70px,transparent 74px);animation:wxSpin 40s linear infinite}
+@keyframes wxSunPulse{50%{transform:scale(1.06);box-shadow:0 0 52px 18px rgba(255,200,70,.62),0 0 130px 50px rgba(255,170,40,.3)}}
+@keyframes wxSpin{to{transform:rotate(360deg)}}
+/* moon + stars */
+.wx-moon{width:70px;height:70px;top:18px;left:9%;border-radius:50%;background:radial-gradient(circle at 36% 34%,#fffdf0,#e8e4cf 60%,#c9c4aa);box-shadow:0 0 34px 10px rgba(220,230,255,.35),0 0 90px 30px rgba(150,180,255,.18);animation:wxSunPulse 7s ease-in-out infinite}
+.wx-moon::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 70% 30%,transparent 55%,rgba(10,20,50,.45) 100%)}
+.wx-star{width:3px;height:3px;border-radius:50%;background:#fff;animation:wxTwinkle 3s ease-in-out infinite}
+@keyframes wxTwinkle{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:1;transform:scale(1.4)}}
+/* clouds */
+.wx-cloud{height:34px;width:120px;border-radius:40px;background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(225,235,248,.82));filter:blur(.6px);animation:wxDrift linear infinite;opacity:.9}
+.wx-cloud::before,.wx-cloud::after{content:"";position:absolute;background:inherit;border-radius:50%}
+.wx-cloud::before{width:54px;height:54px;top:-24px;left:18px}
+.wx-cloud::after{width:68px;height:68px;top:-34px;left:50px}
+[data-scene="cloudy"] .wx-cloud,[data-scene="rain"] .wx-cloud,[data-scene="storm"] .wx-cloud{background:linear-gradient(180deg,rgba(190,202,218,.92),rgba(120,135,156,.85))}
+[data-scene="storm"] .wx-cloud{background:linear-gradient(180deg,rgba(110,110,150,.95),rgba(55,55,90,.9))}
+[data-day="0"] .wx-cloud{filter:brightness(.42) blur(.6px)}
+@keyframes wxDrift{from{transform:translateX(-160px)}to{transform:translateX(calc(100vw + 160px))}}
+/* rain */
+.wx-drop{top:-30px;width:2px;height:18px;border-radius:2px;background:linear-gradient(180deg,transparent,rgba(190,225,255,.85));animation:wxFall linear infinite;transform:rotate(12deg)}
+@keyframes wxFall{to{transform:translate(-40px,420px) rotate(12deg)}}
+.wx-splash{bottom:0;height:3px;width:12px;border-radius:50%;background:rgba(200,230,255,.45);animation:wxSplash 1.2s ease-out infinite;opacity:0}
+@keyframes wxSplash{0%{transform:scaleX(.2);opacity:.7}100%{transform:scaleX(1.6);opacity:0}}
+/* snow */
+.wx-flake{top:-12px;border-radius:50%;background:#fff;opacity:.85;animation:wxSnow linear infinite;filter:blur(.4px)}
+@keyframes wxSnow{0%{transform:translate(0,0)}50%{transform:translate(24px,210px)}100%{transform:translate(-8px,430px)}}
+/* lightning */
+.wx-flash{inset:0;background:#dfe8ff;opacity:0;animation:wxFlash 6s infinite}
+@keyframes wxFlash{0%,86%,100%{opacity:0}87%{opacity:.55}88%{opacity:.05}89.5%{opacity:.7}92%{opacity:0}}
+.wx-bolt{top:6%;right:22%;width:46px;height:120px;opacity:0;animation:wxBolt 6s infinite;filter:drop-shadow(0 0 12px #b8c8ff)}
+@keyframes wxBolt{0%,86%,100%{opacity:0}87%,89.5%{opacity:1}88%{opacity:.2}92%{opacity:0}}
+/* fog */
+.wx-fog{left:-20%;width:140%;height:70px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(255,255,255,.5),transparent 70%);filter:blur(10px);animation:wxFogMove ease-in-out infinite alternate}
+@keyframes wxFogMove{from{transform:translateX(-6%)}to{transform:translateX(8%)}}
+/* wind */
+.wx-wind{height:2px;width:90px;border-radius:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent);animation:wxGust linear infinite;opacity:.7}
+@keyframes wxGust{from{transform:translateX(-120px)}to{transform:translateX(calc(100vw + 120px))}}
+/* heat */
+.wx-heat{left:0;right:0;bottom:0;height:46%;background:linear-gradient(0deg,rgba(255,140,40,.35),transparent);animation:wxHeat 4s ease-in-out infinite}
+@keyframes wxHeat{50%{opacity:.55;transform:translateY(4px)}}
+[data-temp="cold"] .wx-heat,[data-temp="mild"] .wx-heat,[data-temp="warm"] .wx-heat{display:none}
+/* cold shimmer */
+.wx-frost{inset:0;background:radial-gradient(circle at 20% 20%,rgba(200,230,255,.25),transparent 30%),radial-gradient(circle at 80% 70%,rgba(200,230,255,.2),transparent 35%);animation:wxHeat 6s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.wx-fx *,.wx-fx *::before{animation:none!important}}
+
+/* ---------- Mobile: shorter page ---------- */
+@media(max-width:760px){
+ html body{font-size:14px!important}
+ html body header#mainHeader{min-height:150px!important;padding:14px 14px!important}
+ html body header#mainHeader h1{font-size:1.18rem!important}
+ html body header#mainHeader p{font-size:.78rem!important}
+ html body header#mainHeader .site-logo{width:46px!important;height:46px!important}
+ html body .container{gap:10px!important;padding:10px 8px 4px!important}
+ html body .panel,html body .weather-now-box,html body .early-warning-box,html body .social-footer-box,html body .notification-subscribe-panel,html body .location-toolbar,
+ html body #petraRainViewerPanel,html body #petraLightningMapPanel,html body #officialCapWarning,html body #psdPublicSafetyAlerts,html body #writtenBulletin{padding:11px 12px!important;border-radius:14px!important}
+ html body .panel h2,html body .early-warning-box h2,html body .weather-now-box h2{font-size:.9rem!important;margin:0 0 8px!important;padding:0 12px 7px 0!important}
+ html body #bulletinText{font-size:.86rem!important;line-height:1.7!important}
+ html body p,html body li{font-size:.82rem}
+ /* 10-day as horizontal scroller */
+ html body #tenDayForecastPanel .forecast-table tbody{display:flex!important;overflow-x:auto;gap:8px;scroll-snap-type:x proximity;padding-bottom:6px}
+ html body #tenDayForecastPanel .forecast-table tr{flex:0 0 84px;scroll-snap-align:start}
+ /* early warning: compact 2-col */
+ html body .early-warning-box .alerts-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+ html body .alert-card{padding:9px 8px!important}
+ html body .alert-card .impact-time{display:none}
+ html body .alert-card .title{font-size:.78rem!important}
+ html body .rainfall-stats{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important}
+ html body .rainfall-stat{padding:9px 7px!important}
+ html body .rainfall-stat-label{font-size:.68rem!important}
+ html body .rainfall-value strong{font-size:1.15rem!important}
+ html body .rainfall-value span{font-size:.65rem!important}
+ html body .rainfall-stat small{display:none}
+ html body .radar-frame-container,html body #petraRainViewerPanel [id*="Map"],html body #petraRainViewerPanel [id*="map"]{max-height:230px!important;min-height:200px!important}
+ html body #windySatellitePanel iframe{min-height:240px!important;height:260px!important}
+ html body #officialCapWarning,html body #psdPublicSafetyAlerts{min-height:0}
+ html body .psd-alert-links{gap:6px!important}
+ html body .psd-alert-links a{padding:6px 10px!important;font-size:.74rem!important}
+ html body #currentWeatherSection .weather-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+ html body #currentTemp{font-size:2.6rem!important}
+ html body .location-toolbar{padding:10px!important}
+ .wx-sun{width:64px;height:64px;top:10px}
+ .wx-sun::before{inset:-24px;-webkit-mask:radial-gradient(circle,transparent 32px,#000 34px,#000 48px,transparent 52px);mask:radial-gradient(circle,transparent 32px,#000 34px,#000 48px,transparent 52px)}
+ .wx-moon{width:50px;height:50px}
+}
+html body #petraRadarMap{height:320px!important;min-height:240px!important}
+html body #petraRainViewerPanel h2,html body #petraLightningMapPanel h2{font-size:.98rem!important}
+@media(max-width:760px){
+ html body #petraRadarMap{height:210px!important;min-height:180px!important}
+ html body #petraRainViewerPanel h2,html body #petraLightningMapPanel h2{font-size:.9rem!important}
+ .tmr-stats{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:5px!important}
+ .tmr-stat{padding:7px 2px!important}.tmr-stat b{font-size:.92rem!important}.tmr-stat span{font-size:.58rem!important}
+ .tmr-hero{padding:10px 12px!important}.tmr-hero .ic{font-size:2.2rem!important}
+ .tmr-slot{flex:0 0 64px!important}
+ html body #tenDayForecastPanel>p{display:none}
+}
+</style>
+<style id="petra-redesign-v5">
+/* ===== v5: requested order: bulletin → current weather → hourly → 10-day → rest ===== */
+html body #writtenBulletin{order:1;grid-column:1/-1}
+html body #currentWeatherSection{order:2;grid-column:1/-1;min-height:250px}
+html body .container section:has(#hourlyForecast){order:3;grid-column:1/-1}
+html body #tenDayForecastPanel{order:4!important;grid-column:1/-1}
+html body #officialCapWarning{order:5;grid-column:span 6}
+html body #psdPublicSafetyAlerts{order:6;grid-column:span 6}
+html body .container .location-toolbar{order:7;grid-column:1/-1}
+html body #petraRainViewerPanel{order:8;grid-column:span 6}
+html body #petraLightningMapPanel{order:9;grid-column:span 6}
+html body .early-warning-box,html body .container .early-warning-box{order:10;grid-column:span 7}
+html body #rainfallTotalsPanel{order:11;grid-column:span 5}
+html body #weatherNotificationPanel{order:12;grid-column:1/-1}
+html body .container .gfs-live-panel{order:13;grid-column:span 6}
+html body #zoomEarthSatellitePanel{order:14;grid-column:span 6}
+html body #sat24StormPanel{order:15;grid-column:span 6}
+html body #windySatellitePanel{order:16;grid-column:1/-1}
+html body .container .social-footer-box{order:17}
+@media(max-width:1180px){
+ html body #officialCapWarning,html body #psdPublicSafetyAlerts,html body #petraRainViewerPanel,html body #petraLightningMapPanel{grid-column:span 6}
+ html body .early-warning-box,html body #rainfallTotalsPanel{grid-column:1/-1}
+}
+@media(max-width:760px){html body .container>*,html body .container section{grid-column:1/-1!important}}
+/* hourly strip */
+html body #hourlyForecast{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x proximity;padding:2px 2px 8px}
+html body #hourlyForecast .hourly-item{flex:1 0 92px;scroll-snap-align:start;text-align:center;border-radius:14px!important;padding:11px 6px!important;border:1px solid var(--p-line)!important;background:linear-gradient(180deg,#0f1f3d,#0a1630)!important;color:#fff!important}
+html body #hourlyForecast .hourly-item.daytime{background:linear-gradient(180deg,#17406f,#0e2a52)!important}
+html body #hourlyForecast .hourly-time{font-weight:800;font-size:.8rem;color:#fff!important}
+html body #hourlyForecast .hourly-icon{font-size:1.7rem;line-height:1.6}
+html body #hourlyForecast .hourly-period{font-size:.68rem;color:var(--p-muted)!important}
+html body #hourlyForecast .hourly-temp{font-size:1.2rem!important;font-weight:900;color:#fff!important}
+html body #hourlyForecast .hourly-rain{font-size:.74rem;color:#7dd3fc!important}
+/* sun / moon beside the temperature */
+.wx-sun,.wx-moon{top:38%!important;left:9%!important}
+@media(max-width:760px){.wx-sun,.wx-moon{top:150px!important;left:7%!important}}
+</style><style id="petra-location-alerts-ui">
+/* location search dropdown (Jordan only) */
+#petraLocationDropdown{display:none;position:absolute;z-index:60;top:calc(100% + 6px);right:0;left:0;max-height:340px;overflow:auto;background:#0b1a33;border:1px solid #1f3a63;border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,.5);padding:6px}
+#petraLocationDropdown.open{display:block}
+.petra-location-option{display:flex;width:100%;justify-content:space-between;align-items:center;gap:10px;text-align:right;background:transparent!important;border:0!important;border-radius:10px!important;color:#fff!important;padding:10px 12px!important;cursor:pointer;font-family:inherit}
+.petra-location-option:hover,.petra-location-option:focus-visible{background:rgba(92,200,242,.14)!important;outline:none}
+.petra-location-option span{font-weight:800;font-size:.95rem}
+.petra-location-option small{color:#9fb3c8;font-size:.76rem}
+.petra-search-status{padding:10px 12px;color:#9fb3c8;font-size:.85rem}
+/* quick-pick panel */
+html body .jordan-places-panel{padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+html body .jordan-places-heading{cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border:1px solid var(--p-line);border-radius:12px;background:rgba(255,255,255,.04);font-weight:800;font-size:.85rem;color:#fff!important;user-select:none}
+html body .jordan-places-heading::after{content:"▾";font-size:.8rem;transition:transform .2s}
+html body .jordan-places-panel.open .jordan-places-heading::after{transform:rotate(180deg)}
+#jordanPlacesGroups{display:none;margin-top:10px;max-height:300px;overflow:auto;padding:4px 2px}
+.jordan-places-panel.open #jordanPlacesGroups{display:block}
+.jp-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 10px}
+.jp-row b{flex:0 0 100%;font-size:.78rem;color:var(--p-rose);font-weight:800}
+.jp-row button{border:1px solid var(--p-line)!important;background:rgba(255,255,255,.04)!important;color:#e8f0fa!important;border-radius:999px!important;padding:5px 12px!important;font-size:.78rem!important;font-weight:700;cursor:pointer}
+.jp-row button:hover{background:rgba(92,200,242,.18)!important;border-color:rgba(92,200,242,.5)!important}
+/* opening prompt */
+#petraLocPrompt{position:fixed;z-index:90;left:50%;bottom:16px;transform:translateX(-50%);width:min(560px,calc(100% - 20px));display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:linear-gradient(160deg,#10264a,#0a1630);border:1px solid #2b4d84;border-radius:18px;padding:14px 16px;box-shadow:0 20px 50px rgba(0,0,0,.6);color:#fff;direction:rtl}
+#petraLocPrompt[hidden]{display:none}
+#petraLocPrompt .lp-ic{font-size:1.8rem}
+#petraLocPrompt .lp-tx{flex:1 1 220px;display:flex;flex-direction:column;gap:2px}
+#petraLocPrompt .lp-tx b{font-size:.95rem}
+#petraLocPrompt .lp-tx span{font-size:.78rem;color:#b8c7dc;line-height:1.5}
+#petraLocPrompt .lp-ac{display:flex;gap:8px;flex-wrap:wrap;width:100%}
+#petraLocPrompt button{flex:1 1 auto;border:0;border-radius:12px;padding:10px 12px;font-family:inherit;font-weight:800;font-size:.85rem;cursor:pointer;background:rgba(255,255,255,.1);color:#fff}
+#petraLocPrompt #lpGps{background:linear-gradient(135deg,#f59e5b,#e0742c);color:#1b0f06}
+/* hazard cards */
+html body .alert-card.alert-watch{border-color:#d9a32b!important;background:linear-gradient(160deg,rgba(217,163,43,.16),rgba(8,18,40,.7))!important}
+html body .alert-card.alert-watch .status{background:rgba(217,163,43,.2)!important;color:#ffe08a!important;border-color:#d9a32b!important}
+html body .alert-card .impact-time{background:rgba(255,255,255,.04)!important;border:1px solid var(--p-line-soft)!important;color:#cfdaea!important}
+html body .alert-card.alert-active .impact-time{background:rgba(245,130,32,.14)!important;border-color:rgba(245,130,32,.4)!important;color:#ffd7b0!important}
+#hazardUpdated{margin:0 0 12px;font-size:.78rem;color:#7be3a6!important;display:flex;align-items:center;gap:6px}
+#hazardUpdated::before{content:"";width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:hzPulse 1.6s infinite}
+#hazardUpdated.stale{color:#ffd28a!important}#hazardUpdated.stale::before{background:#f59e0b;animation:none}
+@keyframes hzPulse{70%{box-shadow:0 0 0 8px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+/* Windy before the rain radar */
+html body #windySatellitePanel{order:8!important;grid-column:1/-1!important}
+html body #petraRainViewerPanel{order:9!important}
+html body #petraLightningMapPanel{order:10!important}
+html body .early-warning-box,html body .container .early-warning-box{order:11!important}
+html body #rainfallTotalsPanel{order:12!important}
+html body #weatherNotificationPanel{order:13!important}
+html body .container .gfs-live-panel{order:14!important}
+html body #zoomEarthSatellitePanel{order:15!important}
+html body #sat24StormPanel{order:16!important}
+html body .container .social-footer-box{order:17!important}
+</style>
+
 </head>
 <body>
 <header id="mainHeader">
@@ -995,7 +1632,7 @@ input::placeholder,textarea::placeholder { color:#647985 !important; }
 
 
 <main><section aria-live="polite" class="weather-now-box live-bulletin" id="writtenBulletin">
-<h2>📝 النشرة الجوية المكتوبة – <span id="bulletinLocationName">لواء البترا</span></h2>
+<h2>📝 النشرة الجوية المكتوبة – <span id="bulletinLocationName">البترا – وادي موسى</span></h2>
 <p id="bulletinText">جارٍ جلب أحدث بيانات الطقس لإعداد النشرة تلقائياً...</p>
 <div class="live-data-meta">المصدر: Open-Meteo Forecast API | آخر تحديث للبيانات: <span id="dataUpdatedAt">بانتظار الاتصال</span> | تحديث تلقائي كل 15 دقيقة</div>
 </section><div class="bulletin-warning-grid"><section class="panel official-cap-warning" id="officialCapWarning" aria-live="polite" aria-labelledby="officialCapWarningTitle">
@@ -1013,7 +1650,7 @@ input::placeholder,textarea::placeholder { color:#647985 !important; }
 </section></div><section aria-labelledby="weatherNotificationTitle" class="panel notification-subscribe-panel" id="weatherNotificationPanel">
 <div class="notification-panel-head">
 <div><p class="notification-eyebrow">WEATHER ALERTS</p><h2 id="weatherNotificationTitle">🔔 الاشتراك بتنبيهات الطقس</h2>
-<p class="notification-intro">اشترك لتصلك التحذيرات الرسمية الجديدة الصادرة للأردن حتى عند إغلاق الموقع، مع تمييز التحذيرات التي تشمل البتراء. تتطلب الخدمة تفعيل الاشتراك مرة واحدة على هذا الجهاز.</p></div>
+<p class="notification-intro">اختر أنواع التنبيهات التي تهمك وفعّل الإشعارات مرة واحدة: ستصلك كإشعارات المتصفح بحسب موقعك المختار (GPS أو البحث)، ويُفحص الطقس كل دقيقة أثناء فتح الموقع.</p></div>
 <span aria-hidden="true" class="notification-bell">🔔</span>
 </div>
 <div class="notification-options">
@@ -1029,24 +1666,23 @@ input::placeholder,textarea::placeholder { color:#647985 !important; }
 </div>
 <div class="notification-actions"><button class="notification-primary" id="enableWeatherNotifications" type="button">تفعيل الإشعارات الفورية</button><button class="notification-secondary" id="testWeatherNotification" type="button">تجربة الإشعار</button><button class="notification-secondary" hidden="" id="disableWeatherNotifications" type="button">إيقاف التنبيهات</button></div>
 <p aria-live="polite" class="notification-status" id="notificationStatus" role="status">التنبيهات غير مفعّلة. اضغط على زر التفعيل واسمح بالإشعارات من المتصفح.</p>
-<p class="notification-disclaimer">التحذيرات الرسمية تُرسل عبر خدمة إشعارات فورية بعد إعداد OneSignal وGitHub Actions. أما مؤشرات الطقس المحلية فهي استرشادية. قد يتأخر الإشعار قليلًا بحسب تحديث الخلاصة وجدولة GitHub Actions.</p>
+<p class="notification-disclaimer">المصدر: نماذج Open-Meteo المفتوحة وبيانات CAMS. الإشعارات أثناء فتح الموقع (أو تشغيله كتطبيق على الشاشة الرئيسية) فورية؛ وللتحذيرات الرسمية في الخلفية بعد إغلاق المتصفح يلزم إعداد OneSignal. المؤشرات استرشادية وليست بديلًا عن التحذيرات الرسمية.</p>
 </section><section aria-label="اختيار موقع الطقس" class="location-toolbar">
-<div class="location-search-wrap"><input aria-label="ابحث عن المنطقة" id="locationSearch" placeholder="ابحث عن محافظة أو مدينة أو قرية أردنية…" type="search"/><button id="searchLocationBtn" type="button">بحث</button></div>
+<div class="location-search-wrap"><input aria-label="ابحث عن المنطقة" id="locationSearch" placeholder="ابحث عن قرية أو مدينة أو محافظة أو معلم أردني…" type="search"/><button id="searchLocationBtn" type="button">بحث</button></div>
 <div aria-label="المحافظات والمدن والمناطق الأردنية" class="jordan-places-panel" id="jordanPlacesPanel">
 <div class="jordan-places-heading">المحافظات والمدن والقرى الأردنية</div>
 <div id="jordanPlacesGroups"></div>
 </div>
 <button class="gps-btn" id="gpsLocationBtn" type="button">⌖ موقعي عبر GPS</button>
-<select aria-label="اختر المنطقة من النتائج" hidden="" id="locationResults"><option value="">اختر المنطقة</option></select>
-<div aria-live="polite" class="location-status" id="locationStatus">الموقع الافتراضي: لواء البترا. ابحث عن منطقة أو استخدم GPS لتحديث جميع بيانات الطقس لها.</div>
+<div aria-live="polite" class="location-status" id="locationStatus">الموقع الافتراضي: البترا – وادي موسى. ابحث عن منطقة أردنية أو استخدم «موقعي عبر GPS».</div>
 </section>
 <section class="weather-now-box" id="currentWeatherSection">
-<h3>🌤️ تفاصيل حالة الطقس (<span id="currentLocationName">لواء البترا ومحيطها</span>)</h3>
+<h3>🌤️ تفاصيل حالة الطقس (<span id="currentLocationName">البترا – وادي موسى</span>)</h3>
 <div class="weather-details-text" id="weatherSummary">جارٍ جلب حالة الطقس الحالية...</div>
 <div class="weather-grid">
 <div class="w-item"><span>الحرارة الحالية</span><strong id="currentTemp">--</strong></div><div class="w-item"><span>حالة الأجواء</span><strong id="currentCondition">--</strong></div><div class="w-item"><span>الرياح</span><strong id="currentWind">--</strong></div><div class="w-item"><span>الرطوبة</span><strong id="currentHumidity">--</strong></div>
 </div><p class="live-data-meta">وقت الرصد بحسب المصدر: <span id="observationTime">--</span></p></section>
-<section class="panel"><h2>⏰ درجات الحرارة وحالة الطقس ساعة بساعة (اليوم)</h2><div class="hourly-scroll" id="hourlyForecast"><div class="hourly-item">جارٍ تحميل التوقعات الساعية...</div></div><p class="live-data-meta">تُحدّث هذه البيانات تلقائياً كل 15 دقيقة، وقد لا يعني ذلك صدور دورة جديدة من النموذج العددي.</p></section>
+<section class="panel"><h2>⏰ توقعات درجات الحرارة والأجواء للساعات القادمة</h2><div class="hourly-scroll" id="hourlyForecast"><div class="hourly-item">جارٍ تحميل التوقعات الساعية...</div></div><p class="live-data-meta">تُحدّث هذه البيانات تلقائياً كل 15 دقيقة، وقد لا يعني ذلك صدور دورة جديدة من النموذج العددي.</p></section>
 <section aria-labelledby="rainfallTotalsTitle" class="panel rainfall-totals-panel" id="rainfallTotalsPanel">
 <div class="rainfall-head">
 <div>
@@ -1093,14 +1729,14 @@ input::placeholder,textarea::placeholder { color:#647985 !important; }
 </div>
 <p class="rainfall-note">ملاحظة: إجمالي الموسم معروض بقيمة 172.4 ملم كما حددها مشرف الموقع. لا يُضاف إليها هطول جديد تلقائياً حالياً، لأن المصدر المستخدم لا يوفر في هذا الطلب سجلاً موسمياً كاملاً يمكن الاعتماد عليه للجمع دون تكرار. القيم المسترجعة آلياً قد تختلف عن القياس الميداني في محطة البترا.</p>
 </section>
-<section class="early-warning-box"><h2>⚠️ مؤشرات الطقس الخطرة (ليست تنبيهات رسمية مباشرة)</h2><p class="alert-note" style="margin:-4px 0 14px;color:#607080;font-size:.84rem">تنبيه: بطاقات المؤشرات أدناه لا تتصل حالياً بمصدر رسمي للتنبيهات؛ لا تعتمد عليها لاتخاذ قرارات السلامة، وراجع الجهات الرسمية عند وجود حالة جوية مؤثرة.</p><div class="alerts-grid">
-<div class="alert-card"><span class="title">⚡ نشاط البروق</span><span class="status">🟢 الوضع مستقر وآمن</span><span class="distance">الرصد: لا صواعق قريبة</span><span class="time">المصدر: لا يوجد ربط مباشر حالياً<span class="impact-time">توقيت التأثير: يُعرض عند توفر وقت البداية والنهاية من مصدر التنبيه</span></span></div>
-<div class="alert-card"><span class="title">🌪️ الغبار والأتربة</span><span class="status">🟢 الأجواء صافية</span><span class="distance">المصدر: CAMS / Copernicus</span><span class="time">تحديث التوقع: 12:00 UTC<span class="impact-time">توقيت التأثير: يُعرض عند توفر وقت البداية والنهاية من مصدر التنبيه</span></span></div>
-<div class="alert-card"><span class="title">🌫️ خطر الضباب</span><span class="status">🟢 الوضع مستقر</span><span class="distance">الرؤية: أكثر من 10 كم</span><span class="time">البداية: -- | النهاية: --<span class="impact-time">توقيت التأثير: يُعرض عند توفر وقت البداية والنهاية من مصدر التنبيه</span></span></div>
-<div class="alert-card"><span class="title">🌧️ أمطار غزيرة</span><span class="status">🟢 غير مفعل</span><span class="distance">الهطول: 0 مم/س</span><span class="time">البداية: -- | النهاية: --<span class="impact-time">توقيت التأثير: يُعرض عند توفر وقت البداية والنهاية من مصدر التنبيه</span></span></div>
-<div class="alert-card"><span class="title">⚠️ توقعات السيول</span><span class="status">🟢 آمن ومستقر</span><span class="distance">الهطول: 0 مم/س</span><span class="time">البداية: -- | النهاية: --<span class="impact-time">توقيت التأثير: يُعرض عند توفر وقت البداية والنهاية من مصدر التنبيه</span></span></div>
-<div class="alert-card"><span class="title">💨 رياح شديدة</span><span class="status">🟢 آمن ومستقر</span><span class="distance">السرعة ضمن المعدل</span><span class="time">البداية: -- | النهاية: --<span class="impact-time">توقيت التأثير: يُعرض عند توفر وقت البداية والنهاية من مصدر التنبيه</span></span></div>
-<div class="alert-card"><span class="title">❄️ الثلوج والانجماد</span><span class="status">🟢 الوضع مستقر</span><span class="distance">المرتفعات العالية</span><span class="time">البداية: -- | النهاية: --<span class="impact-time">توقيت التأثير: يُعرض عند توفر وقت البداية والنهاية من مصدر التنبيه</span></span></div>
+<section class="early-warning-box"><h2>⚠️ مؤشرات الطقس الخطرة (ليست تنبيهات رسمية مباشرة)</h2><p class="alert-note" style="margin:-4px 0 8px;color:#607080;font-size:.84rem">تُحسب هذه المؤشرات تلقائيًا لموقعك المختار من نماذج الطقس المفتوحة (Open-Meteo / ECMWF) وبيانات الغبار من Copernicus CAMS. هي مؤشرات استرشادية وليست تنبيهات رسمية؛ راجع الجهات الرسمية عند وجود حالة جوية مؤثرة.</p><p id="hazardUpdated">جارٍ فحص المؤشرات لموقعك…</p><div class="alerts-grid">
+<div class="alert-card" id="lightningActivityCard"><span class="title">⚡ نشاط البروق</span><span class="status">🟡 راقب خريطة البرق المباشر</span><span class="distance" id="lightningActivityDistance">تابع خريطة البرق المباشر لمعرفة النشاط القريب</span><span class="time">⚠️ خرائط المتابعة ليست بديلاً عن التحذيرات الرسمية.</span></div>
+<div class="alert-card" id="hzDust"><span class="title">🌪️ الغبار والأتربة</span><span class="status">🟢 الأجواء صافية</span><span class="distance">المصدر: CAMS / Copernicus</span><span class="time">تحديث التوقع: 12:00 UTC<span class="impact-time">توقيت التأثير: يُعرض عند توفر وقت البداية والنهاية من مصدر التنبيه</span></span></div>
+<div class="alert-card" id="hzFog"><span class="title">🌫️ خطر الضباب</span><span class="status">🟢 الوضع مستقر</span><span class="distance">الرؤية: أكثر من 10 كم</span><span class="time">البداية: -- | النهاية: --<span class="impact-time">توقيت التأثير: يُعرض عند توفر وقت البداية والنهاية من مصدر التنبيه</span></span></div>
+<div class="alert-card" id="hzHeavyRain"><span class="title">🌧️ أمطار غزيرة</span><span class="status">🟢 غير مفعل</span><span class="distance">الهطول: 0 مم/س</span><span class="time">البداية: -- | النهاية: --<span class="impact-time">توقيت التأثير: يُعرض عند توفر وقت البداية والنهاية من مصدر التنبيه</span></span></div>
+<div class="alert-card" id="hzFlood"><span class="title">⚠️ توقعات السيول</span><span class="status">🟢 آمن ومستقر</span><span class="distance">الهطول: 0 مم/س</span><span class="time">البداية: -- | النهاية: --<span class="impact-time">توقيت التأثير: يُعرض عند توفر وقت البداية والنهاية من مصدر التنبيه</span></span></div>
+<div class="alert-card" id="hzWind"><span class="title">💨 رياح شديدة</span><span class="status">🟢 آمن ومستقر</span><span class="distance">السرعة ضمن المعدل</span><span class="time">البداية: -- | النهاية: --<span class="impact-time">توقيت التأثير: يُعرض عند توفر وقت البداية والنهاية من مصدر التنبيه</span></span></div>
+<div class="alert-card" id="hzSnow"><span class="title">❄️ الثلوج والانجماد</span><span class="status">🟢 الوضع مستقر</span><span class="distance">المرتفعات العالية</span><span class="time">البداية: -- | النهاية: --<span class="impact-time">توقيت التأثير: يُعرض عند توفر وقت البداية والنهاية من مصدر التنبيه</span></span></div>
 </div></section>
 <section class="panel" id="tenDayForecastPanel"><h2><span>📈 توقعات درجات الحرارة والتاريخ (لـ 10 أيام القادمة)</span></h2>
 <p style="font-size:.85rem;color:var(--gray);margin-bottom:10px">توقعات إرشادية؛ يرجى مراجعة التحديثات الرسمية قبل اتخاذ قرارات السلامة.</p><div class="table-responsive"><table class="forecast-table"><thead><tr><th>اليوم والتاريخ</th><th>الحالة الجوية</th><th>العظمى</th><th>الصغرى</th><th>الرياح والاتجاه</th></tr></thead><tbody id="dailyForecastBody"><tr><td colspan="5">جارٍ تحميل توقعات الأيام العشرة...</td></tr></tbody></table></div></section>
@@ -1338,7 +1974,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 <script>
 (function(){
- let LAT=30.32, LON=35.48, selectedLocation='لواء البترا', REFRESH_MS=15*60*1000;
+ let LAT=30.3225, LON=35.4733, selectedLocation='البترا – وادي موسى', REFRESH_MS=15*60*1000;
  const forecastUrl=()=> 'https://api.open-meteo.com/v1/forecast?latitude='+LAT+'&longitude='+LON+'&models=ecmwf_ifs&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,rain,showers,weather_code,cloud_cover,pressure_msl,wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=temperature_2m,precipitation_probability,precipitation,weather_code,wind_speed_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,wind_speed_10m_max,wind_direction_10m_dominant&timezone=Asia%2FAmman&forecast_days=10';
  const $=id=>document.getElementById(id);
  const num=(v,d=0)=>Number(v).toFixed(d);
@@ -1362,16 +1998,14 @@ document.addEventListener('DOMContentLoaded', function(){
   const hourly=$('hourlyForecast'); if(hourly){let html='';const now=new Date(c.time).getTime();let count=0;for(let i=0;i<h.time.length&&count<10;i++){if(new Date(h.time[i]).getTime()<now-30*60*1000)continue;const hourDate=new Date(h.time[i]);const hourNum=Number((h.time[i].split('T')[1]||'12:00').slice(0,2));const isDay=hourNum>=6&&hourNum<18;const dayIcon=isDay?(h.weather_code[i]===0?'☀️':icon(h.weather_code[i])):(h.weather_code[i]===0?'🌙':([1,2].includes(h.weather_code[i])?'🌙☁️':([45,48].includes(h.weather_code[i])?'🌫️':([95,96,99].includes(h.weather_code[i])?'⛈️':([71,73,75,77,85,86].includes(h.weather_code[i])?'🌨️':'🌧️')))));html+='<div class="hourly-item '+(isDay?'daytime':'nighttime')+'"><div class="hourly-time">'+timeLabel(h.time[i])+'</div><div class="hourly-icon">'+dayIcon+'</div><div class="hourly-period">'+(isDay?'نهار':'ليل')+'</div><div class="hourly-temp">'+Math.round(h.temperature_2m[i])+'°</div><div class="hourly-rain">💧 '+Math.round(h.precipitation_probability[i]||0)+'%</div></div>';count++;}hourly.innerHTML=html||'<div class="hourly-item">لا تتوفر بيانات ساعية حالياً.</div>';}
   const tbody=$('dailyForecastBody');if(tbody){tbody.innerHTML=d.time.map((day,i)=>'<tr><td class="forecast-day-cell">'+dateLabel(day)+'</td><td class="forecast-condition-cell"><span class="forecast-weather-icon" aria-hidden="true">'+icon(d.weather_code[i])+'</span><span class="forecast-condition-name">'+weatherName(d.weather_code[i])+'</span><small class="forecast-rain-chance">احتمال الهطول '+Math.round(d.precipitation_probability_max[i]||0)+'%</small></td><td class="temp-high">'+Math.round(d.temperature_2m_max[i])+'°</td><td class="temp-low">'+Math.round(d.temperature_2m_min[i])+'°</td><td class="forecast-wind-cell">'+windDir(d.wind_direction_10m_dominant[i])+' · '+Math.round(d.wind_speed_10m_max[i])+' كم/س</td></tr>').join('');}
   setText('dataUpdatedAt',new Date().toLocaleString('ar-JO',{hour:'2-digit',minute:'2-digit',day:'numeric',month:'short'}));
-  const meta=document.querySelector('.live-data-meta');if(meta){meta.classList.remove('offline');meta.setAttribute('title','تم جلب البيانات بنجاح من Open-Meteo');}
+  const meta=document.querySelector('.live-data-meta');if(meta){meta.classList.remove('offline');meta.setAttribute('title','تم جلب البيانات بنجاح من Open-Meteo');}try{window.dispatchEvent(new CustomEvent('petraWeatherData',{detail:data}));}catch(e){}
  }
  async function loadWeather(){updateDate();try{const response=await fetch(forecastUrl(),{cache:'no-store'});if(!response.ok)throw new Error('HTTP '+response.status);const data=await response.json();if(!data.current||!data.hourly||!data.daily)throw new Error('بيانات غير مكتملة');if(window.PetraWeatherNotifications)window.PetraWeatherNotifications.check(data);render(data);}catch(err){setText('dataUpdatedAt','تعذّر الاتصال؛ آخر بيانات قديمة أو غير متاحة');const el=$('writtenBulletin');if(el){const p=$('bulletinText');if(p&&!p.textContent.includes('آخر تحديث'))p.textContent+=' تعذّر تحديث البيانات الآن؛ يرجى إعادة المحاولة والتحقق من المصادر الرسمية.';}console.warn('Weather refresh failed',err);}}
 
  const statusEl=$('locationStatus'), resultsEl=$('locationResults'), searchEl=$('locationSearch');
  function locationStatus(msg,error=false){if(statusEl){statusEl.textContent=msg;statusEl.classList.toggle('error',error);}}
- function applyLocation(lat,lon,name){LAT=Number(lat);LON=Number(lon);selectedLocation=name||'الموقع المحدد';setText('bulletinLocationName',selectedLocation);setText('currentLocationName',selectedLocation);locationStatus('تم اختيار '+selectedLocation+'؛ جارٍ تحديث النشرة والطقس الحالي والساعات والتوقعات…');window.dispatchEvent(new CustomEvent('weatherLocationChanged',{detail:{lat:LAT,lon:LON,name:selectedLocation}}));loadWeather();}
- async function searchLocations(){const q=(searchEl.value||'').trim();if(!q){locationStatus('اكتب اسم المدينة أو المنطقة أولاً.',true);return;}locationStatus('جارٍ البحث عن المناطق…');try{const r=await fetch('https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(q)+'&count=8&language=ar&format=json',{cache:'no-store'});if(!r.ok)throw new Error('search failed');const j=await r.json();const arr=j.results||[];if(!arr.length){locationStatus('لم يتم العثور على منطقة بهذا الاسم. جرّب كتابة اسم المدينة أو المحافظة.',true);return;}resultsEl.innerHTML='<option value="">اختر المنطقة من النتائج…</option>'+arr.map((x,i)=>'<option value="'+i+'">'+[x.name,x.admin1,x.country].filter(Boolean).join('، ')+'</option>').join('');resultsEl.hidden=false;resultsEl._places=arr;if(arr.length===1){resultsEl.value='0';const x=arr[0];applyLocation(x.latitude,x.longitude,[x.name,x.admin1,x.country].filter(Boolean).join('، '));}else locationStatus('ظهرت '+arr.length+' نتائج؛ اختر المنطقة المطلوبة من القائمة ليُحدّث الموقع تلقائياً.');}catch(e){locationStatus('تعذّر البحث الآن. تحقق من الاتصال بالإنترنت وحاول مجدداً.',true);}}
- if($('searchLocationBtn'))$('searchLocationBtn').addEventListener('click',searchLocations);if(searchEl)searchEl.addEventListener('keydown',e=>{if(e.key==='Enter')searchLocations();});if(resultsEl)resultsEl.addEventListener('change',()=>{const x=(resultsEl._places||[])[Number(resultsEl.value)];if(x)applyLocation(x.latitude,x.longitude,[x.name,x.admin1,x.country].filter(Boolean).join('، '));});
- if($('gpsLocationBtn'))$('gpsLocationBtn').addEventListener('click',()=>{if(!navigator.geolocation){locationStatus('المتصفح لا يدعم تحديد الموقع GPS.',true);return;}locationStatus('بانتظار إذن تحديد الموقع من الجهاز…');navigator.geolocation.getCurrentPosition(async pos=>{const lat=pos.coords.latitude,lon=pos.coords.longitude;let name='موقعي الحالي ('+lat.toFixed(3)+', '+lon.toFixed(3)+')';try{const r=await fetch('https://geocoding-api.open-meteo.com/v1/reverse?latitude='+lat+'&longitude='+lon+'&language=ar&format=json',{cache:'no-store'});if(r.ok){const j=await r.json();const x=j.results&&j.results[0];if(x)name=[x.name,x.admin1,x.country].filter(Boolean).join('، ');}}catch(e){}applyLocation(lat,lon,name);},err=>{locationStatus(err.code===1?'تم رفض إذن الموقع. فعّل إذن الموقع للمتصفح أو ابحث عن المنطقة يدوياً.':'تعذّر تحديد الموقع. تأكد من تشغيل GPS وحاول مجدداً.',true);},{enableHighAccuracy:true,timeout:15000,maximumAge:60000});});
+ function applyLocation(lat,lon,name){LAT=Number(lat);LON=Number(lon);selectedLocation=name||'الموقع المحدد';window.selectedLocation=selectedLocation;setText('bulletinLocationName',selectedLocation);setText('currentLocationName',selectedLocation);locationStatus('تم اختيار '+selectedLocation+'؛ جارٍ تحديث النشرة والطقس الحالي والساعات والتوقعات…');window.dispatchEvent(new CustomEvent('weatherLocationChanged',{detail:{lat:LAT,lon:LON,name:selectedLocation}}));loadWeather();}
+ window.PetraApplyLocation=applyLocation;window.selectedLocation=selectedLocation;
  updateDate();loadWeather();setInterval(loadWeather,REFRESH_MS);document.addEventListener('visibilitychange',()=>{if(!document.hidden)loadWeather();});
 })();
 </script>
@@ -1688,275 +2322,297 @@ document.addEventListener('DOMContentLoaded', function(){
   if(status&&items){load();setInterval(load,5*60*1000);}
 })();
 </script>
-<script id="weather-notifications-logic">
+<script id="petra-alerts-core">
+/* Petra Weather — alerts core (shared by the page and the service worker).
+   Sources (open, no API key): Open-Meteo forecast (best-match NWP incl. ECMWF IFS/ICON/GFS)
+   and Open-Meteo Air Quality (Copernicus CAMS) for dust / PM10. */
+(function(root){
+ 'use strict';
+ var SNOW=[71,73,75,77,85,86], FREEZING=[56,57,66,67], FOG=[45,48], STORM=[95,96,99];
+ var TH={heavyRain:5,flood3h:12,flood6h:18,flood24h:30,wind:45,gust:65,dust:100,pm10:150,fogVis:1000,frost:2};
+ function forecastUrl(lat,lon){
+  return 'https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+
+  '&current=temperature_2m,weather_code,wind_speed_10m,wind_gusts_10m,precipitation'+
+  '&hourly=temperature_2m,precipitation,precipitation_probability,weather_code,wind_speed_10m,wind_gusts_10m,visibility,snowfall,cape'+
+  '&forecast_days=3&past_hours=2&timezone=Asia%2FAmman';
+ }
+ function airUrl(lat,lon){
+  return 'https://air-quality-api.open-meteo.com/v1/air-quality?latitude='+lat+'&longitude='+lon+
+  '&hourly=dust,pm10&forecast_days=3&past_hours=2&timezone=Asia%2FAmman';
+ }
+ function getJSON(url,ms){
+  var ctl=(typeof AbortController!=='undefined')?new AbortController():null, t=ctl?setTimeout(function(){ctl.abort()},ms||9000):null;
+  return fetch(url,{cache:'no-store',signal:ctl?ctl.signal:undefined}).then(function(r){if(t)clearTimeout(t);if(!r.ok)throw new Error('HTTP '+r.status);return r.json()});
+ }
+ function fetchData(lat,lon){
+  return Promise.all([getJSON(forecastUrl(lat,lon)),getJSON(airUrl(lat,lon)).catch(function(){return null})]).then(function(a){return {fc:a[0],aq:a[1]}});
+ }
+ function times(h,off){return (h.time||[]).map(function(t){return Date.parse(t+':00Z')-off*1000})}
+ function col(h,k){return Array.isArray(h[k])?h[k]:[]}
+ function two(n){return n<10?'0'+n:''+n}
+ function fmtTime(ms,off){var d=new Date(ms+off*1000),h=d.getUTCHours(),m=d.getUTCMinutes(),p=h>=12?'م':'ص';h=h%12||12;return h+':'+two(m)+' '+p}
+ function dayWord(ms,now,off){
+  var a=Math.floor((ms+off*1000)/864e5), b=Math.floor((now+off*1000)/864e5), diff=a-b;
+  return diff<=0?'':diff===1?'غدًا ':'بعد غد ';
+ }
+ function whenText(r,now,off){
+  if(!r)return '';
+  if(r.start<=now)return 'حتى '+dayWord(r.end,now,off)+fmtTime(r.end,off);
+  return 'من '+dayWord(r.start,now,off)+fmtTime(r.start,off)+' إلى '+dayWord(r.end,now,off)+fmtTime(r.end,off);
+ }
+ /* first contiguous run of hours (index list sorted) where mark[i] is true and which has not ended yet */
+ function firstRun(T,idx,mark,now){
+  var run=null;
+  for(var n=0;n<idx.length;n++){
+   var i=idx[n];
+   if(mark[i]){
+    if(!run)run={a:i,b:i};else if(i===run.b+1)run.b=i;else{ if(T[run.b]+36e5>now)break; run={a:i,b:i}; }
+   }else if(run){ if(T[run.b]+36e5>now)break; run=null; }
+  }
+  if(!run||T[run.b]+36e5<=now)return null;
+  return {a:run.a,b:run.b,start:Math.max(T[run.a],T[run.a]),end:T[run.b]+36e5};
+ }
+ function evaluate(data,now){
+  now=now||Date.now();
+  var fc=data.fc,aq=data.aq,off=fc.utc_offset_seconds||10800,h=fc.hourly||{},T=times(h,off);
+  var N=T.length,cur=-1,i;
+  for(i=0;i<N;i++){if(T[i]<=now)cur=i;}
+  if(cur<0)cur=0;
+  var idx=[];for(i=Math.max(0,cur);i<N&&T[i]<=now+36*36e5;i++)idx.push(i);
+  var pr=col(h,'precipitation'),pp=col(h,'precipitation_probability'),wc=col(h,'weather_code'),ws=col(h,'wind_speed_10m'),wg=col(h,'wind_gusts_10m'),
+      vis=col(h,'visibility'),sn=col(h,'snowfall'),cape=col(h,'cape'),tp=col(h,'temperature_2m');
+  function v(a,j){var x=a[j];return (x===null||x===undefined||isNaN(x))?0:Number(x)}
+  var m={storm:[],fog:[],heavyrain:[],flood:[],wind:[],snow:[],frost:[],rain:[],dust:[]};
+  for(i=0;i<N;i++){
+   var code=v(wc,i);
+   m.storm[i]=STORM.indexOf(code)>-1||(v(cape,i)>=1000&&v(pr,i)>=0.1);
+   m.fog[i]=(vis[i]!==null&&vis[i]!==undefined&&Number(vis[i])<TH.fogVis)||FOG.indexOf(code)>-1;
+   m.heavyrain[i]=v(pr,i)>=TH.heavyRain;
+   m.wind[i]=v(ws,i)>=TH.wind||v(wg,i)>=TH.gust;
+   m.snow[i]=v(sn,i)>0.1||SNOW.indexOf(code)>-1||(v(tp,i)<=0&&(FREEZING.indexOf(code)>-1||v(pr,i)>0.1));
+   m.frost[i]=v(tp,i)<=TH.frost;
+   m.rain[i]=v(pp,i)>=60&&v(pr,i)>=0.1;
+   m.flood[i]=false;
+  }
+  for(i=0;i<N;i++){
+   var s3=0,s6=0,k;for(k=0;k<3&&i+k<N;k++)s3+=v(pr,i+k);for(k=0;k<6&&i+k<N;k++)s6+=v(pr,i+k);
+   if(s3>=TH.flood3h)for(k=0;k<3&&i+k<N;k++)if(v(pr,i+k)>0.1)m.flood[i+k]=true;
+   if(s6>=TH.flood6h)for(k=0;k<6&&i+k<N;k++)if(v(pr,i+k)>0.1)m.flood[i+k]=true;
+  }
+  var s24=0;for(i=cur;i<Math.min(N,cur+24);i++)s24+=v(pr,i);
+  if(s24>=TH.flood24h)for(i=cur;i<Math.min(N,cur+24);i++)if(v(pr,i)>0.2)m.flood[i]=true;
+  /* dust (CAMS) has its own time axis */
+  var dustRun=null,dustPeak=0,pm10Peak=0,aqOff=0;
+  if(aq&&aq.hourly&&aq.hourly.time){
+   aqOff=aq.utc_offset_seconds||off;var AT=times(aq.hourly,aqOff),dd=col(aq.hourly,'dust'),pm=col(aq.hourly,'pm10'),aidx=[],ac=-1,mk=[];
+   for(i=0;i<AT.length;i++)if(AT[i]<=now)ac=i;
+   if(ac<0)ac=0;
+   for(i=ac;i<AT.length&&AT[i]<=now+36*36e5;i++){aidx.push(i);}
+   for(i=0;i<AT.length;i++){mk[i]=v(dd,i)>=TH.dust||v(pm,i)>=TH.pm10;}
+   dustRun=firstRun(AT,aidx,mk,now);
+   var lo=dustRun?dustRun.a:ac,hi=dustRun?dustRun.b:Math.min(AT.length-1,ac+24);
+   for(i=lo;i<=hi;i++){dustPeak=Math.max(dustPeak,v(dd,i));pm10Peak=Math.max(pm10Peak,v(pm,i));}
+  }
+  function lvl(r){return !r?'ok':(r.start<=now?'active':'watch')}
+  var R={};['storm','fog','heavyrain','flood','wind','snow','frost','rain'].forEach(function(k){R[k]=firstRun(T,idx,m[k],now)});
+  R.dust=dustRun;
+  function peak(a,r){var mx=0;if(r)for(var j=r.a;j<=r.b;j++)mx=Math.max(mx,v(a,j));return mx}
+  function minOf(a,r){var mn=1e9;if(r)for(var j=r.a;j<=r.b;j++)mn=Math.min(mn,v(a,j));return mn===1e9?0:mn}
+  var curVis=(vis[cur]===null||vis[cur]===undefined)?null:Number(vis[cur])/1000;
+  var nowPrecip=v(pr,cur);
+  var H={};
+  H.storm={level:lvl(R.storm),run:R.storm,detail:R.storm?'مؤشر عواصف رعدية'+(peak(cape,R.storm)>=500?' (طاقة الحمل الحراري '+Math.round(peak(cape,R.storm))+' جول/كغ)':''):'لا مؤشرات عواصف رعدية في التوقعات'};
+  H.dust={level:lvl(R.dust),run:R.dust,detail:R.dust?'تركيز الغبار حتى '+Math.round(dustPeak)+' ميكروغرام/م³':(aq?'تركيز الغبار الحالي ضمن الحدود الآمنة':'تعذّر جلب بيانات الغبار (CAMS)')};
+  H.fog={level:lvl(R.fog),run:R.fog,detail:R.fog?('أقل رؤية متوقعة '+(minOf(vis,R.fog)/1000).toFixed(1)+' كم'):('الرؤية الحالية: '+(curVis===null?'غير متاحة':(curVis>=10?'أكثر من 10 كم':curVis.toFixed(1)+' كم')))};
+  H.heavyrain={level:lvl(R.heavyrain),run:R.heavyrain,detail:R.heavyrain?'ذروة الهطول '+peak(pr,R.heavyrain).toFixed(1)+' مم/س':'الهطول الحالي: '+nowPrecip.toFixed(1)+' مم/س'};
+  H.flood={level:lvl(R.flood),run:R.flood,detail:R.flood?'هطول متراكم متوقع '+(function(){var s=0;for(var j=R.flood.a;j<=R.flood.b;j++)s+=v(pr,j);return s.toFixed(1)})()+' مم — خطر جريان في الأودية':'مجموع الهطول خلال 24 ساعة: '+s24.toFixed(1)+' مم'};
+  H.wind={level:lvl(R.wind),run:R.wind,detail:R.wind?'هبات حتى '+Math.round(Math.max(peak(wg,R.wind),peak(ws,R.wind)))+' كم/س':'الرياح الحالية: '+Math.round(v(ws,cur))+' كم/س (ضمن المعدل)'};
+  H.snow={level:lvl(R.snow),run:R.snow,detail:R.snow?((function(){var sn1=false;for(var j=R.snow.a;j<=R.snow.b;j++)if(v(sn,j)>0.1||SNOW.indexOf(v(wc,j))>-1)sn1=true;return sn1})()?'ثلوج متوقعة':'انجماد/هطول متجمد (حتى '+Math.round(minOf(tp,R.snow))+'°)'):'أقل حرارة متوقعة '+Math.round(Math.min.apply(null,idx.slice(0,24).map(function(j){return v(tp,j)})))+'°'};
+  /* thunder-lightning card shares the storm hazard */
+  var events=[];
+  function ev(id,title,hz,soon){
+   var r=hz.run;if(!r)return;
+   if(r.start>now+soon*36e5)return;
+   events.push({id:id,title:title,detail:hz.detail,when:whenText(r,now,off),level:hz.level,start:r.start,end:r.end});
+  }
+  ev('storm','⛈️ تنبيه عواصف رعدية',H.storm,12);
+  ev('heavyrain','🌧️ تنبيه أمطار غزيرة',H.heavyrain,12);
+  ev('flood','🌊 تنبيه احتمال سيول',H.flood,12);
+  ev('wind','💨 تنبيه رياح قوية',H.wind,12);
+  ev('fog','🌫️ تنبيه ضباب وضعف الرؤية',H.fog,12);
+  ev('dust','🌪️ تنبيه غبار وأتربة',H.dust,12);
+  ev('snow','❄️ تنبيه ثلوج / انجماد',H.snow,12);
+  if(R.rain&&!R.heavyrain)ev('rain','🌧️ تنبيه أمطار متوقعة',{run:R.rain,level:lvl(R.rain),detail:'احتمال هطول مرتفع (60% فأكثر)'},12);
+  if(R.frost){var fm=minOf(tp,R.frost);ev('frost','🥶 تنبيه برودة شديدة / صقيع',{run:R.frost,level:lvl(R.frost),detail:'الحرارة قد تصل إلى '+Math.round(fm)+'°م'},12);}
+  return {hazards:H,events:events,offset:off,now:now,updated:now,
+          current:{temp:fc.current&&fc.current.temperature_2m,wind:fc.current&&fc.current.wind_speed_10m}};
+ }
+ root.PetraAlertsCore={evaluate:evaluate,fetchData:fetchData,fmtTime:fmtTime,whenText:whenText,thresholds:TH};
+})(typeof self!=='undefined'?self:window);
+
+</script>
+<script id="petra-alerts-engine">
 (function(){
-  'use strict';
-  const KEY='petraWeatherNotificationSettingsV1';
-  const LAST='petraWeatherNotificationLastAlertV1';
-  const $=id=>document.getElementById(id);
-  const defaults={enabled:false,rain:true,storm:true,wind:true,frost:true,fog:true,dust:true,heavyrain:true,flood:true,snow:true};
-  let settings={...defaults};
-  let firstCheck=true;
-  try{settings={...defaults,...JSON.parse(localStorage.getItem(KEY)||'{}')};}catch(e){}
-  function save(){try{localStorage.setItem(KEY,JSON.stringify(settings));}catch(e){}}
-  function status(msg){const el=$('notificationStatus');if(el)el.textContent=msg;}
-  function updateUI(){
-    ['Rain','Storm','Wind','Frost','Fog','Dust','HeavyRain','Flood','Snow'].forEach(k=>{const el=$('notify'+k);if(el)el.checked=!!settings[k.toLowerCase()];});
-    const on=$('enableWeatherNotifications'),off=$('disableWeatherNotifications');
-    if(on)on.textContent=settings.enabled?'التنبيهات مفعّلة ✓':'تفعيل الإشعارات الفورية';
-    if(off)off.hidden=!settings.enabled;
-    if(settings.enabled)status('الاشتراك مفعّل على هذا الجهاز. ستظهر الإشعارات عند توفر مؤشرات جديدة أثناء فتح الموقع.');
+ 'use strict';
+ var C=window.PetraAlertsCore; if(!C)return;
+ var KEY='petraWeatherNotificationSettingsV2', SENT='petraAlertsSentV2', $=function(id){return document.getElementById(id)};
+ var IDS={rain:'notifyRain',storm:'notifyStorm',wind:'notifyWind',frost:'notifyFrost',fog:'notifyFog',dust:'notifyDust',heavyrain:'notifyHeavyRain',flood:'notifyFlood',snow:'notifySnow'};
+ var defaults={enabled:false,rain:true,storm:true,wind:true,frost:true,fog:true,dust:true,heavyrain:true,flood:true,snow:true};
+ var settings=Object.assign({},defaults);
+ try{settings=Object.assign({},defaults,JSON.parse(localStorage.getItem(KEY)||localStorage.getItem('petraWeatherNotificationSettingsV1')||'{}'))}catch(e){}
+ var loc={name:'البترا – وادي موسى',lat:30.3225,lon:35.4733};
+ var swReg=null,last=null,timer=null,busy=false,POLL=60000;
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(settings))}catch(e){}}
+ function status(t){var e=$('notificationStatus');if(e)e.textContent=t}
+ function sentMap(){try{return JSON.parse(localStorage.getItem(SENT)||'{}')}catch(e){return {}}}
+ function saveSent(m){try{localStorage.setItem(SENT,JSON.stringify(m))}catch(e){}}
+ function enabledNow(){return settings.enabled&&('Notification' in window)&&Notification.permission==='granted'}
+
+ /* ---------- service worker (needed for notifications on Android Chrome) ---------- */
+ async function ensureSW(){
+  if(swReg)return swReg;
+  if(!('serviceWorker' in navigator))return null;
+  try{
+   swReg=await navigator.serviceWorker.register('sw.js',{scope:'./pw-alerts/'});
+   if(!swReg.active){
+    var w=swReg.installing||swReg.waiting;
+    if(w)await new Promise(function(res){
+     if(w.state==='activated')return res();
+     w.addEventListener('statechange',function(){if(w.state==='activated')res()});
+     setTimeout(res,5000);
+    });
+   }
+   return swReg;
+  }catch(e){console.warn('SW registration failed',e);return null}
+ }
+ async function pushState(){
+  var reg=await ensureSW(); if(!reg)return;
+  var target=reg.active||reg.waiting||reg.installing; if(!target)return;
+  var st={settings:settings,location:loc,url:location.href.split('#')[0],sent:sentMap()};
+  try{target.postMessage({type:'state',state:st})}catch(e){}
+  try{
+   if(reg.periodicSync&&settings.enabled){
+    var perm=await navigator.permissions.query({name:'periodic-background-sync'}).catch(function(){return null});
+    if(perm&&perm.state==='granted')await reg.periodicSync.register('petra-alerts',{minInterval:15*60*1000});
+   }
+  }catch(e){}
+ }
+ async function show(title,body,tag){
+  if(!enabledNow())return false;
+  var opts={body:body,tag:'petra-'+tag,renotify:true,dir:'rtl',lang:'ar',icon:'logo-petra-weather.png',badge:'logo-petra-weather.png',vibrate:[200,100,200],data:{url:location.href.split('#')[0]}};
+  try{
+   var reg=await ensureSW();
+   if(reg&&reg.showNotification){
+    await reg.showNotification(title,opts);return true;
+   }
+  }catch(e){console.warn('SW notify failed',e)}
+  try{var n=new Notification(title,opts);n.onclick=function(){window.focus();n.close()};return true}catch(e){console.warn('Notification failed',e);return false}
+ }
+
+ /* ---------- hazard cards (open data: Open-Meteo + CAMS) ---------- */
+ var CARDS={storm:'lightningActivityCard',dust:'hzDust',fog:'hzFog',heavyrain:'hzHeavyRain',flood:'hzFlood',wind:'hzWind',snow:'hzSnow'};
+ var SAFE={storm:'🟢 لا مؤشرات للعواصف الرعدية',dust:'🟢 الأجواء صافية',fog:'🟢 الوضع مستقر',heavyrain:'🟢 لا أمطار غزيرة',flood:'🟢 آمن ومستقر',wind:'🟢 آمن ومستقر',snow:'🟢 الوضع مستقر'};
+ function paintCard(id,hz,now,off){
+  var card=$(CARDS[id]); if(!card)return;
+  var st=card.querySelector('.status'),di=card.querySelector('.distance'),tm=card.querySelector('.time');
+  var label=hz.level==='active'?'🟠 نشط الآن':hz.level==='watch'?'🟡 متوقع':SAFE[id];
+  if(st)st.textContent=label;
+  if(di)di.textContent=hz.detail;
+  var s='--',e='--',impact='لا يوجد تأثير متوقع خلال الـ36 ساعة القادمة';
+  if(hz.run){s=C.fmtTime(hz.run.start,off);e=C.fmtTime(hz.run.end,off);
+   impact='توقيت التأثير: '+C.whenText(hz.run,now,off);
+   if(hz.run.start<=now)s='الآن';}
+  if(tm)tm.innerHTML='البداية: '+s+' | النهاية: '+e+'<span class="impact-time">'+impact+'</span>';
+  card.setAttribute('data-level',hz.level);
+  card.classList.toggle('alert-active',hz.level==='active');
+  card.classList.toggle('alert-watch',hz.level==='watch');
+ }
+ function paint(res){
+  Object.keys(CARDS).forEach(function(k){paintCard(k,res.hazards[k],res.now,res.offset)});
+  var u=$('hazardUpdated');
+  if(u){var d=new Date(res.updated);u.textContent='آخر فحص: '+d.toLocaleTimeString('ar-JO',{hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:'Asia/Amman'})+' · '+loc.name+' · تحديث تلقائي كل دقيقة';u.classList.remove('stale')}
+ }
+ /* the old 1-second visual refresher rewrote the card text; replace it so it only keeps the blinking class in sync */
+ window.refreshAlertVisuals=function(){};
+
+ /* ---------- notifications ---------- */
+ async function dispatch(res,silentFirst){
+  if(!enabledNow())return;
+  var sent=sentMap(),now=Date.now(),n=0;
+  for(var i=0;i<res.events.length;i++){
+   var ev=res.events[i]; if(!settings[ev.id])continue;
+   var k=loc.name+'|'+ev.id;
+   if(sent[k]&&now-sent[k]<6*36e5)continue;
+   var ok=await show(ev.title,loc.name+': '+ev.detail+' — '+ev.when,ev.id);
+   if(ok){sent[k]=now;n++}
   }
-  function notify(title,body,tag){
-    if(!settings.enabled||!('Notification' in window)||Notification.permission!=='granted')return;
-    try{const n=new Notification(title,{body,tag:'petra-'+tag,icon:'logo-petra-weather.png',badge:'logo-petra-weather.png'});n.onclick=()=>{window.focus();n.close();};}catch(e){console.warn('Notification error',e);}
-  }
-  async function enable(){
-    if(!('Notification' in window)){status('هذا المتصفح لا يدعم إشعارات الويب. جرّب Chrome أو متصفحًا يدعم Push.');return;}
-    if(!window.isSecureContext && location.protocol!=='file:'){status('يلزم فتح الموقع عبر HTTPS لتفعيل الإشعارات.');return;}
-    try{
-      const permission=await Notification.requestPermission();
-      if(permission!=='granted'){status(permission==='denied'?'تم رفض الإشعارات. غيّر الإذن من إعدادات المتصفح للموقع.':'لم يتم منح إذن الإشعارات.');return;}
-      settings.enabled=true;save();updateUI();
-      if(window.PetraOneSignal){
-        await window.PetraOneSignal.User.PushSubscription.optIn();
-        status('تم تفعيل الإشعارات على هذا الجهاز. ستصلك التحذيرات الرسمية الجديدة حتى عند إغلاق الموقع بعد اكتمال إعداد الخدمة الخلفية.');
-      } else {
-        status('تم تفعيل إشعارات المتصفح المفتوح، لكن الإشعارات الفورية بالخلفية لم تُجهّز بعد. أكمل إعداد OneSignal في ملف push-config.js ثم أعد تحميل الموقع.');
-      }
-      notify('تم تفعيل تنبيهات طقس البتراء','تم تفعيل التنبيهات المحلية على هذا الجهاز.','subscribed');
-    }catch(e){console.error(e);status('تعذّر تفعيل Push. تأكد من إعداد OneSignal وملف عامل الخدمة ثم أعد المحاولة.');}
-  }
-  function test(){
-    if(!('Notification' in window)){status('المتصفح لا يدعم إشعارات الويب.');return;}
-    if(Notification.permission==='granted'){notify('تجربة إشعار – طقس البتراء','الإشعارات تعمل على هذا الجهاز.','test-'+Date.now());status('تم إرسال إشعار تجريبي.');}
-    else {status('فعّل الاشتراك أولاً واسمح بالإشعارات عند ظهور طلب الإذن.');}
-  }
-  function check(data){
-    if(!data||!data.current||!data.daily)return;
-    const c=data.current,h=data.hourly||{},d=data.daily;
-    const events=[];
-    const arr=(key)=>Array.isArray(h[key])?h[key]:[];
-    const now=Date.now();
-    let future=[];
-    const times=arr('time');
-    for(let i=0;i<times.length;i++) if(new Date(times[i]).getTime()>=now-60*60*1000) future.push(i);
-    if(!future.length) future=times.map((_,i)=>i).slice(0,24);
-    const maxOf=(key)=>Math.max(0,...future.map(i=>Number(arr(key)[i]||0)));
-    const sumOf=(key)=>future.reduce((sum,i)=>sum+Number(arr(key)[i]||0),0);
-    const codes=future.map(i=>Number(arr('weather_code')[i]||0));
-    const rainProb=Number((d.precipitation_probability_max||[])[0]||0);
-    const hourlyRain=maxOf('precipitation');
-    const rain24=sumOf('precipitation');
-    const wind=Math.max(Number(c.wind_speed_10m||0),Number(c.wind_gusts_10m||0),Number((d.wind_speed_10m_max||[])[0]||0),maxOf('wind_speed_10m'));
-    const code=Number(c.weather_code||0);
-    const allCodes=[code,...codes];
-    const minTemp=Math.min(Number((d.temperature_2m_min||[])[0]??99),...future.map(i=>Number(arr('temperature_2m')[i]??99)));
-    const where=window.selectedLocation||'لواء البترا';
-    if(settings.rain&&rainProb>=60)events.push({id:'rain',title:'🌧️ تنبيه احتمال أمطار',body:'احتمال الهطول المتوقع '+Math.round(rainProb)+'% في '+where+'.'});
-    if(settings.storm&&allCodes.some(x=>[95,96,99].includes(x)))events.push({id:'storm',title:'⛈️ تنبيه عواصف رعدية',body:'تظهر التوقعات مؤشراً لعواصف رعدية في '+where+'. تابع النشرات الرسمية.'});
-    if(settings.wind&&wind>=45)events.push({id:'wind',title:'💨 تنبيه رياح قوية',body:'سرعة الرياح أو الهبات المتوقعة تصل إلى نحو '+Math.round(wind)+' كم/س في '+where+'.'});
-    if(settings.frost&&minTemp<=2)events.push({id:'frost',title:'❄️ تنبيه برودة وصقيع محتمل',body:'الحرارة المتوقعة قد تصل إلى '+Math.round(minTemp)+'°م في '+where+'.'});
-    if(settings.fog&&allCodes.some(x=>[45,48].includes(x)))events.push({id:'fog',title:'🌫️ تنبيه ضباب محتمل',body:'تشير رموز الطقس إلى ضباب أو ضباب متجمد محتمل في '+where+'.'});
-    if(settings.dust) { /* No dust/aerosol feed is currently connected; avoid issuing unsupported dust alerts. */ }
-    if(settings.heavyrain&&hourlyRain>=7)events.push({id:'heavyrain',title:'🌧️ تنبيه أمطار غزيرة',body:'قد يتجاوز الهطول الساعي '+hourlyRain.toFixed(1)+' مم/ساعة في '+where+'.'});
-    if(settings.flood&&rain24>=20)events.push({id:'flood',title:'⚠️ تنبيه احتمال سيول',body:'تُظهر التوقعات مجموع هطول يقارب '+rain24.toFixed(1)+' مم خلال الساعات المتاحة القادمة في '+where+'. هذا مؤشر مطري وليس تنبؤاً مؤكداً بالسيول.'});
-    if(settings.snow&&(allCodes.some(x=>[71,73,75,77,85,86].includes(x))||minTemp<=0&&allCodes.some(x=>[56,57,66,67].includes(x))))events.push({id:'snow',title:'❄️ تنبيه ثلوج أو انجماد محتمل',body:'تظهر التوقعات مؤشرات ثلوج أو هطول متجمد/درجات تجمد في '+where+'.'});
-    let previous={};try{previous=JSON.parse(localStorage.getItem(LAST)||'{}');}catch(e){}
-    const nowKey=new Date().toISOString().slice(0,13);
-    const activeIds=new Set(events.map(ev=>ev.id));
-    events.forEach(ev=>{const sig=ev.id+'-'+nowKey;if(previous[ev.id]!==sig){if(!firstCheck)notify(ev.title,ev.body,sig);previous[ev.id]=sig;}});
-    try{localStorage.setItem(LAST,JSON.stringify(previous));}catch(e){}
-    firstCheck=false;
-  }
-  function initNotifications(){
-    updateUI();
-    ['Rain','Storm','Wind','Frost','Fog','Dust','HeavyRain','Flood','Snow'].forEach(k=>{const el=$('notify'+k);if(el)el.addEventListener('change',()=>{settings[k.toLowerCase()]=el.checked;save();});});
-    if($('enableWeatherNotifications'))$('enableWeatherNotifications').addEventListener('click',enable);
-    if($('testWeatherNotification'))$('testWeatherNotification').addEventListener('click',test);
-    if($('disableWeatherNotifications'))$('disableWeatherNotifications').addEventListener('click',()=>{settings.enabled=false;save();updateUI();status('تم إيقاف التنبيهات على هذا الجهاز.');});
-    if(settings.enabled&&('Notification' in window)&&Notification.permission==='granted')status('الاشتراك مفعّل على هذا الجهاز.');
-  }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initNotifications,{once:true});else initNotifications();
-  window.PetraWeatherNotifications={check:check};
+  saveSent(sent);
+  if(n)status('تم إرسال '+n+' تنبيه لموقعك ('+loc.name+') الآن.');
+ }
+ async function refresh(force){
+  if(busy)return; busy=true;
+  try{
+   var data=await C.fetchData(loc.lat,loc.lon);
+   last=data;var res=C.evaluate(data,Date.now());
+   paint(res); await dispatch(res); pushState();
+  }catch(e){
+   var u=$('hazardUpdated');if(u){u.textContent='تعذّر تحديث المؤشرات الآن؛ سيعاد المحاولة خلال دقيقة.';u.classList.add('stale')}
+   console.warn('alerts refresh failed',e);
+  }finally{busy=false}
+ }
+ function reevaluate(){ if(!last)return refresh(); var res=C.evaluate(last,Date.now()); paint(res); return dispatch(res) }
+ function startPolling(){clearInterval(timer);timer=setInterval(function(){if(!document.hidden)refresh()},POLL)}
+
+ /* ---------- settings UI ---------- */
+ function updateUI(){
+  Object.keys(IDS).forEach(function(k){var el=$(IDS[k]);if(el)el.checked=!!settings[k]});
+  var on=$('enableWeatherNotifications'),off=$('disableWeatherNotifications');
+  if(on)on.textContent=enabledNow()?'التنبيهات مفعّلة ✓':'تفعيل الإشعارات الفورية';
+  if(off)off.hidden=!settings.enabled;
+  if(enabledNow())status('التنبيهات مفعّلة لموقعك: '+loc.name+'. تُفحص الأحوال كل دقيقة وتصلك كإشعارات المتصفح حسب الأنواع المختارة.');
+ }
+ async function enable(){
+  if(!('Notification' in window)){status('هذا المتصفح لا يدعم إشعارات الويب. جرّب Chrome أو Edge أو Firefox.');return}
+  if(!window.isSecureContext&&location.protocol!=='file:'){status('يلزم فتح الموقع عبر HTTPS لتفعيل الإشعارات.');return}
+  try{
+   var p=await Notification.requestPermission();
+   if(p!=='granted'){status(p==='denied'?'تم رفض الإشعارات. فعّلها من إعدادات المتصفح للموقع ثم أعد المحاولة.':'لم يتم منح إذن الإشعارات.');return}
+   settings.enabled=true;save();updateUI();
+   await ensureSW();
+   if(window.PetraOneSignal){try{await window.PetraOneSignal.User.PushSubscription.optIn()}catch(e){}}
+   await show('✅ تم تفعيل تنبيهات طقس البترا','سيتم تنبيهك لموقعك: '+loc.name+' بحسب الأنواع التي اخترتها.','subscribed');
+   status('تم التفعيل لموقعك: '+loc.name+'. جارٍ فحص الأحوال الآن…');
+   await refresh(true); updateUI();
+  }catch(e){console.error(e);status('تعذّر تفعيل الإشعارات. تأكد من فتح الموقع عبر HTTPS ثم أعد المحاولة.')}
+ }
+ async function test(){
+  if(!('Notification' in window)){status('المتصفح لا يدعم إشعارات الويب.');return}
+  if(Notification.permission!=='granted'||!settings.enabled){status('فعّل الإشعارات أولاً ثم جرّب الإشعار.');return}
+  var ok=await show('🔔 تجربة إشعار – طقس البترا','الإشعارات تعمل على هذا الجهاز لموقعك: '+loc.name,'test-'+Date.now());
+  status(ok?'تم إرسال إشعار تجريبي.':'تعذّر عرض الإشعار؛ تحقق من إعدادات الإشعارات في الجهاز.');
+ }
+ function init(){
+  updateUI();
+  Object.keys(IDS).forEach(function(k){var el=$(IDS[k]);if(el)el.addEventListener('change',function(){settings[k]=el.checked;save();pushState();if(el.checked)reevaluate()})});
+  var a=$('enableWeatherNotifications');if(a)a.addEventListener('click',enable);
+  var t=$('testWeatherNotification');if(t)t.addEventListener('click',test);
+  var d=$('disableWeatherNotifications');if(d)d.addEventListener('click',function(){settings.enabled=false;save();updateUI();pushState();status('تم إيقاف التنبيهات على هذا الجهاز.')});
+  window.addEventListener('weatherLocationChanged',function(ev){
+   var x=ev&&ev.detail; if(!x||!isFinite(x.lat)||!isFinite(x.lon))return;
+   loc={name:x.name||loc.name,lat:Number(x.lat),lon:Number(x.lon)};last=null;updateUI();refresh();
+  });
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)refresh()});
+  window.addEventListener('online',function(){refresh()});
+  if(enabledNow())ensureSW();
+  startPolling();refresh();
+ }
+ window.PetraWeatherNotifications={check:function(){}};
+ window.PetraAlertsEngine={refresh:refresh,setLocation:function(l){loc=l}};
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
 </script>
-<script id="petra-location-search-controller">
-(function(){
-  const input = document.getElementById('locationSearch');
-  if(!input || document.getElementById('petraLocationDropdown')) return;
 
-  const searchBtn = document.getElementById('searchLocationBtn');
-  const gpsBtn = document.getElementById('gpsLocationBtn');
-  const placesByGovernorate = {
-    "العاصمة": ["عمّان|Amman","سحاب|Sahab","ناعور|Naour","الجيزة|Al Jizah","القويسمة|Al Quwaysimah","ماركا|Marka","أبو نصير|Abu Nusayr","شفا بدران|Shafa Badran","وادي السير|Wadi Al Seer","صويلح|Sweileh","الجبيهة|Al Jubaiha","أم السماق|Um Al Summaq","خلدا|Khalda","تلاع العلي|Tla Al Ali","اليادودة|Al Yadudah","الموقر|Al Muwaqqar","حسبان|Hisban","أم الرصاص|Umm ar Rasas"],
-    "إربد": ["إربد|Irbid","الرمثا|Ar Ramtha","الحصن|Al Husn","الطيبة|At Tayyibah","بني كنانة|Bani Kinana","كفرنجة|Kufranjah","بيت راس|Beit Ras","الصريح|As Sareeh","حوارة|Huwara","المزار الشمالي|Al Mazar Ash Shamali","النعيمة|An Nuaymeh","الشجرة|Ash Shajarah","سما الروسان|Sama Al Rousan","دير أبي سعيد|Deir Abi Said","الكورة|Al Koura","الأغوار الشمالية|Northern Jordan Valley","وادي الريان|Wadi Al Rayyan"],
-    "الزرقاء": ["الزرقاء|Zarqa","الرصيفة|Russeifa","الهاشمية|Al Hashimiyah","الأزرق|Azraq","بيرين|Birin","الضليل|Ad Dulayl","الحلابات|Al Hallabat","خو|Khaw","السخنة|As Sukhnah"],
-    "البلقاء": ["السلط|As Salt","الفحيص|Fuheis","ماحص|Mahis","عين الباشا|Ain Al Basha","دير علا|Deir Alla","الشونة الجنوبية|South Shuna","سويمة|Sowayma","الكرامة|Al Karama","يرقا|Yarqa","علان|Allan","زي|Zay"],
-    "مادبا": ["مادبا|Madaba","ذيبان|Dhiban","مليح|Mlih","ماعين|Ma'in","جرينة|Jureina","لب|Libb","الفيصلية|Al Faisaliyah","نيبو|Nebo"],
-    "الكرك": ["الكرك|Al Karak","المزار الجنوبي|Al Mazar Al Janubi","مؤتة|Mutah","الثنية|Ath Thaniyah","فقوع|Faqqu","القصر|Al Qasr","غور الصافي|Ghor Al Safi","الأغوار الجنوبية|Southern Jordan Valley","عي|Ayy","الربة|Ar Rabbah","ذات راس|Dhat Ras","القطرانة|Qatraneh"],
-    "الطفيلة": ["الطفيلة|At Tafilah","بصيرا|Busayra","الحسا|Al Hasa","القادسية|Al Qadisiyah","عيمة|Aima","ضانا|Dana","غرندل|Gharandal","جرف الدراويش|Jurf Al Darawish"],
-    "معان": ["معان|Ma'an","وادي موسى|Wadi Musa","البترا|Petra","الشوبك|Shobak","الجفر|Al Jafr","الحسينية|Al Husseiniya","أذرح|Adhruh","الراجف|Al Rajif","الطيبة الجنوبية|Southern Taybeh","بسطة|Basta","دلاغة|Dilagha","وادي رم|Wadi Rum","القويرة|Al Quweira","الحميمة|Humayma"],
-    "العقبة": ["العقبة|Aqaba","القويرة|Al Quweira","الديسة|Disah","وادي رم|Wadi Rum","رحمة|Rahma","قريقرة|Qurayqira"],
-    "جرش": ["جرش|Jerash","سوف|Souf","ساكب|Sakib","برما|Burma","المعراض|Al Meraad","الكتة|Al Kittah","ريمون|Raymun","دبين|Dibbeen","قفقفا|Qafqafa"],
-    "عجلون": ["عجلون|Ajloun","كفرنجة|Kufranjah","عنجره|Anjara","عنجرة|Anjara","النعيمة|An Nuaimeh","صخرة|Sakhrah","عبين|Abeen","عرجان|Arjan","راجب|Rajib","حلاوة|Halawah"],
-    "المفرق": ["المفرق|Al Mafraq","رحاب|Rehab","بلعما|Balama","الخالدية|Al Khalidiyah","صبحا|Sabha","الدفيانة|Al Difyanah","أم الجمال|Umm Al Jimal","الرويشد|Ruwaished","الصفاوي|Safawi","حوشا|Hosha","المنشية|Al Manshiyah"],
-    "القرى والمناطق المشهورة": ["البحر الميت|Dead Sea","حمامات ماعين|Ma'in Hot Springs","غابات دبين|Dibbeen Forest","جبل نيبو|Mount Nebo","قلعة عجلون|Ajloun Castle","قلعة الكرك|Karak Castle","قلعة الشوبك|Shobak Castle","البترا الأثرية|Petra","السيق|Siq Petra","الخزنة|Al Khazneh","البيضا|Al Beidha","وادي بن حماد|Wadi Bin Hammad","وادي الموجب|Wadi Mujib","سد الملك طلال|King Talal Dam","سد الكفرين|Kafrein Dam","الأغوار|Jordan Valley"]
-  };
-  const labels = {};
-  Object.values(placesByGovernorate).flat().forEach(entry=>{
-    const parts=entry.split('|'); if(parts[0] && parts[1]) labels[parts[0]]=parts[1];
-  });
-  const canonical = Object.keys(labels);
-  let timer = null, lastQuery = "", nearbyCache = null;
 
-  const wrap = document.createElement('div');
-  wrap.className = 'petra-search-wrap';
-  input.parentNode.insertBefore(wrap, input);
-  wrap.appendChild(input);
-  const dropdown = document.createElement('div');
-  dropdown.id = 'petraLocationDropdown';
-  dropdown.setAttribute('role','listbox');
-  wrap.appendChild(dropdown);
-
-  function showStatus(text){
-    dropdown.innerHTML = '<div class="petra-search-status">'+escapeHtml(text)+'</div>';
-    dropdown.classList.add('open');
-  }
-  function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-  function addOption(label, detail, action, nearby){
-    const b=document.createElement('button');
-    b.type='button'; b.className='petra-location-option'; b.setAttribute('role','option');
-    b.innerHTML='<span>'+escapeHtml(label)+'</span><small>'+escapeHtml(detail||'الأردن')+'</small>';
-    b.addEventListener('click',()=>action());
-    dropdown.appendChild(b);
-  }
-  async function geocode(q){
-    const url='https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(q)+'&count=30&language=ar&format=json&countryCode=JO';
-    const res=await fetch(url); if(!res.ok) throw new Error('geocoding failed');
-    const data=await res.json();
-    const rows=data.results||[];
-    return rows.filter(x=>(x.country_code||'').toUpperCase()==='JO');
-  }
-  async function search(q){
-    lastQuery=q;
-    dropdown.innerHTML='';
-    const normalized=q.trim();
-    if(!normalized){dropdown.classList.remove('open');return;}
-    if(normalized.length<2){showStatus('اكتب حرفين على الأقل للبحث ضمن الأردن فقط.');return;}
-    showStatus('جارٍ البحث عن المدن والمناطق الأردنية...');
-    try{
-      let matches=[];
-      const norm=s=>String(s||'').replace(/[أإآ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/[ًٌٍَُِّْـ]/g,'').toLowerCase().trim();
-      const nq=norm(normalized);
-      const local=canonical.filter(x=>norm(x).includes(nq)||nq.includes(norm(x))).slice(0,12);
-      if(local.length){
-        for(const ar of local){
-          const results=await geocode(labels[ar]);
-          if(results.length) matches.push({label:ar,place:results[0]});
-        }
-      } else {
-        const results=await geocode(normalized);
-        matches=results.map(p=>({label:[p.name,p.admin1].filter(Boolean).join('، '),place:p}));
-      }
-      if(lastQuery!==q)return;
-      dropdown.innerHTML='';
-      if(!matches.length){
-        showStatus('لم نعثر على منطقة أردنية مطابقة. جرّب اسم مدينة أو منطقة أخرى.');
-        return;
-      }
-      matches.slice(0,8).forEach(item=>{
-        addOption(item.label,item.place.admin1||'الأردن',()=>selectPlace(item.place,item.label));
-      });
-      dropdown.classList.add('open');
-    }catch(e){showStatus('تعذّر البحث. تحقق من اتصال الإنترنت ثم حاول مجددًا.');}
-  }
-  async function nearby(place){
-    // Nearby options are computed from the selected location, never a fixed strip.
-    try{
-      const r=await fetch('https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(place.name)+'&count=30&language=ar&format=json&countryCode=JO');
-      const d=await r.json();
-      const list=(d.results||[]).filter(x=>(x.country_code||'').toUpperCase()==='JO' &&
-        (x.id!==place.id) && Math.abs(x.latitude-place.latitude)<1.0 && Math.abs(x.longitude-place.longitude)<1.0);
-      list.sort((a,b)=>distance(place,a)-distance(place,b));
-      return list.slice(0,5);
-    }catch(e){return []}
-  }
-  function distance(a,b){
-    const rad=x=>x*Math.PI/180, dlat=rad(b.latitude-a.latitude),dlon=rad(b.longitude-a.longitude);
-    const n=Math.sin(dlat/2)**2+Math.cos(rad(a.latitude))*Math.cos(rad(b.latitude))*Math.sin(dlon/2)**2;
-    return 6371*2*Math.atan2(Math.sqrt(n),Math.sqrt(1-n));
-  }
-  async function selectPlace(place,label){
-    if(!place)return;
-    dropdown.classList.remove('open');
-    input.value=label;
-    // Keep existing site search workflow in sync first.
-    if(searchBtn) searchBtn.click();
-    const selected={name:label,latitude:place.latitude,longitude:place.longitude,admin1:place.admin1||'',country:'Jordan'};
-    window.selectedWeatherLocation=selected;
-    window.currentLatitude=selected.latitude; window.currentLongitude=selected.longitude;
-    window.weatherLatitude=selected.latitude; window.weatherLongitude=selected.longitude;
-    try{localStorage.setItem('petraWeatherSelectedLocation',JSON.stringify(selected));}catch(e){}
-    window.dispatchEvent(new CustomEvent('weatherlocationchange',{detail:selected}));
-    let didCall=false;
-    ['setWeatherLocation','loadWeather','fetchWeather','updateWeather','getWeather','loadForecast','fetchForecast','updateForecast','fetchWeatherData'].forEach(fn=>{
-      if(typeof window[fn]==='function'){try{window[fn](selected.latitude,selected.longitude,selected.name);didCall=true}catch(e){}}
-    });
-    dropdown.innerHTML='';
-    const title=document.createElement('div'); title.className='petra-nearby-title'; title.textContent='مناطق قريبة من '+label; dropdown.appendChild(title);
-    const wait=document.createElement('div'); wait.className='petra-search-status'; wait.textContent='جارٍ تحديد المناطق القريبة...'; dropdown.appendChild(wait); dropdown.classList.add('open');
-    const nearbyList=await nearby(place);
-    if(!dropdown.isConnected)return;
-    dropdown.innerHTML='<div class="petra-nearby-title">مناطق قريبة من '+escapeHtml(label)+'</div>';
-    if(nearbyList.length){
-      nearbyList.forEach(p=>addOption([p.name,p.admin1].filter(Boolean).join('، '),Math.round(distance(place,p))+' كم',()=>selectPlace(p,[p.name,p.admin1].filter(Boolean).join('، '))));
-    }else{
-      const el=document.createElement('div');el.className='petra-search-status';el.textContent='لا توجد نتائج قريبة إضافية متاحة.';dropdown.appendChild(el);
-    }
-    dropdown.classList.add('open');
-    // Hide nearby list after a short idle only if the search box is not focused.
-    setTimeout(()=>{if(document.activeElement!==input)dropdown.classList.remove('open')},9000);
-  }
-
-  input.addEventListener('input',()=>{
-    clearTimeout(timer);
-    timer=setTimeout(()=>search(input.value),250);
-  });
-  input.addEventListener('focus',()=>{if(input.value.trim())search(input.value)});
-  input.addEventListener('keydown',e=>{
-    if(e.key==='Escape')dropdown.classList.remove('open');
-    if(e.key==='Enter'){
-      const first=dropdown.querySelector('.petra-location-option');
-      if(first){e.preventDefault();first.click();}
-      else if(searchBtn)searchBtn.click();
-    }
-  });
-  document.addEventListener('click',e=>{if(!wrap.contains(e.target))dropdown.classList.remove('open')});
-
-  // GPS uses the same selection workflow so the forecast follows the user's coordinates.
-  if(gpsBtn){
-    gpsBtn.addEventListener('click',()=>{
-      if(!navigator.geolocation)return;
-      navigator.geolocation.getCurrentPosition(async pos=>{
-        const p={name:'موقعي الحالي',latitude:pos.coords.latitude,longitude:pos.coords.longitude,admin1:'الأردن'};
-        // Reverse lookup to show the nearest Jordanian locality where available.
-        try{
-          const url='https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent('Wadi Musa')+'&count=1&language=ar&format=json';
-          // Do not substitute a city for the GPS coordinates if reverse lookup is unavailable.
-          const selected={name:'موقعي الحالي',latitude:p.latitude,longitude:p.longitude,admin1:'الموقع المحدد',country:'Jordan'};
-          window.selectedWeatherLocation=selected;
-          window.currentLatitude=p.latitude;window.currentLongitude=p.longitude;
-          try{localStorage.setItem('petraWeatherSelectedLocation',JSON.stringify(selected))}catch(e){}
-          window.dispatchEvent(new CustomEvent('weatherlocationchange',{detail:selected}));
-          ['setWeatherLocation','loadWeather','fetchWeather','updateWeather','getWeather','loadForecast','fetchForecast','updateForecast','fetchWeatherData'].forEach(fn=>{if(typeof window[fn]==='function'){try{window[fn](p.latitude,p.longitude,selected.name)}catch(e){}}});
-          input.value='موقعي الحالي'; if(searchBtn)searchBtn.click();
-        }catch(e){}
-      },()=>{}, {enableHighAccuracy:true,timeout:15000,maximumAge:60000});
-    });
-  }
-})();
-</script>
 
 <script>
 (function(){
@@ -2285,13 +2941,12 @@ body [style*="background:#fff"],body [style*="background: #fff"],body [style*="b
  loadPsdAlerts();setInterval(loadPsdAlerts,10*60*1000);
 })();
 </script>
-
 <style id="petra-warning-box-red-green-final">
 /* Shared warning boxes: red if either source has a fresh alert, green only when both sources confirm none. */
-#officialCapWarning.warning-state-red,#psdPublicSafetyAlerts.warning-state-red{background:linear-gradient(145deg,#b91c1c,#7f1d1d)!important;border:2px solid #ef4444!important;border-top:5px solid #ffb4b4!important;color:#fff!important;box-shadow:0 0 0 2px #7f1d1d55,0 10px 28px #0005!important}
-#officialCapWarning.warning-state-green,#psdPublicSafetyAlerts.warning-state-green{background:linear-gradient(145deg,#166534,#14532d)!important;border:2px solid #4ade80!important;border-top:5px solid #86efac!important;color:#fff!important;box-shadow:0 0 0 2px #14532d55,0 10px 28px #0004!important}
-#officialCapWarning.warning-state-unknown,#psdPublicSafetyAlerts.warning-state-unknown{background:#172337!important;border:2px solid #64748b!important;border-top:5px solid #94a3b8!important;color:#fff!important}
-#officialCapWarning.warning-state-red h2,#officialCapWarning.warning-state-green h2,#officialCapWarning.warning-state-unknown h2,#psdPublicSafetyAlerts.warning-state-red h2,#psdPublicSafetyAlerts.warning-state-green h2,#psdPublicSafetyAlerts.warning-state-unknown h2{color:#fff!important;font-weight:900!important;border-bottom-color:#ffffff66!important}
+#officialCapWarning.warning-state-red,#psdPublicSafetyAlerts.warning-state-red.warning-state-red{background:linear-gradient(145deg,#b91c1c,#7f1d1d)!important;border:2px solid #ef4444!important;border-top:5px solid #ffb4b4!important;color:#fff!important;box-shadow:0 0 0 2px #7f1d1d55,0 10px 28px #0005!important}
+#officialCapWarning.warning-state-green,#psdPublicSafetyAlerts.warning-state-green.warning-state-green{background:linear-gradient(145deg,#166534,#14532d)!important;border:2px solid #4ade80!important;border-top:5px solid #86efac!important;color:#fff!important;box-shadow:0 0 0 2px #14532d55,0 10px 28px #0004!important}
+#officialCapWarning.warning-state-unknown,#psdPublicSafetyAlerts.warning-state-unknown.warning-state-unknown{background:#172337!important;border:2px solid #64748b!important;border-top:5px solid #94a3b8!important;color:#fff!important}
+#officialCapWarning.warning-state-red h2,#officialCapWarning.warning-state-green h2,#officialCapWarning.warning-state-unknown h2,#psdPublicSafetyAlerts.warning-state-red h2,#psdPublicSafetyAlerts.warning-state-green h2,#psdPublicSafetyAlerts.warning-state-unknown h2.warning-state-red h2.warning-state-green h2.warning-state-unknown h2{color:#fff!important;font-weight:900!important;border-bottom-color:#ffffff66!important}
 #officialCapWarning.warning-state-red p,#officialCapWarning.warning-state-red span,#officialCapWarning.warning-state-red div,#officialCapWarning.warning-state-red strong,#officialCapWarning.warning-state-red h3,#officialCapWarning.warning-state-green p,#officialCapWarning.warning-state-green span,#officialCapWarning.warning-state-green div,#officialCapWarning.warning-state-green strong,#officialCapWarning.warning-state-green h3,#officialCapWarning.warning-state-unknown p,#officialCapWarning.warning-state-unknown span,#officialCapWarning.warning-state-unknown div,#officialCapWarning.warning-state-unknown strong,#officialCapWarning.warning-state-unknown h3,#psdPublicSafetyAlerts.warning-state-red p,#psdPublicSafetyAlerts.warning-state-red span,#psdPublicSafetyAlerts.warning-state-red div,#psdPublicSafetyAlerts.warning-state-red strong,#psdPublicSafetyAlerts.warning-state-red h3,#psdPublicSafetyAlerts.warning-state-green p,#psdPublicSafetyAlerts.warning-state-green span,#psdPublicSafetyAlerts.warning-state-green div,#psdPublicSafetyAlerts.warning-state-green strong,#psdPublicSafetyAlerts.warning-state-green h3,#psdPublicSafetyAlerts.warning-state-unknown p,#psdPublicSafetyAlerts.warning-state-unknown span,#psdPublicSafetyAlerts.warning-state-unknown div,#psdPublicSafetyAlerts.warning-state-unknown strong,#psdPublicSafetyAlerts.warning-state-unknown h3{color:#fff!important;font-weight:800!important}
 #officialCapWarning.warning-state-red .cap-warning-status,#officialCapWarning.warning-state-green .cap-warning-status,#officialCapWarning.warning-state-unknown .cap-warning-status,#psdPublicSafetyAlerts.warning-state-red .psd-alert-status,#psdPublicSafetyAlerts.warning-state-green .psd-alert-status,#psdPublicSafetyAlerts.warning-state-unknown .psd-alert-status{background:#0005!important;border:1px solid #ffffff77!important;color:#fff!important;font-weight:900!important}
 #officialCapWarning.warning-state-red .cap-warning-item,#officialCapWarning.warning-state-green .cap-warning-item{background:#0004!important;border:1px solid #ffffff66!important;border-right:5px solid #fff!important;color:#fff!important}
@@ -2301,6 +2956,415 @@ body [style*="background:#fff"],body [style*="background: #fff"],body [style*="b
 #officialCapWarning.warning-state-red .cap-warning-footer,#officialCapWarning.warning-state-green .cap-warning-footer,#psdPublicSafetyAlerts.warning-state-red .psd-alert-footer,#psdPublicSafetyAlerts.warning-state-green .psd-alert-footer{color:#fff!important;border-top-color:#ffffff66!important}
 #psdPublicSafetyAlerts.warning-state-red .psd-alert-links a,#psdPublicSafetyAlerts.warning-state-green .psd-alert-links a{background:#0004!important;border-color:#ffffff88!important;color:#fff!important;font-weight:900!important}
 #officialCapWarning.warning-state-red .cap-live-badge{background:#fff!important;color:#991b1b!important}
+@media(prefers-reduced-motion:reduce){#officialCapWarning.warning-state-red,#psdPublicSafetyAlerts.warning-state-red.warning-state-red{animation:none!important}}
+</style>
+
+<style id="petra-reference-design-final">
+:root{color-scheme:dark;--petra-navy:#06111f;--petra-card:#0b1b2d;--petra-inner:#10243a;--petra-border:#173653;--petra-white:#f4f8ff;--petra-muted:#bfd0e2;--petra-cyan:#43c8f5}
+html,body{background:#040c16!important;color:var(--petra-white)!important}
+body{padding:0!important;font-family:'Cairo',system-ui,Tahoma,Arial,sans-serif!important;background:radial-gradient(ellipse at 50% -10%,#163956 0%,#071321 44%,#040a12 100%)!important}
+#mainHeader{max-width:1400px!important;min-height:165px!important;margin:0 auto!important;padding:24px clamp(16px,4vw,44px)!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:20px!important;text-align:right!important;border:0!important;border-bottom:2px solid #19344c!important;border-radius:0!important;box-shadow:0 12px 35px #0007!important;background:linear-gradient(90deg,rgba(3,13,24,.95),rgba(5,20,34,.80)),radial-gradient(ellipse at 50% 100%,#7c421e,#11253b 55%,#06111e)!important}
+#mainHeader:before{background:linear-gradient(100deg,#06111eaa,transparent 55%,#06111e99)!important}
+#mainHeader .site-logo{width:82px!important;height:82px!important;object-fit:contain!important;background:#0b1b2d!important;border:2px solid #e7b75a!important;margin:0!important;flex:0 0 auto!important}
+#mainHeader h1{font-size:clamp(1.45rem,3vw,2.35rem)!important;font-weight:900!important;color:#fff!important;margin:0!important;line-height:1.4!important}
+#mainHeader p{color:#d7e6f4!important;margin:5px 0 8px!important;font-weight:600!important}
+#mainHeader .date-badge{background:#071725cc!important;color:#d8e9f7!important;border:1px solid #38536a!important;border-radius:30px!important;font-size:.8rem!important}
+.container{max-width:1400px!important;width:100%!important;margin:0 auto!important;padding:clamp(10px,2vw,22px)!important;display:grid!important;grid-template-columns:minmax(0,1.65fr) minmax(280px,1fr)!important;gap:16px!important;align-items:start!important;background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important}
+.container main,.container aside{min-width:0!important}
+.bulletin-warning-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important;align-items:stretch!important}
+#officialCapWarning,#psdPublicSafetyAlerts{min-width:0!important;min-height:215px!important;border-radius:15px!important;padding:14px!important;background:#071b2b!important;border:1px solid #1b4961!important;box-shadow:0 8px 24px #0005!important}
+#officialCapWarning h2,#psdPublicSafetyAlerts h2 h2{font-size:clamp(.88rem,1.2vw,1.08rem)!important;line-height:1.5!important;color:#f5f9ff!important;gap:8px!important}
+.psd-alert-intro,.cap-warning-footer,.psd-alert-footer{font-size:.76rem!important;color:#bfd0df!important;line-height:1.7!important}
+.psd-alert-status,.cap-warning-status{font-weight:800!important;border-radius:9px!important}
+#officialCapWarning.warning-state-red,#psdPublicSafetyAlerts.warning-state-red.warning-state-red{background:linear-gradient(145deg,#500b17,#270a14)!important;border:2px solid #ff344f!important;box-shadow:0 0 0 1px #ff344f22,0 10px 26px #0005!important}
+#officialCapWarning.warning-state-green,#psdPublicSafetyAlerts.warning-state-green.warning-state-green{background:linear-gradient(145deg,#063b25,#052718)!important;border:2px solid #00d26a!important;box-shadow:0 0 0 1px #00d26a22,0 10px 26px #0005!important}
+#officialCapWarning.warning-state-unknown,#psdPublicSafetyAlerts.warning-state-unknown.warning-state-unknown{background:#122338!important;border:2px solid #60758b!important}
+.panel,.weather-now-box,.early-warning-box,.social-footer-box,.location-toolbar,.gfs-live-card,.radar-frame-container,.external-radar-card,.notification-subscribe-panel,#petraRainViewerPanel,#petraLightningMapPanel,.jordan-places-panel{background:linear-gradient(145deg,#0b1c2e,#091625)!important;color:#f3f8ff!important;border:1px solid #183650!important;border-radius:16px!important;box-shadow:0 8px 24px #0004!important}
+.panel h1,.panel h2,.panel h3,.panel h4,.weather-now-box h2,.weather-now-box h3,.early-warning-box h2,.live-bulletin h2,.social-footer-box h3,.external-radar-card h3,.gfs-title-row h2,#petraRainViewerPanel h2,#petraLightningMapPanel h2{color:#f4f8ff!important;border-bottom-color:#24445f!important}
+body p,body li,body label,body small,body .muted,body .description,body .meta,body .subtitle,body .notification-intro,body .notification-disclaimer,body .location-status,body .gfs-meta,body .gfs-description,body .live-data-meta,body .external-radar-card p,body .social-footer-box p,#petraRainViewerPanel p,#petraRainViewerPanel span,#petraLightningMapPanel p{color:#c1d2e3!important}
+.weather-details-text,.w-item,.hourly-item:not(.nighttime):not(.night-hour),.alert-card,.forecast-table,.link-list a,.wo-toolbar,.wo-btn,.jordan-places-heading,.notification-options label,.w-box,.cap-warning-item{background:#10243a!important;color:#edf6ff!important;border-color:#1d3b57!important}
+.w-item strong,.hourly-temp,.w-box strong{color:#77d7ff!important}.w-item span,.hourly-time,.alert-card .distance,.alert-card .time{color:#c2d2e2!important}
+.forecast-table{background:#0b1b2d!important}.forecast-table th{background:#153652!important;color:#fff!important}.forecast-table td,.forecast-table th{border-color:#1c3a54!important;color:#edf6ff!important}
+#petraRainViewerPanel,#petraLightningMapPanel{background:#091827!important}#petraRainViewerPanel h2,#petraLightningMapPanel h2{color:#f4f8ff!important}#petraRadarMap{background:#081321!important}
+footer{background:#071321!important;color:#c4d4e4!important;border-color:#1b344c!important}
+a{color:#7ddcff!important}a:hover{color:#c3f1ff!important}
+.direct-link-btn{background:linear-gradient(135deg,#eaa34b,#c94d34)!important;color:#fff!important}
+@media(max-width:940px){.container{grid-template-columns:minmax(0,1fr)!important}.bulletin-warning-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:620px){#mainHeader{min-height:0!important;flex-wrap:wrap!important;justify-content:center!important;text-align:center!important;padding:20px 12px!important}#mainHeader .site-logo{width:66px!important;height:66px!important}#mainHeader>h1,#mainHeader>p,#mainHeader>.date-badge{width:100%!important;text-align:center!important}.bulletin-warning-grid{grid-template-columns:minmax(0,1fr)!important}.container{padding:9px!important;gap:10px!important}#officialCapWarning,#psdPublicSafetyAlerts{min-height:0!important}}
+</style>
+
+
+<script id="free-lightning-sources-controls">
+(()=>{
+ const locate=document.getElementById('lightningLocateMe');
+ const notify=document.getElementById('lightningEnableNotifications');
+ const status=document.getElementById('lightningLocationStatus');
+ const mapFrame=document.querySelector('#petraLightningMapPanel iframe');
+ const mapsLink=document.getElementById('lightningMapsUserLink');
+ const blitzLink=document.getElementById('blitzortungUserLink');
+ if(locate) locate.addEventListener('click',()=>{
+   if(!navigator.geolocation){status.textContent='هذا المتصفح لا يدعم تحديد الموقع. يمكنك فتح الخرائط واختيار موقعك يدويًا.';return;}
+   status.textContent='جارٍ طلب إذن الموقع من جهازك…';
+   navigator.geolocation.getCurrentPosition(pos=>{
+     const lat=pos.coords.latitude.toFixed(4), lon=pos.coords.longitude.toFixed(4), zoom=8;
+     const hash=`#${zoom}/${lat}/${lon}`;
+     if(mapFrame){const u=new URL(mapFrame.src);u.hash=hash;mapFrame.src=u.toString();}
+     if(mapsLink) mapsLink.href='https://www.lightningmaps.org/'+hash;
+     if(blitzLink) blitzLink.href='https://map.blitzortung.org/'+hash;
+     status.textContent='تم تحديد موقعك على الخريطة. لم تُرسل إحداثياتك إلى خادم الموقع، لكنها تُستخدم لفتح الخريطة في هذه المنطقة.';
+   },err=>{status.textContent=err.code===1?'لم تمنح إذن الموقع. يمكنك اختيار موقعك يدويًا على الخريطة.':'تعذّر تحديد الموقع؛ تحقق من GPS أو اختر موقعك يدويًا.';},{enableHighAccuracy:true,timeout:12000,maximumAge:60000});
+ });
+ if(notify) notify.addEventListener('click',async()=>{
+   if(!('Notification' in window)){status.textContent='الإشعارات غير مدعومة في هذا المتصفح.';return;}
+   try{const permission=await Notification.requestPermission();
+     if(permission==='granted'){
+       status.textContent='تم السماح بإشعارات المتصفح. لا توجد حاليًا بيانات ضربات برق آلية موثوقة مرتبطة بموقعك لإطلاق تنبيه عند اقتراب البرق؛ لذلك لن نرسل تنبيهًا تجريبيًا مضللًا.';
+     }else{status.textContent='لم يتم تفعيل الإشعارات. يمكنك متابعة خرائط البرق عبر الروابط أعلاه.';}
+   }catch(e){status.textContent='تعذّر تفعيل الإشعارات في هذا المتصفح.';}
+ });
+})();
+</script>
+
+
+<style id="petra-compact-alerts-and-layout-v2">
+/* Compact layout and readable, smaller headings */
+#mainHeader{min-height:0!important;padding:14px clamp(12px,2.5vw,28px)!important;margin:0 auto 8px!important;gap:12px!important}
+#mainHeader h1{font-size:clamp(1.15rem,2.2vw,1.75rem)!important;line-height:1.3!important}
+#mainHeader p{font-size:.88rem!important;margin:3px 0 5px!important;line-height:1.45!important}
+#mainHeader .site-logo{width:58px!important;height:58px!important}
+.container{padding:8px clamp(8px,1.4vw,16px)!important;gap:10px!important}
+.panel,.weather-now-box,.early-warning-box,.social-footer-box{padding:12px!important;margin-bottom:10px!important;border-radius:13px!important}
+.panel h1,.panel h2,.panel h3,.panel h4,.weather-now-box h2,.weather-now-box h3,.early-warning-box h2,.live-bulletin h2,.social-footer-box h3,.external-radar-card h3,.gfs-title-row h2,#petraRainViewerPanel h2,#petraLightningMapPanel h2{font-size:clamp(.88rem,1.15vw,1.02rem)!important;line-height:1.4!important;padding-bottom:7px!important;margin-bottom:9px!important}
+.bulletin-warning-grid{gap:9px!important;margin-bottom:10px!important}
+#officialCapWarning,#psdPublicSafetyAlerts{min-height:0!important;padding:12px!important;border-radius:13px!important}
+.cap-warning-items,.psd-alert-items{font-size:.88rem!important;line-height:1.65!important}
+.cap-warning-status,.psd-alert-status{font-size:.82rem!important;padding:7px 9px!important;margin:6px 0!important}
+header,#mainHeader{border-radius:0!important}
+@media(max-width:620px){#mainHeader{padding:12px 10px!important;margin:0 auto 6px!important}#mainHeader .site-logo{width:48px!important;height:48px!important}.container{padding:7px!important;gap:8px!important}.panel,.weather-now-box,.early-warning-box,.social-footer-box{padding:10px!important;margin-bottom:8px!important}#officialCapWarning,#psdPublicSafetyAlerts{padding:10px!important}.bulletin-warning-grid{gap:8px!important}}
+/* Both official warning boxes: green when both sources confirm no active warnings; red with pulse if either reports an active warning. */
+#officialCapWarning.warning-state-green,#psdPublicSafetyAlerts.warning-state-green{background:linear-gradient(145deg,#064e2b,#052e1b)!important;border:2px solid #22c55e!important;color:#fff!important;animation:none!important}
+#officialCapWarning.warning-state-red,#psdPublicSafetyAlerts.warning-state-red{background:linear-gradient(145deg,#7f101b,#450a12)!important;border:2px solid #ff334f!important;color:#fff!important;animation:petraWarningBlink 1.15s ease-in-out infinite!important}
+#officialCapWarning.warning-state-red h2,#officialCapWarning.warning-state-green h2,#psdPublicSafetyAlerts.warning-state-red h2,#psdPublicSafetyAlerts.warning-state-green h2{color:#fff!important;border-bottom-color:#ffffff55!important;font-size:clamp(.88rem,1.15vw,1.02rem)!important}
+#officialCapWarning.warning-state-red .cap-warning-status,#officialCapWarning.warning-state-green .cap-warning-status,#psdPublicSafetyAlerts.warning-state-red .psd-alert-status,#psdPublicSafetyAlerts.warning-state-green .psd-alert-status{background:#001b10aa!important;border:1px solid #ffffff66!important;color:#fff!important;font-weight:900!important}
+@keyframes petraWarningBlink{0%,100%{box-shadow:0 0 0 0 #ff334f33,0 8px 24px #0005;filter:brightness(1)}50%{box-shadow:0 0 0 4px #ff334f88,0 0 22px #ff334f66;filter:brightness(1.14)}}
 @media(prefers-reduced-motion:reduce){#officialCapWarning.warning-state-red,#psdPublicSafetyAlerts.warning-state-red{animation:none!important}}
 </style>
+
+\n<style id="petra-mobile-first-layout">
+/* Mobile-first layout: smaller headings, less vertical padding, and tighter cards. */
+html{font-size:16px; -webkit-text-size-adjust:100%; text-size-adjust:100%;}
+body{margin:0!important;overflow-x:hidden!important;}
+#mainHeader h1{font-size:clamp(1.08rem,4.6vw,1.55rem)!important;line-height:1.25!important;}
+#mainHeader p{font-size:clamp(.76rem,3.2vw,.9rem)!important;line-height:1.4!important;}
+.container{width:min(100%,1200px)!important;max-width:1200px!important;box-sizing:border-box!important;margin-inline:auto!important;}
+.panel h1,.panel h2,.panel h3,.panel h4,.weather-now-box h2,.weather-now-box h3,.early-warning-box h2,.live-bulletin h2,.social-footer-box h3,.external-radar-card h3,.gfs-title-row h2,#petraRainViewerPanel h2,#petraLightningMapPanel h2,#officialCapWarning h2,#psdPublicSafetyAlerts h2{font-size:clamp(.9rem,2.5vw,1.08rem)!important;line-height:1.35!important;letter-spacing:0!important;}
+.panel,.weather-now-box,.early-warning-box,.social-footer-box,#officialCapWarning,#psdPublicSafetyAlerts{box-sizing:border-box!important;min-width:0!important;}
+@media(max-width:620px){
+  html{font-size:14px!important;}
+  #mainHeader{padding:9px 10px!important;min-height:0!important;gap:5px!important;margin-bottom:5px!important;}
+  #mainHeader h1{font-size:1.12rem!important;line-height:1.25!important;}
+  #mainHeader p{font-size:.75rem!important;line-height:1.35!important;margin:2px 0!important;}
+  #mainHeader .site-logo{width:42px!important;height:42px!important;}
+  #mainHeader .date-badge{font-size:.68rem!important;padding:4px 8px!important;}
+  .container{width:100%!important;padding:5px!important;gap:6px!important;}
+  .panel,.weather-now-box,.early-warning-box,.social-footer-box{padding:8px!important;margin:0 0 6px!important;border-radius:10px!important;}
+  #officialCapWarning,#psdPublicSafetyAlerts{padding:8px!important;border-radius:10px!important;margin-bottom:6px!important;}
+  .panel h1,.panel h2,.panel h3,.panel h4,.weather-now-box h2,.weather-now-box h3,.early-warning-box h2,.live-bulletin h2,.social-footer-box h3,.external-radar-card h3,.gfs-title-row h2,#petraRainViewerPanel h2,#petraLightningMapPanel h2,#officialCapWarning h2,#psdPublicSafetyAlerts h2{font-size:.9rem!important;line-height:1.32!important;padding-bottom:5px!important;margin:0 0 6px!important;}
+  .bulletin-warning-grid{grid-template-columns:minmax(0,1fr)!important;gap:6px!important;margin:0 0 6px!important;}
+  .cap-warning-items,.psd-alert-items{font-size:.78rem!important;line-height:1.5!important;}
+  .cap-warning-status,.psd-alert-status{font-size:.76rem!important;line-height:1.45!important;padding:6px 8px!important;margin:5px 0!important;}
+  .psd-alert-intro,.psd-alert-item p,.cap-warning-footer,.psd-alert-footer{font-size:.72rem!important;line-height:1.5!important;}
+  .psd-alert-links a{font-size:.7rem!important;padding:6px 7px!important;}
+  #petraRadarMap,#petraRainViewerPanel iframe,#petraLightningMapPanel iframe{height:230px!important;min-height:190px!important;}
+  .forecast-grid,.forecast-container{gap:5px!important;}
+  .forecast-card,.daily-forecast-card{padding:6px!important;min-width:0!important;}
+  img,iframe,canvas,video{max-width:100%;}
+}
+@media(max-width:380px){
+  #mainHeader h1{font-size:1.02rem!important;}
+  .container{padding:4px!important;gap:5px!important;}
+  .panel,.weather-now-box,.early-warning-box,.social-footer-box,#officialCapWarning,#psdPublicSafetyAlerts{padding:7px!important;}
+  #petraRadarMap,#petraRainViewerPanel iframe,#petraLightningMapPanel iframe{height:205px!important;min-height:180px!important;}
+}
+</style>
+
+<script id="petra-location-manager">
+(function(){
+ 'use strict';
+ var $=function(id){return document.getElementById(id)};
+ var input=$('locationSearch'),searchBtn=$('searchLocationBtn'),gpsBtn=$('gpsLocationBtn'),statusEl=$('locationStatus');
+ if(!input)return;
+ var SAVED='petraSavedLocationV2';
+ var DEFAULT={name:'البترا – وادي موسى',lat:30.3225,lon:35.4733,gov:'معان'};
+ /* Offline gazetteer of Jordanian places: [name, governorate, lat, lon] — used for instant search and for "nearest Jordanian area" */
+ var G=[
+ ['عمّان','العاصمة',31.95,35.93],['سحاب','العاصمة',31.87,36.00],['ناعور','العاصمة',31.86,35.83],['الجيزة','العاصمة',31.70,35.95],['القويسمة','العاصمة',31.98,35.94],['ماركا','العاصمة',31.97,35.99],['أبو نصير','العاصمة',32.07,35.88],['صويلح','العاصمة',32.02,35.83],['الجبيهة','العاصمة',32.02,35.87],['خلدا','العاصمة',31.99,35.86],['وادي السير','العاصمة',31.95,35.82],['الموقر','العاصمة',31.83,36.08],['حسبان','العاصمة',31.80,35.82],['أم الرصاص','العاصمة',31.50,35.92],
+ ['إربد','إربد',32.56,35.85],['الرمثا','إربد',32.57,36.00],['الحصن','إربد',32.49,35.88],['بيت راس','إربد',32.60,35.83],['الأغوار الشمالية','إربد',32.55,35.60],['أم قيس','إربد',32.65,35.68],['دير أبي سعيد','إربد',32.62,35.68],
+ ['الزرقاء','الزرقاء',32.07,36.09],['الرصيفة','الزرقاء',32.02,36.05],['الهاشمية','الزرقاء',32.10,36.12],['الأزرق','الزرقاء',31.88,36.82],
+ ['السلط','البلقاء',32.04,35.73],['الفحيص','البلقاء',32.02,35.78],['ماحص','البلقاء',31.99,35.77],['دير علا','البلقاء',32.20,35.62],['الشونة الجنوبية','البلقاء',31.80,35.60],
+ ['مادبا','مادبا',31.72,35.79],['ذيبان','مادبا',31.50,35.78],['ماعين','مادبا',31.67,35.72],['جبل نيبو','مادبا',31.77,35.72],
+ ['الكرك','الكرك',31.18,35.70],['المزار الجنوبي','الكرك',31.07,35.69],['مؤتة','الكرك',31.08,35.69],['غور الصافي','الكرك',31.04,35.47],['القطرانة','الكرك',31.25,36.04],['الربة','الكرك',31.27,35.75],['قلعة الكرك','الكرك',31.18,35.70],
+ ['الطفيلة','الطفيلة',30.84,35.60],['ضانا','الطفيلة',30.68,35.61],['بصيرا','الطفيلة',30.72,35.62],['الحسا','الطفيلة',30.84,36.00],
+ ['وادي موسى','معان',30.3225,35.4733],['البترا','معان',30.33,35.44],['السيق (البترا)','معان',30.33,35.45],['الخزنة (البترا)','معان',30.32,35.45],['البيضا','معان',30.38,35.45],['الشوبك','معان',30.52,35.56],['قلعة الشوبك','معان',30.53,35.56],['معان','معان',30.20,35.73],['الجفر','معان',30.29,36.17],
+ ['وادي رم','العقبة',29.58,35.42],['القويرة','العقبة',29.70,35.30],['الحميمة','العقبة',29.70,35.35],['العقبة','العقبة',29.53,35.01],
+ ['جرش','جرش',32.27,35.90],['سوف','جرش',32.28,35.97],['جرش الأثرية','جرش',32.28,35.89],
+ ['عجلون','عجلون',32.33,35.75],['عنجرة','عجلون',32.29,35.80],['كفرنجة','عجلون',32.30,35.71],['قلعة عجلون','عجلون',32.32,35.73],
+ ['المفرق','المفرق',32.34,36.21],['أم الجمال','المفرق',32.33,36.37],['الصفاوي','المفرق',32.20,37.13],['الرويشد','المفرق',32.50,38.20],
+ ['البحر الميت','معالم ومناطق',31.57,35.58],['حمامات ماعين','معالم ومناطق',31.60,35.62],['وادي الموجب','معالم ومناطق',31.45,35.80],['سد الملك طلال','معالم ومناطق',32.20,35.78],['الأغوار','معالم ومناطق',32.00,35.60]
+ ];
+ function norm(s){return String(s||'').replace(/[ً-ْـ]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/\s+/g,' ').toLowerCase().trim()}
+ function dist(a,b,c,d){var r=Math.PI/180,x=Math.sin((c-a)*r/2),y=Math.sin((d-b)*r/2),n=x*x+Math.cos(a*r)*Math.cos(c*r)*y*y;return 6371*2*Math.atan2(Math.sqrt(n),Math.sqrt(1-n))}
+ function nearest(lat,lon){var best=null,bd=1e9;G.forEach(function(p){var d=dist(lat,lon,p[2],p[3]);if(d<bd){bd=d;best=p}});return {place:best,km:bd}}
+ function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+ function isWord(s){return s&&!/^[\d\s.,\-+/]+$/.test(s)}
+ function setStatus(t,err){if(statusEl){statusEl.textContent=t;statusEl.classList.toggle('error',!!err)}}
+ function getJSON(url,ms){
+  var ctl=new AbortController(),t=setTimeout(function(){ctl.abort()},ms||5000);
+  return fetch(url,{signal:ctl.signal,headers:{'Accept':'application/json'}}).then(function(r){clearTimeout(t);if(!r.ok)throw new Error('HTTP '+r.status);return r.json()});
+ }
+
+ /* ---------- apply / persist ---------- */
+ var current=null;
+ function apply(name,lat,lon,mode,gov){
+  current={name:name,lat:+lat,lon:+lon,mode:mode||'search',gov:gov||''};
+  window.PetraLocation=current;
+  try{localStorage.setItem(SAVED,JSON.stringify(current))}catch(e){}
+  input.value=name;
+  if(typeof window.PetraApplyLocation==='function')window.PetraApplyLocation(lat,lon,name);
+  setStatus('الموقع الحالي: '+name+(gov?' – '+gov:'')+'. جميع بيانات الطقس والتنبيهات تتبع هذا الموقع.');
+  syncLightning(lat,lon);
+  hidePrompt();
+ }
+ function syncLightning(lat,lon){
+  try{
+   var f=document.querySelector('#petraLightningMapPanel iframe');
+   if(f&&f.src){var u=new URL(f.src);var h='#9/'+(+lat).toFixed(3)+'/'+(+lon).toFixed(3);if(u.hash!==h){u.hash=h;f.src=u.toString()}}
+   var a=$('lightningMapsUserLink'),b=$('blitzortungUserLink');
+   if(a)a.href='https://www.lightningmaps.org/#9/'+(+lat).toFixed(3)+'/'+(+lon).toFixed(3);
+   if(b)b.href='https://map.blitzortung.org/#9/'+(+lat).toFixed(3)+'/'+(+lon).toFixed(3);
+  }catch(e){}
+ }
+
+ /* ---------- search (Jordan only) ---------- */
+ var wrap=input.closest('.location-search-wrap')||input.parentNode;
+ wrap.style.position='relative';
+ var dd=document.createElement('div');dd.id='petraLocationDropdown';dd.setAttribute('role','listbox');wrap.appendChild(dd);
+ var seq=0,timer=null;
+ function showMsg(t){dd.innerHTML='<div class="petra-search-status">'+esc(t)+'</div>';dd.classList.add('open')}
+ function option(label,detail,fn){
+  var b=document.createElement('button');b.type='button';b.className='petra-location-option';b.setAttribute('role','option');
+  b.innerHTML='<span>'+esc(label)+'</span><small>'+esc(detail||'الأردن')+'</small>';b.addEventListener('click',fn);dd.appendChild(b);
+ }
+ function localMatches(q){
+  var nq=norm(q);if(!nq)return [];
+  var starts=[],has=[];
+  G.forEach(function(p){var n=norm(p[0]);if(n.indexOf(nq)===0)starts.push(p);else if(n.indexOf(nq)>-1||norm(p[1])===nq)has.push(p)});
+  return starts.concat(has).map(function(p){return {name:p[0],gov:p[1],lat:p[2],lon:p[3]}});
+ }
+ function onlineMatches(q){
+  var out=[];
+  var nom='https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=8&dedupe=1&countrycodes=jo&accept-language=ar&q='+encodeURIComponent(q);
+  var om='https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(q)+'&count=10&language=ar&format=json&countryCode=JO';
+  return Promise.all([
+   getJSON(nom,5500).then(function(rows){(rows||[]).forEach(function(r){
+     var a=r.address||{};if((a.country_code||'').toLowerCase()!=='jo')return;
+     var name=r.name||(r.display_name||'').split('،')[0];if(!isWord(name))return;
+     out.push({name:name,gov:a.state||a.county||a.city||'',lat:+r.lat,lon:+r.lon});
+   })}).catch(function(){}),
+   getJSON(om,5500).then(function(d){((d&&d.results)||[]).forEach(function(r){
+     if((r.country_code||'').toUpperCase()!=='JO'||!isWord(r.name))return;
+     out.push({name:r.name,gov:r.admin1||'',lat:r.latitude,lon:r.longitude});
+   })}).catch(function(){})
+  ]).then(function(){return out});
+ }
+ function dedupe(list){
+  var res=[];
+  list.forEach(function(p){
+   if(!isFinite(p.lat)||!isFinite(p.lon))return;
+   var dup=res.some(function(q){return norm(q.name)===norm(p.name)&&dist(q.lat,q.lon,p.lat,p.lon)<6});
+   if(!dup)res.push(p);
+  });
+  return res;
+ }
+ async function search(q){
+  var my=++seq;q=(q||'').trim();
+  if(q.length<2){dd.classList.remove('open');return}
+  var loc=localMatches(q);
+  render(dedupe(loc),true);
+  try{
+   var on=await onlineMatches(q);
+   if(my!==seq)return;
+   var all=dedupe(loc.concat(on)).slice(0,10);
+   render(all,false);
+  }catch(e){if(my===seq)render(dedupe(loc),false)}
+ }
+ function render(list,loading){
+  dd.innerHTML='';
+  if(!list.length){showMsg(loading?'جارٍ البحث في الأردن…':'لم نعثر على موقع أردني مطابق. جرّب اسمًا آخر لمدينة أو قرية أو معلم داخل الأردن.');return}
+  list.slice(0,10).forEach(function(p){option(p.name,p.gov||'الأردن',function(){apply(p.name,p.lat,p.lon,'search',p.gov);dd.classList.remove('open')})});
+  if(loading){var s=document.createElement('div');s.className='petra-search-status';s.textContent='جارٍ البحث عن المزيد…';dd.appendChild(s)}
+  dd.classList.add('open');
+ }
+ input.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(function(){search(input.value)},350)});
+ input.addEventListener('focus',function(){if(input.value.trim().length>1&&(!current||input.value!==current.name))search(input.value)});
+ input.addEventListener('keydown',function(e){
+  if(e.key==='Escape')dd.classList.remove('open');
+  if(e.key==='Enter'){e.preventDefault();var f=dd.querySelector('.petra-location-option');if(f)f.click();else search(input.value)}
+ });
+ if(searchBtn)searchBtn.addEventListener('click',function(){var f=dd.querySelector('.petra-location-option');if(f&&dd.classList.contains('open'))f.click();else search(input.value)});
+ document.addEventListener('click',function(e){if(!wrap.contains(e.target))dd.classList.remove('open')});
+
+ /* ---------- GPS → nearest Jordanian area name ---------- */
+ async function reverse(lat,lon){
+  try{
+   var d=await getJSON('https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=13&addressdetails=1&accept-language=ar&lat='+lat+'&lon='+lon,5500);
+   var a=(d&&d.address)||{};
+   if((a.country_code||'').toLowerCase()!=='jo')return {outside:true};
+   var cand=[a.village,a.town,a.city,a.suburb,a.hamlet,a.neighbourhood,a.city_district,a.municipality,a.county,a.state_district,a.state].filter(isWord);
+   if(cand.length)return {name:cand[0],gov:a.state||a.county||''};
+  }catch(e){}
+  return null;
+ }
+ var gpsBusy=false;
+ function locate(quiet){
+  return new Promise(function(resolve){
+   if(!navigator.geolocation){if(!quiet)setStatus('المتصفح لا يدعم تحديد الموقع. ابحث عن منطقتك يدويًا.',true);return resolve(false)}
+   if(!window.isSecureContext&&location.protocol!=='file:'){if(!quiet)setStatus('تحديد الموقع يتطلب فتح الموقع عبر HTTPS.',true);return resolve(false)}
+   if(gpsBusy)return resolve(false);gpsBusy=true;
+   if(!quiet)setStatus('بانتظار إذن تحديد الموقع من جهازك…');
+   navigator.geolocation.getCurrentPosition(async function(pos){
+    var lat=pos.coords.latitude,lon=pos.coords.longitude;
+    if(!quiet)setStatus('جارٍ تحديد أقرب منطقة أردنية لموقعك…');
+    var near=nearest(lat,lon),r=await reverse(lat,lon);
+    gpsBusy=false;
+    if(r&&r.name){apply(r.name,lat,lon,'gps',r.gov);setStatus('تم تحديد موقعك: '+r.name+(r.gov?' – '+r.gov:'')+'.');return resolve(true)}
+    var p=near.place;
+    if(r&&r.outside){apply(p[0],p[2],p[3],'gps',p[1]);setStatus('يبدو أنك خارج الأردن؛ تم اختيار أقرب منطقة أردنية: '+p[0]+' – '+p[1]+'.');return resolve(true)}
+    /* offline / reverse failed: nearest known Jordanian area; keep GPS coordinates only if clearly close */
+    if(near.km<=30)apply(p[0],lat,lon,'gps',p[1]);else apply(p[0],p[2],p[3],'gps',p[1]);
+    setStatus('تم اختيار أقرب منطقة أردنية لموقعك: '+p[0]+' – '+p[1]+'.');
+    resolve(true);
+   },function(err){
+    gpsBusy=false;
+    if(!quiet)setStatus(err.code===1?'تم رفض إذن الموقع. فعّله من إعدادات المتصفح للموقع، أو ابحث عن منطقتك يدويًا.':'تعذّر تحديد موقعك. تأكد من تشغيل GPS ثم أعد المحاولة.',true);
+    resolve(false);
+   },{enableHighAccuracy:true,timeout:15000,maximumAge:60000});
+  });
+ }
+ if(gpsBtn)gpsBtn.addEventListener('click',function(){locate(false)});
+
+ /* ---------- quick-pick panel (Jordanian governorates) ---------- */
+ (function(){
+  var box=$('jordanPlacesGroups'),panel=$('jordanPlacesPanel');if(!box||!panel)return;
+  var groups={},order=[];
+  G.forEach(function(p){if(!groups[p[1]]){groups[p[1]]=[];order.push(p[1])}groups[p[1]].push(p)});
+  order.forEach(function(g){
+   var row=document.createElement('div');row.className='jp-row';
+   var h=document.createElement('b');h.textContent=g;row.appendChild(h);
+   groups[g].forEach(function(p){var b=document.createElement('button');b.type='button';b.textContent=p[0];b.addEventListener('click',function(){apply(p[0],p[2],p[3],'search',p[1])});row.appendChild(b)});
+   box.appendChild(row);
+  });
+  var head=panel.querySelector('.jordan-places-heading');
+  if(head){head.setAttribute('role','button');head.setAttribute('tabindex','0');head.setAttribute('aria-expanded','false');
+   var tg=function(){var o=panel.classList.toggle('open');head.setAttribute('aria-expanded',o?'true':'false')};
+   head.addEventListener('click',tg);head.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();tg()}});}
+ })();
+
+ /* ---------- opening prompt: choose area or use GPS ---------- */
+ var prompt=document.createElement('div');prompt.id='petraLocPrompt';prompt.setAttribute('role','dialog');prompt.setAttribute('aria-label','تحديد الموقع');prompt.hidden=true;
+ prompt.innerHTML='<div class="lp-ic">📍</div><div class="lp-tx"><b>حدّد موقعك لطقس دقيق وتنبيهات منطقتك</b><span>اختر منطقة أردنية أو اسمح بتحديد موقعك عبر GPS. الموقع الحالي: البترا – وادي موسى.</span></div><div class="lp-ac"><button type="button" id="lpGps">⌖ تحديد موقعي</button><button type="button" id="lpPick">اختيار منطقة</button><button type="button" id="lpStay">البقاء على البترا</button></div>';
+ document.body.appendChild(prompt);
+ function hidePrompt(){prompt.hidden=true}
+ function showPrompt(){prompt.hidden=false}
+ prompt.querySelector('#lpGps').addEventListener('click',function(){hidePrompt();locate(false)});
+ prompt.querySelector('#lpPick').addEventListener('click',function(){hidePrompt();var t=document.querySelector('.location-toolbar');if(t)t.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(function(){input.focus()},450)});
+ prompt.querySelector('#lpStay').addEventListener('click',function(){apply(DEFAULT.name,DEFAULT.lat,DEFAULT.lon,'default',DEFAULT.gov)});
+
+ /* ---------- startup ---------- */
+ (async function(){
+  var saved=null;try{saved=JSON.parse(localStorage.getItem(SAVED)||'null')}catch(e){}
+  if(saved&&isFinite(saved.lat)&&isFinite(saved.lon)&&saved.name&&isWord(saved.name)){
+   current=saved;window.PetraLocation=saved;input.value=saved.name;
+   if(typeof window.PetraApplyLocation==='function')window.PetraApplyLocation(saved.lat,saved.lon,saved.name);
+   setStatus('الموقع الحالي: '+saved.name+(saved.gov?' – '+saved.gov:'')+'.');
+   syncLightning(saved.lat,saved.lon);
+   if(saved.mode==='gps'&&navigator.permissions){
+    try{var p=await navigator.permissions.query({name:'geolocation'});if(p.state==='granted')locate(true)}catch(e){}
+   }
+  }else{
+   current={name:DEFAULT.name,lat:DEFAULT.lat,lon:DEFAULT.lon,mode:'default',gov:DEFAULT.gov};window.PetraLocation=current;
+   setStatus('الموقع الافتراضي: '+DEFAULT.name+'. ابحث عن منطقة أردنية أو اضغط «موقعي عبر GPS».');
+   setTimeout(showPrompt,1200);
+  }
+ })();
+})();
+</script>
+
+<script id="petra-weather-scene">
+(function(){
+ var $=function(id){return document.getElementById(id)};
+ var sec=$('currentWeatherSection'); if(!sec)return;
+ var fx=document.createElement('div'); fx.className='wx-fx'; fx.setAttribute('aria-hidden','true'); sec.insertBefore(fx,sec.firstChild);
+ function rnd(a,b){return a+Math.random()*(b-a)}
+ function el(cls,style,parent){var e=document.createElement('div');e.className=cls;if(style)e.style.cssText=style;(parent||fx).appendChild(e);return e}
+ function sceneOf(code,cloud){
+  if(code===0||code===1)return cloud>70?'partly':'clear';
+  if(code===2)return 'partly'; if(code===3)return 'cloudy';
+  if(code===45||code===48)return 'fog';
+  if([95,96,99].indexOf(code)>-1)return 'storm';
+  if([71,73,75,77,85,86].indexOf(code)>-1)return 'snow';
+  if(code>=51)return 'rain';
+  return 'partly';
+ }
+ function tempBand(t){return t<10?'cold':t<20?'mild':t<30?'warm':t<38?'hot':'extreme'}
+ var lastKey='';
+ function build(scene,day,band,wind,heavy){
+  var key=[scene,day,band,wind>25?1:0,heavy?1:0].join('|'); if(key===lastKey)return; lastKey=key;
+  fx.innerHTML='';
+  sec.setAttribute('data-scene',scene); sec.setAttribute('data-day',day); sec.setAttribute('data-temp',band);
+  el('wx-tint'); 
+  if(day===0&&['clear','partly','cloudy'].indexOf(scene)>-1||day===0&&scene==='clear'){for(var s=0;s<34;s++)el('wx-star','top:'+rnd(2,62)+'%;left:'+rnd(2,98)+'%;animation-delay:'+rnd(0,3)+'s;animation-duration:'+rnd(2,5)+'s');}
+  if(scene==='clear'||scene==='partly'){ if(day===1)el('wx-sun'); else el('wx-moon'); }
+  var clouds={clear:0,partly:3,cloudy:6,fog:2,rain:6,storm:7,snow:5}[scene]||0;
+  for(var c=0;c<clouds;c++){var sc=rnd(.7,1.5);el('wx-cloud','top:'+rnd(2,38)+'%;left:0;transform:scale('+sc+');animation-duration:'+rnd(55,110)+'s;animation-delay:-'+rnd(0,100)+'s;opacity:'+rnd(.55,.95))}
+  if(scene==='rain'||scene==='storm'){var n=scene==='storm'?70:(heavy?60:34);for(var i=0;i<n;i++)el('wx-drop','left:'+rnd(0,115)+'%;animation-duration:'+rnd(.55,.95)+'s;animation-delay:-'+rnd(0,2)+'s;height:'+rnd(12,24)+'px;opacity:'+rnd(.4,.9));for(var j=0;j<8;j++)el('wx-splash','left:'+rnd(2,96)+'%;animation-delay:-'+rnd(0,1.2)+'s')}
+  if(scene==='storm'){el('wx-flash');var b=el('wx-bolt');b.innerHTML='<svg viewBox="0 0 46 120" width="46" height="120"><polygon points="28,0 6,66 22,66 12,120 40,48 24,48" fill="#f4f7ff"/></svg>'}
+  if(scene==='snow'){for(var k=0;k<46;k++){var z=rnd(2,6);el('wx-flake','left:'+rnd(0,100)+'%;width:'+z+'px;height:'+z+'px;animation-duration:'+rnd(5,11)+'s;animation-delay:-'+rnd(0,10)+'s')}}
+  if(scene==='fog'){for(var f=0;f<4;f++)el('wx-fog','top:'+(15+f*20)+'%;animation-duration:'+rnd(9,16)+'s;animation-delay:-'+rnd(0,8)+'s;opacity:'+rnd(.5,.9))}
+  if(wind>25){var w=Math.min(10,Math.round(wind/5));for(var m=0;m<w;m++)el('wx-wind','top:'+rnd(8,88)+'%;animation-duration:'+rnd(2.2,4.5)+'s;animation-delay:-'+rnd(0,4)+'s;width:'+rnd(60,140)+'px')}
+  if(band==='hot'||band==='extreme')el('wx-heat'); if(band==='cold')el('wx-frost');
+  el('wx-vig');
+ }
+ function weatherName(c){return({0:'صحو',1:'صحو غالباً',2:'غائم جزئياً',3:'غائم',45:'ضباب',48:'ضباب متجمد',51:'رذاذ خفيف',53:'رذاذ متوسط',55:'رذاذ كثيف',56:'رذاذ متجمد',57:'رذاذ متجمد',61:'مطر خفيف',63:'مطر متوسط',65:'مطر غزير',66:'مطر متجمد',67:'مطر متجمد غزير',71:'ثلوج خفيفة',73:'ثلوج متوسطة',75:'ثلوج كثيفة',77:'حبيبات ثلجية',80:'زخات مطر خفيفة',81:'زخات مطر متوسطة',82:'زخات مطر غزيرة',85:'زخات ثلجية',86:'زخات ثلجية كثيفة',95:'عواصف رعدية',96:'عواصف رعدية مع برد',99:'عواصف رعدية مع برد كثيف'})[c]||'حالة جوية متغيرة'}
+ function icon(c,day){if(c===0||c===1)return day===0?'🌙':'☀️';if(c===2)return day===0?'☁️':'⛅';if(c===3)return '☁️';if(c===45||c===48)return '🌫️';if([95,96,99].indexOf(c)>-1)return '⛈️';if([71,73,75,77,85,86].indexOf(c)>-1)return '❄️';return '🌧️'}
+ function windDir(d){var a=['شمالية','شمالية شرقية','شرقية','جنوبية شرقية','جنوبية','جنوبية غربية','غربية','شمالية غربية'];return a[Math.round((((d||0)%360)+360)%360/45)%8]}
+ function apply(data){
+  var c=data.current; if(!c)return;
+  var scene=sceneOf(c.weather_code,c.cloud_cover||0), day=c.is_day===0?0:1, t=Math.round(c.temperature_2m);
+  build(scene,day,tempBand(t),Number(c.wind_speed_10m)||0,[65,67,82,63,81,75].indexOf(c.weather_code)>-1);
+ }
+ function pad(n){return n<10?'0'+n:''+n}
+ function tomorrow(data){
+  var d=data.daily,h=data.hourly,body=$('tomorrowBody'); if(!d||!h||!body||d.time.length<2)return;
+  var date=d.time[1],i=1;
+  var lbl=new Date(date+'T12:00:00').toLocaleDateString('ar-JO',{timeZone:'Asia/Amman',weekday:'long',day:'numeric',month:'long'});
+  var el1=$('tomorrowDateLabel'); if(el1)el1.textContent=lbl;
+  var code=d.weather_code[i],hi=Math.round(d.temperature_2m_max[i]),lo=Math.round(d.temperature_2m_min[i]),pp=Math.round(d.precipitation_probability_max[i]||0),ps=Number(d.precipitation_sum[i]||0),ws=Math.round(d.wind_speed_10m_max[i]||0),wd=windDir(d.wind_direction_10m_dominant[i]);
+  var sum='حرارة بين '+lo+'° و'+hi+'°، '+(pp>=60?'فرصة هطول مرتفعة':pp>=30?'فرصة هطول متفرقة':'فرصة هطول منخفضة')+'، ورياح '+wd+' حتى '+ws+' كم/س.';
+  var slots='';
+  for(var s=0;s<24;s+=3){
+   var key=date+'T'+pad(s)+':00',idx=h.time.indexOf(key); if(idx<0)continue;
+   var dayflag=(s>=6&&s<18)?1:0,hc=h.weather_code[idx],hh=s%12||12,per=s>=12?'م':'ص';
+   slots+='<div class="tmr-slot"><div class="t">'+hh+' '+per+'</div><div class="i">'+icon(hc,dayflag)+'</div><div class="d">'+Math.round(h.temperature_2m[idx])+'°</div><div class="r">💧 '+Math.round(h.precipitation_probability[idx]||0)+'%</div><div>💨 '+Math.round(h.wind_speed_10m[idx])+'</div></div>';
+  }
+  body.innerHTML='<div class="tmr-top"><div class="tmr-hero"><div class="ic">'+icon(code,1)+'</div><div><div class="cond">'+weatherName(code)+'</div><div class="sum">'+sum+'</div></div></div>'+
+   '<div class="tmr-stats"><div class="tmr-stat hi"><b>'+hi+'°</b><span>العظمى</span></div><div class="tmr-stat lo"><b>'+lo+'°</b><span>الصغرى</span></div><div class="tmr-stat rn"><b>'+pp+'%</b><span>احتمال الهطول</span></div><div class="tmr-stat rn"><b>'+ps.toFixed(1)+'</b><span>الهطول (ملم)</span></div><div class="tmr-stat"><b>'+ws+'</b><span>الرياح (كم/س)</span></div></div></div>'+
+   '<div class="tmr-slots">'+slots+'</div>';
+ }
+ window.addEventListener('petraWeatherData',function(e){try{apply(e.detail);tomorrow(e.detail)}catch(err){console.warn('scene',err)}});
+ window.PetraScene={apply:apply};
+ build('partly',1,'warm',0,false);
+})();
+</script>
+
 </body></html>
