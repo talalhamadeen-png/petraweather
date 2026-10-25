@@ -1747,7 +1747,38 @@ html body #disableWeatherNotifications:hover{background:rgba(239,68,68,.24)!impo
 html body #testWeatherNotification{background:linear-gradient(135deg,#2f80ed,#1d5fd1)!important;color:#fff!important;border:0!important;font-weight:800;box-shadow:0 6px 16px rgba(47,128,237,.35)}
 html body #testWeatherNotification:hover{filter:brightness(1.1)}
 html body .notification-status{font-weight:700}
+</style><style>
+
+/* ===== hour-by-hour rain themes: light / moderate / heavy ===== */
+html body .hourly-item{position:relative;overflow:hidden}
+html body .hourly-item>*{position:relative;z-index:1}
+html body .hourly-item .rain-lvl{font-size:.58rem;font-weight:700;margin-top:3px;padding:1px 5px;border-radius:6px;background:rgba(0,0,0,.28);color:#d8ecff;white-space:pre-line;line-height:1.35;text-align:center}
+/* drop layers: real teardrop shapes (soft elliptical gradients) in parallax layers */
+html body .hourly-item[data-kind="rain"][data-rain]::before{inset:-12% -14%;opacity:1;background-repeat:repeat}
+html body .hourly-item[data-kind="rain"][data-rain="light"]{background:linear-gradient(180deg,#3b5f6e,#233d4b)!important;border-color:#5b8696!important}
+html body .hourly-item[data-kind="rain"][data-rain="light"]::before{background-image:radial-gradient(ellipse 1.6px 2.6px at 12px 10px,rgba(215,240,250,.85),rgba(215,240,250,0) 100%),radial-gradient(ellipse 1.3px 2.2px at 34px 36px,rgba(215,240,250,.7),rgba(215,240,250,0) 100%);background-size:44px 52px,58px 66px;animation:dropsLight 3.4s linear infinite}
+@keyframes dropsLight{to{background-position:0 52px,0 66px}}
+html body .hourly-item[data-kind="rain"][data-rain="light"]::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(255,255,255,.08),transparent 55%);animation:mistLight 5s ease-in-out infinite alternate}
+@keyframes mistLight{to{opacity:.35}}
+html body .hourly-item[data-kind="rain"][data-rain="light"] .hourly-icon{animation:icoLight 3.2s ease-in-out infinite}
+@keyframes icoLight{50%{transform:translateY(2px)}}
+html body .hourly-item[data-kind="rain"][data-rain="mod"]{background:linear-gradient(180deg,#1f4f86,#12294d)!important;border-color:#3f78b5!important}
+html body .hourly-item[data-kind="rain"][data-rain="mod"]::before{transform:skewX(-9deg);background-image:radial-gradient(ellipse 1.4px 4.2px at 10px 12px,rgba(190,225,255,.9),rgba(190,225,255,0) 100%),radial-gradient(ellipse 1.2px 3.6px at 28px 30px,rgba(190,225,255,.75),rgba(190,225,255,0) 100%),radial-gradient(ellipse 1px 3px at 18px 48px,rgba(190,225,255,.6),rgba(190,225,255,0) 100%);background-size:34px 56px,40px 62px,26px 70px;animation:dropsMod 1.3s linear infinite}
+@keyframes dropsMod{to{background-position:0 56px,0 124px,0 140px}}
+html body .hourly-item[data-kind="rain"][data-rain="heavy"]{background:linear-gradient(180deg,#0d1d3d,#050c1d)!important;border-color:#2c5da8!important;box-shadow:0 0 0 1px rgba(80,140,255,.25),0 6px 16px rgba(0,20,60,.55)!important}
+html body .hourly-item[data-kind="rain"][data-rain="heavy"]::before{transform:skewX(-12deg);background-image:radial-gradient(ellipse 1.6px 6px at 8px 14px,rgba(170,210,255,.95),rgba(170,210,255,0) 100%),radial-gradient(ellipse 1.3px 5px at 24px 34px,rgba(200,228,255,.85),rgba(200,228,255,0) 100%),radial-gradient(ellipse 1.1px 4px at 16px 52px,rgba(170,210,255,.7),rgba(170,210,255,0) 100%),radial-gradient(ellipse 1.2px 4.5px at 30px 8px,rgba(200,228,255,.75),rgba(200,228,255,0) 100%);background-size:30px 60px,36px 66px,22px 74px,40px 80px;animation:dropsHeavy .75s linear infinite}
+@keyframes dropsHeavy{to{background-position:0 60px,0 132px,0 148px,0 240px}}
+html body .hourly-item[data-kind="rain"][data-rain="heavy"]::after{content:"";position:absolute;left:12%;right:12%;bottom:3px;height:7px;z-index:0;border-radius:50%;border:1.5px solid rgba(160,205,255,.7);animation:ripple 1.1s ease-out infinite}
+@keyframes ripple{0%{transform:scale(.3);opacity:.95}100%{transform:scale(1.15);opacity:0}}
+html body .hourly-item[data-kind="rain"][data-rain="heavy"] .hourly-icon{animation:icoHeavy .5s ease-in-out infinite;filter:drop-shadow(0 0 7px rgba(90,160,255,.8))}
+@keyframes icoHeavy{0%,100%{transform:translate(0,0)}25%{transform:translate(-1.5px,2px)}75%{transform:translate(1.5px,3px)}}
+html body .hourly-item[data-kind="rain"][data-rain="heavy"] .rain-lvl{background:#1d4ed8;color:#fff}
+@media(prefers-reduced-motion:reduce){html body .hourly-item[data-rain]::before,html body .hourly-item[data-rain]::after,html body .hourly-item[data-rain] .hourly-icon{animation:none!important}}
+html body [data-kind="rain"]:not(.hourly-item)::before{background-image:radial-gradient(ellipse 1.3px 4px at 10px 12px,rgba(190,225,255,.85),rgba(190,225,255,0) 100%),radial-gradient(ellipse 1.1px 3.4px at 26px 32px,rgba(190,225,255,.65),rgba(190,225,255,0) 100%)!important;background-size:32px 52px,38px 60px!important;animation:dropsGen 1.4s linear infinite!important}
+@keyframes dropsGen{to{background-position:0 52px,0 120px}}
+.wx-drop{width:3px!important;height:12px!important;border-radius:50% 50% 50% 50%/72% 72% 28% 28%!important;background:linear-gradient(180deg,rgba(210,235,255,0),rgba(215,238,255,.95))!important}
 </style>
+
 </head>
 <body>
 <header id="mainHeader">
@@ -2092,7 +2123,7 @@ document.addEventListener('DOMContentLoaded', function(){
  const forecastUrl=()=> 'https://api.open-meteo.com/v1/forecast?latitude='+LAT+'&longitude='+LON+'&models=ecmwf_ifs&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,rain,showers,weather_code,cloud_cover,pressure_msl,wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=temperature_2m,precipitation_probability,precipitation,weather_code,wind_speed_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,wind_speed_10m_max,wind_direction_10m_dominant&timezone=Asia%2FAmman&forecast_days=10';
  const $=id=>document.getElementById(id);
  const num=(v,d=0)=>Number(v).toFixed(d);
- const weatherName=code=>({0:'صحو',1:'صحو غالباً',2:'غائم جزئياً',3:'غائم',45:'ضباب',48:'ضباب متجمد',51:'رذاذ خفيف',53:'رذاذ متوسط',55:'رذاذ كثيف',56:'رذاذ متجمد خفيف',57:'رذاذ متجمد كثيف',61:'مطر خفيف',63:'مطر متوسط',65:'مطر غزير',66:'مطر متجمد خفيف',67:'مطر متجمد غزير',71:'ثلوج خفيفة',73:'ثلوج متوسطة',75:'ثلوج كثيفة',77:'حبيبات ثلجية',80:'زخات مطر خفيفة',81:'زخات مطر متوسطة',82:'زخات مطر غزيرة',85:'زخات ثلجية خفيفة',86:'زخات ثلجية كثيفة',95:'عواصف رعدية',96:'عواصف رعدية مع برد خفيف',99:'عواصف رعدية مع برد كثيف'})[code]||'حالة جوية متغيرة';
+ const weatherName=code=>({0:'صافي',1:'صافي غالباً',2:'غائم جزئياً',3:'غائم',45:'ضباب',48:'ضباب متجمد',51:'رذاذ خفيف',53:'رذاذ متوسط',55:'رذاذ كثيف',56:'رذاذ متجمد خفيف',57:'رذاذ متجمد كثيف',61:'مطر خفيف',63:'مطر متوسط',65:'مطر غزير',66:'مطر متجمد خفيف',67:'مطر متجمد غزير',71:'ثلوج خفيفة',73:'ثلوج متوسطة',75:'ثلوج كثيفة',77:'حبيبات ثلجية',80:'زخات مطر خفيفة',81:'زخات مطر متوسطة',82:'زخات مطر غزيرة',85:'زخات ثلجية خفيفة',86:'زخات ثلجية كثيفة',95:'عواصف رعدية',96:'عواصف رعدية مع برد خفيف',99:'عواصف رعدية مع برد كثيف'})[code]||'حالة جوية متغيرة';
  const icon=code=>code===0?'☀️':([1,2].includes(code)?'⛅':code===3?'☁️':([45,48].includes(code)?'🌫️':([95,96,99].includes(code)?'⛈️':([71,73,75,77,85,86].includes(code)?'❄️':'🌧️'))));
  const windDir=d=>{const dirs=['شمالية','شمالية شرقية','شرقية','جنوبية شرقية','جنوبية','جنوبية غربية','غربية','شمالية غربية'];return dirs[Math.round((((d||0)%360)+360)%360/45)%8]};
  const timeLabel=t=>{const part=(String(t).split('T')[1]||'00:00').slice(0,5).split(':');let hh=Number(part[0]||0),mm=part[1]||'00';const period=hh>=12?'م':'ص';hh=hh%12||12;return hh+':'+mm+' '+period};
@@ -2110,7 +2141,7 @@ document.addEventListener('DOMContentLoaded', function(){
   bulletin+='وخلال اليوم، تُقدّر الحرارة العظمى بـ'+Math.round(max)+'° والصغرى بـ'+Math.round(min)+'°، واحتمال الهطول الأعلى '+Math.round(p)+'%. ';
   if(p>=60)bulletin+='فرصة الهطول مرتفعة نسبياً؛ تابع تحديثات النشرة والتنبيهات الرسمية.';else if(p>=30)bulletin+='توجد فرصة لهطول متفرّق؛ تبقى التفاصيل مرتبطة بتطور الحالة.';else bulletin+='فرصة الهطول منخفضة وفق هذه البيانات. ';
   bulletin+=' هذه نشرة آلية مبنية على نموذج التوقعات وليست بديلاً عن التحذيرات الرسمية.';setText('bulletinText',bulletin);
-  const hourly=$('hourlyForecast'); if(hourly){let html='';const now=new Date(c.time).getTime();let count=0;for(let i=0;i<h.time.length&&count<10;i++){if(new Date(h.time[i]).getTime()<now-30*60*1000)continue;const hourDate=new Date(h.time[i]);const hourNum=Number((h.time[i].split('T')[1]||'12:00').slice(0,2));const isDay=hourNum>=6&&hourNum<18;const dayIcon=isDay?(h.weather_code[i]===0?'☀️':icon(h.weather_code[i])):(h.weather_code[i]===0?'🌙':([1,2].includes(h.weather_code[i])?'🌙☁️':([45,48].includes(h.weather_code[i])?'🌫️':([95,96,99].includes(h.weather_code[i])?'⛈️':([71,73,75,77,85,86].includes(h.weather_code[i])?'🌨️':'🌧️')))));html+='<div class="hourly-item '+(isDay?'daytime':'nighttime')+'"><div class="hourly-time">'+timeLabel(h.time[i])+'</div><div class="hourly-icon">'+dayIcon+'</div><div class="hourly-period">'+(isDay?'نهار':'ليل')+'</div><div class="hourly-temp">'+Math.round(h.temperature_2m[i])+'°</div><div class="hourly-rain">💧 '+Math.round(h.precipitation_probability[i]||0)+'%</div></div>';count++;}hourly.innerHTML=html||'<div class="hourly-item">لا تتوفر بيانات ساعية حالياً.</div>';}
+  const hourly=$('hourlyForecast'); if(hourly){let html='';const now=new Date(c.time).getTime();let count=0;for(let i=0;i<h.time.length&&count<10;i++){if(new Date(h.time[i]).getTime()<now-30*60*1000)continue;const hourDate=new Date(h.time[i]);const hourNum=Number((h.time[i].split('T')[1]||'12:00').slice(0,2));const isDay=hourNum>=6&&hourNum<18;const dayIcon=isDay?(h.weather_code[i]===0?'☀️':icon(h.weather_code[i])):(h.weather_code[i]===0?'🌙':([1,2].includes(h.weather_code[i])?'🌙☁️':([45,48].includes(h.weather_code[i])?'🌫️':([95,96,99].includes(h.weather_code[i])?'⛈️':([71,73,75,77,85,86].includes(h.weather_code[i])?'🌨️':'🌧️')))));html+='<div class="hourly-item '+(isDay?'daytime':'nighttime')+'" data-mm="'+((h.precipitation&&h.precipitation[i])||0)+'"><div class="hourly-time">'+timeLabel(h.time[i])+'</div><div class="hourly-icon">'+dayIcon+'</div><div class="hourly-period">'+(isDay?'نهار':'ليل')+'</div><div class="hourly-temp">'+Math.round(h.temperature_2m[i])+'°</div><div class="hourly-rain">💧 '+Math.round(h.precipitation_probability[i]||0)+'%</div></div>';count++;}hourly.innerHTML=html||'<div class="hourly-item">لا تتوفر بيانات ساعية حالياً.</div>';}
   const tbody=$('dailyForecastBody');if(tbody){tbody.innerHTML=d.time.map((day,i)=>'<tr><td class="forecast-day-cell"><span class="fd-date">'+dateNum(day)+'</span><span class="fd-day">'+dayName(day)+'</span></td><td class="forecast-condition-cell"><span class="forecast-weather-icon" aria-hidden="true">'+icon(d.weather_code[i])+'</span><span class="forecast-condition-name">'+weatherName(d.weather_code[i])+'</span><small class="forecast-rain-chance">احتمال الهطول '+Math.round(d.precipitation_probability_max[i]||0)+'%</small></td><td class="temp-high">'+Math.round(d.temperature_2m_max[i])+'°</td><td class="temp-low">'+Math.round(d.temperature_2m_min[i])+'°</td><td class="forecast-wind-cell">'+windDir(d.wind_direction_10m_dominant[i])+' · '+Math.round(d.wind_speed_10m_max[i])+' كم/س</td></tr>').join('');}
   setText('dataUpdatedAt',new Date().toLocaleString('ar-JO',{hour:'2-digit',minute:'2-digit',day:'numeric',month:'short'}));
   const meta=document.querySelector('.live-data-meta');if(meta){meta.classList.remove('offline');meta.setAttribute('title','تم جلب البيانات بنجاح من Open-Meteo');}try{window.dispatchEvent(new CustomEvent('petraWeatherData',{detail:data}));}catch(e){}
@@ -2384,7 +2415,7 @@ document.addEventListener('DOMContentLoaded', function(){
     let lastErr;
     for(let k=0;k<PROXIES.length;k++){
       const i=(proxyPref+k)%PROXIES.length;
-      try{const ctl=new AbortController();const t=setTimeout(()=>ctl.abort(),12000);const sep=u.includes('?')?'&':'?';const r=await fetch(PROXIES[i](u+sep+'_='+Date.now()),{cache:'no-store',signal:ctl.signal});clearTimeout(t);if(!r.ok)throw new Error('HTTP '+r.status);const txt=await r.text();if(!/<(rss|feed|alert|item|entry)/i.test(txt))throw new Error('not xml');proxyPref=i;return txt;}catch(e){lastErr=e;}
+      try{const ctl=new AbortController();const t=setTimeout(()=>ctl.abort(),12000);const sep=u.includes('?')?'&':'?';const r=await fetch(PROXIES[i](u+sep+'_='+Date.now()),{cache:'no-store',signal:ctl.signal});clearTimeout(t);if(!r.ok)throw new Error('HTTP '+r.status);const txt=await r.text();if(!/<(rss|feed|alert|item|entry|html)/i.test(txt))throw new Error('not xml');proxyPref=i;return txt;}catch(e){lastErr=e;}
     }
     throw lastErr||new Error('fetch failed');
   }
@@ -2429,6 +2460,7 @@ document.addEventListener('DOMContentLoaded', function(){
       const e=list[i];if(!e||card.querySelector('.cap-map-btn'))return;
       const btn=document.createElement('button');btn.type='button';btn.className='cap-map-btn';btn.textContent='🗺️ عرض على خريطة الأردن';
       const box=document.createElement('div');box.className='cap-map-box';box.hidden=true;
+      if(e.link&&/^https?:/i.test(e.link)){const a=document.createElement('a');a.href=e.link;a.target='_blank';a.rel='noopener noreferrer';a.className='cap-map-btn';a.style.cssText='display:inline-block;text-decoration:none;margin-inline-start:8px';a.textContent='📄 صفحة التحذير الرسمية';card.appendChild(a);}
       card.appendChild(btn);card.appendChild(box);
       let map=null;
       btn.addEventListener('click',async()=>{
@@ -2453,11 +2485,20 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }
   async function enrich(e){
-    const cands=[e.link,e.guid,(e.link||'').replace(/\.html?$/i,'.xml'),(e.link||'').replace(/\/?$/,'.xml')].filter((u,i,a)=>u&&/^https?:/i.test(u)&&a.indexOf(u)===i);
+    const base=(e.link||'').split('#')[0];
+    const cands=[base,e.guid,base.replace(/\.html?$/i,'.xml'),base.replace(/\?.*$/,''),base.replace(/\/?$/,'.xml'),base.replace(/\/([^\/]*)$/,'/cap/$1')].filter((u,i,a)=>u&&/^https?:/i.test(u)&&a.indexOf(u)===i);
     if(!cands.length)return e;
     try{
       let doc=null;
-      for(const u of cands){try{const d=new DOMParser().parseFromString(await fetchText(u),'application/xml');if(!d.querySelector('parsererror')&&d.getElementsByTagName('info').length){doc=d;break;}}catch(_){}}
+      for(const u of cands){
+        try{
+          const txt=await fetchText(u);
+          let d=new DOMParser().parseFromString(txt,'application/xml');
+          if(!d.querySelector('parsererror')&&d.getElementsByTagName('info').length){doc=d;break;}
+          const m=txt.match(/(?:href|src)=["']([^"']+\.xml)["']/i);
+          if(m){const u2=new URL(m[1],u).href;d=new DOMParser().parseFromString(await fetchText(u2),'application/xml');if(!d.querySelector('parsererror')&&d.getElementsByTagName('info').length){doc=d;break;}}
+        }catch(_){}
+      }
       if(!doc){console.warn('JMD CAP detail not found for',cands);return e;}
       const info=capInfo(doc);if(!info)return e;
       const g=(n,name)=>{const el=n.getElementsByTagName(name)[0];return el?clean(el.textContent):''};
@@ -2487,12 +2528,16 @@ document.addEventListener('DOMContentLoaded', function(){
   function field(node,name){const all=Array.from(node.getElementsByTagName('*'));const el=all.find(x=>x.localName&&x.localName.toLowerCase()===name.toLowerCase())||node.getElementsByTagName(name)[0];return el?clean(el.textContent):'';}
   function translate(text){
     let t=String(text||'').replace(/\s+/g,' ').trim();
-    const phrases=[[/severe weather warning/gi,'تحذير من أحوال جوية شديدة'],[/weather warning/gi,'تحذير جوي'],[/thunderstorms?/gi,'عواصف رعدية'],[/heavy rainfall|heavy rain/gi,'أمطار غزيرة'],[/flash flood(?:ing)?/gi,'سيول مفاجئة'],[/flood(?:ing)?/gi,'فيضانات وسيول'],[/strong winds?/gi,'رياح قوية'],[/high winds?/gi,'رياح شديدة'],[/dust storm(?:s)?/gi,'عواصف غبارية'],[/sand storm(?:s)?/gi,'عواصف رملية'],[/dust haze/gi,'غبار عالق في الجو'],[/fog/gi,'ضباب'],[/snowfall|snow/gi,'تساقط الثلوج'],[/ice|icy conditions/gi,'انجماد'],[/frost/gi,'صقيع'],[/heatwave|heat wave/gi,'موجة حر'],[/extreme heat/gi,'حرارة شديدة'],[/cold wave/gi,'موجة برد'],[/heavy showers/gi,'زخات مطرية غزيرة'],[/rain showers/gi,'زخات مطرية'],[/valid from/gi,'ساري اعتبارًا من'],[/valid until/gi,'ساري حتى'],[/issued/gi,'وقت الإصدار'],[/expires/gi,'ينتهي'],[/warning/gi,'تحذير'],[/watch/gi,'مراقبة جوية'],[/advisory/gi,'تنبيه جوي'],[/expected/gi,'متوقع'],[/possible/gi,'محتمل'],[/local time/gi,'التوقيت المحلي'],[/jordan/gi,'الأردن'],[/governorate/gi,'محافظة'],[/area/gi,'المنطقة'],[/no active warnings?/gi,'لا توجد تحذيرات سارية'],[/orange level/gi,'المستوى البرتقالي'],[/red level/gi,'المستوى الأحمر'],[/yellow level/gi,'المستوى الأصفر']];
+    const phrases=[[/mainly in the east/gi,'خاصة في شرق المملكة'],[/mainly in the south/gi,'خاصة في جنوب المملكة'],[/mainly in the north/gi,'خاصة في شمال المملكة'],[/low visibility(?: at times)?/gi,'تدني مدى الرؤية'],[/dusty/gi,'طقس مغبر'],[/dust/gi,'غبار'],[/severe weather warning/gi,'تحذير من أحوال جوية شديدة'],[/weather warning/gi,'تحذير جوي'],[/thunderstorms?/gi,'عواصف رعدية'],[/heavy rainfall|heavy rain/gi,'أمطار غزيرة'],[/flash flood(?:ing)?/gi,'سيول مفاجئة'],[/flood(?:ing)?/gi,'فيضانات وسيول'],[/strong winds?/gi,'رياح قوية'],[/high winds?/gi,'رياح شديدة'],[/dust storm(?:s)?/gi,'عواصف غبارية'],[/sand storm(?:s)?/gi,'عواصف رملية'],[/dust haze/gi,'غبار عالق في الجو'],[/fog/gi,'ضباب'],[/snowfall|snow/gi,'تساقط الثلوج'],[/ice|icy conditions/gi,'انجماد'],[/frost/gi,'صقيع'],[/heatwave|heat wave/gi,'موجة حر'],[/extreme heat/gi,'حرارة شديدة'],[/cold wave/gi,'موجة برد'],[/heavy showers/gi,'زخات مطرية غزيرة'],[/rain showers/gi,'زخات مطرية'],[/valid from/gi,'ساري اعتبارًا من'],[/valid until/gi,'ساري حتى'],[/issued/gi,'وقت الإصدار'],[/expires/gi,'ينتهي'],[/warning/gi,'تحذير'],[/watch/gi,'مراقبة جوية'],[/advisory/gi,'تنبيه جوي'],[/expected/gi,'متوقع'],[/possible/gi,'محتمل'],[/local time/gi,'التوقيت المحلي'],[/jordan/gi,'الأردن'],[/governorate/gi,'محافظة'],[/area/gi,'المنطقة'],[/no active warnings?/gi,'لا توجد تحذيرات سارية'],[/orange level/gi,'المستوى البرتقالي'],[/red level/gi,'المستوى الأحمر'],[/yellow level/gi,'المستوى الأصفر']];
     for(const [re,ar] of phrases)t=t.replace(re,ar);
     return t||'لم يتوفر وصف نصي للتحذير.';
   }
   async function translateToArabic(text){
-    const source=String(text||'').trim();if(!source)return '';if(/[\u0600-\u06FF]/.test(source))return source;
+    const source=String(text||'').trim();if(!source)return '';if(/[\u0600-\u06FF]/.test(source)){
+      if(!/[A-Za-z]{3,}/.test(source))return source;
+      const segs=source.match(/[\u0600-\u06FF][\u0600-\u06FF\u064B-\u0652\s،؛:.\-–()\d]*/g);
+      if(segs&&segs.length)return segs.map(x=>x.trim()).filter(Boolean).join(' ').replace(/\s+/g,' ');
+      return source;}
     try{const url='https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ar&dt=t&q='+encodeURIComponent(source.slice(0,3500));const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('translation unavailable');const data=await r.json();const result=(data[0]||[]).map(part=>part&&part[0]||'').join('').trim();if(result)return result;}catch(e){console.warn('Arabic alert translation unavailable',e);}
     const local=translate(source);return /[A-Za-z]{4,}/.test(local)?'ورد تحذير جوي باللغة الإنجليزية، وتعذرت ترجمته تلقائيًا في الوقت الحالي.':'تحذير جوي: '+local;
   }
@@ -2516,7 +2561,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const stale=all.filter(e=>e.state==='stale');
     active.sort((a,b)=>{const sa=severityInfo(a.severity).rank,sb=severityInfo(b.severity).rank;if(sa!==sb)return sb-sa;const order={new:0,active:1,scheduled:2,old:3};if(order[a.state]!==order[b.state])return order[a.state]-order[b.state];return (b.sentMs||0)-(a.sentMs||0);});
     if(!active.length){items.innerHTML='<p>لا توجد تحديثات سارية حاليًا.</p>';status.textContent='لا توجد تحذيرات سارية حاليًا';if(window.PetraWarningBoxes)window.PetraWarningBoxes.report('jmd','clear');return;}
-    const translated=await Promise.all(active.slice(0,8).map(async e=>({...e,title:await translateToArabic(e.title||'تحذير جوي'),description:(String(e.description||'').trim()===String(e.title||'').trim())?'لا تتوفر تفاصيل إضافية في الخلاصة الرسمية. راجع تطبيق الأرصاد الجوية الأردنية للتفاصيل.':await translateToArabic(e.description||e.summary||'لم يتوفر وصف نصي للتحذير.'),area:e.area?await translateToArabic(e.area):''})));
+    const translated=await Promise.all(active.slice(0,8).map(async e=>({...e,title:await translateToArabic(e.title||'تحذير جوي'),description:(String(e.description||'').trim()===String(e.title||'').trim())?'لا تتوفر تفاصيل إضافية لهذا التحذير حاليًا.':await translateToArabic(e.description||e.summary||'لم يتوفر وصف نصي للتحذير.'),area:e.area?(await translateToArabic(e.area)).replace(/^تحذير جوي: /,''):''})));
     items.innerHTML=translated.map(e=>{
       const sev=severityInfo(e.severity);const stateLabel=e.state==='new'?'جديد':e.state==='old'?'تحذير قديم':e.state==='scheduled'?'يبدأ لاحقًا':'تحذير ساري';const stateClass=e.state==='new'?'cap-alert-new':e.state==='old'?'cap-alert-old':'cap-alert-active';
       const details=[];if(e.area)details.push('المنطقة: '+e.area);if(e.sent||e.date)details.push('وقت الإصدار: '+formatDate(e.sent||e.date));if(e.effective)details.push('بداية السريان: '+formatDate(e.effective));if(e.expires)details.push('انتهاء الصلاحية: '+formatDate(e.expires));if(e.urgency)details.push('الاستعجال: '+translate(e.urgency));
@@ -3556,7 +3601,7 @@ body{margin:0!important;overflow-x:hidden!important;}
   if(band==='hot'||band==='extreme')el('wx-heat'); if(band==='cold')el('wx-frost');
   el('wx-vig');
  }
- function weatherName(c){return({0:'صحو',1:'صحو غالباً',2:'غائم جزئياً',3:'غائم',45:'ضباب',48:'ضباب متجمد',51:'رذاذ خفيف',53:'رذاذ متوسط',55:'رذاذ كثيف',56:'رذاذ متجمد',57:'رذاذ متجمد',61:'مطر خفيف',63:'مطر متوسط',65:'مطر غزير',66:'مطر متجمد',67:'مطر متجمد غزير',71:'ثلوج خفيفة',73:'ثلوج متوسطة',75:'ثلوج كثيفة',77:'حبيبات ثلجية',80:'زخات مطر خفيفة',81:'زخات مطر متوسطة',82:'زخات مطر غزيرة',85:'زخات ثلجية',86:'زخات ثلجية كثيفة',95:'عواصف رعدية',96:'عواصف رعدية مع برد',99:'عواصف رعدية مع برد كثيف'})[c]||'حالة جوية متغيرة'}
+ function weatherName(c){return({0:'صافي',1:'صافي غالباً',2:'غائم جزئياً',3:'غائم',45:'ضباب',48:'ضباب متجمد',51:'رذاذ خفيف',53:'رذاذ متوسط',55:'رذاذ كثيف',56:'رذاذ متجمد',57:'رذاذ متجمد',61:'مطر خفيف',63:'مطر متوسط',65:'مطر غزير',66:'مطر متجمد',67:'مطر متجمد غزير',71:'ثلوج خفيفة',73:'ثلوج متوسطة',75:'ثلوج كثيفة',77:'حبيبات ثلجية',80:'زخات مطر خفيفة',81:'زخات مطر متوسطة',82:'زخات مطر غزيرة',85:'زخات ثلجية',86:'زخات ثلجية كثيفة',95:'عواصف رعدية',96:'عواصف رعدية مع برد',99:'عواصف رعدية مع برد كثيف'})[c]||'حالة جوية متغيرة'}
  function icon(c,day){if(c===0||c===1)return day===0?'🌙':'☀️';if(c===2)return day===0?'☁️':'⛅';if(c===3)return '☁️';if(c===45||c===48)return '🌫️';if([95,96,99].indexOf(c)>-1)return '⛈️';if([71,73,75,77,85,86].indexOf(c)>-1)return '❄️';return '🌧️'}
  function windDir(d){var a=['شمالية','شمالية شرقية','شرقية','جنوبية شرقية','جنوبية','جنوبية غربية','غربية','شمالية غربية'];return a[Math.round((((d||0)%360)+360)%360/45)%8]}
  function apply(data){
@@ -3722,6 +3767,21 @@ body{margin:0!important;overflow-x:hidden!important;}
    var k=kindOf(ic.textContent);if(!k)return;
    var cls='ico ico-'+k;if(ic.dataset.k!==k||ic.className.indexOf('ico ')<0){ic.dataset.k=k;ic.classList.forEach(function(c){if(c.indexOf('ico')===0)ic.classList.remove(c)});ic.classList.add('ico','ico-'+k)}
    var card=ic.closest('.hourly-item')||ic.closest('tr');if(card&&card.dataset.kind!==k)card.setAttribute('data-kind',k);
+   if(card&&card.classList.contains('hourly-item')){
+    if(k==='rain'){
+     var mm=parseFloat(card.getAttribute('data-mm'))||0;
+     var lv=mm>=4?'heavy':mm>=1?'mod':'light';
+     if(card.getAttribute('data-rain')!==lv)card.setAttribute('data-rain',lv);
+     var lab=card.querySelector('.rain-lvl');
+     if(!lab){lab=document.createElement('div');lab.className='rain-lvl';card.appendChild(lab)}
+     var t=lv==='heavy'?'غزير':lv==='mod'?'متوسط':'خفيف';
+     var txt='مطر '+t+(mm>=0.1?'\n'+(mm<10?mm.toFixed(1):Math.round(mm))+' مم':'');
+     if(lab.textContent!==txt)lab.textContent=txt;
+    }else{
+     if(card.hasAttribute('data-rain'))card.removeAttribute('data-rain');
+     var l2=card.querySelector('.rain-lvl');if(l2)l2.remove();
+    }
+   }
   });
  }
  var busy=false;
