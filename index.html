@@ -2381,7 +2381,46 @@ document.addEventListener('DOMContentLoaded', function(){
 <script id="official-jmd-cap-warning-logic">
 (function(){
   'use strict';
-  const FEED='https://cap-sources.s3.amazonaws.com/jo-meteo-en/rss.xml';
+  const FEEDS=['https://cap-sources.s3.amazonaws.com/jo-meteo-en/rss.xml','https://cap-sources.s3.amazonaws.com/jo-meteo-ar/rss.xml'];
+  const PROXIES=[u=>u,u=>'https://corsproxy.io/?url='+encodeURIComponent(u),u=>'https://api.allorigins.win/raw?url='+encodeURIComponent(u)];
+  let proxyPref=0;
+  async function fetchText(u){
+    let lastErr;
+    for(let k=0;k<PROXIES.length;k++){
+      const i=(proxyPref+k)%PROXIES.length;
+      try{const ctl=new AbortController();const t=setTimeout(()=>ctl.abort(),12000);const sep=u.includes('?')?'&':'?';const r=await fetch(PROXIES[i](u+sep+'_='+Date.now()),{cache:'no-store',signal:ctl.signal});clearTimeout(t);if(!r.ok)throw new Error('HTTP '+r.status);const txt=await r.text();if(!/<(rss|feed|alert|item|entry)/i.test(txt))throw new Error('not xml');proxyPref=i;return txt;}catch(e){lastErr=e;}
+    }
+    throw lastErr||new Error('fetch failed');
+  }
+  function capInfo(doc){
+    const infos=Array.from(doc.getElementsByTagName('info'));if(!infos.length)return null;
+    const lang=i=>((i.getElementsByTagName('language')[0]||{}).textContent||'').toLowerCase();
+    return infos.find(i=>lang(i).startsWith('ar'))||infos[0];
+  }
+  async function enrich(e){
+    if(!e.link||!/^https?:/i.test(e.link))return e;
+    try{
+      const doc=new DOMParser().parseFromString(await fetchText(e.link),'application/xml');
+      if(doc.querySelector('parsererror'))return e;
+      const info=capInfo(doc);if(!info)return e;
+      const g=(n,name)=>{const el=n.getElementsByTagName(name)[0];return el?clean(el.textContent):''};
+      const root=doc.documentElement;
+      const instr=g(info,'instruction');
+      const desc=[g(info,'description'),instr?'تعليمات: '+instr:''].filter(Boolean).join('\n');
+      return {...e,title:g(info,'headline')||g(info,'event')||e.title,description:desc||e.description,sent:g(root,'sent')||e.sent,effective:g(info,'effective')||g(info,'onset')||e.effective,onset:g(info,'onset')||e.onset,expires:g(info,'expires')||e.expires,severity:g(info,'severity')||e.severity,urgency:g(info,'urgency')||e.urgency,certainty:g(info,'certainty')||e.certainty,area:g(info,'areaDesc')||e.area};
+    }catch(err){return e;}
+  }
+  async function loadAll(){
+    const res=await Promise.allSettled(FEEDS.map(async f=>parseXml(await fetchText(f))));
+    const ok=res.filter(r=>r.status==='fulfilled');
+    if(!ok.length)throw (res[0].reason||new Error('feeds unavailable'));
+    const seen=new Set();let list=[];
+    ok.forEach(r=>r.value.forEach(e=>{const k=(e.link||'')||(e.title+'|'+e.sent);if(seen.has(k))return;seen.add(k);list.push(e);}));
+    list=list.slice(0,25);
+    list=await Promise.all(list.map(enrich));
+    const seen2=new Set();
+    return list.filter(e=>{const k=(e.title+'|'+e.sent+'|'+e.expires);if(seen2.has(k))return false;seen2.add(k);return true;});
+  }
   const $=id=>document.getElementById(id);
   const status=$('capWarningStatus'),items=$('capWarningItems'),updated=$('capWarningUpdated');
   let lastFingerprint='';
@@ -2395,7 +2434,7 @@ document.addEventListener('DOMContentLoaded', function(){
     return t||'لم يتوفر وصف نصي للتحذير.';
   }
   async function translateToArabic(text){
-    const source=String(text||'').trim();if(!source)return '';
+    const source=String(text||'').trim();if(!source)return '';if(/[\u0600-\u06FF]/.test(source))return source;
     try{const url='https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ar&dt=t&q='+encodeURIComponent(source.slice(0,3500));const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('translation unavailable');const data=await r.json();const result=(data[0]||[]).map(part=>part&&part[0]||'').join('').trim();if(result)return result;}catch(e){console.warn('Arabic alert translation unavailable',e);}
     const local=translate(source);return /[A-Za-z]{4,}/.test(local)?'ورد تحذير جوي باللغة الإنجليزية، وتعذرت ترجمته تلقائيًا في الوقت الحالي.':'تحذير جوي: '+local;
   }
@@ -2404,7 +2443,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const now=Date.now(), sent=Date.parse(e.sent||e.date||''), effective=Date.parse(e.effective||e.onset||e.sent||e.date||''), expires=Date.parse(e.expires||'');
     // Keep each JMD warning/update for at most 24 hours from issue time.
     const stillValid=Number.isFinite(expires)&&expires>now;
-    if(Number.isFinite(sent)&&(now-sent)>24*3600000&&!stillValid)return {...e,state:'stale',sentMs:sent,expiresMs:expires};
+    if(Number.isFinite(sent)&&(now-sent)>(Number.isFinite(expires)?24:72)*3600000&&!stillValid)return {...e,state:'stale',sentMs:sent,expiresMs:expires};
     if(Number.isFinite(expires)&&expires<now)return {...e,state:'expired',sentMs:sent,expiresMs:expires};
     const isNew=Number.isFinite(sent)&&(now-sent)<=6*3600000&&(now-sent)>=-5*60000;
     const isOld=Number.isFinite(sent)&&(now-sent)>24*3600000&&!stillValid;
@@ -2429,10 +2468,10 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   function parseXml(xml){
     const doc=new DOMParser().parseFromString(xml,'application/xml');if(doc.querySelector('parsererror'))throw new Error('XML parse error');
-    return Array.from(doc.querySelectorAll('item, entry')).map(n=>({title:field(n,'title'),description:field(n,'description')||field(n,'summary')||field(n,'content'),date:field(n,'pubDate')||field(n,'published')||field(n,'updated'),sent:field(n,'sent')||field(n,'issued')||field(n,'pubDate')||field(n,'published')||field(n,'updated'),effective:field(n,'effective'),onset:field(n,'onset'),expires:field(n,'expires'),severity:field(n,'severity'),urgency:field(n,'urgency'),certainty:field(n,'certainty'),area:field(n,'areaDesc')||field(n,'area')}));
+    return Array.from(doc.querySelectorAll('item, entry')).map(n=>({title:field(n,'title'),description:field(n,'description')||field(n,'summary')||field(n,'content'),date:field(n,'pubDate')||field(n,'published')||field(n,'updated'),sent:field(n,'sent')||field(n,'issued')||field(n,'pubDate')||field(n,'published')||field(n,'updated'),effective:field(n,'effective'),onset:field(n,'onset'),expires:field(n,'expires'),severity:field(n,'severity'),urgency:field(n,'urgency'),certainty:field(n,'certainty'),area:field(n,'areaDesc')||field(n,'area'),link:field(n,'link')||((n.querySelector('link')||{getAttribute(){return ''}}).getAttribute('href')||'')}));
   }
   async function load(){
-    try{const url=FEED+(FEED.includes('?')?'&':'?')+'_='+Date.now();const response=await fetch(url,{cache:'no-store',mode:'cors',headers:{'Accept':'application/rss+xml, application/xml, text/xml'}});if(!response.ok)throw new Error('HTTP '+response.status);const entries=parseXml(await response.text());const fingerprint=entries.map(e=>e.title+e.sent+e.expires+e.description).join('|');await render(entries);if(fingerprint!==lastFingerprint&&lastFingerprint&&window.PetraWeatherNotifications&&window.PetraWeatherNotifications.officialAlert){const newest=entries[0];if(newest){const c=classify(newest);if(c.state==='new'||c.state==='active')window.PetraWeatherNotifications.officialAlert(await translateToArabic(newest.title),(await translateToArabic(newest.description)).slice(0,220));}}lastFingerprint=fingerprint;if(updated)updated.textContent='آخر تحديث: '+new Date().toLocaleString('ar-JO',{timeZone:'Asia/Amman'});
+    try{const entries=await loadAll();const fingerprint=entries.map(e=>e.title+e.sent+e.expires+e.description).join('|');await render(entries);if(fingerprint!==lastFingerprint&&lastFingerprint&&window.PetraWeatherNotifications&&window.PetraWeatherNotifications.officialAlert){const newest=entries[0];if(newest){const c=classify(newest);if(c.state==='new'||c.state==='active')window.PetraWeatherNotifications.officialAlert(await translateToArabic(newest.title),(await translateToArabic(newest.description)).slice(0,220));}}lastFingerprint=fingerprint;if(updated)updated.textContent='آخر تحديث: '+new Date().toLocaleString('ar-JO',{timeZone:'Asia/Amman'});
     }catch(err){console.warn('Official JMD CAP feed unavailable:',err);if(status)status.textContent='تعذّر تحديث التحذيرات حاليًا';if(items)items.innerHTML='<p>لم نتمكن من جلب التحذيرات في هذه المحاولة. سيُعاد التحقق تلقائيًا.</p>';if(window.PetraWarningBoxes)window.PetraWarningBoxes.report('jmd','error');if(updated)updated.textContent='آخر محاولة: '+new Date().toLocaleString('ar-JO',{timeZone:'Asia/Amman'});}
   }
   if(status&&items){load();setInterval(load,5*60*1000);}
