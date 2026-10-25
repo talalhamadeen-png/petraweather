@@ -2368,11 +2368,7 @@ document.addEventListener('DOMContentLoaded', function(){
  const states={jmd:'loading',psd:'loading'};
  const panels={jmd:document.getElementById('officialCapWarning'),psd:document.getElementById('psdPublicSafetyAlerts')};
  function apply(){
-   const values=Object.values(states);
-   let state='unknown';
-   if(values.includes('active')) state='active';
-   else if(values.every(v=>v==='clear')) state='clear';
-   Object.values(panels).forEach(panel=>{if(!panel)return;panel.classList.remove('warning-state-red','warning-state-green','warning-state-unknown');panel.classList.add(state==='active'?'warning-state-red':state==='clear'?'warning-state-green':'warning-state-unknown');});
+   Object.keys(panels).forEach(k=>{const panel=panels[k];if(!panel)return;const v=states[k];const state=v==='active'?'active':v==='clear'?'clear':'unknown';panel.classList.remove('warning-state-red','warning-state-green','warning-state-unknown');panel.classList.add(state==='active'?'warning-state-red':state==='clear'?'warning-state-green':'warning-state-unknown');});
  }
  window.PetraWarningBoxes={report:function(source,state){if(!(source in states))return;states[source]=state;apply();}};
  apply();
@@ -2397,17 +2393,78 @@ document.addEventListener('DOMContentLoaded', function(){
     const lang=i=>((i.getElementsByTagName('language')[0]||{}).textContent||'').toLowerCase();
     return infos.find(i=>lang(i).startsWith('ar'))||infos[0];
   }
+  function capPolys(info){
+    const out=[];Array.from(info.getElementsByTagName('polygon')).forEach(p=>{const pts=clean(p.textContent).split(' ').map(x=>x.split(',').map(Number)).filter(a=>a.length===2&&a.every(Number.isFinite));if(pts.length>2)out.push(pts);});return out;
+  }
+  function capCircles(info){
+    const out=[];Array.from(info.getElementsByTagName('circle')).forEach(c=>{const m=clean(c.textContent).match(/^\s*(-?[\d.]+)\s*,\s*(-?[\d.]+)\s+([\d.]+)/);if(m)out.push([+m[1],+m[2],+m[3]]);});return out;
+  }
+  const REGIONS=[
+    {k:/البادية\s*الشرقية|شرق\s*المملكة|eastern\s*(desert|badia)|east\b/i,n:'شرق المملكة (البادية الشرقية)',b:[[29.6,37.0],[32.3,39.3]]},
+    {k:/البادية\s*الشمالية|northern\s*(desert|badia)/i,n:'البادية الشمالية',b:[[31.8,36.4],[32.4,39.0]]},
+    {k:/البادية\s*الجنوبية|southern\s*(desert|badia)/i,n:'البادية الجنوبية',b:[[29.2,36.0],[30.8,38.5]]},
+    {k:/الجنوب|south\b|العقبة|معان|الطفيلة|الكرك/i,n:'جنوب المملكة',b:[[29.2,34.9],[31.3,36.6]]},
+    {k:/الوسط|central|عمّان|عمان/i,n:'وسط المملكة',b:[[31.2,35.6],[32.0,36.4]]},
+    {k:/الشمال|north\b|إربد|اربد|عجلون|جرش|المفرق/i,n:'شمال المملكة',b:[[32.0,35.6],[32.7,36.9]]},
+    {k:/الأغوار|الاغوار|البحر الميت|jordan valley|dead sea/i,n:'الأغوار والبحر الميت',b:[[30.9,35.35],[32.6,35.65]]}
+  ];
+  function regionsFor(e){
+    const txt=[e.title,e.description,e.area].join(' ');
+    const hit=REGIONS.filter(r=>r.k.test(txt));
+    if(hit.length===0&&/البادية|badia|desert/i.test(txt))return [REGIONS[0],REGIONS[1],REGIONS[2]];
+    return hit;
+  }
+  let leafletP=null;
+  function loadLeaflet(){
+    if(window.L)return Promise.resolve();
+    if(leafletP)return leafletP;
+    leafletP=new Promise((res,rej)=>{
+      const l=document.createElement('link');l.rel='stylesheet';l.href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';document.head.appendChild(l);
+      const sc=document.createElement('script');sc.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';sc.onload=()=>res();sc.onerror=()=>{leafletP=null;rej(new Error('leaflet'));};document.head.appendChild(sc);
+    });return leafletP;
+  }
+  function attachMaps(list){
+    const cards=items.querySelectorAll('.cap-warning-item');
+    cards.forEach((card,i)=>{
+      const e=list[i];if(!e||card.querySelector('.cap-map-btn'))return;
+      const btn=document.createElement('button');btn.type='button';btn.className='cap-map-btn';btn.textContent='🗺️ عرض على خريطة الأردن';
+      const box=document.createElement('div');box.className='cap-map-box';box.hidden=true;
+      card.appendChild(btn);card.appendChild(box);
+      let map=null;
+      btn.addEventListener('click',async()=>{
+        if(!box.hidden){box.hidden=true;btn.textContent='🗺️ عرض على خريطة الأردن';return;}
+        box.hidden=false;btn.textContent='إخفاء الخريطة';
+        if(map){setTimeout(()=>map.invalidateSize(),50);return;}
+        box.innerHTML='<div class="cap-map-canvas"></div><p class="cap-map-note"></p>';
+        const cv=box.querySelector('.cap-map-canvas'),note=box.querySelector('.cap-map-note');
+        try{await loadLeaflet();}catch(err){note.textContent='تعذر تحميل الخريطة. تحقق من الاتصال بالإنترنت.';return;}
+        map=L.map(cv,{scrollWheelZoom:false}).setView([31.2,36.9],6);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:12,attribution:'© OpenStreetMap'}).addTo(map);
+        const col={extreme:'#b91c1c',severe:'#ea580c',moderate:'#eab308',minor:'#38bdf8'}[String(e.severity||'').toLowerCase()]||'#eab308';
+        const layers=[];
+        (e.polys||[]).forEach(p=>layers.push(L.polygon(p,{color:col,weight:2,fillColor:col,fillOpacity:.35}).addTo(map)));
+        (e.circles||[]).forEach(c=>layers.push(L.circle([c[0],c[1]],{radius:c[2]*1000,color:col,weight:2,fillColor:col,fillOpacity:.35}).addTo(map)));
+        let approx=false;
+        if(!layers.length){const rs=regionsFor(e);rs.forEach(r=>layers.push(L.rectangle(r.b,{color:col,weight:2,dashArray:'6 4',fillColor:col,fillOpacity:.3}).bindTooltip(r.n,{permanent:false}).addTo(map)));approx=rs.length>0;if(approx)e._approxNames=rs.map(r=>r.n).join('، ');}
+        if(layers.length){map.fitBounds(L.featureGroup(layers).getBounds(),{padding:[20,20],maxZoom:9});note.textContent=approx?('المناطق المظللة تقريبية بحسب نص التحذير: '+e._approxNames+'. لم تتضمن الخلاصة الرسمية حدودًا دقيقة.'):(e.area?('المنطقة: '+e.area):'');}
+        else{map.fitBounds([[29.1,34.9],[33.4,39.3]]);note.textContent='لا تتضمن الخلاصة الرسمية حدود هذا التحذير على الخريطة'+(e.area?' (المنطقة: '+e.area+')':'')+'. تُعرض خريطة الأردن للاطلاع فقط.';}
+        setTimeout(()=>map.invalidateSize(),80);
+      });
+    });
+  }
   async function enrich(e){
-    if(!e.link||!/^https?:/i.test(e.link))return e;
+    const cands=[e.link,e.guid,(e.link||'').replace(/\.html?$/i,'.xml'),(e.link||'').replace(/\/?$/,'.xml')].filter((u,i,a)=>u&&/^https?:/i.test(u)&&a.indexOf(u)===i);
+    if(!cands.length)return e;
     try{
-      const doc=new DOMParser().parseFromString(await fetchText(e.link),'application/xml');
-      if(doc.querySelector('parsererror'))return e;
+      let doc=null;
+      for(const u of cands){try{const d=new DOMParser().parseFromString(await fetchText(u),'application/xml');if(!d.querySelector('parsererror')&&d.getElementsByTagName('info').length){doc=d;break;}}catch(_){}}
+      if(!doc){console.warn('JMD CAP detail not found for',cands);return e;}
       const info=capInfo(doc);if(!info)return e;
       const g=(n,name)=>{const el=n.getElementsByTagName(name)[0];return el?clean(el.textContent):''};
       const root=doc.documentElement;
       const instr=g(info,'instruction');
       const desc=[g(info,'description'),instr?'تعليمات: '+instr:''].filter(Boolean).join('\n');
-      return {...e,title:g(info,'headline')||g(info,'event')||e.title,description:desc||e.description,sent:g(root,'sent')||e.sent,effective:g(info,'effective')||g(info,'onset')||e.effective,onset:g(info,'onset')||e.onset,expires:g(info,'expires')||e.expires,severity:g(info,'severity')||e.severity,urgency:g(info,'urgency')||e.urgency,certainty:g(info,'certainty')||e.certainty,area:g(info,'areaDesc')||e.area};
+      return {...e,title:g(info,'headline')||g(info,'event')||e.title,description:desc||e.description,sent:g(root,'sent')||e.sent,effective:g(info,'effective')||g(info,'onset')||e.effective,onset:g(info,'onset')||e.onset,expires:g(info,'expires')||e.expires,severity:g(info,'severity')||e.severity,urgency:g(info,'urgency')||e.urgency,certainty:g(info,'certainty')||e.certainty,area:g(info,'areaDesc')||e.area,polys:capPolys(info),circles:capCircles(info)};
     }catch(err){return e;}
   }
   async function loadAll(){
@@ -2418,8 +2475,9 @@ document.addEventListener('DOMContentLoaded', function(){
     ok.forEach(r=>r.value.forEach(e=>{const k=(e.link||'')||(e.title+'|'+e.sent);if(seen.has(k))return;seen.add(k);list.push(e);}));
     list=list.slice(0,25);
     list=await Promise.all(list.map(enrich));
+    list.sort((a,b)=>(Date.parse(b.sent)||0)-(Date.parse(a.sent)||0));
     const seen2=new Set();
-    return list.filter(e=>{const k=(e.title+'|'+e.sent+'|'+e.expires);if(seen2.has(k))return false;seen2.add(k);return true;});
+    return list.filter(e=>{const k=[e.title,e.description,e.area,e.expires].map(x=>String(x||'').replace(/\s+/g,' ').trim().toLowerCase()).join('|');if(seen2.has(k))return false;seen2.add(k);return true;});
   }
   const $=id=>document.getElementById(id);
   const status=$('capWarningStatus'),items=$('capWarningItems'),updated=$('capWarningUpdated');
@@ -2458,17 +2516,18 @@ document.addEventListener('DOMContentLoaded', function(){
     const stale=all.filter(e=>e.state==='stale');
     active.sort((a,b)=>{const sa=severityInfo(a.severity).rank,sb=severityInfo(b.severity).rank;if(sa!==sb)return sb-sa;const order={new:0,active:1,scheduled:2,old:3};if(order[a.state]!==order[b.state])return order[a.state]-order[b.state];return (b.sentMs||0)-(a.sentMs||0);});
     if(!active.length){items.innerHTML='<p>لا توجد تحديثات سارية حاليًا.</p>';status.textContent='لا توجد تحذيرات سارية حاليًا';if(window.PetraWarningBoxes)window.PetraWarningBoxes.report('jmd','clear');return;}
-    const translated=await Promise.all(active.slice(0,8).map(async e=>({...e,title:await translateToArabic(e.title||'تحذير جوي'),description:await translateToArabic(e.description||e.summary||'لم يتوفر وصف نصي للتحذير.'),area:e.area?await translateToArabic(e.area):''})));
+    const translated=await Promise.all(active.slice(0,8).map(async e=>({...e,title:await translateToArabic(e.title||'تحذير جوي'),description:(String(e.description||'').trim()===String(e.title||'').trim())?'لا تتوفر تفاصيل إضافية في الخلاصة الرسمية. راجع تطبيق الأرصاد الجوية الأردنية للتفاصيل.':await translateToArabic(e.description||e.summary||'لم يتوفر وصف نصي للتحذير.'),area:e.area?await translateToArabic(e.area):''})));
     items.innerHTML=translated.map(e=>{
       const sev=severityInfo(e.severity);const stateLabel=e.state==='new'?'جديد':e.state==='old'?'تحذير قديم':e.state==='scheduled'?'يبدأ لاحقًا':'تحذير ساري';const stateClass=e.state==='new'?'cap-alert-new':e.state==='old'?'cap-alert-old':'cap-alert-active';
       const details=[];if(e.area)details.push('المنطقة: '+e.area);if(e.sent||e.date)details.push('وقت الإصدار: '+formatDate(e.sent||e.date));if(e.effective)details.push('بداية السريان: '+formatDate(e.effective));if(e.expires)details.push('انتهاء الصلاحية: '+formatDate(e.expires));if(e.urgency)details.push('الاستعجال: '+translate(e.urgency));
       const cardStateClass=e.state==='new'?'cap-alert-card-new':e.state==='old'?'cap-alert-card-old':'';return '<article class="cap-warning-item '+cardStateClass+' cap-alert-severity-'+sev.cls+'"><div class="cap-alert-badges"><span class="cap-alert-badge '+stateClass+'">'+stateLabel+'</span><span class="cap-alert-badge cap-alert-severity-'+sev.cls+'">'+sev.label+'</span></div><h3>'+escapeHtml(e.title)+'</h3><p dir="rtl" lang="ar">'+escapeHtml(e.description.slice(0,1800))+'</p>'+(details.length?'<div class="cap-warning-meta">'+escapeHtml(details.join(' · '))+'</div>':'')+'</article>';
     }).join('');
+    attachMaps(translated);
     const currentCount=active.length;status.textContent='التحذيرات السارية حاليًا: '+currentCount;if(window.PetraWarningBoxes)window.PetraWarningBoxes.report('jmd',currentCount>0?'active':'clear');
   }
   function parseXml(xml){
     const doc=new DOMParser().parseFromString(xml,'application/xml');if(doc.querySelector('parsererror'))throw new Error('XML parse error');
-    return Array.from(doc.querySelectorAll('item, entry')).map(n=>({title:field(n,'title'),description:field(n,'description')||field(n,'summary')||field(n,'content'),date:field(n,'pubDate')||field(n,'published')||field(n,'updated'),sent:field(n,'sent')||field(n,'issued')||field(n,'pubDate')||field(n,'published')||field(n,'updated'),effective:field(n,'effective'),onset:field(n,'onset'),expires:field(n,'expires'),severity:field(n,'severity'),urgency:field(n,'urgency'),certainty:field(n,'certainty'),area:field(n,'areaDesc')||field(n,'area'),link:field(n,'link')||((n.querySelector('link')||{getAttribute(){return ''}}).getAttribute('href')||'')}));
+    return Array.from(doc.querySelectorAll('item, entry')).map(n=>({title:field(n,'title'),description:field(n,'description')||field(n,'summary')||field(n,'content'),date:field(n,'pubDate')||field(n,'published')||field(n,'updated'),sent:field(n,'sent')||field(n,'issued')||field(n,'pubDate')||field(n,'published')||field(n,'updated'),effective:field(n,'effective'),onset:field(n,'onset'),expires:field(n,'expires'),severity:field(n,'severity'),urgency:field(n,'urgency'),certainty:field(n,'certainty'),area:field(n,'areaDesc')||field(n,'area'),guid:field(n,'guid')||field(n,'id'),link:field(n,'link')||((n.querySelector('link')||{getAttribute(){return ''}}).getAttribute('href')||'')}));
   }
   async function load(){
     try{const entries=await loadAll();const fingerprint=entries.map(e=>e.title+e.sent+e.expires+e.description).join('|');await render(entries);if(fingerprint!==lastFingerprint&&lastFingerprint&&window.PetraWeatherNotifications&&window.PetraWeatherNotifications.officialAlert){const newest=entries[0];if(newest){const c=classify(newest);if(c.state==='new'||c.state==='active')window.PetraWeatherNotifications.officialAlert(await translateToArabic(newest.title),(await translateToArabic(newest.description)).slice(0,220));}}lastFingerprint=fingerprint;if(updated)updated.textContent='آخر تحديث: '+new Date().toLocaleString('ar-JO',{timeZone:'Asia/Amman'});
@@ -3244,6 +3303,10 @@ body{margin:0!important;overflow-x:hidden!important;}
   .panel,.weather-now-box,.early-warning-box,.social-footer-box,#officialCapWarning,#psdPublicSafetyAlerts{padding:7px!important;}
   #petraRadarMap,#petraRainViewerPanel iframe,#petraLightningMapPanel iframe{height:205px!important;min-height:180px!important;}
 }
+.cap-map-btn{margin-top:10px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.1);color:#fff;border-radius:10px;padding:8px 14px;font:inherit;font-size:.85rem;cursor:pointer}
+.cap-map-btn:hover{background:rgba(255,255,255,.2)}
+.cap-map-canvas{height:260px;border-radius:12px;overflow:hidden;margin-top:10px;background:#0b1626}
+.cap-map-note{margin:6px 0 0;font-size:.8rem;opacity:.85}
 </style>
 
 <script id="petra-location-manager">
