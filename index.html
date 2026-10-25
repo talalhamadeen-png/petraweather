@@ -2003,24 +2003,6 @@ html body .notification-status{font-weight:700}
 </script>
 </main>
 <aside>
-<section class="panel" id="petraRainViewerPanel" style="padding:16px;border:1px solid #d5e7eb;border-radius:17px;background:#fff;margin:0 0 16px;box-shadow:0 5px 18px rgba(25,51,66,.045)">
-<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px"><div><h2 style="margin:0 0 5px;font-size:1.2rem">🌧️ رادار الأمطار المباشر – البتراء</h2><p style="margin:0;color:#607783;font-size:.9rem">مشاهدة صور الرادار السابقة وتحريكها زمنيًا</p></div><button type="button" id="petraRadarRefresh" style="border:0;border-radius:10px;padding:9px 13px;background:#087f8c;color:#fff;font-weight:700">تحديث الرادار</button></div>
-<div id="petraRadarMap" role="application" aria-label="خريطة رادار الأمطار لمنطقة البتراء" style="height:360px;min-height:280px;border-radius:12px;overflow:hidden;background:#eaf1f3"></div>
-<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px"><button id="petraRadarPlay" type="button" style="border:0;border-radius:9px;padding:8px 13px;background:#173f58;color:#fff">▶ تشغيل الحركة</button><input id="petraRadarTimeline" type="range" min="0" max="0" value="0" step="1" aria-label="وقت صورة الرادار" style="flex:1;min-width:140px"><span id="petraRadarTime" style="font-size:.85rem;color:#345">جارٍ تحميل صور الرادار…</span></div>
-<p id="petraRadarStatus" role="status" aria-live="polite" style="margin:9px 0 0;color:#607783;font-size:.85rem">يتم التحقق من توفر صور الرادار فوق البتراء.</p>
-<p style="margin:7px 0 0;font-size:.78rem;color:#71828a">المصدر: <a href="https://www.rainviewer.com/" target="_blank" rel="noopener">RainViewer</a> · الخريطة: © OpenStreetMap. هذه صور رادار سابقة وليست توقعًا مستقبليًا، وقد لا تتوفر تغطية رادارية دقيقة لجنوب الأردن.</p>
-</section>
-<section class="panel" id="petraLightningMapPanel" style="padding:16px;border:1px solid #d5e7eb;border-radius:17px;background:#fff;margin:0 0 16px;box-shadow:0 5px 18px rgba(25,51,66,.045)">
-  <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px">
-    <div><h2 style="margin:0 0 5px;font-size:1.2rem">⚡ خريطة البرق المباشر – لواء البتراء</h2><p style="margin:0;color:#607783;font-size:.9rem">رصد ومتابعة مواقع ضربات البرق حول وادي موسى والبتراء</p></div>
-    <a href="https://www.lightningmaps.org/#6/30.32/35.48" target="_blank" rel="noopener noreferrer" style="display:inline-block;border-radius:10px;padding:9px 13px;background:#087f8c;color:#fff;font-weight:700;text-decoration:none">فتح خريطة البرق ↗</a>
-  </div>
-  <div style="height:430px;min-height:320px;border-radius:12px;overflow:hidden;background:#eef4f6;border:1px solid #dce8eb">
-    <iframe title="خريطة البرق المباشر حول لواء البتراء" src="https://map.blitzortung.org/index.php?interactive=1&NavigationControl=1&FullScreenControl=1&ScaleControl=1&Cookies=0&InfoDiv=1&MenuButtonDiv=1&MapStyle=2&LightningCheckboxChecked=1&LightningRangeValue=10#6/30.32/35.48" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" style="width:100%;height:100%;border:0" allowfullscreen></iframe>
-  </div>
-  <p style="margin:9px 0 0;color:#607783;font-size:.85rem">الخريطة مضبوطة لتبدأ من إحداثيات لواء البتراء تقريبًا (30.32° شمالًا، 35.48° شرقًا). حرّك الخريطة أو كبّرها لرؤية المناطق المحيطة. قد تختلف دقة الرصد حسب تغطية شبكة كواشف البرق، ولا تُستخدم الخريطة وحدها لاتخاذ قرارات السلامة.</p>
-  <p style="margin:6px 0 0;font-size:.78rem;color:#71828a">المصدر: <a href="https://www.lightningmaps.org/#6/30.32/35.48" target="_blank" rel="noopener noreferrer">LightningMaps.org</a> · بيانات الرصد من شبكة Blitzortung.</p>
-</section>
 <section class="panel gfs-live-panel">
 <div class="gfs-live-card">
 <div aria-label="نموذج GFS العالمي" class="gfs-brand-icon" role="img"><span>GFS</span><small>GLOBAL MODEL</small></div>
@@ -2421,10 +2403,11 @@ document.addEventListener('DOMContentLoaded', function(){
   function classify(e){
     const now=Date.now(), sent=Date.parse(e.sent||e.date||''), effective=Date.parse(e.effective||e.onset||e.sent||e.date||''), expires=Date.parse(e.expires||'');
     // Keep each JMD warning/update for at most 24 hours from issue time.
-    if(Number.isFinite(sent)&&(now-sent)>24*3600000)return {...e,state:'stale',sentMs:sent,expiresMs:expires};
+    const stillValid=Number.isFinite(expires)&&expires>now;
+    if(Number.isFinite(sent)&&(now-sent)>24*3600000&&!stillValid)return {...e,state:'stale',sentMs:sent,expiresMs:expires};
     if(Number.isFinite(expires)&&expires<now)return {...e,state:'expired',sentMs:sent,expiresMs:expires};
     const isNew=Number.isFinite(sent)&&(now-sent)<=6*3600000&&(now-sent)>=-5*60000;
-    const isOld=Number.isFinite(sent)&&(now-sent)>24*3600000;
+    const isOld=Number.isFinite(sent)&&(now-sent)>24*3600000&&!stillValid;
     const notYet=Number.isFinite(effective)&&effective>now;
     return {...e,state:isNew?'new':isOld?'old':notYet?'scheduled':'active',sentMs:sent,expiresMs:expires};
   }
@@ -2435,14 +2418,14 @@ document.addEventListener('DOMContentLoaded', function(){
     const expired=all.filter(e=>e.state==='expired');
     const stale=all.filter(e=>e.state==='stale');
     active.sort((a,b)=>{const sa=severityInfo(a.severity).rank,sb=severityInfo(b.severity).rank;if(sa!==sb)return sb-sa;const order={new:0,active:1,scheduled:2,old:3};if(order[a.state]!==order[b.state])return order[a.state]-order[b.state];return (b.sentMs||0)-(a.sentMs||0);});
-    if(!active.length){items.innerHTML='<p>لا توجد تحديثات سارية خلال آخر 24 ساعة.</p>';status.textContent='لا توجد تحذيرات سارية خلال آخر 24 ساعة';if(window.PetraWarningBoxes)window.PetraWarningBoxes.report('jmd','clear');return;}
+    if(!active.length){items.innerHTML='<p>لا توجد تحديثات سارية حاليًا.</p>';status.textContent='لا توجد تحذيرات سارية حاليًا';if(window.PetraWarningBoxes)window.PetraWarningBoxes.report('jmd','clear');return;}
     const translated=await Promise.all(active.slice(0,8).map(async e=>({...e,title:await translateToArabic(e.title||'تحذير جوي'),description:await translateToArabic(e.description||e.summary||'لم يتوفر وصف نصي للتحذير.'),area:e.area?await translateToArabic(e.area):''})));
     items.innerHTML=translated.map(e=>{
       const sev=severityInfo(e.severity);const stateLabel=e.state==='new'?'جديد':e.state==='old'?'تحذير قديم':e.state==='scheduled'?'يبدأ لاحقًا':'تحذير ساري';const stateClass=e.state==='new'?'cap-alert-new':e.state==='old'?'cap-alert-old':'cap-alert-active';
       const details=[];if(e.area)details.push('المنطقة: '+e.area);if(e.sent||e.date)details.push('وقت الإصدار: '+formatDate(e.sent||e.date));if(e.effective)details.push('بداية السريان: '+formatDate(e.effective));if(e.expires)details.push('انتهاء الصلاحية: '+formatDate(e.expires));if(e.urgency)details.push('الاستعجال: '+translate(e.urgency));
       const cardStateClass=e.state==='new'?'cap-alert-card-new':e.state==='old'?'cap-alert-card-old':'';return '<article class="cap-warning-item '+cardStateClass+' cap-alert-severity-'+sev.cls+'"><div class="cap-alert-badges"><span class="cap-alert-badge '+stateClass+'">'+stateLabel+'</span><span class="cap-alert-badge cap-alert-severity-'+sev.cls+'">'+sev.label+'</span></div><h3>'+escapeHtml(e.title)+'</h3><p dir="rtl" lang="ar">'+escapeHtml(e.description.slice(0,1800))+'</p>'+(details.length?'<div class="cap-warning-meta">'+escapeHtml(details.join(' · '))+'</div>':'')+'</article>';
     }).join('');
-    const currentCount=active.length;status.textContent='التحديثات السارية خلال آخر 24 ساعة: '+currentCount;if(window.PetraWarningBoxes)window.PetraWarningBoxes.report('jmd',currentCount>0?'active':'clear');
+    const currentCount=active.length;status.textContent='التحذيرات السارية حاليًا: '+currentCount;if(window.PetraWarningBoxes)window.PetraWarningBoxes.report('jmd',currentCount>0?'active':'clear');
   }
   function parseXml(xml){
     const doc=new DOMParser().parseFromString(xml,'application/xml');if(doc.querySelector('parsererror'))throw new Error('XML parse error');
@@ -2739,7 +2722,10 @@ document.addEventListener('DOMContentLoaded', function(){
   if(enabledNow())ensureSW();
   startPolling();refresh();
  }
- window.PetraWeatherNotifications={check:function(){}};
+ window.PetraWeatherNotifications={check:function(){},officialAlert:async function(title,body){
+  var k='official|'+title,m=sentMap();if(m[k]&&Date.now()-m[k]<6*36e5)return;
+  if(await show('🚨 تحذير رسمي – الأرصاد الأردنية',title+(body?': '+body:''),'official')){m[k]=Date.now();saveSent(m)}
+ }};
  window.PetraAlertsEngine={refresh:refresh,setLocation:function(l){loc=l}};
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
