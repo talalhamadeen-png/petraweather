@@ -2567,7 +2567,6 @@ document.addEventListener('DOMContentLoaded', function(){
       const details=[];if(e.area)details.push('المنطقة: '+e.area);if(e.sent||e.date)details.push('وقت الإصدار: '+formatDate(e.sent||e.date));if(e.effective)details.push('بداية السريان: '+formatDate(e.effective));if(e.expires)details.push('انتهاء الصلاحية: '+formatDate(e.expires));if(e.urgency)details.push('الاستعجال: '+translate(e.urgency));
       const cardStateClass=e.state==='new'?'cap-alert-card-new':e.state==='old'?'cap-alert-card-old':'';return '<article class="cap-warning-item '+cardStateClass+' cap-alert-severity-'+sev.cls+'"><div class="cap-alert-badges"><span class="cap-alert-badge '+stateClass+'">'+stateLabel+'</span><span class="cap-alert-badge cap-alert-severity-'+sev.cls+'">'+sev.label+'</span></div><h3>'+escapeHtml(e.title)+'</h3><p dir="rtl" lang="ar">'+escapeHtml(e.description.slice(0,1800))+'</p>'+(details.length?'<div class="cap-warning-meta">'+escapeHtml(details.join(' · '))+'</div>':'')+'</article>';
     }).join('');
-    attachMaps(translated);
     const currentCount=active.length;status.textContent='التحذيرات السارية حاليًا: '+currentCount;if(window.PetraWarningBoxes)window.PetraWarningBoxes.report('jmd',currentCount>0?'active':'clear');
   }
   function parseXml(xml){
