@@ -1255,7 +1255,7 @@ html body .container>main,html body .container>aside,html body .container .bulle
 html body .container>*{grid-column:1/-1}
 html body .container section,html body .container .location-toolbar{margin:0!important;min-width:0}
 /* order + spans */
-html body #officialCapWarning{order:1;grid-column:span 4}
+html body #detailedBulletin{order:1;grid-column:span 4}
 html body #psdPublicSafetyAlerts{order:2;grid-column:span 4}
 html body #writtenBulletin{order:3;grid-column:span 4}
 html body .container .location-toolbar{order:4;grid-column:1/-1}
@@ -1272,14 +1272,14 @@ html body #zoomEarthSatellitePanel{order:14;grid-column:span 6}
 html body #sat24StormPanel{order:15;grid-column:span 6}
 html body #windySatellitePanel{order:16;grid-column:1/-1}
 @media(max-width:1180px){
- html body #officialCapWarning,html body #psdPublicSafetyAlerts{grid-column:span 6}
+ html body #detailedBulletin,html body #psdPublicSafetyAlerts{grid-column:span 6}
  html body #writtenBulletin{grid-column:1/-1}
  html body #currentWeatherSection,html body #petraRainViewerPanel,html body #rainfallTotalsPanel,html body .early-warning-box{grid-column:1/-1}
 }
 @media(max-width:760px){
  html body .container{gap:14px!important;padding:14px 10px!important}
  html body .container>*,html body .container section{grid-column:1/-1!important}
- html body #officialCapWarning,html body #psdPublicSafetyAlerts,html body #writtenBulletin,html body #petraLightningMapPanel,html body .gfs-live-panel,html body #zoomEarthSatellitePanel,html body #sat24StormPanel{grid-column:1/-1!important}
+ html body #detailedBulletin,html body #psdPublicSafetyAlerts,html body #writtenBulletin,html body #petraLightningMapPanel,html body .gfs-live-panel,html body #zoomEarthSatellitePanel,html body #sat24StormPanel{grid-column:1/-1!important}
 }
 /* ---------- Header: taller hero, title with weather mark ---------- */
 html body header#mainHeader{min-height:250px!important}
@@ -1287,7 +1287,7 @@ html body header#mainHeader::before{aspect-ratio:485/202}
 html body header#mainHeader h1{font-size:clamp(1.7rem,4.4vw,2.7rem)!important}
 html body header#mainHeader .site-logo{width:76px!important;height:76px!important}
 /* ---------- Top cards: bold status tiles ---------- */
-html body #officialCapWarning,html body #psdPublicSafetyAlerts,html body #writtenBulletin{
+html body #detailedBulletin,html body #psdPublicSafetyAlerts,html body #writtenBulletin{
  border-radius:16px!important;padding:20px!important;border-width:1.5px!important;border-style:solid!important;
 }
 html body #writtenBulletin{border-color:#1e6fd9!important;background:linear-gradient(160deg,rgba(30,111,217,.2),rgba(7,18,40,.7))!important;border-top-width:1.5px!important}
@@ -1353,10 +1353,10 @@ html body header#mainHeader .site-logo{width:56px!important;height:56px!importan
 html body header#mainHeader .date-badge{font-size:.74rem!important;padding:4px 12px!important}
 html body .container{gap:14px!important;padding:16px 14px 6px!important}
 html body .panel,html body .weather-now-box,html body .early-warning-box,html body .social-footer-box,html body .notification-subscribe-panel,html body .location-toolbar,
-html body #petraRainViewerPanel,html body #petraLightningMapPanel,html body #officialCapWarning,html body #psdPublicSafetyAlerts,html body #writtenBulletin{padding:14px 16px!important;border-radius:16px!important}
+html body #petraRainViewerPanel,html body #petraLightningMapPanel,html body #detailedBulletin,html body #psdPublicSafetyAlerts,html body #writtenBulletin{padding:14px 16px!important;border-radius:16px!important}
 html body .panel h2,html body .early-warning-box h2,html body .weather-now-box h2,html body #petraRainViewerPanel h2,html body #petraLightningMapPanel h2{font-size:.98rem!important;padding:0 14px 10px 0!important;margin:0 0 12px!important}
 html body .panel h2::before,html body .early-warning-box h2::before,html body .weather-now-box h2::before{width:4px!important;top:.3em!important}
-html body #officialCapWarning h2,html body #psdPublicSafetyAlerts h2{font-size:.95rem!important}
+html body #detailedBulletin h2,html body #psdPublicSafetyAlerts h2{font-size:.95rem!important}
 html body p,html body li{font-size:.9rem}
 html body .live-data-meta,html body .cap-warning-footer,html body .rainfall-note{font-size:.74rem!important}
 html body #bulletinText{font-size:.92rem!important;line-height:1.8!important}
@@ -1485,7 +1485,7 @@ html body #currentWeatherSection h3{font-size:.98rem!important}
  html body header#mainHeader .site-logo{width:46px!important;height:46px!important}
  html body .container{gap:10px!important;padding:10px 8px 4px!important}
  html body .panel,html body .weather-now-box,html body .early-warning-box,html body .social-footer-box,html body .notification-subscribe-panel,html body .location-toolbar,
- html body #petraRainViewerPanel,html body #petraLightningMapPanel,html body #officialCapWarning,html body #psdPublicSafetyAlerts,html body #writtenBulletin{padding:11px 12px!important;border-radius:14px!important}
+ html body #petraRainViewerPanel,html body #petraLightningMapPanel,html body #detailedBulletin,html body #psdPublicSafetyAlerts,html body #writtenBulletin{padding:11px 12px!important;border-radius:14px!important}
  html body .panel h2,html body .early-warning-box h2,html body .weather-now-box h2{font-size:.9rem!important;margin:0 0 8px!important;padding:0 12px 7px 0!important}
  html body #bulletinText{font-size:.86rem!important;line-height:1.7!important}
  html body p,html body li{font-size:.82rem}
@@ -1505,7 +1505,7 @@ html body #currentWeatherSection h3{font-size:.98rem!important}
  html body .rainfall-stat small{display:none}
  html body .radar-frame-container,html body #petraRainViewerPanel [id*="Map"],html body #petraRainViewerPanel [id*="map"]{max-height:230px!important;min-height:200px!important}
  html body #windySatellitePanel iframe{min-height:240px!important;height:260px!important}
- html body #officialCapWarning,html body #psdPublicSafetyAlerts{min-height:0}
+ html body #detailedBulletin,html body #psdPublicSafetyAlerts{min-height:0}
  html body .psd-alert-links{gap:6px!important}
  html body .psd-alert-links a{padding:6px 10px!important;font-size:.74rem!important}
  html body #currentWeatherSection .weather-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
@@ -1533,7 +1533,7 @@ html body #writtenBulletin{order:1;grid-column:1/-1}
 html body #currentWeatherSection{order:2;grid-column:1/-1;min-height:250px}
 html body .container section:has(#hourlyForecast){order:3;grid-column:1/-1}
 html body #tenDayForecastPanel{order:4!important;grid-column:1/-1}
-html body #officialCapWarning{order:5;grid-column:span 6}
+html body #detailedBulletin{order:5;grid-column:span 6}
 html body #psdPublicSafetyAlerts{order:6;grid-column:span 6}
 html body .container .location-toolbar{order:7;grid-column:1/-1}
 html body #petraRainViewerPanel{order:8;grid-column:span 6}
@@ -1547,7 +1547,7 @@ html body #sat24StormPanel{order:15;grid-column:span 6}
 html body #windySatellitePanel{order:16;grid-column:1/-1}
 html body .container .social-footer-box{order:17}
 @media(max-width:1180px){
- html body #officialCapWarning,html body #psdPublicSafetyAlerts,html body #petraRainViewerPanel,html body #petraLightningMapPanel{grid-column:span 6}
+ html body #detailedBulletin,html body #psdPublicSafetyAlerts,html body #petraRainViewerPanel,html body #petraLightningMapPanel{grid-column:span 6}
  html body .early-warning-box,html body #rainfallTotalsPanel{grid-column:1/-1}
 }
 @media(max-width:760px){html body .container>*,html body .container section{grid-column:1/-1!important}}
@@ -1778,6 +1778,29 @@ html body [data-kind="rain"]:not(.hourly-item)::before{background-image:radial-g
 @keyframes dropsGen{to{background-position:0 52px,0 120px}}
 .wx-drop{width:3px!important;height:12px!important;border-radius:50% 50% 50% 50%/72% 72% 28% 28%!important;background:linear-gradient(180deg,rgba(210,235,255,0),rgba(215,238,255,.95))!important}
 </style>
+<style id="petra-detailed-bulletin-css">
+html body #detailedBulletin{order:5;grid-column:span 6}
+html body #detailedBulletin .db-where{font-weight:600;font-size:.8rem;opacity:.75}
+html body #detailedBulletin .db-lead{background:linear-gradient(135deg,rgba(56,189,248,.16),rgba(99,102,241,.14));border:1px solid rgba(125,180,255,.28);border-radius:13px;padding:11px 13px;margin:2px 0 10px}
+html body #detailedBulletin .db-lead p{margin:6px 0 0;line-height:1.95;font-size:.92rem}
+html body #detailedBulletin .db-badge{display:inline-block;font-size:.68rem;font-weight:800;padding:2px 9px;border-radius:999px;background:#2563eb;color:#fff}
+html body #detailedBulletin .db-h{font-size:.84rem!important;margin:12px 0 7px!important;color:#9fc4ff!important;border:0!important;padding:0!important}
+html body #detailedBulletin .db-slots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+html body #detailedBulletin .db-slot{border-radius:12px;padding:9px 11px;background:rgba(10,20,40,.55);border:1px solid rgba(148,163,184,.22)}
+html body #detailedBulletin .db-slot p{margin:6px 0 0;font-size:.8rem;line-height:1.8;color:#d6e2f2}
+html body #detailedBulletin .db-slot-h{display:flex;align-items:center;gap:7px}
+html body #detailedBulletin .db-slot-h b{font-size:.88rem}
+html body #detailedBulletin .db-t{margin-inline-start:auto;font-weight:800;color:#ffb869;direction:ltr;font-size:.85rem}
+html body #detailedBulletin .db-ic{font-size:1.25rem;line-height:1}
+html body #detailedBulletin .db-rainL,html body #detailedBulletin .db-rainM,html body #detailedBulletin .db-rainH{border-color:rgba(96,165,250,.5);background:linear-gradient(180deg,rgba(30,64,120,.55),rgba(10,20,40,.6))}
+html body #detailedBulletin .db-storm{border-color:rgba(250,204,21,.45)}
+html body #detailedBulletin .db-days,html body #detailedBulletin .db-notes{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+html body #detailedBulletin .db-days li{display:flex;gap:10px;align-items:flex-start;background:rgba(10,20,40,.45);border-radius:11px;padding:8px 10px}
+html body #detailedBulletin .db-days p{margin:3px 0 0;font-size:.8rem;line-height:1.75;color:#d6e2f2}
+html body #detailedBulletin .db-notes li{background:rgba(250,204,21,.09);border:1px solid rgba(250,204,21,.25);border-radius:10px;padding:7px 10px;font-size:.82rem;line-height:1.7}
+html body #detailedBulletin .db-foot{margin-top:10px;font-size:.7rem;opacity:.65;border-top:1px solid rgba(148,163,184,.2);padding-top:7px}
+@media(max-width:700px){html body #detailedBulletin .db-slots{grid-template-columns:1fr}html body #detailedBulletin{grid-column:1/-1}}
+</style>
 
 </head>
 <body>
@@ -1799,12 +1822,7 @@ html body [data-kind="rain"]:not(.hourly-item)::before{background-image:radial-g
 <h2>📝 النشرة الجوية المكتوبة – <span id="bulletinLocationName">البترا – وادي موسى</span></h2>
 <p id="bulletinText">جارٍ جلب أحدث بيانات الطقس لإعداد النشرة تلقائياً...</p>
 <div class="live-data-meta">المصدر: Open-Meteo Forecast API | آخر تحديث للبيانات: <span id="dataUpdatedAt">بانتظار الاتصال</span> | تحديث تلقائي كل 15 دقيقة</div>
-</section><div class="bulletin-warning-grid"><section class="panel official-cap-warning" id="officialCapWarning" aria-live="polite" aria-labelledby="officialCapWarningTitle">
-<h2 id="officialCapWarningTitle">⚠️ تحذيرات مباشرة <span class="cap-live-badge">مباشر</span></h2>
-<div id="capWarningStatus" class="cap-warning-status">جارٍ التحقق من التحذيرات الجوية…</div>
-<div id="capWarningItems" class="cap-warning-items"><p>جارٍ تحميل نص التحذير باللغة العربية…</p></div>
-<div class="cap-warning-footer"><span id="capWarningUpdated">بانتظار أول تحديث</span></div>
-</section><section class="panel psd-alert-panel" id="psdPublicSafetyAlerts" aria-live="polite" aria-labelledby="psdAlertsTitle">
+</section><div class="bulletin-warning-grid"><section class="panel" id="detailedBulletin" aria-live="polite" aria-labelledby="dbTitle"><h2 id="dbTitle">🗞️ النشرة الجوية المفصلة <span class="db-where" id="dbWhere"></span></h2><div id="dbBody" class="db-body"><p class="db-loading">جارٍ إعداد النشرة…</p></div></section><section class="panel psd-alert-panel" id="psdPublicSafetyAlerts" aria-live="polite" aria-labelledby="psdAlertsTitle">
 <h2 id="psdAlertsTitle">🚔 تنبيهات الأمن العام والطرق <span class="psd-live-badge">مصدر رسمي</span></h2>
 <p class="psd-alert-intro">تنبيهات السلامة العامة وحالة الطرق المنشورة على موقع مديرية الأمن العام الأردنية.</p>
 <div id="psdAlertsStatus" class="psd-alert-status" role="status">جارٍ تحميل آخر التنبيهات المنشورة…</div>
@@ -2403,181 +2421,6 @@ document.addEventListener('DOMContentLoaded', function(){
  }
  window.PetraWarningBoxes={report:function(source,state){if(!(source in states))return;states[source]=state;apply();}};
  apply();
-})();
-</script>
-<script id="official-jmd-cap-warning-logic">
-(function(){
-  'use strict';
-  const FEEDS=['https://cap-sources.s3.amazonaws.com/jo-meteo-en/rss.xml','https://cap-sources.s3.amazonaws.com/jo-meteo-ar/rss.xml'];
-  const PROXIES=[u=>u,u=>'https://corsproxy.io/?url='+encodeURIComponent(u),u=>'https://api.allorigins.win/raw?url='+encodeURIComponent(u)];
-  let proxyPref=0;
-  async function fetchText(u){
-    let lastErr;
-    for(let k=0;k<PROXIES.length;k++){
-      const i=(proxyPref+k)%PROXIES.length;
-      try{const ctl=new AbortController();const t=setTimeout(()=>ctl.abort(),12000);const sep=u.includes('?')?'&':'?';const r=await fetch(PROXIES[i](u+sep+'_='+Date.now()),{cache:'no-store',signal:ctl.signal});clearTimeout(t);if(!r.ok)throw new Error('HTTP '+r.status);const txt=await r.text();if(!/<(rss|feed|alert|item|entry|html)/i.test(txt))throw new Error('not xml');proxyPref=i;return txt;}catch(e){lastErr=e;}
-    }
-    throw lastErr||new Error('fetch failed');
-  }
-  function capInfo(doc){
-    const infos=Array.from(doc.getElementsByTagName('info'));if(!infos.length)return null;
-    const lang=i=>((i.getElementsByTagName('language')[0]||{}).textContent||'').toLowerCase();
-    return infos.find(i=>lang(i).startsWith('ar'))||infos[0];
-  }
-  function capPolys(info){
-    const out=[];Array.from(info.getElementsByTagName('polygon')).forEach(p=>{const pts=clean(p.textContent).split(' ').map(x=>x.split(',').map(Number)).filter(a=>a.length===2&&a.every(Number.isFinite));if(pts.length>2)out.push(pts);});return out;
-  }
-  function capCircles(info){
-    const out=[];Array.from(info.getElementsByTagName('circle')).forEach(c=>{const m=clean(c.textContent).match(/^\s*(-?[\d.]+)\s*,\s*(-?[\d.]+)\s+([\d.]+)/);if(m)out.push([+m[1],+m[2],+m[3]]);});return out;
-  }
-  const REGIONS=[
-    {k:/البادية\s*الشرقية|شرق\s*المملكة|eastern\s*(desert|badia)|east\b/i,n:'شرق المملكة (البادية الشرقية)',b:[[29.6,37.0],[32.3,39.3]]},
-    {k:/البادية\s*الشمالية|northern\s*(desert|badia)/i,n:'البادية الشمالية',b:[[31.8,36.4],[32.4,39.0]]},
-    {k:/البادية\s*الجنوبية|southern\s*(desert|badia)/i,n:'البادية الجنوبية',b:[[29.2,36.0],[30.8,38.5]]},
-    {k:/الجنوب|south\b|العقبة|معان|الطفيلة|الكرك/i,n:'جنوب المملكة',b:[[29.2,34.9],[31.3,36.6]]},
-    {k:/الوسط|central|عمّان|عمان/i,n:'وسط المملكة',b:[[31.2,35.6],[32.0,36.4]]},
-    {k:/الشمال|north\b|إربد|اربد|عجلون|جرش|المفرق/i,n:'شمال المملكة',b:[[32.0,35.6],[32.7,36.9]]},
-    {k:/الأغوار|الاغوار|البحر الميت|jordan valley|dead sea/i,n:'الأغوار والبحر الميت',b:[[30.9,35.35],[32.6,35.65]]}
-  ];
-  function regionsFor(e){
-    const txt=[e.title,e.description,e.area].join(' ');
-    const hit=REGIONS.filter(r=>r.k.test(txt));
-    if(hit.length===0&&/البادية|badia|desert/i.test(txt))return [REGIONS[0],REGIONS[1],REGIONS[2]];
-    return hit;
-  }
-  let leafletP=null;
-  function loadLeaflet(){
-    if(window.L)return Promise.resolve();
-    if(leafletP)return leafletP;
-    leafletP=new Promise((res,rej)=>{
-      const l=document.createElement('link');l.rel='stylesheet';l.href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';document.head.appendChild(l);
-      const sc=document.createElement('script');sc.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';sc.onload=()=>res();sc.onerror=()=>{leafletP=null;rej(new Error('leaflet'));};document.head.appendChild(sc);
-    });return leafletP;
-  }
-  function attachMaps(list){
-    const cards=items.querySelectorAll('.cap-warning-item');
-    cards.forEach((card,i)=>{
-      const e=list[i];if(!e||card.querySelector('.cap-map-btn'))return;
-      const btn=document.createElement('button');btn.type='button';btn.className='cap-map-btn';btn.textContent='🗺️ عرض على خريطة الأردن';
-      const box=document.createElement('div');box.className='cap-map-box';box.hidden=true;
-      if(e.link&&/^https?:/i.test(e.link)){const a=document.createElement('a');a.href=e.link;a.target='_blank';a.rel='noopener noreferrer';a.className='cap-map-btn';a.style.cssText='display:inline-block;text-decoration:none;margin-inline-start:8px';a.textContent='📄 صفحة التحذير الرسمية';card.appendChild(a);}
-      card.appendChild(btn);card.appendChild(box);
-      let map=null;
-      btn.addEventListener('click',async()=>{
-        if(!box.hidden){box.hidden=true;btn.textContent='🗺️ عرض على خريطة الأردن';return;}
-        box.hidden=false;btn.textContent='إخفاء الخريطة';
-        if(map){setTimeout(()=>map.invalidateSize(),50);return;}
-        box.innerHTML='<div class="cap-map-canvas"></div><p class="cap-map-note"></p>';
-        const cv=box.querySelector('.cap-map-canvas'),note=box.querySelector('.cap-map-note');
-        try{await loadLeaflet();}catch(err){note.textContent='تعذر تحميل الخريطة. تحقق من الاتصال بالإنترنت.';return;}
-        map=L.map(cv,{scrollWheelZoom:false}).setView([31.2,36.9],6);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:12,attribution:'© OpenStreetMap'}).addTo(map);
-        const col={extreme:'#b91c1c',severe:'#ea580c',moderate:'#eab308',minor:'#38bdf8'}[String(e.severity||'').toLowerCase()]||'#eab308';
-        const layers=[];
-        (e.polys||[]).forEach(p=>layers.push(L.polygon(p,{color:col,weight:2,fillColor:col,fillOpacity:.35}).addTo(map)));
-        (e.circles||[]).forEach(c=>layers.push(L.circle([c[0],c[1]],{radius:c[2]*1000,color:col,weight:2,fillColor:col,fillOpacity:.35}).addTo(map)));
-        let approx=false;
-        if(!layers.length){const rs=regionsFor(e);rs.forEach(r=>layers.push(L.rectangle(r.b,{color:col,weight:2,dashArray:'6 4',fillColor:col,fillOpacity:.3}).bindTooltip(r.n,{permanent:false}).addTo(map)));approx=rs.length>0;if(approx)e._approxNames=rs.map(r=>r.n).join('، ');}
-        if(layers.length){map.fitBounds(L.featureGroup(layers).getBounds(),{padding:[20,20],maxZoom:9});note.textContent=approx?('المناطق المظللة تقريبية بحسب نص التحذير: '+e._approxNames+'. لم تتضمن الخلاصة الرسمية حدودًا دقيقة.'):(e.area?('المنطقة: '+e.area):'');}
-        else{map.fitBounds([[29.1,34.9],[33.4,39.3]]);note.textContent='لا تتضمن الخلاصة الرسمية حدود هذا التحذير على الخريطة'+(e.area?' (المنطقة: '+e.area+')':'')+'. تُعرض خريطة الأردن للاطلاع فقط.';}
-        setTimeout(()=>map.invalidateSize(),80);
-      });
-    });
-  }
-  async function enrich(e){
-    const base=(e.link||'').split('#')[0];
-    const cands=[base,e.guid,base.replace(/\.html?$/i,'.xml'),base.replace(/\?.*$/,''),base.replace(/\/?$/,'.xml'),base.replace(/\/([^\/]*)$/,'/cap/$1')].filter((u,i,a)=>u&&/^https?:/i.test(u)&&a.indexOf(u)===i);
-    if(!cands.length)return e;
-    try{
-      let doc=null;
-      for(const u of cands){
-        try{
-          const txt=await fetchText(u);
-          let d=new DOMParser().parseFromString(txt,'application/xml');
-          if(!d.querySelector('parsererror')&&d.getElementsByTagName('info').length){doc=d;break;}
-          const m=txt.match(/(?:href|src)=["']([^"']+\.xml)["']/i);
-          if(m){const u2=new URL(m[1],u).href;d=new DOMParser().parseFromString(await fetchText(u2),'application/xml');if(!d.querySelector('parsererror')&&d.getElementsByTagName('info').length){doc=d;break;}}
-        }catch(_){}
-      }
-      if(!doc){console.warn('JMD CAP detail not found for',cands);return e;}
-      const info=capInfo(doc);if(!info)return e;
-      const g=(n,name)=>{const el=n.getElementsByTagName(name)[0];return el?clean(el.textContent):''};
-      const root=doc.documentElement;
-      const instr=g(info,'instruction');
-      const desc=[g(info,'description'),instr?'تعليمات: '+instr:''].filter(Boolean).join('\n');
-      return {...e,title:g(info,'headline')||g(info,'event')||e.title,description:desc||e.description,sent:g(root,'sent')||e.sent,effective:g(info,'effective')||g(info,'onset')||e.effective,onset:g(info,'onset')||e.onset,expires:g(info,'expires')||e.expires,severity:g(info,'severity')||e.severity,urgency:g(info,'urgency')||e.urgency,certainty:g(info,'certainty')||e.certainty,area:g(info,'areaDesc')||e.area,polys:capPolys(info),circles:capCircles(info)};
-    }catch(err){return e;}
-  }
-  async function loadAll(){
-    const res=await Promise.allSettled(FEEDS.map(async f=>parseXml(await fetchText(f))));
-    const ok=res.filter(r=>r.status==='fulfilled');
-    if(!ok.length)throw (res[0].reason||new Error('feeds unavailable'));
-    const seen=new Set();let list=[];
-    ok.forEach(r=>r.value.forEach(e=>{const k=(e.link||'')||(e.title+'|'+e.sent);if(seen.has(k))return;seen.add(k);list.push(e);}));
-    list=list.slice(0,25);
-    list=await Promise.all(list.map(enrich));
-    list.sort((a,b)=>(Date.parse(b.sent)||0)-(Date.parse(a.sent)||0));
-    const seen2=new Set();
-    return list.filter(e=>{const k=[e.title,e.description,e.area,e.expires].map(x=>String(x||'').replace(/\s+/g,' ').trim().toLowerCase()).join('|');if(seen2.has(k))return false;seen2.add(k);return true;});
-  }
-  const $=id=>document.getElementById(id);
-  const status=$('capWarningStatus'),items=$('capWarningItems'),updated=$('capWarningUpdated');
-  let lastFingerprint='';
-  function clean(s){const d=document.createElement('div');d.innerHTML=s||'';return (d.textContent||d.innerText||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();}
-  function formatDate(s){if(!s)return '';const d=new Date(s);return Number.isNaN(d.getTime())?s:d.toLocaleString('ar-JO',{timeZone:'Asia/Amman',dateStyle:'medium',timeStyle:'short'});}
-  function field(node,name){const all=Array.from(node.getElementsByTagName('*'));const el=all.find(x=>x.localName&&x.localName.toLowerCase()===name.toLowerCase())||node.getElementsByTagName(name)[0];return el?clean(el.textContent):'';}
-  function translate(text){
-    let t=String(text||'').replace(/\s+/g,' ').trim();
-    const phrases=[[/mainly in the east/gi,'خاصة في شرق المملكة'],[/mainly in the south/gi,'خاصة في جنوب المملكة'],[/mainly in the north/gi,'خاصة في شمال المملكة'],[/low visibility(?: at times)?/gi,'تدني مدى الرؤية'],[/dusty/gi,'طقس مغبر'],[/dust/gi,'غبار'],[/severe weather warning/gi,'تحذير من أحوال جوية شديدة'],[/weather warning/gi,'تحذير جوي'],[/thunderstorms?/gi,'عواصف رعدية'],[/heavy rainfall|heavy rain/gi,'أمطار غزيرة'],[/flash flood(?:ing)?/gi,'سيول مفاجئة'],[/flood(?:ing)?/gi,'فيضانات وسيول'],[/strong winds?/gi,'رياح قوية'],[/high winds?/gi,'رياح شديدة'],[/dust storm(?:s)?/gi,'عواصف غبارية'],[/sand storm(?:s)?/gi,'عواصف رملية'],[/dust haze/gi,'غبار عالق في الجو'],[/fog/gi,'ضباب'],[/snowfall|snow/gi,'تساقط الثلوج'],[/ice|icy conditions/gi,'انجماد'],[/frost/gi,'صقيع'],[/heatwave|heat wave/gi,'موجة حر'],[/extreme heat/gi,'حرارة شديدة'],[/cold wave/gi,'موجة برد'],[/heavy showers/gi,'زخات مطرية غزيرة'],[/rain showers/gi,'زخات مطرية'],[/valid from/gi,'ساري اعتبارًا من'],[/valid until/gi,'ساري حتى'],[/issued/gi,'وقت الإصدار'],[/expires/gi,'ينتهي'],[/warning/gi,'تحذير'],[/watch/gi,'مراقبة جوية'],[/advisory/gi,'تنبيه جوي'],[/expected/gi,'متوقع'],[/possible/gi,'محتمل'],[/local time/gi,'التوقيت المحلي'],[/jordan/gi,'الأردن'],[/governorate/gi,'محافظة'],[/area/gi,'المنطقة'],[/no active warnings?/gi,'لا توجد تحذيرات سارية'],[/orange level/gi,'المستوى البرتقالي'],[/red level/gi,'المستوى الأحمر'],[/yellow level/gi,'المستوى الأصفر']];
-    for(const [re,ar] of phrases)t=t.replace(re,ar);
-    return t||'لم يتوفر وصف نصي للتحذير.';
-  }
-  async function translateToArabic(text){
-    const source=String(text||'').trim();if(!source)return '';if(/[\u0600-\u06FF]/.test(source)){
-      if(!/[A-Za-z]{3,}/.test(source))return source;
-      const segs=source.match(/[\u0600-\u06FF][\u0600-\u06FF\u064B-\u0652\s،؛:.\-–()\d]*/g);
-      if(segs&&segs.length)return segs.map(x=>x.trim()).filter(Boolean).join(' ').replace(/\s+/g,' ');
-      return source;}
-    try{const url='https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ar&dt=t&q='+encodeURIComponent(source.slice(0,3500));const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('translation unavailable');const data=await r.json();const result=(data[0]||[]).map(part=>part&&part[0]||'').join('').trim();if(result)return result;}catch(e){console.warn('Arabic alert translation unavailable',e);}
-    const local=translate(source);return /[A-Za-z]{4,}/.test(local)?'ورد تحذير جوي باللغة الإنجليزية، وتعذرت ترجمته تلقائيًا في الوقت الحالي.':'تحذير جوي: '+local;
-  }
-  function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-  function classify(e){
-    const now=Date.now(), sent=Date.parse(e.sent||e.date||''), effective=Date.parse(e.effective||e.onset||e.sent||e.date||''), expires=Date.parse(e.expires||'');
-    // Keep each JMD warning/update for at most 24 hours from issue time.
-    const stillValid=Number.isFinite(expires)&&expires>now;
-    if(Number.isFinite(sent)&&(now-sent)>(Number.isFinite(expires)?24:72)*3600000&&!stillValid)return {...e,state:'stale',sentMs:sent,expiresMs:expires};
-    if(Number.isFinite(expires)&&expires<now)return {...e,state:'expired',sentMs:sent,expiresMs:expires};
-    const isNew=Number.isFinite(sent)&&(now-sent)<=6*3600000&&(now-sent)>=-5*60000;
-    const isOld=Number.isFinite(sent)&&(now-sent)>24*3600000&&!stillValid;
-    const notYet=Number.isFinite(effective)&&effective>now;
-    return {...e,state:isNew?'new':isOld?'old':notYet?'scheduled':'active',sentMs:sent,expiresMs:expires};
-  }
-  function severityInfo(level){const v=String(level||'').toLowerCase();if(v==='extreme')return {label:'خطورة قصوى',cls:'extreme',rank:5};if(v==='severe')return {label:'خطورة شديدة',cls:'severe',rank:4};if(v==='moderate')return {label:'خطورة متوسطة',cls:'moderate',rank:3};if(v==='minor')return {label:'خطورة محدودة',cls:'minor',rank:2};return {label:'درجة الخطورة غير محددة',cls:'unknown',rank:1};}
-  async function render(rawEntries){
-    const all=rawEntries.map(classify);
-    const active=all.filter(e=>e.state!=='expired'&&e.state!=='stale');
-    const expired=all.filter(e=>e.state==='expired');
-    const stale=all.filter(e=>e.state==='stale');
-    active.sort((a,b)=>{const sa=severityInfo(a.severity).rank,sb=severityInfo(b.severity).rank;if(sa!==sb)return sb-sa;const order={new:0,active:1,scheduled:2,old:3};if(order[a.state]!==order[b.state])return order[a.state]-order[b.state];return (b.sentMs||0)-(a.sentMs||0);});
-    if(!active.length){items.innerHTML='<p>لا توجد تحديثات سارية حاليًا.</p>';status.textContent='لا توجد تحذيرات سارية حاليًا';if(window.PetraWarningBoxes)window.PetraWarningBoxes.report('jmd','clear');return;}
-    const translated=await Promise.all(active.slice(0,8).map(async e=>({...e,title:await translateToArabic(e.title||'تحذير جوي'),description:(String(e.description||'').trim()===String(e.title||'').trim())?'لا تتوفر تفاصيل إضافية لهذا التحذير حاليًا.':await translateToArabic(e.description||e.summary||'لم يتوفر وصف نصي للتحذير.'),area:e.area?(await translateToArabic(e.area)).replace(/^تحذير جوي: /,''):''})));
-    items.innerHTML=translated.map(e=>{
-      const sev=severityInfo(e.severity);const stateLabel=e.state==='new'?'جديد':e.state==='old'?'تحذير قديم':e.state==='scheduled'?'يبدأ لاحقًا':'تحذير ساري';const stateClass=e.state==='new'?'cap-alert-new':e.state==='old'?'cap-alert-old':'cap-alert-active';
-      const details=[];if(e.area)details.push('المنطقة: '+e.area);if(e.sent||e.date)details.push('وقت الإصدار: '+formatDate(e.sent||e.date));if(e.effective)details.push('بداية السريان: '+formatDate(e.effective));if(e.expires)details.push('انتهاء الصلاحية: '+formatDate(e.expires));if(e.urgency)details.push('الاستعجال: '+translate(e.urgency));
-      const cardStateClass=e.state==='new'?'cap-alert-card-new':e.state==='old'?'cap-alert-card-old':'';return '<article class="cap-warning-item '+cardStateClass+' cap-alert-severity-'+sev.cls+'"><div class="cap-alert-badges"><span class="cap-alert-badge '+stateClass+'">'+stateLabel+'</span><span class="cap-alert-badge cap-alert-severity-'+sev.cls+'">'+sev.label+'</span></div><h3>'+escapeHtml(e.title)+'</h3><p dir="rtl" lang="ar">'+escapeHtml(e.description.slice(0,1800))+'</p>'+(details.length?'<div class="cap-warning-meta">'+escapeHtml(details.join(' · '))+'</div>':'')+'</article>';
-    }).join('');
-    const currentCount=active.length;status.textContent='التحذيرات السارية حاليًا: '+currentCount;if(window.PetraWarningBoxes)window.PetraWarningBoxes.report('jmd',currentCount>0?'active':'clear');
-  }
-  function parseXml(xml){
-    const doc=new DOMParser().parseFromString(xml,'application/xml');if(doc.querySelector('parsererror'))throw new Error('XML parse error');
-    return Array.from(doc.querySelectorAll('item, entry')).map(n=>({title:field(n,'title'),description:field(n,'description')||field(n,'summary')||field(n,'content'),date:field(n,'pubDate')||field(n,'published')||field(n,'updated'),sent:field(n,'sent')||field(n,'issued')||field(n,'pubDate')||field(n,'published')||field(n,'updated'),effective:field(n,'effective'),onset:field(n,'onset'),expires:field(n,'expires'),severity:field(n,'severity'),urgency:field(n,'urgency'),certainty:field(n,'certainty'),area:field(n,'areaDesc')||field(n,'area'),guid:field(n,'guid')||field(n,'id'),link:field(n,'link')||((n.querySelector('link')||{getAttribute(){return ''}}).getAttribute('href')||'')}));
-  }
-  async function load(){
-    try{const entries=await loadAll();const fingerprint=entries.map(e=>e.title+e.sent+e.expires+e.description).join('|');await render(entries);if(fingerprint!==lastFingerprint&&lastFingerprint&&window.PetraWeatherNotifications&&window.PetraWeatherNotifications.officialAlert){const newest=entries[0];if(newest){const c=classify(newest);if(c.state==='new'||c.state==='active')window.PetraWeatherNotifications.officialAlert(await translateToArabic(newest.title),(await translateToArabic(newest.description)).slice(0,220));}}lastFingerprint=fingerprint;if(updated)updated.textContent='آخر تحديث: '+new Date().toLocaleString('ar-JO',{timeZone:'Asia/Amman'});
-    }catch(err){console.warn('Official JMD CAP feed unavailable:',err);if(status)status.textContent='تعذّر تحديث التحذيرات حاليًا';if(items)items.innerHTML='<p>لم نتمكن من جلب التحذيرات في هذه المحاولة. سيُعاد التحقق تلقائيًا.</p>';if(window.PetraWarningBoxes)window.PetraWarningBoxes.report('jmd','error');if(updated)updated.textContent='آخر محاولة: '+new Date().toLocaleString('ar-JO',{timeZone:'Asia/Amman'});}
-  }
-  if(status&&items){load();setInterval(load,5*60*1000);}
 })();
 </script>
 <script id="petra-alerts-core">
@@ -3787,6 +3630,132 @@ body{margin:0!important;overflow-x:hidden!important;}
  function run(){if(busy)return;busy=true;try{['hourlyForecast','dailyForecastBody'].forEach(function(id){var r=$(id);if(r)decorate(r)})}finally{busy=false}}
  if(window.MutationObserver){var mo=new MutationObserver(function(){run()});['hourlyForecast','dailyForecastBody'].forEach(function(id){var r=$(id);if(r)mo.observe(r,{childList:true,subtree:true})})}
  run();
+})();
+</script>
+<script id="petra-detailed-bulletin">
+(function(){
+ 'use strict';
+ var $=function(id){return document.getElementById(id)};
+ var DIRS=['شمالية','شمالية شرقية','شرقية','جنوبية شرقية','جنوبية','جنوبية غربية','غربية','شمالية غربية'];
+ var AQ=null,aqKey='';
+ function dirName(d){return DIRS[Math.round((((d||0)%360)+360)%360/45)%8]}
+ function avgDir(a){var x=0,y=0;a.forEach(function(d){var r=d*Math.PI/180;x+=Math.sin(r);y+=Math.cos(r)});return (Math.atan2(x,y)*180/Math.PI+360)%360}
+ function windWord(v){return v>=45?'قوية':v>=30?'نشطة':v>=15?'معتدلة':'خفيفة'}
+ function cat(c){
+  if([95,96,99].indexOf(c)>-1)return 'storm';
+  if([71,73,75,77,85,86].indexOf(c)>-1)return 'snow';
+  if([45,48].indexOf(c)>-1)return 'fog';
+  if([65,67,82,81].indexOf(c)>-1)return 'rainH';
+  if([63,53,55,57,80,61,62,66].indexOf(c)>-1)return 'rainM';
+  if([51,56].indexOf(c)>-1)return 'rainL';
+  if(c===3)return 'cloudy'; if(c===2)return 'partly'; return 'clear';
+ }
+ var SKY={clear:['☀️','أجواء صافية'],partly:['⛅','غائم جزئيًا'],cloudy:['☁️','أجواء غائمة'],fog:['🌫️','ضباب وتدنٍّ في الرؤية'],rainL:['🌦️','رذاذ أو أمطار خفيفة'],rainM:['🌧️','أمطار متوسطة'],rainH:['🌧️','أمطار غزيرة'],storm:['⛈️','عواصف رعدية'],snow:['❄️','تساقط ثلوج']};
+ var RANK={clear:0,partly:1,cloudy:2,fog:3,rainL:4,rainM:5,rainH:6,snow:7,storm:8};
+ function skyOf(codes){
+  if(!codes.length)return 'clear';
+  var cnt={},worst='clear';
+  codes.forEach(function(c){var k=cat(c);cnt[k]=(cnt[k]||0)+1;if(RANK[k]>=4&&RANK[k]>RANK[worst])worst=k});
+  if(RANK[worst]>=4&&cnt[worst]>=1)return worst;
+  var best='clear',n=-1;Object.keys(cnt).forEach(function(k){if(cnt[k]>n){n=cnt[k];best=k}});return best;
+ }
+ function rnd(x){return Math.round(x)}
+ function sum(a){return a.reduce(function(s,v){return s+(Number(v)||0)},0)}
+ function max(a){return a.length?Math.max.apply(null,a):0}
+ function min(a){return a.length?Math.min.apply(null,a):0}
+ function rainPhrase(prob,mm){
+  if(mm>=15)return 'أمطار غزيرة مع خطر جريان السيول في الأودية ('+rnd(mm)+' ملم تقريبًا)';
+  if(mm>=5)return 'فرصة مرتفعة لهطول مطري بمعدل '+rnd(mm)+' ملم تقريبًا';
+  if(prob>=60||mm>=1)return 'احتمال هطول متفرق ('+rnd(prob)+'%)';
+  if(prob>=30)return 'فرصة ضعيفة لهطول خفيف ('+rnd(prob)+'%)';
+  return 'لا يُتوقع هطول';
+ }
+ function slotText(sl){
+  var parts=[SKY[sl.sky][1]];
+  parts.push('حرارة '+rnd(sl.tmin)+'–'+rnd(sl.tmax)+'°');
+  parts.push('رياح '+dirName(sl.dir)+' '+windWord(sl.w)+' بسرعة '+rnd(sl.w)+' كم/س');
+  parts.push(rainPhrase(sl.prob,sl.mm));
+  return parts.join('، ')+'.';
+ }
+ function build(data,loc){
+  var h=data.hourly,d=data.daily,c=data.current;if(!h||!d||!c)return;
+  var nowT=new Date(c.time).getTime();
+  var T=h.time.map(function(t){return new Date(t).getTime()});
+  var day0=c.time.slice(0,10);
+  function dayStr(off){var x=new Date(day0+'T12:00:00Z');x.setUTCDate(x.getUTCDate()+off);return x.toISOString().slice(0,10)}
+  function slotData(date,a,b){
+   var st=new Date(date+'T'+(a<10?'0':'')+a+':00').getTime(),en=st+(b-a)*36e5;
+   var idx=[];T.forEach(function(t,i){if(t>=st&&t<en)idx.push(i)});
+   if(!idx.length)return null;
+   var g=function(k){return idx.map(function(i){return h[k][i]}).filter(function(v){return v!==null&&v!==undefined})};
+   return {st:st,en:en,sky:skyOf(g('weather_code')),tmax:max(g('temperature_2m')),tmin:min(g('temperature_2m')),w:g('wind_speed_10m').length?sum(g('wind_speed_10m'))/g('wind_speed_10m').length:0,dir:avgDir(g('wind_direction_10m')),prob:max(g('precipitation_probability')),mm:sum(g('precipitation'))};
+  }
+  var defs=[[0,6,12,'الصباح'],[0,12,18,'بعد الظهر'],[0,18,24,'المساء'],[1,0,6,'ساعات الفجر'],[1,6,12,'صباح الغد']];
+  var slots=[];
+  defs.forEach(function(df){
+   var date=dayStr(df[0]);var sd=slotData(date,df[1],df[2]);
+   if(!sd||sd.en<=nowT)return;sd.name=df[3];slots.push(sd);
+  });
+  slots=slots.slice(0,4);
+  var all=slots.map(function(s){return s});
+  var hz=[];
+  var okIdx=T.map(function(t,i){return i}).filter(function(i){return T[i]>=nowT-36e5&&T[i]<nowT+24*36e5});
+  var mm24=sum(okIdx.map(function(i){return h.precipitation[i]}));
+  var p24=max(okIdx.map(function(i){return h.precipitation_probability[i]||0}));
+  var w24=max(okIdx.map(function(i){return h.wind_speed_10m[i]||0}));
+  var tmax=d.temperature_2m_max[0],tmin=d.temperature_2m_min[0];
+  var cond=SKY[skyOf([c.weather_code])][1];
+  var out='';
+  var todaySky=skyOf(h.weather_code.filter(function(_,i){return h.time[i].slice(0,10)===day0}));
+  var sum1='تسود في '+loc+' اليوم '+SKY[todaySky][1].replace('أجواء ','أجواءٌ ')+'، وتتراوح درجات الحرارة بين '+rnd(tmin)+' و'+rnd(tmax)+' درجة مئوية. ';
+  sum1+='الحرارة الحالية '+rnd(c.temperature_2m)+'° (المحسوسة '+rnd(c.apparent_temperature)+'°) والرطوبة النسبية '+rnd(c.relative_humidity_2m)+'%، والرياح '+dirName(c.wind_direction_10m)+' '+windWord(c.wind_speed_10m)+' بسرعة '+rnd(c.wind_speed_10m)+' كم/س. ';
+  sum1+=(mm24>=1||p24>=50)?'تُظهر النماذج فرصة '+(mm24>=5?'مرتفعة':'متوسطة')+' لهطول مطري خلال الـ24 ساعة القادمة.':'لا يُتوقع هطول يُذكر خلال الـ24 ساعة القادمة.';
+  out+='<div class="db-lead"><span class="db-badge">الحالة العامة</span><p>'+sum1+'</p></div>';
+  if(slots.length){
+   out+='<h3 class="db-h">🕒 تفصيل الفترات القادمة</h3><div class="db-slots">';
+   slots.forEach(function(sl){out+='<div class="db-slot db-'+sl.sky+'"><div class="db-slot-h"><span class="db-ic">'+SKY[sl.sky][0]+'</span><b>'+sl.name+'</b><span class="db-t">'+rnd(sl.tmin)+'° – '+rnd(sl.tmax)+'°</span></div><p>'+slotText(sl)+'</p></div>'});
+   out+='</div>';
+  }
+  var days='';
+  for(var i=1;i<=3&&i<d.time.length;i++){
+   var sk=cat(d.weather_code[i]);
+   var nm=new Date(d.time[i]+'T12:00:00').toLocaleDateString('ar-JO',{timeZone:'Asia/Amman',weekday:'long'});
+   var dn=d.time[i].split('-');
+   days+='<li><span class="db-ic">'+SKY[sk][0]+'</span><div><b>'+nm+' '+dn[2]+'/'+dn[1]+'</b><p>'+SKY[sk][1]+'، حرارة '+rnd(d.temperature_2m_min[i])+'–'+rnd(d.temperature_2m_max[i])+'°، رياح '+dirName(d.wind_direction_10m_dominant[i])+' حتى '+rnd(d.wind_speed_10m_max[i])+' كم/س، '+rainPhrase(d.precipitation_probability_max[i]||0,d.precipitation_sum[i]||0)+'.</p></div></li>';
+  }
+  if(days)out+='<h3 class="db-h">📅 الأيام القادمة</h3><ul class="db-days">'+days+'</ul>';
+  var notes=[];
+  if(mm24>=15||(mm24>=8&&p24>=70))notes.push('⚠️ تجنّب مجاري الأودية والمنخفضات والمناطق المعرّضة للسيول، وتابع التنبيهات.');
+  else if(mm24>=3||p24>=60)notes.push('☂️ يُنصح بحمل مظلة أو لباس واقٍ من المطر، والحذر من الانزلاق على الطرق.');
+  if(w24>=45)notes.push('💨 رياح قوية: ثبّت الأغراض الخفيفة وتجنّب القيادة بالمركبات العالية على الطرق المكشوفة.');
+  else if(w24>=30)notes.push('🌬️ رياح نشطة قد تُثير الغبار وتُقلّل الرؤية أحيانًا.');
+  if(AQ&&AQ.dustMax>=100)notes.push('🌫️ ارتفاع متوقّع في تركيز الغبار؛ يُنصح لمرضى الجهاز التنفسي والربو بتقليل التعرّض للهواء الطلق.');
+  if(tmax>=36)notes.push('🥵 أجواء حارّة: أكثر من شرب الماء وتجنّب التعرّض المباشر للشمس وقت الظهيرة.');
+  if(tmin<=3)notes.push('🥶 أجواء باردة وفرصة لتشكّل الصقيع في المناطق المرتفعة والمكشوفة؛ ارتدِ ملابس دافئة.');
+  if(!notes.length)notes.push('✅ لا توجد ملاحظات خاصة؛ أجواء مناسبة للأنشطة المعتادة.');
+  out+='<h3 class="db-h">📌 ملاحظات وتوصيات</h3><ul class="db-notes">'+notes.map(function(n){return '<li>'+n+'</li>'}).join('')+'</ul>';
+  var now=new Date().toLocaleString('ar-JO',{timeZone:'Asia/Amman',weekday:'long',hour:'numeric',minute:'2-digit'});
+  out+='<div class="db-foot">آخر تحديث للنشرة: '+now+'</div>';
+  $('dbBody').innerHTML=out;
+  var wh=$('dbWhere');if(wh)wh.textContent=loc;
+ }
+ var lastData=null;
+ function loc(){return window.selectedLocation||'البترا – وادي موسى'}
+ function go(){if(lastData)try{build(lastData,loc())}catch(e){console.warn('bulletin',e)}}
+ window.addEventListener('petraWeatherData',function(e){
+  lastData=e.detail;go();
+  try{
+   var core=window.PetraAlertsCore;if(!core||!core.fetchData)return;
+   var la=lastData.latitude,lo=lastData.longitude;if(!isFinite(la)||!isFinite(lo))return;
+   var key=la+','+lo;if(key===aqKey)return;aqKey=key;
+   core.fetchData(la,lo).then(function(r){
+    var a=r&&r.aq&&r.aq.hourly;if(!a)return;
+    var dm=0;(a.dust||[]).slice(0,30).forEach(function(v){if(v>dm)dm=v});
+    AQ={dustMax:dm};go();
+   }).catch(function(){});
+  }catch(err){}
+ });
+ window.addEventListener('weatherLocationChanged',function(){setTimeout(go,300)});
 })();
 </script>
 
