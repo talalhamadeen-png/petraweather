@@ -1,36 +1,28 @@
-# موقع فريق طقس البتراء — الحزمة الكاملة
+# تفعيل التنبيهات والمتصفح مغلق (مرة واحدة فقط)
 
-تتضمن الحزمة نسخة الموقع المحدثة، خرائط RainViewer وLightningMaps، واجهة خيارات الإشعارات، وملفات إعداد OneSignal وخدمة التنبيهات الخلفية.
+الموقع وحده لا يستطيع إرسال تنبيهات والمتصفح مغلق. لذلك أضفنا خدمة خلفية مجانية:
+GitHub Actions تفحص الطقس كل 10 دقائق لكل مناطق الأردن، وOneSignal يرسل الإشعار إلى هاتفك.
 
-## محتويات الحزمة
-- `index.html`: الموقع كاملًا بآخر تعديلات الواجهة.
-- `logo-petra-weather.png`: شعار الموقع.
-- `push-config.js`: ضع فيه معرّف تطبيق OneSignal العام (App ID) فقط.
-- `OneSignalSDKWorker.js`: عامل الخدمة الخاص بإشعارات الويب.
-- `scripts/send_jmd_alerts.py`: فحص خلاصة التحذيرات وإرسال التحذيرات الجديدة عبر OneSignal.
-- `.github/workflows/jmd-alert-push.yml`: سير العمل المجدول لفحص التحذيرات.
-- `data/last-alert.json`: سجل منع تكرار التنبيهات.
+## الخطوات
+1. أنشئ حسابًا مجانيًا على https://onesignal.com ثم أنشئ تطبيقًا من نوع **Web Push**.
+   - Site URL: `https://talalhamadeen-png.github.io/petraweather/`
+   - اختر **Typical Site** وفعّل HTTPS، وفي Service Worker path اكتب `/petraweather/OneSignalSDKWorker.js` و Scope `/petraweather/`.
+2. انسخ **App ID** وضعه في ملف `push-config.js` مكان `PASTE_ONESIGNAL_APP_ID_HERE`.
+3. من OneSignal: Settings → Keys & IDs، انسخ **REST API Key**.
+4. في GitHub (مستودع `petraweather`): Settings → Secrets and variables → Actions → New repository secret، وأضف سرّين:
+   - `ONESIGNAL_APP_ID` = معرّف التطبيق
+   - `ONESIGNAL_REST_API_KEY` = مفتاح REST
+5. Settings → Actions → General → Workflow permissions → **Read and write permissions**.
+6. ارفع كل محتويات هذا المجلد إلى جذر المستودع، **مع المجلد المخفي `.github`**.
+7. من تبويب Actions شغّل `Petra Weather Alerts Push` يدويًا (Run workflow) وتأكد أنه ينجح (أخضر).
+8. على الهاتف: افتح الموقع، فعّل الإشعارات، اختر موقعك وأنواع التنبيهات، واسمح بالإشعارات.
 
-## تفعيل Push
-1. أنشئ تطبيق Web Push في https://onesignal.com/ لموقع `https://talalhamadeen-png.github.io/petraweather/`.
-2. افتح `push-config.js` وضع App ID مكان `PASTE_ONESIGNAL_APP_ID_HERE`. هذا المعرف عام ويمكن أن يظهر في الواجهة.
-3. لا تضع REST API Key في `push-config.js` أو `index.html` أو أي ملف عام.
-4. في GitHub: Settings → Secrets and variables → Actions، أضف السرّين:
-   - `ONESIGNAL_APP_ID`
-   - `ONESIGNAL_REST_API_KEY`
-5. ارفع جميع محتويات هذه الحزمة إلى جذر مستودع `petraweather`، مع الحفاظ على مجلد `.github`.
-6. في Settings → Actions → General، اسمح لـ GitHub Actions بالكتابة إلى المستودع (Read and write permissions) حتى يحفظ سجل التنبيهات.
-7. من تبويب Actions شغّل `Jordan Meteorological Alerts Push` يدويًا. أول تشغيل يسجل التحذيرات الحالية كخط أساس ولا يرسلها جميعًا دفعة واحدة.
-8. بعد نشر GitHub Pages، افتح الموقع عبر HTTPS على الهاتف وفعّل الإشعارات واسمح بها.
-9. اختبر الإرسال من لوحة OneSignal، وتحقق من نتيجة التشغيل في GitHub Actions.
+بعدها تصلك التنبيهات حسب منطقتك وأنواعك المختارة حتى لو أغلقت المتصفح.
 
-## ملاحظات مهمة
-- إذا تركت App ID كنص `PASTE_ONESIGNAL_APP_ID_HERE` فلن تعمل خدمة OneSignal حتى تستبدله بمعرّفك.
-- لا تضع REST API Key في الملفات العامة؛ استخدم GitHub Secrets فقط.
-- الجدولة كل 10 دقائق ليست ضمانًا لوصول فوري؛ قد تتأخر GitHub Actions أو الخلاصة الرسمية.
-- تأكد من إعداد نطاق الموقع في OneSignal ومن أن مسار خدمة العامل يطابق مسار GitHub Pages.
-- الإشعارات الخلفية غير مفعلة فعليًا حتى تكمل الإعداد والاختبار في حساب OneSignal الخاص بك.
-
-
-## الثيم المرئي
-تم تطبيق ثيم زجاجي داكن مستوحى من كود التصميم المرسل. التغيير بصري فقط ولا يغيّر محتوى الموقع أو بيانات الطقس أو مصادرها أو منطق الإشعارات.
+## ملاحظات
+- GitHub قد تؤخر الجدولة بضع دقائق، فالتنبيه شبه فوري وليس لحظيًا.
+- الإشعار يُرسل لكل منطقة مرة واحدة كل 6 ساعات لكل نوع.
+- لا تضع REST API Key في أي ملف عام، فقط في GitHub Secrets.
+- على iPhone تعمل إشعارات الويب فقط بعد إضافة الموقع إلى الشاشة الرئيسية (Add to Home Screen).
+- مع تفعيل الخدمة الخلفية، لا تُعرض الإشعارات المحلية أثناء فتح الصفحة (لمنع التكرار).
+- التحذيرات الرسمية: الخدمة تعتمد على بيانات التوقعات (Open-Meteo) وليست مصدرًا رسميًا.

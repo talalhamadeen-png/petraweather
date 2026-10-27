@@ -874,6 +874,7 @@ OneSignalDeferred.push(async function(OneSignal) {
       notifyButton: { enable: false }
     });
     window.PetraOneSignal = OneSignal;
+    window.dispatchEvent(new Event('petraPushReady'));
   } catch (e) { console.error('OneSignal init failed', e); }
 });
 </script>
@@ -2567,6 +2568,22 @@ document.addEventListener('DOMContentLoaded', function(){
  function status(t){var e=$('notificationStatus');if(e)e.textContent=t}
  function sentMap(){try{return JSON.parse(localStorage.getItem(SENT)||'{}')}catch(e){return {}}}
  function saveSent(m){try{localStorage.setItem(SENT,JSON.stringify(m))}catch(e){}}
+ /* ---------- background push (OneSignal): tag this device with its zone + chosen alert types ---------- */
+ function nearestZone(lat,lon){
+  var Z=window.PetraZones||[],best=null,bd=1e9;
+  for(var i=0;i<Z.length;i++){var dy=(Z[i].lat-lat)*111,dx=(Z[i].lon-lon)*111*Math.cos(lat*Math.PI/180),d=dx*dx+dy*dy;if(d<bd){bd=d;best=Z[i]}}
+  return best;
+ }
+ function pushActive(){try{var s=window.PetraOneSignal&&window.PetraOneSignal.User.PushSubscription;return !!(s&&s.optedIn&&s.id)}catch(e){return false}}
+ async function syncPush(){
+  var OS=window.PetraOneSignal;if(!OS||!settings.enabled)return;
+  try{
+   var z=nearestZone(loc.lat,loc.lon);if(!z)return;
+   var tags={zone:z.id};Object.keys(IDS).forEach(function(k){tags['t_'+k]=settings[k]?'1':'0'});
+   await OS.User.addTags(tags);
+  }catch(e){console.warn('push tag sync failed',e)}
+ }
+ window.addEventListener('petraPushReady',function(){syncPush()});
  function enabledNow(){return settings.enabled&&('Notification' in window)&&Notification.permission==='granted'}
 
  /* ---------- service worker (needed for notifications on Android Chrome) ---------- */
@@ -2639,6 +2656,7 @@ document.addEventListener('DOMContentLoaded', function(){
  /* ---------- notifications ---------- */
  async function dispatch(res,silentFirst){
   if(!enabledNow())return;
+  if(pushActive())return; /* background push delivers these alerts; avoid duplicates while the page is open */
   var sent=sentMap(),now=Date.now(),n=0;
   for(var i=0;i<res.events.length;i++){
    var ev=res.events[i]; if(!settings[ev.id])continue;
@@ -2680,7 +2698,7 @@ document.addEventListener('DOMContentLoaded', function(){
    if(p!=='granted'){status(p==='denied'?'تم رفض الإشعارات. فعّلها من إعدادات المتصفح للموقع ثم أعد المحاولة.':'لم يتم منح إذن الإشعارات.');return}
    settings.enabled=true;save();updateUI();
    await ensureSW();
-   if(window.PetraOneSignal){try{await window.PetraOneSignal.User.PushSubscription.optIn()}catch(e){}}
+   if(window.PetraOneSignal){try{await window.PetraOneSignal.User.PushSubscription.optIn();await syncPush()}catch(e){}}
    await show('✅ تم تفعيل تنبيهات طقس البترا','سيتم تنبيهك لموقعك: '+loc.name+' بحسب الأنواع التي اخترتها.','subscribed');
    status('تم التفعيل لموقعك: '+loc.name+'. جارٍ فحص الأحوال الآن…');
    await refresh(true); updateUI();
@@ -2694,17 +2712,18 @@ document.addEventListener('DOMContentLoaded', function(){
  }
  function init(){
   updateUI();
-  Object.keys(IDS).forEach(function(k){var el=$(IDS[k]);if(el)el.addEventListener('change',function(){settings[k]=el.checked;save();pushState();if(el.checked)reevaluate()})});
+  Object.keys(IDS).forEach(function(k){var el=$(IDS[k]);if(el)el.addEventListener('change',function(){settings[k]=el.checked;save();pushState();syncPush();if(el.checked)reevaluate()})});
   var a=$('enableWeatherNotifications');if(a)a.addEventListener('click',enable);
   var t=$('testWeatherNotification');if(t)t.addEventListener('click',test);
-  var d=$('disableWeatherNotifications');if(d)d.addEventListener('click',function(){settings.enabled=false;save();updateUI();pushState();status('تم إيقاف التنبيهات على هذا الجهاز.')});
+  var d=$('disableWeatherNotifications');if(d)d.addEventListener('click',function(){settings.enabled=false;save();updateUI();pushState();try{if(window.PetraOneSignal)window.PetraOneSignal.User.PushSubscription.optOut()}catch(e){}status('تم إيقاف التنبيهات على هذا الجهاز.')});
   window.addEventListener('weatherLocationChanged',function(ev){
    var x=ev&&ev.detail; if(!x||!isFinite(x.lat)||!isFinite(x.lon))return;
-   loc={name:x.name||loc.name,lat:Number(x.lat),lon:Number(x.lon)};last=null;updateUI();refresh();
+   loc={name:x.name||loc.name,lat:Number(x.lat),lon:Number(x.lon)};last=null;updateUI();syncPush();refresh();
   });
   document.addEventListener('visibilitychange',function(){if(!document.hidden)refresh()});
   window.addEventListener('online',function(){refresh()});
   if(enabledNow())ensureSW();
+  if(window.PetraOneSignal)syncPush();
   startPolling();refresh();
  }
  window.PetraWeatherNotifications={check:function(){},officialAlert:async function(title,body){
@@ -3220,6 +3239,7 @@ body{margin:0!important;overflow-x:hidden!important;}
  ['المفرق','المفرق',32.34,36.21],['أم الجمال','المفرق',32.33,36.37],['الصفاوي','المفرق',32.20,37.13],['الرويشد','المفرق',32.50,38.20],
  ['البحر الميت','معالم ومناطق',31.57,35.58],['حمامات ماعين','معالم ومناطق',31.60,35.62],['وادي الموجب','معالم ومناطق',31.45,35.80],['سد الملك طلال','معالم ومناطق',32.20,35.78],['الأغوار','معالم ومناطق',32.00,35.60]
  ];
+ window.PetraZones=G.map(function(g,i){return {id:'z'+i,name:g[0],gov:g[1],lat:g[2],lon:g[3]}});
  function norm(s){return String(s||'').replace(/[ً-ْـ]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/\s+/g,' ').toLowerCase().trim()}
  function dist(a,b,c,d){var r=Math.PI/180,x=Math.sin((c-a)*r/2),y=Math.sin((d-b)*r/2),n=x*x+Math.cos(a*r)*Math.cos(c*r)*y*y;return 6371*2*Math.atan2(Math.sqrt(n),Math.sqrt(1-n))}
  function nearest(lat,lon){var best=null,bd=1e9;G.forEach(function(p){var d=dist(lat,lon,p[2],p[3]);if(d<bd){bd=d;best=p}});return {place:best,km:bd}}
