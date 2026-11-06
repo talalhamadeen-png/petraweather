@@ -1808,7 +1808,12 @@ html body #weatherNewsPanel .wn-live{font-size:.62rem;font-weight:800;background
 html body #weatherNewsPanel .wn-status{font-size:.82rem;opacity:.85;margin:2px 0 8px}
 html body #weatherNewsPanel .wn-status.wn-off{color:#fbbf24}
 html body #weatherNewsPanel .wn-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-html body #weatherNewsPanel .wn-item{display:flex;flex-direction:column;gap:4px;text-decoration:none;background:rgba(10,20,40,.55);border:1px solid rgba(148,163,184,.22);border-radius:12px;padding:9px 12px;color:#eaf2ff}
+html body #weatherNewsPanel .wn-summary{background:linear-gradient(135deg,rgba(56,189,248,.16),rgba(99,102,241,.14));border:1px solid rgba(125,180,255,.28);border-radius:13px;padding:10px 13px;margin:2px 0 10px}
+html body #weatherNewsPanel .wn-summary p{margin:6px 0 0;font-size:.88rem;line-height:1.9}
+html body #weatherNewsPanel .wn-sum-badge{display:inline-block;font-size:.66rem;font-weight:800;padding:2px 9px;border-radius:999px;background:#2563eb;color:#fff}
+html body #weatherNewsPanel .wn-ic{font-size:1.4rem;line-height:1;flex:none}
+html body #weatherNewsPanel .wn-txt{display:flex;flex-direction:column;gap:4px;min-width:0}
+html body #weatherNewsPanel .wn-item{display:flex;flex-direction:row;align-items:flex-start;gap:10px;text-decoration:none;background:rgba(10,20,40,.55);border:1px solid rgba(148,163,184,.22);border-radius:12px;padding:9px 12px;color:#eaf2ff}
 html body #weatherNewsPanel .wn-item:hover{border-color:rgba(96,165,250,.6)}
 html body #weatherNewsPanel .wn-title{font-size:.88rem;line-height:1.7;font-weight:700}
 html body #weatherNewsPanel .wn-meta{font-size:.72rem;color:#9fc4ff}
@@ -1843,7 +1848,7 @@ html body #weatherNewsPanel .wn-foot{margin-top:8px;font-size:.68rem;opacity:.6}
 <div id="psdAlertsItems" class="psd-alert-items"><p>يتم جلب البيانات من الأرشيف الرسمي.</p></div>
 <div class="psd-alert-links"><a href="https://www.psd.gov.jo/ar-jo/المحتوى/أرشيف-الأخبار/" target="_blank" rel="noopener noreferrer">الموقع الرسمي للأمن العام ↗</a><a href="https://whatsapp.com/channel/0029VaCge8l2kNFwug3GxW2M" target="_blank" rel="noopener noreferrer">قناة الأمن العام على واتساب ↗</a><a href="https://www.psd.gov.jo/ar-jo/" target="_blank" rel="noopener noreferrer">تطبيق أمن 911 والمعلومات الرسمية ↗</a></div>
 <div class="psd-alert-footer">المصدر: مديرية الأمن العام الأردنية. تُعرض الأخبار المرتبطة بالطقس والطرق فقط، وقد يتأخر تحديثها بحسب إتاحة الموقع الرسمي.</div>
-</section><section class="panel" id="weatherNewsPanel" aria-live="polite" aria-labelledby="wnTitle"><h2 id="wnTitle">📰 أخبار الطقس والتنبيهات من المواقع الأردنية <span class="wn-live">مباشر</span></h2><div id="wnStatus" class="wn-status" role="status">جارٍ تحميل الأخبار…</div><div id="wnItems" class="wn-items"></div><div class="wn-foot">عناوين الأخبار مع روابطها وأسماء المواقع الناشرة، وتُحدَّث تلقائيًا كل 15 دقيقة تقريبًا.</div></section></div><section aria-labelledby="weatherNotificationTitle" class="panel notification-subscribe-panel" id="weatherNotificationPanel">
+</section><section class="panel" id="weatherNewsPanel" aria-live="polite" aria-labelledby="wnTitle"><h2 id="wnTitle">📰 أخبار الطقس <span class="wn-live">مباشر</span></h2><div id="wnSummary" class="wn-summary" hidden></div><div id="wnStatus" class="wn-status" role="status">جارٍ تحميل الأخبار…</div><div id="wnItems" class="wn-items"></div></section></div><section aria-labelledby="weatherNotificationTitle" class="panel notification-subscribe-panel" id="weatherNotificationPanel">
 <div class="notification-panel-head">
 <div><p class="notification-eyebrow">WEATHER ALERTS</p><h2 id="weatherNotificationTitle">🔔 الاشتراك بتنبيهات الطقس</h2>
 <p class="notification-intro">اختر أنواع التنبيهات التي تهمك وفعّل الإشعارات مرة واحدة: ستصلك كإشعارات المتصفح بحسب موقعك المختار (GPS أو البحث)، ويُفحص الطقس كل دقيقة أثناء فتح الموقع.</p></div>
@@ -3749,6 +3754,7 @@ body{margin:0!important;overflow-x:hidden!important;}
   var sum1='تسود في '+loc+' اليوم '+SKY[todaySky][1].replace('أجواء ','أجواءٌ ')+'، وتتراوح درجات الحرارة بين '+rnd(tmin)+' و'+rnd(tmax)+' درجة مئوية. ';
   sum1+='الحرارة الحالية '+rnd(c.temperature_2m)+'° (المحسوسة '+rnd(c.apparent_temperature)+'°) والرطوبة النسبية '+rnd(c.relative_humidity_2m)+'%، والرياح '+dirName(c.wind_direction_10m)+' '+windWord(c.wind_speed_10m)+' بسرعة '+rnd(c.wind_speed_10m)+' كم/س. ';
   sum1+=(mm24>=1||p24>=50)?'تُظهر النماذج فرصة '+(mm24>=5?'مرتفعة':'متوسطة')+' لهطول مطري خلال الـ24 ساعة القادمة.':'لا يُتوقع هطول يُذكر خلال الـ24 ساعة القادمة.';
+  window.PetraWeatherSummary=sum1;try{window.dispatchEvent(new Event('petraBulletinReady'))}catch(_){}
   out+='<div class="db-lead"><span class="db-badge">الحالة العامة</span><p>'+sum1+'</p></div>';
   if(slots.length){
    out+='<h3 class="db-h">🕒 تفصيل الفترات القادمة</h3><div class="db-slots">';
@@ -3800,10 +3806,26 @@ body{margin:0!important;overflow-x:hidden!important;}
 <script id="petra-weather-news">
 (function(){
  'use strict';
- var st=document.getElementById('wnStatus'),box=document.getElementById('wnItems');
+ var st=document.getElementById('wnStatus'),box=document.getElementById('wnItems'),sm=document.getElementById('wnSummary');
  if(!st||!box)return;
  function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
  function ago(ms){var m=Math.max(1,Math.round((Date.now()-ms)/60000));return m<60?'منذ '+m+' دقيقة':'منذ '+Math.round(m/60)+' ساعة'}
+ function icon(t){
+  if(/ثلج|ثلوج|صقيع/.test(t))return '❄️';
+  if(/رعد|عاصفة/.test(t))return '⛈️';
+  if(/غبار|أتربة/.test(t))return '🌫️';
+  if(/ضباب/.test(t))return '🌁';
+  if(/سيول|سيل/.test(t))return '🌊';
+  if(/أمطار|مطر|منخفض/.test(t))return '🌧️';
+  if(/رياح/.test(t))return '💨';
+  if(/حرار|حار/.test(t))return '🌡️';
+  return '🌤️';
+ }
+ function showSummary(){
+  var t=window.PetraWeatherSummary;
+  if(sm&&t){sm.hidden=false;sm.innerHTML='<span class="wn-sum-badge">ملخص الطقس</span><p>'+esc(t)+'</p>'}
+ }
+ window.addEventListener('petraBulletinReady',showSummary);showSummary();
  async function load(){
   try{
    var r=await fetch('./data/weather-news.json?t='+Date.now(),{cache:'no-store'});
@@ -3812,10 +3834,10 @@ body{margin:0!important;overflow-x:hidden!important;}
    if(d.ok===false||!isFinite(upd)||Date.now()-upd>4*36e5){
     st.className='wn-status wn-off';st.textContent=isFinite(upd)?'الأخبار غير محدّثة منذ '+Math.max(1,Math.round((Date.now()-upd)/36e5))+' ساعات':'الأخبار غير متاحة حاليًا';box.innerHTML='';return;
    }
-   var items=(d.items||[]).filter(function(i){var t=Date.parse(i.publishedAt);return isFinite(t)&&Date.now()-t<=24*36e5}).slice(0,8);
+   var items=(d.items||[]).filter(function(i){var t=Date.parse(i.publishedAt);return isFinite(t)&&Date.now()-t<=24*36e5}).slice(0,10);
    if(!items.length){st.className='wn-status';st.textContent='لا توجد أخبار طقس جديدة خلال آخر 24 ساعة.';box.innerHTML='';return}
-   st.className='wn-status';st.textContent='آخر '+items.length+' أخبار متعلقة بالطقس خلال 24 ساعة';
-   box.innerHTML=items.map(function(i){var t=Date.parse(i.publishedAt);return '<a class="wn-item" href="'+esc(i.url)+'" target="_blank" rel="noopener noreferrer"><span class="wn-title">'+esc(i.title)+'</span><span class="wn-meta">'+(i.source?esc(i.source)+' · ':'')+ago(t)+'</span></a>'}).join('');
+   st.className='wn-status';st.textContent='أحدث أخبار الطقس خلال آخر 24 ساعة';
+   box.innerHTML=items.map(function(i){var t=Date.parse(i.publishedAt);return '<a class="wn-item" href="'+esc(i.url)+'" target="_blank" rel="noopener noreferrer"><span class="wn-ic">'+icon(i.title)+'</span><span class="wn-txt"><span class="wn-title">'+esc(i.title)+'</span><span class="wn-meta">'+ago(t)+'</span></span></a>'}).join('');
   }catch(e){
    st.className='wn-status wn-off';
    st.textContent=String(e&&e.message).indexOf('HTTP 404')>-1?'خدمة أخبار الطقس لم تُفعَّل بعد (ملف البيانات غير موجود).':'تعذّر تحميل الأخبار حاليًا.';box.innerHTML='';
