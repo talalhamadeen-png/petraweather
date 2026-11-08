@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>لوحة مشرف فريق طقس البتراء</title>
+<style>
+:root{--bg:#f6f3ee;--card:#fff;--text:#241a12;--muted:#7a6a5a;--line:#e3d9cc;--gold:#b9822f;--danger:#c23b26;--ok:#2e7d4f;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1119;--card:#161d2b;--text:#e8edf8;--muted:#a2aec4;--line:#2a3447;--gold:#e0a64a;--danger:#ef6a55;--ok:#5fd18b}}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Cairo',system-ui,-apple-system,'Segoe UI',Tahoma,sans-serif}
+html,body{background:var(--bg);color:var(--text)}
+body{padding:calc(16px + env(safe-area-inset-top,0px)) 14px calc(30px + env(safe-area-inset-bottom,0px));max-width:560px;margin:0 auto}
+h1{font-size:20px;margin-bottom:4px}
+.sub{font-size:13px;color:var(--muted);margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:14px}
+.card h2{font-size:15px;color:var(--gold);margin-bottom:8px}
+label{display:block;font-size:13px;font-weight:700;margin:12px 0 5px}
+textarea,input,select{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:15px}
+textarea{min-height:120px;resize:vertical;line-height:1.7}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+button{font-size:15px;font-weight:700;border:0;border-radius:12px;padding:13px;cursor:pointer;width:100%;margin-top:14px;background:var(--gold);color:#fff}
+button.ghost{background:transparent;color:var(--muted);border:1px solid var(--line);margin-top:10px;font-weight:600}
+button:disabled{opacity:.55}
+.msg{font-size:13.5px;margin-top:12px;min-height:20px;line-height:1.7}
+.msg.err{color:var(--danger);font-weight:700}.msg.ok{color:var(--ok);font-weight:700}
+.help{font-size:12.5px;color:var(--muted);line-height:1.9;margin-top:8px}
+.help b{color:var(--text)}
+.it{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px dashed var(--line)}
+.it:first-child{border-top:0}
+.it .t{flex:1;font-size:14px;line-height:1.7;word-break:break-word}
+.it .m{font-size:11.5px;color:var(--muted);margin-top:2px}
+.it button{width:auto;margin:0;padding:7px 14px;font-size:12.5px;background:transparent;color:var(--danger);border:1px solid var(--danger)}
+.badge{display:inline-block;font-size:11px;font-weight:800;padding:1px 9px;border-radius:12px;color:#111;margin-left:6px}
+.b-info{background:#38bdf8}.b-watch{background:#fbbf24}.b-warn{background:#ef4444;color:#fff}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<h1>لوحة مشرف فريق طقس البتراء</h1>
+<p class="sub">نشر تحذيرات سلطة إقليم البترا (حالة الجو) على الموقع</p>
+
+<div class="card" id="setup" hidden>
+  <h2>الدخول (مرة واحدة على هذا الجهاز)</h2>
+  <label for="tok">رمز الوصول من GitHub</label>
+  <input id="tok" type="password" dir="ltr" autocomplete="off" placeholder="github_pat_...">
+  <button id="saveTok" type="button">حفظ والدخول</button>
+  <div class="help">
+    <b>كيف أنشئ الرمز:</b><br>
+    1) افتح <span dir="ltr">github.com/settings/personal-access-tokens/new</span><br>
+    2) Token name: <span dir="ltr">petra-admin</span> ، وEXPIRATION: أطول مدة متاحة.<br>
+    3) Repository access: <b>Only select repositories</b> ثم اختر <span dir="ltr">petraweather</span> فقط.<br>
+    4) Permissions ثم Repository permissions ثم <b>Contents: Read and write</b>.<br>
+    5) Generate token وانسخه والصقه هنا. لا تشاركه مع أحد.
+  </div>
+  <div class="msg" id="setupMsg"></div>
+</div>
+
+<div id="panel" hidden>
+  <div class="card">
+    <h2>نشر تحذير جديد</h2>
+    <label for="text">نص التحذير (انسخه من منشور السلطة)</label>
+    <textarea id="text" maxlength="900" placeholder="الصق نص التحذير هنا"></textarea>
+    <div class="row">
+      <div><label for="level">المستوى</label>
+        <select id="level"><option value="info">معلومة</option><option value="watch" selected>تنبيه</option><option value="warn">تحذير</option></select></div>
+      <div><label for="hours">مدة الظهور</label>
+        <select id="hours"><option value="6">6 ساعات</option><option value="12">12 ساعة</option><option value="24" selected>24 ساعة</option><option value="48">48 ساعة</option><option value="72">3 أيام</option><option value="0">حتى أحذفه</option></select></div>
+    </div>
+    <label for="url">رابط المنشور على فيسبوك (اختياري)</label>
+    <input id="url" type="url" dir="ltr" inputmode="url" placeholder="https://www.facebook.com/...">
+    <button id="pub" type="button">نشر التحذير الآن</button>
+    <div class="msg" id="msg"></div>
+  </div>
+
+  <div class="card">
+    <h2>التحذيرات المنشورة حالياً</h2>
+    <div id="list"><div class="help">جاري التحميل...</div></div>
+  </div>
+
+  <button class="ghost" id="logout" type="button">تسجيل الخروج من هذا الجهاز</button>
+</div>
+
+<script>
+(function(){
+  var OWNER='talalhamadeen-png', REPO='petraweather', FILE='warnings.json';
+  var API='https://api.github.com/repos/'+OWNER+'/'+REPO+'/contents/'+FILE;
+  var LV={info:'معلومة',watch:'تنبيه',warn:'تحذير'};
+  var token='', sha=null, data={items:[]};
+  var $=function(id){return document.getElementById(id);};
+
+  function store(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v);}catch(e){return null;}}
+  function say(id,t,cls){var m=$(id);m.textContent=t||'';m.className='msg'+(cls?' '+cls:'');}
+  function b64enc(s){return btoa(unescape(encodeURIComponent(s)));}
+  function b64dec(s){return decodeURIComponent(escape(atob(s.replace(/\s/g,''))));}
+  function headers(extra){var h={'Accept':'application/vnd.github+json','Authorization':'Bearer '+token};for(var k in (extra||{}))h[k]=extra[k];return h;}
+
+  // توقيت الأردن بصيغة 2026-11-08T20:00
+  function amman(ms){
+    var s=new Date(ms).toLocaleString('sv-SE',{timeZone:'Asia/Amman',hour12:false});
+    return s.replace(' ','T').slice(0,16);
+  }
+  function toMs(v){
+    if(!v)return 0; var s=String(v).trim();
+    if(!/(Z|[+-]\d{2}:?\d{2})$/i.test(s))s+='+03:00';
+    var t=Date.parse(s); return isNaN(t)?0:t;
+  }
+  function isActive(it){var u=toMs(it.until);return !u||u>Date.now();}
+  function safeUrl(u){return /^https:\/\//i.test(u||'')?u:'';}
+
+  async function load(){
+    var r=await fetch(API+'?t='+Date.now(),{headers:headers(),cache:'no-store'});
+    if(r.status===401||r.status===403) throw {code:'auth'};
+    if(r.status===404) throw {code:'notfound'};
+    if(!r.ok) throw {code:'http',status:r.status};
+    var j=await r.json();
+    sha=j.sha;
+    try{data=JSON.parse(b64dec(j.content));}catch(e){throw {code:'parse'};}
+    if(!data||typeof data!=='object'||!Array.isArray(data.items)) data={items:[]};
+  }
+
+  async function commit(items,note){
+    var out={}; for(var k in data) if(k!=='items') out[k]=data[k];
+    out.items=items;
+    var body={message:note,content:b64enc(JSON.stringify(out,null,2)+'\n'),sha:sha};
+    var r=await fetch(API,{method:'PUT',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify(body)});
+    if(r.status===401||r.status===403) throw {code:'auth'};
+    if(r.status===409||r.status===422) throw {code:'conflict'};
+    if(!r.ok) throw {code:'http',status:r.status};
+    var j=await r.json(); sha=j.content&&j.content.sha||sha; data=out;
+  }
+
+  function errText(e){
+    switch(e&&e.code){
+      case 'auth': return 'الرمز غير صالح أو لا يملك صلاحية الكتابة. أنشئ رمزاً جديداً بصلاحية Contents: Read and write.';
+      case 'notfound': return 'ملف warnings.json غير موجود في المستودع. ارفعه أولاً.';
+      case 'conflict': return 'الملف تغيّر من مكان آخر. جاري إعادة التحميل، أعد المحاولة.';
+      case 'parse': return 'ملف warnings.json فيه خطأ في الصياغة. صحّحه من GitHub أولاً.';
+      default: return 'تعذّر الاتصال بـ GitHub، تحقق من الإنترنت وأعد المحاولة.';
+    }
+  }
+
+  function renderList(){
+    var box=$('list'); box.textContent='';
+    var list=data.items.filter(isActive);
+    if(!list.length){var d=document.createElement('div');d.className='help';d.textContent='لا توجد تحذيرات منشورة حالياً.';box.appendChild(d);return;}
+    list.forEach(function(it){
+      var row=document.createElement('div');row.className='it';
+      var w=document.createElement('div');w.className='t';
+      var b=document.createElement('span');b.className='badge b-'+(LV[it.level]?it.level:'info');b.textContent=LV[it.level]||LV.info;
+      w.appendChild(b); w.appendChild(document.createTextNode(it.text||''));
+      var m=document.createElement('div');m.className='m';
+      m.textContent=it.until?('ساري حتى: '+it.until.replace('T',' ')):'بدون موعد انتهاء';
+      w.appendChild(m);
+      var del=document.createElement('button');del.type='button';del.textContent='حذف';
+      var armed=false,timer;
+      del.addEventListener('click',async function(){
+        if(!armed){armed=true;del.textContent='تأكيد';timer=setTimeout(function(){armed=false;del.textContent='حذف';},4000);return;}
+        clearTimeout(timer); del.disabled=true; say('msg','جاري الحذف...');
+        try{
+          await commit(data.items.filter(function(x){return x!==it&&isActive(x);}),'حذف تحذير');
+          say('msg','تم الحذف. يختفي من الموقع خلال دقيقة أو دقيقتين.','ok'); renderList();
+        }catch(e){ say('msg',errText(e),'err'); if(e&&e.code==='conflict'){try{await load();renderList();}catch(_){}} del.disabled=false; }
+      });
+      row.appendChild(w);row.appendChild(del);box.appendChild(row);
+    });
+  }
+
+  async function openPanel(){
+    $('setup').hidden=true; $('panel').hidden=false;
+    $('list').textContent='جاري التحميل...';
+    try{ await load(); renderList(); }
+    catch(e){
+      if(e&&e.code==='auth'){ store('petraTok',null); token=''; $('panel').hidden=true; $('setup').hidden=false; say('setupMsg',errText(e),'err'); return; }
+      $('list').textContent=''; say('msg',errText(e),'err');
+    }
+  }
+
+  $('saveTok').addEventListener('click',function(){
+    var t=$('tok').value.trim();
+    if(!t){say('setupMsg','الصق الرمز أولاً.','err');return;}
+    token=t; store('petraTok',t); $('tok').value=''; say('setupMsg',''); openPanel();
+  });
+
+  $('logout').addEventListener('click',function(){
+    store('petraTok',null); token=''; $('panel').hidden=true; $('setup').hidden=false; say('setupMsg','تم تسجيل الخروج من هذا الجهاز.','ok');
+  });
+
+  $('pub').addEventListener('click',async function(){
+    var text=$('text').value.trim(), url=$('url').value.trim();
+    var hours=parseInt($('hours').value,10)||0, level=$('level').value;
+    if(!text){say('msg','اكتب نص التحذير أولاً.','err');return;}
+    if(url&&!safeUrl(url)){say('msg','الرابط يجب أن يبدأ بـ https://','err');return;}
+    var now=Date.now();
+    var item={level:LV[level]?level:'info',text:text,at:amman(now),until:hours?amman(now+hours*3600000):'',url:url};
+    var items=[item].concat(data.items.filter(isActive)).slice(0,20);
+    var btn=$('pub'); btn.disabled=true; say('msg','جاري النشر...');
+    try{
+      await commit(items,'نشر تحذير جديد');
+      $('text').value=''; $('url').value='';
+      say('msg','تم النشر. يظهر على الموقع خلال دقيقة أو دقيقتين.','ok'); renderList();
+    }catch(e){
+      say('msg',errText(e),'err');
+      if(e&&e.code==='conflict'){try{await load();renderList();}catch(_){}}
+    }
+    btn.disabled=false;
+  });
+
+  token=store('petraTok')||'';
+  if(token) openPanel(); else $('setup').hidden=false;
+})();
+</script>
+</body>
+</html>
