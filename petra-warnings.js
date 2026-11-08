@@ -7,8 +7,8 @@
     warn:  { label: 'تحذير',  color: '#ef4444' }
   };
   var REFRESH_MS = 5 * 60 * 1000;
-  var LONG_CHARS = 900;
-  var warnSec = null, bulSec = null, expanded = false;
+  var FS_MIN = 17, FS_MAX = 34, FS_DEF = 22;
+  var warnSec = null, bulSec = null;
 
   function css() {
     if (document.getElementById('pw-style')) return;
@@ -32,18 +32,18 @@
       '#bulSection{margin:0 0 20px;direction:rtl}' +
       '#bulSection .bul-box{background:linear-gradient(160deg,#0b3b3f 0%,#0f2f3d 100%);color:#e8fffb;border:1px solid #14b8a6;border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(20,184,166,.18);font-family:"Noto Naskh Arabic","Amiri","Traditional Arabic",serif}' +
       '#bulSection .bul-head{background:linear-gradient(90deg,#0d9488,#0e7490);padding:13px 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}' +
-      '#bulSection .bul-title{font-size:19px;font-weight:700;color:#fff;margin:0;line-height:1.5}' +
-      '#bulSection .bul-date{font-size:12.5px;color:#ccfbf1;margin-right:auto}' +
-      '#bulSection .bul-body{padding:16px 18px 6px;font-size:17px;line-height:2.05;position:relative;overflow:hidden}' +
-      '#bulSection .bul-body.collapsed{max-height:330px}' +
-      '#bulSection .bul-body.collapsed::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(to bottom,rgba(11,59,63,0),#0c3340)}' +
+      '#bulSection .bul-title{font-size:23px;font-weight:700;color:#fff;margin:0;line-height:1.5}' +
+      '#bulSection .bul-date{font-size:14px;color:#ccfbf1;margin-right:auto}' +
+      '#bulSection .bul-body{padding:18px 18px 8px;font-size:var(--bul-fs,22px)!important;line-height:2.1;position:relative}\n' +
+      '#bulSection .bul-body *{font-size:inherit}' +
       '#bulSection .bul-p{margin:0 0 12px;white-space:pre-line;word-break:break-word}' +
-      '#bulSection .bul-h{font-size:18.5px;font-weight:700;color:#5eead4;margin:16px 0 6px;padding-bottom:4px;border-bottom:1px dashed rgba(94,234,212,.4)}' +
+      '#bulSection .bul-h{font-size:1.12em!important;font-weight:700;color:#5eead4;margin:16px 0 6px;padding-bottom:4px;border-bottom:1px dashed rgba(94,234,212,.4)}' +
       '#bulSection .bul-li{display:flex;gap:10px;margin:0 0 6px;align-items:flex-start}' +
       '#bulSection .bul-mk{color:#5eead4;font-weight:700;min-width:1.4em;text-align:center;flex:none}' +
       '#bulSection .bul-li span.bul-tx{flex:1;word-break:break-word;white-space:pre-line}' +
-      '#bulSection .bul-more{display:block;width:calc(100% - 36px);margin:4px 18px 14px;padding:11px;border-radius:12px;border:1px solid #5eead4;background:rgba(94,234,212,.1);color:#ccfbf1;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}' +
-      '#bulSection .bul-foot{padding:0 18px 14px;font-size:12px;color:#99f6e4;opacity:.85}';
+      '#bulSection .bul-fs{display:flex;gap:6px}' +
+      '#bulSection .bul-fs button{min-width:42px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.55);background:rgba(255,255,255,.14);color:#fff;font-size:17px;font-weight:700;cursor:pointer;font-family:inherit;line-height:1}' +
+      '#bulSection .bul-foot{padding:0 18px 14px;font-size:14px;color:#99f6e4;opacity:.85}';
     document.head.appendChild(st);
   }
 
@@ -157,6 +157,12 @@
     return body;
   }
 
+  function getFs() {
+    try { var v = parseInt(localStorage.getItem('bulFs'), 10); if (v >= FS_MIN && v <= FS_MAX) return v; } catch (e) {}
+    return FS_DEF;
+  }
+  function setFs(v) { try { localStorage.setItem('bulFs', String(v)); } catch (e) {} }
+
   function renderBulletin(b) {
     bulSec.textContent = '';
     var un = b ? toMs(b.until) : 0;
@@ -167,20 +173,22 @@
     var at = toMs(b.at);
     if (at) head.appendChild(el('span', 'bul-date', fmt(at)));
     box.appendChild(head);
+    var fs = getFs();
     var body = buildBody(b.text);
-    var isLong = String(b.text).length > LONG_CHARS;
-    if (isLong && !expanded) body.classList.add('collapsed');
-    box.appendChild(body);
-    if (isLong) {
-      var btn = el('button', 'bul-more', expanded ? 'إخفاء التفاصيل ▲' : 'قراءة النشرة كاملة ▼');
-      btn.type = 'button';
-      btn.addEventListener('click', function () {
-        expanded = !expanded;
-        body.classList.toggle('collapsed', !expanded);
-        btn.textContent = expanded ? 'إخفاء التفاصيل ▲' : 'قراءة النشرة كاملة ▼';
-      });
-      box.appendChild(btn);
+    body.style.setProperty('--bul-fs', fs + 'px');
+    var ctl = el('div', 'bul-fs');
+    var bigger = el('button', null, 'أ+'); bigger.type = 'button'; bigger.setAttribute('aria-label', 'تكبير الخط');
+    var smaller = el('button', null, 'أ-'); smaller.type = 'button'; smaller.setAttribute('aria-label', 'تصغير الخط');
+    function apply(delta) {
+      fs = Math.max(FS_MIN, Math.min(FS_MAX, fs + delta));
+      body.style.setProperty('--bul-fs', fs + 'px');
+      setFs(fs);
     }
+    bigger.addEventListener('click', function () { apply(2); });
+    smaller.addEventListener('click', function () { apply(-2); });
+    ctl.appendChild(smaller); ctl.appendChild(bigger);
+    head.appendChild(ctl);
+    box.appendChild(body);
     if (un) box.appendChild(el('div', 'bul-foot', 'ساريّة حتى: ' + fmt(un)));
     bulSec.appendChild(box);
     bulSec.hidden = false;
