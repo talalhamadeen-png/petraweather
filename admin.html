@@ -33,6 +33,15 @@ button:disabled{opacity:.55}
 .it button{width:auto;margin:0;padding:7px 14px;font-size:12.5px;background:transparent;color:var(--danger);border:1px solid var(--danger)}
 .badge{display:inline-block;font-size:11px;font-weight:800;padding:1px 9px;border-radius:12px;color:#111;margin-left:6px}
 .b-info{background:#38bdf8}.b-watch{background:#fbbf24}.b-warn{background:#ef4444;color:#fff}
+.bul-card{border-color:#14b8a6}.bul-card h2{color:#14b8a6}
+#btext{min-height:280px}
+.cnt{font-size:12px;color:var(--muted);margin-top:4px;text-align:left;direction:ltr}
+.bcur{margin-top:16px;border-top:1px dashed var(--line);padding-top:12px;font-size:13.5px;line-height:1.8}
+.bcur .pv{max-height:90px;overflow:hidden;color:var(--muted);white-space:pre-line;margin:6px 0 8px}
+.bcur .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bcur button{margin-top:0;width:100%;padding:9px;font-size:13px}
+.bcur button.d{background:transparent;color:var(--danger);border:1px solid var(--danger)}
+.bcur button.e{background:transparent;color:var(--gold);border:1px solid var(--gold)}
 [hidden]{display:none!important}
 </style>
 </head>
@@ -78,6 +87,22 @@ button:disabled{opacity:.55}
     <div id="list"><div class="help">جاري التحميل...</div></div>
   </div>
 
+  <div class="card bul-card">
+    <h2>النشرة المفصلة للواء البترا</h2>
+    <label for="btext">نص النشرة (الصقها كاملة كما هي، وبيحافظ على الأسطر والفقرات)</label>
+    <textarea id="btext" maxlength="12000" placeholder="الصق النشرة المفصلة هنا"></textarea>
+    <div class="cnt" id="bcount">0 / 12000</div>
+    <label for="bhours">مدة الظهور</label>
+    <select id="bhours"><option value="12">12 ساعة</option><option value="24" selected>24 ساعة</option><option value="48">48 ساعة</option><option value="72">3 أيام</option><option value="0">حتى أستبدلها أو أحذفها</option></select>
+    <button id="bpub" type="button">نشر النشرة الآن</button>
+    <div class="msg" id="bmsg"></div>
+    <div class="bcur" id="bcur" hidden>
+      <b>النشرة المنشورة حالياً:</b>
+      <div class="pv" id="bpv"></div>
+      <div class="two"><button type="button" class="e" id="bedit">تعديلها</button><button type="button" class="d" id="bdel">حذف</button></div>
+    </div>
+  </div>
+
   <button class="ghost" id="logout" type="button">تسجيل الخروج من هذا الجهاز</button>
 </div>
 
@@ -119,9 +144,10 @@ button:disabled{opacity:.55}
     if(!data||typeof data!=='object'||!Array.isArray(data.items)) data={items:[]};
   }
 
-  async function commit(items,note){
+  async function commit(items,note,extra){
     var out={}; for(var k in data) if(k!=='items') out[k]=data[k];
     out.items=items;
+    if(extra){for(var xk in extra){if(extra[xk]===null)delete out[xk];else out[xk]=extra[xk];}}
     var body={message:note,content:b64enc(JSON.stringify(out,null,2)+'\n'),sha:sha};
     var r=await fetch(API,{method:'PUT',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify(body)});
     if(r.status===401||r.status===403) throw {code:'auth'};
@@ -160,7 +186,7 @@ button:disabled{opacity:.55}
         try{
           await commit(data.items.filter(function(x){return x!==it&&isActive(x);}),'حذف تحذير');
           say('msg','تم الحذف. يختفي من الموقع خلال دقيقة أو دقيقتين.','ok'); renderList();
-        }catch(e){ say('msg',errText(e),'err'); if(e&&e.code==='conflict'){try{await load();renderList();}catch(_){}} del.disabled=false; }
+        }catch(e){ say('msg',errText(e),'err'); if(e&&e.code==='conflict'){try{await load();renderList();renderBulletinAdmin();}catch(_){}} del.disabled=false; }
       });
       row.appendChild(w);row.appendChild(del);box.appendChild(row);
     });
@@ -169,12 +195,48 @@ button:disabled{opacity:.55}
   async function openPanel(){
     $('setup').hidden=true; $('panel').hidden=false;
     $('list').textContent='جاري التحميل...';
-    try{ await load(); renderList(); }
+    try{ await load(); renderList(); renderBulletinAdmin(); }
     catch(e){
       if(e&&e.code==='auth'){ store('petraTok',null); token=''; $('panel').hidden=true; $('setup').hidden=false; say('setupMsg',errText(e),'err'); return; }
       $('list').textContent=''; say('msg',errText(e),'err');
     }
   }
+
+  function renderBulletinAdmin(){
+    var b=data.bulletin, un=b?toMs(b.until):0;
+    var live=b&&b.text&&(!un||un>Date.now());
+    $('bcur').hidden=!live;
+    if(live){var t=String(b.text);$('bpv').textContent=t.length>260?t.slice(0,260)+'...':t;}
+  }
+  $('btext').addEventListener('input',function(){$('bcount').textContent=$('btext').value.length+' / 12000';});
+  $('bedit').addEventListener('click',function(){
+    if(data.bulletin&&data.bulletin.text){$('btext').value=data.bulletin.text;$('bcount').textContent=$('btext').value.length+' / 12000';say('bmsg','تم تحميل النشرة الحالية للتعديل. عدّلها واضغط نشر.');$('btext').focus();}
+  });
+  $('bpub').addEventListener('click',async function(){
+    var text=$('btext').value.replace(/\s+$/,'').replace(/^\s*\n/,'');
+    if(!text.trim()){say('bmsg','الصق نص النشرة أولاً.','err');return;}
+    var hours=parseInt($('bhours').value,10)||0, now=Date.now();
+    var b={title:'النشرة المفصلة للواء البترا',text:text,at:amman(now),until:hours?amman(now+hours*3600000):''};
+    var btn=$('bpub'); btn.disabled=true; say('bmsg','جاري النشر...');
+    try{
+      await commit(data.items,'نشر النشرة المفصلة',{bulletin:b});
+      $('btext').value=''; $('bcount').textContent='0 / 12000';
+      say('bmsg','تم نشر النشرة. تظهر أعلى الموقع خلال دقيقة أو دقيقتين.','ok'); renderBulletinAdmin();
+    }catch(e){
+      say('bmsg',errText(e),'err');
+      if(e&&e.code==='conflict'){try{await load();renderList();renderBulletinAdmin();}catch(_){}}
+    }
+    btn.disabled=false;
+  });
+  var bdelArmed=false,bdelT;
+  $('bdel').addEventListener('click',async function(){
+    var b=$('bdel');
+    if(!bdelArmed){bdelArmed=true;b.textContent='تأكيد الحذف';bdelT=setTimeout(function(){bdelArmed=false;b.textContent='حذف';},4000);return;}
+    clearTimeout(bdelT);bdelArmed=false;b.textContent='حذف';b.disabled=true;say('bmsg','جاري الحذف...');
+    try{await commit(data.items,'حذف النشرة المفصلة',{bulletin:null});say('bmsg','تم حذف النشرة من الموقع.','ok');renderBulletinAdmin();}
+    catch(e){say('bmsg',errText(e),'err');}
+    b.disabled=false;
+  });
 
   $('saveTok').addEventListener('click',function(){
     var t=$('tok').value.trim();
@@ -201,7 +263,7 @@ button:disabled{opacity:.55}
       say('msg','تم النشر. يظهر على الموقع خلال دقيقة أو دقيقتين.','ok'); renderList();
     }catch(e){
       say('msg',errText(e),'err');
-      if(e&&e.code==='conflict'){try{await load();renderList();}catch(_){}}
+      if(e&&e.code==='conflict'){try{await load();renderList();renderBulletinAdmin();}catch(_){}}
     }
     btn.disabled=false;
   });
