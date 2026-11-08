@@ -3671,7 +3671,7 @@ body{margin:0!important;overflow-x:hidden!important;}
  function decorate(root){
   root.querySelectorAll('.hourly-icon,.forecast-weather-icon').forEach(function(ic){
    var k=kindOf(ic.textContent);if(!k)return;
-   if(k==='rain'){var pc=ic.closest('.hourly-item')||ic.closest('tr');var pe=pc&&pc.querySelector('.hourly-rain,.forecast-rain-chance');var pm=pe&&/(\d+)\s*%/.exec(pe.textContent);if(pm&&parseInt(pm[1],10)<25)k='cloud'}
+   if(k==='rain'){var pc=ic.closest('.hourly-item')||ic.closest('tr');var pe=pc&&pc.querySelector('.hourly-rain,.forecast-rain-chance');var pm=pe&&/(\d+)\s*%/.exec(pe.textContent);if(pm&&parseInt(pm[1],10)<25){k='cloud';ic.textContent='☁️'}}
    var cls='ico ico-'+k;if(ic.dataset.k!==k||ic.className.indexOf('ico ')<0){ic.dataset.k=k;ic.classList.forEach(function(c){if(c.indexOf('ico')===0)ic.classList.remove(c)});ic.classList.add('ico','ico-'+k)}
    var card=ic.closest('.hourly-item')||ic.closest('tr');if(card&&card.dataset.kind!==k)card.setAttribute('data-kind',k);
    if(card&&card.classList.contains('hourly-item')){
