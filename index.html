@@ -3057,6 +3057,23 @@ body [style*="background:#fff"],body [style*="background: #fff"],body [style*="b
 @media(max-width:620px){.container{border-radius:16px!important}.panel,.weather-now-box,.early-warning-box,.social-footer-box{border-radius:14px!important}#petraRadarMap{height:320px!important;min-height:280px!important}}
 </style>
 
+<style id="psd-compact">
+html body #psdPublicSafetyAlerts{padding:10px 12px!important;align-self:start!important}
+html body #psdPublicSafetyAlerts h2{font-size:1rem!important;margin:0 0 6px!important}
+html body #psdPublicSafetyAlerts .psd-alert-intro,html body #psdPublicSafetyAlerts .psd-alert-footer{display:none!important}
+html body #psdPublicSafetyAlerts .psd-alert-status{font-size:.7rem!important;padding:3px 0!important;margin:0 0 6px!important}
+html body #psdPublicSafetyAlerts .psd-alert-items{display:grid;gap:6px}
+html body #psdPublicSafetyAlerts .psd-alert-item{padding:7px 10px!important;margin:0!important;border-radius:9px!important}
+html body #psdPublicSafetyAlerts .psd-c-top{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.7rem;margin-bottom:3px}
+html body #psdPublicSafetyAlerts .psd-c-time{opacity:.85;font-weight:700}
+html body #psdPublicSafetyAlerts .psd-c-more{font-size:.7rem!important;font-weight:800;white-space:nowrap}
+html body #psdPublicSafetyAlerts .psd-c h3{font-size:.84rem!important;line-height:1.6!important;margin:0!important}
+html body #psdPublicSafetyAlerts .psd-c p{font-size:.76rem!important;line-height:1.6!important;margin:3px 0 0!important}
+html body #psdPublicSafetyAlerts .psd-c-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
+html body #psdPublicSafetyAlerts .psd-c-tags span{background:#ffffff1f;border:1px solid #ffffff33;border-radius:999px;padding:1px 8px;font-size:.68rem;font-weight:700}
+html body #psdPublicSafetyAlerts .psd-alert-links{margin-top:6px!important;gap:5px!important}
+html body #psdPublicSafetyAlerts .psd-alert-links a{padding:4px 8px!important;font-size:.68rem!important}
+</style>
 <script id="petra-psd-alerts-loader">
 (function(){
  const dataUrl='./data/psd-alerts.json';
@@ -3079,7 +3096,9 @@ body [style*="background:#fff"],body [style*="background: #fff"],body [style*="b
    const now=Date.now(), maxAge=24*60*60*1000;
    const items=rawItems.filter(item=>{const raw=item.publishedAt||item.dateTime||item.date||'';if(!raw)return false;let t=Date.parse(raw);if(!Number.isFinite(t))return false;if(/^\d{4}-\d{2}-\d{2}$/.test(String(raw))){const d=new Date(String(raw)+'T12:00:00+03:00');t=d.getTime();}return now>=t-5*60*1000 && now-t<=maxAge;});
    if(!items.length){itemsEl.innerHTML='<p class="psd-alert-item">لا توجد حاليًا تنبيهات حديثة عن الطقس أو الطرق منشورة خلال آخر 24 ساعة.</p>';statusEl.textContent='لا توجد تنبيهات حديثة خلال آخر 24 ساعة.';statusEl.classList.remove('offline');if(window.PetraWarningBoxes)window.PetraWarningBoxes.report('psd','clear');return;}
-   itemsEl.innerHTML=items.slice(0,6).map(item=>'<article class="psd-alert-item"><h3>'+esc(item.title)+'</h3>'+(item.summary?'<p>'+esc(item.summary)+'</p>':'')+'<div class="psd-alert-meta">'+esc(item.date||'تاريخ النشر غير متاح')+' · <a href="'+esc(item.url||'https://www.psd.gov.jo/ar-jo/')+'" target="_blank" rel="noopener noreferrer">عرض المصدر الرسمي</a></div></article>').join('');
+   const TAGS=[['انزلاق','⚠️ انزلاقات'],['رؤية','🌫️ تدني الرؤية'],['ضباب','🌫️ ضباب'],['سيول','🌊 سيول'],['أمطار','🌧️ أمطار'],['مطر','🌧️ أمطار'],['ثلوج','❄️ ثلوج'],['ثلج','❄️ ثلوج'],['جليد','🧊 صقيع'],['إغلاق','⛔ إغلاق طرق'],['اغلاق','⛔ إغلاق طرق'],['رياح','💨 رياح'],['غبار','🌪️ غبار'],['منخفض','🌀 منخفض جوي'],['حذر','🚗 قيادة بحذر'],['سرعة','🚗 خفض السرعة']];
+   const fmt=(it)=>{const t=Date.parse(it.publishedAt||it.dateTime||'');if(!Number.isFinite(t))return esc(it.date||'');const m=Math.round((Date.now()-t)/6e4);const hh=new Date(t).toLocaleTimeString('ar-JO',{hour:'2-digit',minute:'2-digit'});return (m<60?'قبل '+Math.max(1,m)+' دقيقة':m<1440?'قبل '+Math.round(m/60)+' ساعة':'أمس')+' · '+hh};
+   itemsEl.innerHTML=items.slice(0,4).map(item=>{const txt=(item.title||'')+' '+(item.summary||'');const tg=[];TAGS.forEach(x=>{if(txt.indexOf(x[0])>-1&&tg.indexOf(x[1])<0)tg.push(x[1])});return '<article class="psd-alert-item psd-c"><div class="psd-c-top"><span class="psd-c-time">'+fmt(item)+'</span><a class="psd-c-more" href="'+esc(item.url||'https://www.psd.gov.jo/ar-jo/')+'" target="_blank" rel="noopener noreferrer">التفاصيل ↗</a></div><h3>'+esc(item.title)+'</h3>'+(item.summary?'<p>'+esc(item.summary)+'</p>':'')+(tg.length?'<div class="psd-c-tags">'+tg.slice(0,4).map(x=>'<span>'+x+'</span>').join('')+'</div>':'')+'</article>'}).join('');
    if(window.PetraWarningBoxes)window.PetraWarningBoxes.report('psd','active');
    const stamp=data.updatedAt?new Date(data.updatedAt):null;
    statusEl.classList.remove('offline');statusEl.textContent='تنبيهات منشورة خلال آخر 24 ساعة · آخر تحديث آلي: '+(stamp&&!isNaN(stamp)?stamp.toLocaleString('ar-JO'):'وقت التحديث غير متاح');
