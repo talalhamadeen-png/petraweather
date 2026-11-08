@@ -1,8 +1,15 @@
 {
- "updatedAt": "2026-11-08T18:39:37.705Z",
+ "updatedAt": "2026-11-08T22:30:13.284Z",
  "ok": true,
  "source": "psd.gov.jo",
  "items": [
+  {
+   "title": "الأمن يحذر من الانزلاقات وتدني الرؤية خلال الأحوال الجوية المتوقعة",
+   "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTFBNOS03MEtfYkNXVkNDdjZMYVpzdjY0RDFwNU9IM0VXOE9NSEpQZFV6dE9rVzlKcHUtSWV5YmpmNGRyeWg4?oc=5",
+   "summary": "",
+   "date": "٠٨‏/١١‏/٢٠٢٦، ٢٢:٢٣",
+   "publishedAt": "2026-11-08T19:23:00.000Z"
+  },
   {
    "title": "تحذير من مديرية الأمن العام | الأردن اليوم | وكالة أنباء سرايا الإخبارية - حرية سقفها السماء",
    "url": "https://news.google.com/rss/articles/CBMikwJBVV95cUxOVXFOSk5yQVVQdWxuQkVueXc3cVdua0E4d0stZFpEMk8zTVVfQlo2MTdaWnYtYzB5MDE4OTRxa0FSV25JTFZQVmZIVDNIRFFzXzl2cFJ0cDJWcmJqaHRGZ2NvNzNvQ2RmVXdaMWxxUGdiVExsV1NtTVd1T2J4UDNrSDhETm4tZUZHOTEwM3FLUDV3Z2RuaDg0eFJ6dmtRRTNJd3dBZHl0Qi1QWkZYRGtmM21QbTFxb1lybE9TQU1zMkZJbDdWdWZBd3FXTTZsdWhZNjhKWHljOExhcTNnR3dpSkhGMmdxRG1DZDhvS1Q0TlVIZDRlTlVaU2NuMVN2dVc4WjNOa1JZOGRRN21mSmI5OFVxNA?oc=5",
@@ -22,7 +29,7 @@
   "pages": [
    {
     "url": "news:\"الأمن العام\" الأحوال الجوية",
-    "items": 7
+    "items": 8
    },
    {
     "url": "news:\"الأمن العام\" حالة الطرق",
@@ -49,8 +56,8 @@
     "items": 0
    }
   ],
-  "anchors": 30,
-  "matched": 26,
+  "anchors": 31,
+  "matched": 27,
   "errors": [
    "fetch failed",
    "fetch failed"
