@@ -3772,7 +3772,6 @@ body{margin:0!important;overflow-x:hidden!important;}
   sum1+='الحرارة الحالية '+rnd(c.temperature_2m)+'° (المحسوسة '+rnd(c.apparent_temperature)+'°) والرطوبة النسبية '+rnd(c.relative_humidity_2m)+'%، والرياح '+dirName(c.wind_direction_10m)+' '+windWord(c.wind_speed_10m)+' بسرعة '+rnd(c.wind_speed_10m)+' كم/س. ';
   sum1+=(mm24>=1||p24>=50)?'تُظهر النماذج فرصة '+(mm24>=5?'مرتفعة':'متوسطة')+' لهطول مطري خلال الـ24 ساعة القادمة.':'لا يُتوقع هطول يُذكر خلال الـ24 ساعة القادمة.';
   window.PetraWeatherSummary=sum1;try{window.dispatchEvent(new Event('petraBulletinReady'))}catch(_){}
-  out+='<div class="db-lead"><span class="db-badge">الحالة العامة</span><p>'+sum1+'</p></div>';
   if(slots.length){
    out+='<h3 class="db-h">🕒 تفصيل الفترات القادمة</h3><div class="db-slots">';
    slots.forEach(function(sl){out+='<div class="db-slot db-'+sl.sky+'"><div class="db-slot-h"><span class="db-ic">'+SKY[sl.sky][0]+'</span><b>'+sl.name+'</b><span class="db-t">'+rnd(sl.tmin)+'° – '+rnd(sl.tmax)+'°</span></div><p>'+slotText(sl)+'</p></div>'});
