@@ -1838,11 +1838,7 @@ html body #weatherNewsPanel .wn-foot{margin-top:8px;font-size:.68rem;opacity:.6}
 
 
 
-<main><section aria-live="polite" class="weather-now-box live-bulletin" id="writtenBulletin">
-<h2>📝 النشرة الجوية المكتوبة – <span id="bulletinLocationName">البترا – وادي موسى</span></h2>
-<p id="bulletinText">جارٍ جلب أحدث بيانات الطقس لإعداد النشرة تلقائياً...</p>
-<div class="live-data-meta">المصدر: Open-Meteo Forecast API | آخر تحديث للبيانات: <span id="dataUpdatedAt">بانتظار الاتصال</span> | تحديث تلقائي كل 15 دقيقة</div>
-</section><div class="bulletin-warning-grid"><section class="panel" id="detailedBulletin" aria-live="polite" aria-labelledby="dbTitle"><h2 id="dbTitle">🗞️ النشرة الجوية المفصلة <span class="db-where" id="dbWhere"></span></h2><div id="dbBody" class="db-body"><p class="db-loading">جارٍ إعداد النشرة…</p></div></section><section class="panel psd-alert-panel" id="psdPublicSafetyAlerts" aria-live="polite" aria-labelledby="psdAlertsTitle">
+<main><div class="bulletin-warning-grid"><section class="panel" id="detailedBulletin" data-scene="petra" aria-live="polite" aria-labelledby="dbTitle"><div class="ub-hero"><h2 id="dbTitle">🗞️ النشرة الجوية – <span id="bulletinLocationName">البترا – وادي موسى</span></h2><span class="db-where" id="dbWhere" hidden></span><p id="bulletinText">جارٍ جلب أحدث بيانات الطقس لإعداد النشرة تلقائياً...</p><div class="ub-regions" id="ubRegions" aria-label="حالة الطقس في شمال ووسط وجنوب المملكة"></div></div><div id="dbBody" class="db-body"><p class="db-loading">جارٍ إعداد النشرة…</p></div><div class="live-data-meta">المصدر: Open-Meteo Forecast API | آخر تحديث للبيانات: <span id="dataUpdatedAt">بانتظار الاتصال</span> | تحديث تلقائي كل 15 دقيقة</div></section><section class="panel psd-alert-panel" id="psdPublicSafetyAlerts" aria-live="polite" aria-labelledby="psdAlertsTitle">
 <h2 id="psdAlertsTitle">🚔 تنبيهات الأمن العام والطرق <span class="psd-live-badge">مصدر رسمي</span></h2>
 <p class="psd-alert-intro">تنبيهات السلامة العامة وحالة الطرق المنشورة على موقع مديرية الأمن العام الأردنية.</p>
 <div id="psdAlertsStatus" class="psd-alert-status" role="status">جارٍ تحميل آخر التنبيهات المنشورة…</div>
@@ -3841,7 +3837,76 @@ html body #weatherNewsPanel .wn-live{font-size:.7rem!important;white-space:nowra
 html body #weatherNewsPanel .wn-status{background:#162337!important;border:1px solid #3a506a!important;border-radius:9px!important;padding:3px 8px!important;opacity:1!important}
 html body #weatherNewsPanel .wn-item{background:#162337!important;border:1px solid #3a506a!important;border-right:4px solid #38bdf8!important;border-radius:10px!important}
 </style>
+<style id="unified-bulletin-css">
+html body #detailedBulletin{order:1!important;grid-column:1/-1!important;grid-row:auto!important;padding:0!important;overflow:hidden!important;border-radius:18px!important;background:#0b1b2d!important;border:1px solid #1b4961!important;box-shadow:0 10px 30px #0006!important;align-self:start!important}
+html body #detailedBulletin .ub-hero{position:relative;padding:18px 18px 74px;color:#fff;transition:background .4s}
+html body #detailedBulletin .ub-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.32),rgba(0,0,0,.05) 60%,rgba(0,0,0,.25));pointer-events:none}
+html body #detailedBulletin .ub-hero>*{position:relative}
+html body #detailedBulletin[data-scene="petra"] .ub-hero{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 90' preserveAspectRatio='none'%3E%3Cpath fill='rgba%2810%2C15%2C30%2C.42%29' d='M0 90V40l25-8 10 14 20-26 22 10 18-22 24 18 20-8 15 30 30-34 25 20 20-12 20 36 28-30 30 24 24-14 18 18 20-6v44z'/%3E%3Cpath fill='rgba%28255%2C200%2C140%2C.25%29' d='M170 90V48h60v42z'/%3E%3C/svg%3E") bottom/100% 70px no-repeat,linear-gradient(180deg,#5a2a1c 0%,#a9553a 42%,#ee9d63 100%)!important}
+html body #detailedBulletin[data-scene="rum"] .ub-hero{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 90' preserveAspectRatio='none'%3E%3Cpath fill='rgba%2810%2C15%2C30%2C.42%29' d='M0 90V60c40-30 80-30 120 0s90 25 140-5 90-20 140 5v30z'/%3E%3Cpath fill='rgba%280%2C0%2C0%2C.18%29' d='M0 90V75c60-20 130-15 200 0s140 5 200-8v23z'/%3E%3C/svg%3E") bottom/100% 70px no-repeat,linear-gradient(180deg,#7a2f17 0%,#d27a3c 45%,#f6cb7c 100%)!important}
+html body #detailedBulletin[data-scene="aqaba"] .ub-hero{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 90' preserveAspectRatio='none'%3E%3Cpath fill='rgba%2810%2C15%2C30%2C.42%29' d='M0 90V55l40-22 30 18 40-26 50 30 45-20 55 28 40-20 100 30v27z'/%3E%3Cpath fill='rgba%28255%2C255%2C255%2C.28%29' d='M0 82c25-8 50 8 75 0s50 8 75 0 50 8 75 0 50 8 75 0 50 8 75 0v8H0z'/%3E%3C/svg%3E") bottom/100% 70px no-repeat,linear-gradient(180deg,#06365f 0%,#117cae 50%,#7fd3e8 100%)!important}
+html body #detailedBulletin[data-scene="north"] .ub-hero{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 90' preserveAspectRatio='none'%3E%3Cpath fill='rgba%2810%2C15%2C30%2C.42%29' d='M0 90V50c50-30 90-10 130 5s80-35 140-12 90 20 130 0v47z'/%3E%3Cpath fill='rgba%280%2C40%2C10%2C.25%29' d='M0 90V68c60-18 120 4 190-6s140 4 210-4v32z'/%3E%3C/svg%3E") bottom/100% 70px no-repeat,linear-gradient(180deg,#0c3d24 0%,#237a4b 50%,#8fcf8a 100%)!important}
+html body #detailedBulletin[data-scene="center"] .ub-hero{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 90' preserveAspectRatio='none'%3E%3Cpath fill='rgba%2810%2C15%2C30%2C.42%29' d='M0 90V58h22V40h18v22h16V30h14v32h20V48h18v14h22V36h16v26h18V44h20v18h24V28h12v34h22V50h18v12h20V40h16v22h26V54h20v36z'/%3E%3C/svg%3E") bottom/100% 70px no-repeat,linear-gradient(180deg,#121c38 0%,#34497a 50%,#e9a05e 100%)!important}
+html body #detailedBulletin[data-scene="ghor"] .ub-hero{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 90' preserveAspectRatio='none'%3E%3Cpath fill='rgba%2810%2C15%2C30%2C.42%29' d='M0 90V70c80-6 160 4 240-2s110 2 160-2v24z'/%3E%3Cpath fill='rgba%28255%2C255%2C255%2C.3%29' d='M0 90V80c70-4 140 3 210-1s130 2 190-2v13z'/%3E%3C/svg%3E") bottom/100% 70px no-repeat,linear-gradient(180deg,#063f4a 0%,#1f8f9c 55%,#d9d1b0 100%)!important}
+html body #detailedBulletin #dbTitle{display:block!important;justify-content:flex-start!important;font-size:1.25rem!important;font-weight:900!important;color:#fff!important;margin:0 0 10px!important;text-shadow:0 2px 8px rgba(0,0,0,.65);line-height:1.5}
+html body #detailedBulletin #bulletinLocationName{display:inline-block;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:1px 12px;font-size:1.05rem}
+html body #detailedBulletin #bulletinText{color:#fff!important;font-size:1.06rem!important;font-weight:700!important;line-height:2!important;margin:0 0 14px!important;text-shadow:0 2px 6px rgba(0,0,0,.75)}
+html body #detailedBulletin .ub-regions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+html body #detailedBulletin .ub-reg{background:rgba(8,18,34,.62);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.22);border-radius:13px;padding:8px 9px;text-align:center;color:#fff}
+html body #detailedBulletin .ub-reg.on{border-color:#ffd166;box-shadow:0 0 0 2px rgba(255,209,102,.45)}
+html body #detailedBulletin .ub-reg b{display:block;font-size:.8rem;font-weight:900;color:#ffd166}
+html body #detailedBulletin .ub-reg small{display:block;font-size:.68rem;opacity:.85}
+html body #detailedBulletin .ub-reg .ub-i{font-size:1.5rem;line-height:1.2}
+html body #detailedBulletin .ub-reg .ub-t{font-size:1.3rem;font-weight:900;direction:ltr}
+html body #detailedBulletin .ub-reg .ub-c{font-size:.78rem;font-weight:700}
+html body #detailedBulletin .ub-reg .ub-r{font-size:.7rem;opacity:.9}
+html body #detailedBulletin .db-body{padding:12px 16px 4px}
+html body #detailedBulletin .live-data-meta{padding:0 16px 12px;font-size:.7rem;opacity:.7;margin:0}
+html body #psdPublicSafetyAlerts,html body #weatherNewsPanel{grid-column:1/-1!important;grid-row:auto!important}
+html body #psdPublicSafetyAlerts{order:6!important}html body #weatherNewsPanel{order:7!important}
+@media(max-width:560px){html body #detailedBulletin .ub-hero{padding:14px 12px 70px}html body #detailedBulletin .ub-reg .ub-t{font-size:1.1rem}html body #detailedBulletin .ub-reg .ub-c{font-size:.7rem}}
+</style>
 <style id="wn-compact">html body #weatherNewsPanel{padding:10px 12px!important}html body #weatherNewsPanel h2{font-size:1rem!important;margin:0 0 6px!important}html body #weatherNewsPanel .wn-status{font-size:.7rem!important;margin:0 0 6px!important}html body #weatherNewsPanel .wn-items{gap:6px!important}html body #weatherNewsPanel .wn-item{padding:7px 10px!important}html body #weatherNewsPanel .wn-title{font-size:.86rem!important;line-height:1.6!important;display:block}html body #weatherNewsPanel .wn-det{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:4px;background:#ffffff12;border:1px solid #ffffff22;border-radius:8px;padding:3px 8px;font-size:.7rem}html body #weatherNewsPanel .wn-det b{font-weight:700;opacity:.9}html body #weatherNewsPanel .wn-det em{font-style:normal;background:#43c8f526;border-radius:999px;padding:0 7px}</style>
+<script id="unified-bulletin-js">
+(function(){
+ var box=document.getElementById('detailedBulletin'),wrap=document.getElementById('ubRegions');if(!box||!wrap)return;
+ var REG=[{k:'north',n:'الشمال',c:'إربد',la:32.5556,lo:35.85},{k:'center',n:'الوسط',c:'عمّان',la:31.9539,lo:35.9106},{k:'south',n:'الجنوب',c:'معان',la:30.1962,lo:35.734}];
+ var CODE={0:['صافٍ','☀️'],1:['صافٍ غالبًا','🌤️'],2:['غائم جزئيًا','⛅'],3:['غائم','☁️'],45:['ضباب','🌫️'],48:['ضباب','🌫️'],51:['رذاذ','🌦️'],53:['رذاذ','🌦️'],55:['رذاذ','🌦️'],61:['مطر خفيف','🌧️'],63:['مطر','🌧️'],65:['مطر غزير','🌧️'],66:['مطر متجمد','🌧️'],67:['مطر متجمد','🌧️'],71:['ثلوج خفيفة','🌨️'],73:['ثلوج','🌨️'],75:['ثلوج كثيفة','❄️'],77:['ثلوج','🌨️'],80:['زخات مطر','🌦️'],81:['زخات مطر','🌦️'],82:['زخات غزيرة','⛈️'],85:['زخات ثلج','🌨️'],86:['زخات ثلج','🌨️'],95:['عاصفة رعدية','⛈️'],96:['عاصفة رعدية','⛈️'],99:['عاصفة رعدية','⛈️']};
+ function regionOf(lat){return lat>=32.25?'north':lat>=31.3?'center':'south'}
+ function sceneOf(name,lat,lon){
+  name=String(name||'');
+  if(/رم/.test(name))return 'rum';
+  if(/العقبة/.test(name)||lat<29.9)return 'aqaba';
+  if(/البترا|موسى|الشوبك|معان|الطيبة|صيحون/.test(name))return 'petra';
+  if(/البحر الميت|الأغوار|غور|الشونة|الكرامة|المزرعة|سويمة|دير علا|الصافي/.test(name))return 'ghor';
+  if(lat>=32.25)return 'north';
+  if(lat>=31.3)return 'center';
+  return 'petra';
+ }
+ var cur=null;
+ function mark(){wrap.querySelectorAll('.ub-reg').forEach(function(e){e.classList.toggle('on',cur&&e.dataset.k===cur)})}
+ function setScene(lat,lon){
+  if(!isFinite(lat))return;
+  var nm=(document.getElementById('bulletinLocationName')||{}).textContent||window.selectedLocation;
+  box.setAttribute('data-scene',sceneOf(nm,lat,lon));cur=regionOf(lat);mark();
+ }
+ function cards(d){
+  wrap.innerHTML=REG.map(function(r,i){var x=d[i];if(!x||!x.current)return '<div class="ub-reg" data-k="'+r.k+'"><b>'+r.n+'</b><small>'+r.c+'</small><div class="ub-c">غير متاح</div></div>';
+   var c=x.current,m=CODE[c.weather_code]||['—','🌡️'],dy=x.daily||{},p=(dy.precipitation_probability_max||[])[0];
+   return '<div class="ub-reg" data-k="'+r.k+'"><b>'+r.n+'</b><small>'+r.c+'</small><div class="ub-i">'+m[1]+'</div><div class="ub-t">'+Math.round(c.temperature_2m)+'°</div><div class="ub-c">'+m[0]+'</div><div class="ub-r">'+(dy.temperature_2m_max?Math.round(dy.temperature_2m_max[0])+'° / '+Math.round(dy.temperature_2m_min[0])+'°':'')+(isFinite(p)?' · 💧'+Math.round(p)+'%':'')+'</div></div>'}).join('');
+  mark();
+ }
+ async function loadRegions(){
+  try{
+   var u='https://api.open-meteo.com/v1/forecast?latitude='+REG.map(function(r){return r.la}).join(',')+'&longitude='+REG.map(function(r){return r.lo}).join(',')+'&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&forecast_days=1&timezone=Asia%2FAmman';
+   var r=await fetch(u,{cache:'no-store'});if(!r.ok)throw 0;var j=await r.json();cards(Array.isArray(j)?j:[j]);
+  }catch(e){if(!wrap.children.length||wrap.querySelector('.ub-load'))cards([])}
+ }
+ wrap.innerHTML='<div class="ub-reg ub-load" style="grid-column:1/-1"><div class="ub-c">جارٍ تحميل حالة الطقس في الشمال والوسط والجنوب…</div></div>';
+ window.addEventListener('petraWeatherData',function(e){var d=e.detail||{};setScene(Number(d.latitude),Number(d.longitude))});
+ loadRegions();setInterval(loadRegions,15*60*1000);
+})();
+</script>
 <script id="petra-weather-news">
 (function(){
  'use strict';
