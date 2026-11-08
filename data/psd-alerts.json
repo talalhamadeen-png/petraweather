@@ -1,5 +1,52 @@
 {
-  "source": "https://www.psd.gov.jo/ar-jo/المحتوى/أرشيف-الأخبار/",
-  "updatedAt": null,
-  "items": []
+ "updatedAt": "2026-11-08T06:32:42.712Z",
+ "ok": true,
+ "source": "psd.gov.jo",
+ "items": [
+  {
+   "title": "مديرية الأمن العام تحذر من الأحوال الجوية المتوقعة مساء اليوم",
+   "url": "https://news.google.com/rss/articles/CBMigARBVV95cUxPeVU5a3ktNGQxN185UTJRMWFaMXVlMk9CZjhUZTVNWk9ZZTBpSU5zc3FnNTQ1cnVpeTJDaVFtYmhrTlpsRWlIUlFNcERWVkYxa0txZzg4OUFCMWNmQ1R5cWwwSHZTZmUwN2laVXRZWDhVamJWM1VzWUlZRkswMzBOOHR5TGFmWTdidDFwNTNYMDZjb1hrSzg4c0VVNmtheDl5dlhrcXpDQVhUOUxWQWdKUF9MYmVlbTNldmdWWkJKVG4ySC13RUJUTl9pbzRRdUhLcWtNUnF6SW1zTC1Bcl9QZVc5b055Q3BSWUZ5OHhweU10RGxBbElPTlFIZ1JPQm50QnJQVGZoeElQLU9HRm9PVWsxU2twb0ZXM3dsSzI3R0k3ZkxNRlkyVmpfbmZrLWI0ZFl5ZUxNYkdtcGVsTnlXZk9nbEpSLVZIWUNDekFIOUFQMmIzNDRCZUZQQkx0SWcybWlVbTY5SDExcGR1V3cxeUVpa19TemYtc3VFcnZKbVlTYjNPOFBKNk1IZU1SMDE5WktVNzlXSmtOVXNwVnRMVFNiQUxzSDE0LVRWa21VLWpaTk9BZlJvc05KdTRnOS1yUEdYeWVuUkRaWHVkS2VpeXRKQ3JKVmpSVFl3WnUzM0tfNnhjUEljUWFNbENleXZuNmhfZjVvdlc4dmlkOGhSaQ?oc=5",
+   "summary": "",
+   "date": "٠٧‏/١١‏/٢٠٢٦، ٢٢:٢٣",
+   "publishedAt": "2026-11-07T19:23:32.000Z"
+  }
+ ],
+ "debug": {
+  "pages": [
+   {
+    "url": "news:\"الأمن العام\" الأحوال الجوية",
+    "items": 8
+   },
+   {
+    "url": "news:\"الأمن العام\" حالة الطرق",
+    "items": 7
+   },
+   {
+    "url": "news:\"الأمن العام\" تحذر منخفض جوي",
+    "items": 3
+   },
+   {
+    "url": "news:\"مديرية الأمن العام\" ثلوج",
+    "items": 0
+   },
+   {
+    "url": "news:\"مديرية الأمن العام\" سيول",
+    "items": 10
+   },
+   {
+    "url": "news:\"الأمن العام\" إغلاق طريق الطقس",
+    "items": 2
+   },
+   {
+    "url": "news:site:petra.gov.jo الأمن العام الطقس",
+    "items": 0
+   }
+  ],
+  "anchors": 30,
+  "matched": 26,
+  "errors": [
+   "fetch failed",
+   "fetch failed"
+  ]
+ }
 }
