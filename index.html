@@ -3070,7 +3070,7 @@ body [style*="background:#fff"],body [style*="background: #fff"],body [style*="b
    if(!response.ok)throw new Error('HTTP '+response.status);
    const data=await response.json();
    const upd=data.updatedAt?Date.parse(data.updatedAt):NaN;
-   if(data.ok===false||!Number.isFinite(upd)||Date.now()-upd>3*3600*1000){
+   if(data.ok===false||!Number.isFinite(upd)||Date.now()-upd>8*3600*1000){
     statusEl.classList.add('offline');
     statusEl.textContent=(Number.isFinite(upd)?'بيانات الأمن العام غير محدّثة منذ '+Math.max(1,Math.round((Date.now()-upd)/36e5))+' ساعات':'بيانات الأمن العام غير متاحة حاليًا');
     itemsEl.innerHTML='<p class="psd-alert-item">تعذّر تحديث التنبيهات تلقائيًا. راجع الروابط الرسمية أدناه، ولا تعتمد على هذه اللوحة وحدها للتحقق من إغلاق الطرق أو الحالات الطارئة.</p>';
