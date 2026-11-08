@@ -59,7 +59,9 @@ async function send(zone,ev){
   const r=await fetch('https://api.onesignal.com/notifications',{method:'POST',headers:{'content-type':'application/json',authorization:'Key '+KEY},body:JSON.stringify(payload)});
   const t=await r.text();
   if(!r.ok){console.error('OneSignal error',r.status,t);return false}
-  console.log('sent',zone.id,zone.name,ev.id,t.slice(0,120));return true;
+  let j={};try{j=JSON.parse(t)}catch(e){}
+  if(!j.id){console.log('no-recipients',zone.id,zone.name,ev.id);return false}
+  console.log('sent',zone.id,zone.name,ev.id,j.recipients??'',t.slice(0,80));return true;
 }
 async function main(){
   if(!DRY&&(!APP_ID||!KEY)){console.error('Missing ONESIGNAL_APP_ID / ONESIGNAL_REST_API_KEY secrets.');process.exit(1)}
