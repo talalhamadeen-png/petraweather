@@ -1,0 +1,30 @@
+name: Petra Weather Alerts Push
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: petra-alerts
+  cancel-in-progress: false
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Evaluate weather and send push alerts
+        env:
+          ONESIGNAL_APP_ID: ${{ secrets.ONESIGNAL_APP_ID }}
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
+          SITE_URL: https://talalhamadeen-png.github.io/petraweather/
+        run: node scripts/push-alerts.mjs
+      - name: Save sent-alerts state
+        run: |
+          git config user.name "petra-alerts-bot"
+          git config user.email "petra-alerts-bot@users.noreply.github.com"
+          git add data/alerts-state.json
+          git diff --cached --quiet || (git commit -m "update alerts state [skip ci]" && git push)
