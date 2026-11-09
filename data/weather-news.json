@@ -1,7 +1,12 @@
 {
- "updatedAt": "2026-11-08T22:28:04.708Z",
+ "updatedAt": "2026-11-09T01:48:26.843Z",
  "ok": true,
  "items": [
+  {
+   "title": "البيت الأبيض: ترمب سيلتقي رئيس وزراء قطر الاثنين",
+   "url": "https://news.google.com/rss/articles/CBMi3wNBVV95cUxNcUtXdzRCU3VXSWx4cG1TMGZGN2o2ajNnUHNXOVUyMjlCeWtMLVNLb2FXQjNUano5RkhZdkdmaUtfR0lxelpWUThVZm03WVdQSkVENmRPYWdxUFFGV0RwVU5aUG1iN25JWGVITkVIZlRYeXp1ajljV1Q4RVBqaDVZMXNMaGg2dEloYk8wOTZJMGpvUkRzc1cyUHNZZUY2V3Q2d3lZbEMwY01SUk5Ga3RCb1MwdHFOYWZPY2RkSFF3LWYydC0zYXAxT1VsQTFXSVIxczhBem9GVU9wcTBrU2dHd013b2pnbTNjZDE2U3RST1RsaV9Bb3A4X09SdmVUMUt4ODd6b3RFSGUwYk9vLXlySG9zUTMxMlJCX1VnNDhSUFRzUGw0RlBON2lzbWtNNUhTX3Q2WmxUNHlLYUdkeE1jZnVWbTdsYWVmSlA5MHM1bEZpTWhLUlRZaTctZVdxbkVwMnE4bUM3SWVvUHFRM1ZnTUVUdUcxQko2MXBnbl9INy1CUFA4R2daV1NCZm1IbUxQU0VGRmE4cXp3U3E1Tkh5cFR0NXlobDUwMGxxZ3h3bWJxRno0bW9jUlJqYzBHaWZNZlZYQ1c2MmExRGlMRk9Ra0lrcmhVa2tFVTdLTG4wWQ?oc=5",
+   "publishedAt": "2026-11-09T01:35:51.000Z"
+  },
   {
    "title": "هل تقترب أول ثلجة من المملكة؟.. توقعات موعد تساقط الثلوج",
    "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE1IMEQ5T0N6Q2oxWjNjb1lYczRITjhWXzlWcGVibEZfZjdGWlhleFBHMVJiNlA5RWQ1NTN6Z0RMdTRBNVB6?oc=5",
@@ -71,34 +76,29 @@
    "title": "قوس قزح يزيّن سماء المملكة .. الأرصاد توضح سر تشكّله وألوانه | الأردن اليوم | وكالة أنباء سرايا الإخبارية - حرية سقفها السماء",
    "url": "https://news.google.com/rss/articles/CBMi9wJBVV95cUxNYWFUMU1OblE4UkFPaUhXY0doVTEta0E3MEVUWlhJdVhyN3ZqQWtULWUzMmxVSUVTNXo2RGdfZGg5RVdibjZXVjJ5ODBGSXdPbTJIWHg2RjlneWI5eWZlOTJzVlBJanlUMm5KSGZnNllfN0VTbDU0TkFNaU5fd1VCQVJ0ZTBCVHZyMm54aHhlc0lzUmZEN0NGczdoVVZyaG14c1dRRnpRUmJtM0g5aTRtcFBJenB6ZTZVZm54N3FGLVViNzZPdU5LbHVMUWx6YVVoOXJobUU4dkFJM0Z5R25TeE1MWmVQSnJRbVJkdjZiaHRTby1vWWtWeVNxaThpWG1WZDNVcjUyWWFKZnhtYWhpZThGY21sM3phcVJnbHNlOGZSVzNabXN0WXBuVDFHWkRRM3R0RmZzSXpJcEtjVVBKaG9LRVZNcHVFeGhiOU9uSFRucjZhLXRiNDU3NU1MdHNNR1BpWnY5SVhaaW44QmN6ekw3R2RvdVU?oc=5",
    "publishedAt": "2026-11-08T08:45:00.000Z"
-  },
-  {
-   "title": "الأرصاد: استمرار تأثير الكتلة الباردة الأحد وأمطار في شمال ووسط الأردن",
-   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBqZHo4eWFncmM0TEh5TTNPcm9QTjJQY2VKajdVamtzU19adkdYM09aQ2JiSkx5WjlZRWxESDhPX0pmVDhZanI1RkZaVk81dXVxS3hDTW5FZnktQ25DdDJ2MmVuM1FFVTltV2c?oc=5",
-   "publishedAt": "2026-11-08T07:11:56.000Z"
   }
  ],
  "debug": {
   "queries": [
    {
     "q": "طقس الأردن",
-    "items": 64
+    "items": 56
    },
    {
     "q": "حالة الطقس في الأردن",
-    "items": 25
+    "items": 21
    },
    {
     "q": "الأرصاد الجوية الأردنية",
-    "items": 88
+    "items": 86
    },
    {
     "q": "طقس العرب الأردن",
-    "items": 77
+    "items": 75
    },
    {
     "q": "منخفض جوي الأردن",
-    "items": 90
+    "items": 91
    },
    {
     "q": "كتلة هوائية الأردن",
@@ -106,7 +106,7 @@
    },
    {
     "q": "أمطار الأردن",
-    "items": 96
+    "items": 99
    },
    {
     "q": "ثلوج الأردن",
@@ -134,7 +134,7 @@
    },
    {
     "q": "site:jo24.net طقس",
-    "items": 61
+    "items": 60
    },
    {
     "q": "site:arabiaweather.com الأردن",
@@ -158,7 +158,7 @@
    }
   ],
   "errors": [],
-  "kept": 34,
-  "total": 1263
+  "kept": 32,
+  "total": 1250
  }
 }
