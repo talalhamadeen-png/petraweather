@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-09T09:08:44.343Z",
+ "updatedAt": "2026-11-09T19:49:55.223Z",
  "ok": true,
  "source": "psd.gov.jo",
  "items": [
@@ -11,18 +11,25 @@
    "publishedAt": "2026-11-08T19:23:00.000Z"
   },
   {
-   "title": "الأمن العام يجدد تحذيراته للمواطنين في ظل الأحوال الجوية السائدة",
-   "url": "https://news.google.com/rss/articles/CBMimARBVV95cUxNdy02TEdEQ1ZzVGVob1ptRUg5ZFBzdE53MF9BQzRMTE9KRlJ4b2JBX0NuN05tM0NQSWtoVkdmc0ZxMEp3UGJaZFNfUjFZTUVaamJYbFhfYkpxckFBa2huUjFZbWY4VTJnTnhreVlXWlFNUmMxR0lEUi1tTkZHTU1MaWRjbUhNS0trVzdWeERpWFJ0cHpseE9vQ0hSM0xYaksxcmFaSWxtRGE5YWtBQXFrLXFJdHVvcWZOVGdqOUZJZHN6OWFaOXdZU2VDUXBsOUpyYnZkckpSLUlOaWk5UUpLQnhCM1BvMlRQSEp4aXI0NHVPUFpOaEJ4dUtoY0k3cUVqT0V5ODFEZVdSZzZnRFFMMlJBVXZhb01sd3g1ZngzUF81YnpTR2dmazJkeXJ0RkNScmtqT1VNWTZXME8tcURFWmNTNk5ua2VQUFFyWVR6WDdYdmU0Z0l3Nmw0ZzByb2k4SDNFQVBVemtqN25hRDRpTnI1X3FPdFlsVmNfU2FqQk9IdzNDUk95a2RfM1BrblF4bGM0TU1DTk5iNWpmaWhScHR6d2x5b2gtUnJWTnJhd1NwSlF5dzZRVmhsUzlwWVAwNHA0NWhYUTJFWHY3MVhseFhWRFVNcGtjcThpUU9pREJKemd4VE1DcnMzVnhqODVlZm9EYnUzZzB3cnAxZzN0YU1mTURjeXhqSGJEVS0tYlB3TGJ4alNXRw?oc=5",
-   "summary": "",
-   "date": "٠٨‏/١١‏/٢٠٢٦، ١٨:١٨",
-   "publishedAt": "2026-11-08T15:18:21.000Z"
-  },
-  {
    "title": "تحذير من مديرية الأمن العام | الأردن اليوم | وكالة أنباء سرايا الإخبارية - حرية سقفها السماء",
    "url": "https://news.google.com/rss/articles/CBMikwJBVV95cUxOVXFOSk5yQVVQdWxuQkVueXc3cVdua0E4d0stZFpEMk8zTVVfQlo2MTdaWnYtYzB5MDE4OTRxa0FSV25JTFZQVmZIVDNIRFFzXzl2cFJ0cDJWcmJqaHRGZ2NvNzNvQ2RmVXdaMWxxUGdiVExsV1NtTVd1T2J4UDNrSDhETm4tZUZHOTEwM3FLUDV3Z2RuaDg0eFJ6dmtRRTNJd3dBZHl0Qi1QWkZYRGtmM21QbTFxb1lybE9TQU1zMkZJbDdWdWZBd3FXTTZsdWhZNjhKWHljOExhcTNnR3dpSkhGMmdxRG1DZDhvS1Q0TlVIZDRlTlVaU2NuMVN2dVc4WjNOa1JZOGRRN21mSmI5OFVxNA?oc=5",
    "summary": "",
    "date": "٠٨‏/١١‏/٢٠٢٦، ١٤:٢٧",
    "publishedAt": "2026-11-08T11:27:00.000Z"
+  },
+  {
+   "title": "مديرية الأمن العام تدعو إلى أخذ الحيطة والحذر خلال الأحوال الجوية",
+   "url": "https://news.google.com/rss/articles/CBMiiwRBVV95cUxNeHVaaUdRUldSZWJuYnVtVGVnaDh1d3RjamVac2VCb05oN2NNZ0xpVFBZT0xESFl4QkUtaFRxeGFZWXI1WDRpVDFqSDJmbUNOUzV1Z0NDWEFMUGR5R01kTDM2X09iX0lRNnRDbmdCYmxobXhTQi12eldYZGktcnd5bnVmZFgxeGhrY3lqZ0hnWXdQRVIzR05mUkExbkdRTG9ORC1EZ2xtUkFNYzFiakJkSkpkcWw4MDBucVM3bzZ3NjR1ZEp4OVFXVFlUMjZRMVlNaWdVRThjMUV2OHQ5cjZKUjNacGtIQTFFZ3VQTjh1UGxvYnNXMDgwSWdyZ2JYVDhzVzdSeFpVNnhlVW1BX25kTWM3SnJSbkdEZ1k4VEhqSTV4TFh3S0hUcFJ3WWtKNkpEckpYSDgxSGpjUjk4R0RtNFpQY1VWQWhOanhfNWRRV2tZUEZiTklJSFREMVQxSUlJQUhRXzVrRnJpZ05ZeWVBblFfZkVsV0lnUGtjNDFKZFVwaXN3ZEZsTk9zMy12MVVBcG9IdUQ4clBUMjQzVE5weVJELTVIRFcwTENZVXBoRFlkX1Q2ZktDd3k1TTQ1TWdOMG1GRnl2RDV0MmJfWlIzd2ZGc1hjSThYb193RUN0ZWR6bGNEajFCQUJVemQ3amI1ZTRoQ1htaGpVRWhKRUxaMVN4UE43bU9UQWVB?oc=5",
+   "summary": "",
+   "date": "٠٨‏/١١‏/٢٠٢٦، ١٣:٠٨",
+   "publishedAt": "2026-11-08T10:08:04.000Z"
+  },
+  {
+   "title": "الأمن العام يحذر من الانزلاقات وتدني الرؤية خلال الأحوال الجوية المتوقعة",
+   "url": "https://news.google.com/rss/articles/CBMixARBVV95cUxPTFE1MnVSRGd4WVFUV191RTJXVDN3Nmx1bTNnQ1lwTThCNVh1OWdJMFJfbGtmX0hpVG5YNkRZMmlYS3VQYTB4Q2FSc01ReHhqRWUzRm9nQ1VLcnVDWTB1WG5XT28xUXpZOUlvMU0ybUZ4THNPa3BPU2ppb05wMEVXX2JfbVhqM25iT1NkblhlZTF5SVhPbklpWHhROVB3bzBud09UV0VzLVlhMG5XeWtfZFAxS1p6anFQcC16U2ZCN1JVc1F0MlZ5X1o4NTZWTXlDM25TUjVuNlBzejZiNFJzRmU0Z2JnUmxPSmJsMG5vV0ZtRXJlWHF6VkJIVVNYUjdITDFuMTRoaEp4OXUtQVZ3S01leV96QjBZVEZNbUpRTHhuclZYRlBBeXB2ZklYaE5PUkJTN1hRY3ZCTFFnTHlZb2pRX1pwNG5GT1ZPNnlZalRvNWlvZ1JUUlpNM0ZGT0M5c05nSTZ6QXF4WW5TdVhTSTlSSVlDTzdYRFJkR1hJVVpIdVZDTzAxLUJjSnd3VGJka0Z4eS16UlJxdXBCajREeXJFY01DLWk4NFdXYXlYRmljQlA5UkkyZ3dhVjJ2MTdYY3Z1U1dzNk1yVTNXU2FiRVpRUHQ4WXhrUU9PdDFvQmlVUXM2aTlBQURiVXVtY2JJd0xvZU1VVUNnbm44OUt0SkhXLS1vRnVOeFNvbHJTOHhfMzR6QnVPSVpHSnhvOHcwVkN3NnJnSlRrOTBuWkFLVFAwWWhhX3JQY2pRU2FGVkRJTDFs?oc=5",
+   "summary": "",
+   "date": "٠٨‏/١١‏/٢٠٢٦، ١٣:٠٥",
+   "publishedAt": "2026-11-08T10:05:11.000Z"
   },
   {
    "title": "مديرية الأمن العام تحذر من الأحوال الجوية المتوقعة مساء اليوم",
@@ -36,7 +43,7 @@
   "pages": [
    {
     "url": "news:\"الأمن العام\" الأحوال الجوية",
-    "items": 7
+    "items": 8
    },
    {
     "url": "news:\"الأمن العام\" حالة الطرق",
@@ -63,8 +70,8 @@
     "items": 0
    }
   ],
-  "anchors": 30,
-  "matched": 26,
+  "anchors": 31,
+  "matched": 28,
   "errors": [
    "fetch failed",
    "fetch failed"
