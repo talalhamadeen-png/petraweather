@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-09T19:49:55.223Z",
+ "updatedAt": "2026-11-10T02:33:48.197Z",
  "ok": true,
  "source": "psd.gov.jo",
  "items": [
@@ -63,15 +63,15 @@
    },
    {
     "url": "news:\"الأمن العام\" إغلاق طريق الطقس",
-    "items": 3
+    "items": 5
    },
    {
     "url": "news:site:petra.gov.jo الأمن العام الطقس",
     "items": 0
    }
   ],
-  "anchors": 31,
-  "matched": 28,
+  "anchors": 33,
+  "matched": 29,
   "errors": [
    "fetch failed",
    "fetch failed"
