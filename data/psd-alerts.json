@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-11T10:22:26.326Z",
+ "updatedAt": "2026-11-11T17:59:31.603Z",
  "ok": true,
  "source": "psd.gov.jo",
  "items": [
@@ -16,13 +16,6 @@
    "summary": "",
    "date": "٠٨‏/١١‏/٢٠٢٦، ٢٢:٢٣",
    "publishedAt": "2026-11-08T19:23:00.000Z"
-  },
-  {
-   "title": "تحذير من مديرية الأمن العام | الأردن اليوم | وكالة أنباء سرايا الإخبارية - حرية سقفها السماء",
-   "url": "https://news.google.com/rss/articles/CBMikwJBVV95cUxOVXFOSk5yQVVQdWxuQkVueXc3cVdua0E4d0stZFpEMk8zTVVfQlo2MTdaWnYtYzB5MDE4OTRxa0FSV25JTFZQVmZIVDNIRFFzXzl2cFJ0cDJWcmJqaHRGZ2NvNzNvQ2RmVXdaMWxxUGdiVExsV1NtTVd1T2J4UDNrSDhETm4tZUZHOTEwM3FLUDV3Z2RuaDg0eFJ6dmtRRTNJd3dBZHl0Qi1QWkZYRGtmM21QbTFxb1lybE9TQU1zMkZJbDdWdWZBd3FXTTZsdWhZNjhKWHljOExhcTNnR3dpSkhGMmdxRG1DZDhvS1Q0TlVIZDRlTlVaU2NuMVN2dVc4WjNOa1JZOGRRN21mSmI5OFVxNA?oc=5",
-   "summary": "",
-   "date": "٠٨‏/١١‏/٢٠٢٦، ١٤:٢٧",
-   "publishedAt": "2026-11-08T11:27:00.000Z"
   }
  ],
  "debug": {
@@ -37,7 +30,7 @@
    },
    {
     "url": "news:\"الأمن العام\" تحذر منخفض جوي",
-    "items": 4
+    "items": 3
    },
    {
     "url": "news:\"مديرية الأمن العام\" ثلوج",
@@ -49,15 +42,15 @@
    },
    {
     "url": "news:\"الأمن العام\" إغلاق طريق الطقس",
-    "items": 5
+    "items": 4
    },
    {
     "url": "news:site:petra.gov.jo الأمن العام الطقس",
     "items": 0
    }
   ],
-  "anchors": 33,
-  "matched": 28,
+  "anchors": 31,
+  "matched": 27,
   "errors": [
    "fetch failed",
    "fetch failed"
