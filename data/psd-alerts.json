@@ -1,32 +1,25 @@
 {
- "updatedAt": "2026-11-11T17:59:31.603Z",
+ "updatedAt": "2026-11-12T00:30:01.894Z",
  "ok": true,
  "source": "psd.gov.jo",
  "items": [
   {
-   "title": "مديرية الأمن العام تدعو إلى أخذ الحيطة والحذر خلال الأحوال الجوية",
-   "url": "https://news.google.com/rss/articles/CBMiowRBVV95cUxQWldGYnphRVI0TXRaeHg5ZC1HN2tfZEZZcUdnN2JmeFB2dlpYVldNbElpeDl1RFdGbGpkcTFHMkMzQ3FkaE5tclhleFBraTBnS2dpSlRQZm1HR29PSDFjMzhYUjhJd2VqdHZZdzVVUlVjRmV6WnlIdTNKVFpnUVRYbU1BQkUzWlZnZl8tWlQ2bjhxNElqY3J4N2EzRUVmRjZvRzZrN3ZweHNvVWFTcTl1VGZJUVVsTVlxdHBqdUlfTl8xeTZ3YkhSUE0tb29tbzhSTkh4V24xLW93Q0dFTDg1WHVZRU5oZE0zdlpXcFRqU3pDOE5jM0JkVlpkNkxxSXJOYnNzTmdTUm4wUnZ5THR5cnpBMjRjMEt4V092Z05pdGJrVUd1OFBZR3d2MEIzU0ZuT21UWm5BNXhPRzM1N0w0Ql8zOFFWMjQwVW5KbEFKR3lhVzJ6cE91SVlQY1djRjFEVXpyOF9UZmdWMWNLaDhmZnF6TTNvenhuMkJSbzJ2Q3JZZUVRclhjX1FjNTBQQ2dzZGlpNEFtMTlrZTk1M0Z0WXhiNWNtU3JUTVZQbzNLal8zejgwM3VRZ01UR2NWMlFSaktDUENwU2pJYnVRV0ZKWWFKZFQxYXZtOHRTdkpZaWRDbWF3UEl4VGRPSkpFQUFabWl4a2xxY0Y3aHFKdVVnQVlNb096UWY1R0ZMQ2E0N3NESE9IdWN6bzQxRGkzeEozWVdj?oc=5",
+   "title": "مديرية الأمن العام تحذر من الأحوال الجوية المتوقعة مساء اليوم",
+   "url": "https://news.google.com/rss/articles/CBMijgRBVV95cUxQalh2bERFUTd1SEVDbW51ZHpwZTlhRWtDLXlhZXFPX1VKZERNZkF3TXBlbFRuSDBYb21kNkczNFppQXE3bi0wTmhtTkZEVE9QSm4waHFTRzl6RWx3OVpOenVfM0JYM3pSeVp4MlJKMmNPNzVEU2pLLVNaakI5MWxHelUwbTFMcWdnTEwzUlNERE45TDBrZ0h4MTY5bUlrc0Z3ay1Rci0wdkt0S2g0b3lpY0gxbThZQmFtUHgwR1lQRV8tZGpqV1FySTZ2NENXeDRsUVF6WTVLeEE4a0JFQ2NhY3VTeTR6ZGdQU2h0RzlTci1SYWlhbWExQ0praERfOTl2UW5JcXE5ekxIWnplcTNqTk1ZQ2hMR09jUkFlV3B6MTBhMUdreWxMeTI0czJhY3BIeENyaklac0o0T1ZiM3pGazU0RmJOZUpYVEpPUW1ZeWFBUHJSQXZleWR1Ym9EZ2hpVVo2VllONUV1QXFhT0dMOEotX01QMWhOVnZuZkw0YXVzbWdtd2RjVEd2azBhWVRkSGd2QVF1S3hQREwzYzlOLUhSaEJ2WURFbE9peFI1S1h3YV9xNjUtV0FrbzFzb1QzeHFxeXd5YmNId3RoQUdJaU5YT0VSRXNnWUNWRmk1RldRTjV2cFdNMUpiaUFpQzZkMGk1b1VxaGsxRWRZUDIwUEdKUGJlRDR0Y0VWdVlR?oc=5",
    "summary": "",
-   "date": "٠٩‏/١١‏/٢٠٢٦، ١٨:٥٢",
-   "publishedAt": "2026-11-09T15:52:11.000Z"
-  },
-  {
-   "title": "الأمن يحذر من الانزلاقات وتدني الرؤية خلال الأحوال الجوية المتوقعة",
-   "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTFBNOS03MEtfYkNXVkNDdjZMYVpzdjY0RDFwNU9IM0VXOE9NSEpQZFV6dE9rVzlKcHUtSWV5YmpmNGRyeWg4?oc=5",
-   "summary": "",
-   "date": "٠٨‏/١١‏/٢٠٢٦، ٢٢:٢٣",
-   "publishedAt": "2026-11-08T19:23:00.000Z"
+   "date": "١١‏/١١‏/٢٠٢٦، ١٨:٢٩",
+   "publishedAt": "2026-11-11T15:29:11.000Z"
   }
  ],
  "debug": {
   "pages": [
    {
     "url": "news:\"الأمن العام\" الأحوال الجوية",
-    "items": 8
+    "items": 6
    },
    {
     "url": "news:\"الأمن العام\" حالة الطرق",
-    "items": 7
+    "items": 6
    },
    {
     "url": "news:\"الأمن العام\" تحذر منخفض جوي",
@@ -49,8 +42,8 @@
     "items": 0
    }
   ],
-  "anchors": 31,
-  "matched": 27,
+  "anchors": 28,
+  "matched": 25,
   "errors": [
    "fetch failed",
    "fetch failed"
