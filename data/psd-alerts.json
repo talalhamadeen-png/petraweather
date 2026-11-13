@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-13T02:47:30.985Z",
+ "updatedAt": "2026-11-13T10:32:09.650Z",
  "ok": true,
  "source": "psd.gov.jo",
  "items": [
@@ -9,13 +9,20 @@
    "summary": "",
    "date": "١٢‏/١١‏/٢٠٢٦، ٢٠:٤٢",
    "publishedAt": "2026-11-12T17:42:42.000Z"
+  },
+  {
+   "title": "الأمن العام يجدد تحذيراته للمواطنين في ظل الأحوال الجوية السائدة",
+   "url": "https://news.google.com/rss/articles/CBMiswRBVV95cUxQeWNzaHQyNTlfd2lzcWJCdlVOUnF4akItVS16czdVYnZGejV6a3gwSVhQYmlfbXlqRzZCSUdTYVFBVzY4MFhzTWlzTFEwd3p1Sl9zOTR4bThnOFU2a2dkeHFuYjluU3lJckF2bVNaZ08tQ1hMSV9WOTBkTjNsb2s3Q0p0S0V0OVU3RENiWDBCLXdJa1NMUlBMVDUtQ1dGV0pIRmF0VFE1MUxJQjdMNjhOM3JRLWYtVExHMmhwemd5VlhtbFlhVk1ob0lyY0tWVXF5Tjk3S2YwOVNXNGx5WGN1ODNLTGdFU1BxbHlOUm1XWVpqRF9GOGZweHRtTERjZ2k4UjVqU3JIUl9JLTdjMkk0bEl4dlVYT3pxUmNBUUpZYTdlWWpSOVpzd0Jfbks3TDlQVU52Z1Z5TExxVjFxcjkyLVdpc0pVMUpaaEZjYUhiSXNHMHZaQTRFZC1iV28wUGRWWXF4elgtT1g5dTB6bzU2X3FENko2VU5kOXFNQWVtZ2I4RmloanBwZG1sVkxteHFFSC1RUHVlczM4cGlkdThxNEwzLUF4Zm54YzlMNUJZRFotMHZBanVSWWxKZGdGczhHUWtuRGx0bUQzYW4ycFYySWswaElUTHlzemhrQlZvMzIxaUJ5OWlTWlhDOVREUWE1Y3J3d2hXc2tta2JObzh2Wi02bDZaVGIyQ3d1cTBoOXJjQmFidnI0TnR2VjVFaWlhYU1zeUo0U1c0US13aUM2Qmc3QQ?oc=5",
+   "summary": "",
+   "date": "١١‏/١١‏/٢٠٢٦، ١٥:٠٠",
+   "publishedAt": "2026-11-11T12:00:05.000Z"
   }
  ],
  "debug": {
   "pages": [
    {
     "url": "news:\"الأمن العام\" الأحوال الجوية",
-    "items": 6
+    "items": 7
    },
    {
     "url": "news:\"الأمن العام\" حالة الطرق",
@@ -35,15 +42,15 @@
    },
    {
     "url": "news:\"الأمن العام\" إغلاق طريق الطقس",
-    "items": 3
+    "items": 4
    },
    {
     "url": "news:site:petra.gov.jo الأمن العام الطقس",
     "items": 0
    }
   ],
-  "anchors": 32,
-  "matched": 28,
+  "anchors": 34,
+  "matched": 29,
   "errors": [
    "fetch failed",
    "fetch failed"
