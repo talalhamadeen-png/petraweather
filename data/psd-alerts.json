@@ -1,29 +1,29 @@
 {
- "updatedAt": "2026-11-14T16:54:27.760Z",
+ "updatedAt": "2026-11-14T21:06:45.596Z",
  "ok": true,
  "source": "psd.gov.jo",
  "items": [
   {
    "title": "مديرية الأمن العام تحذر من الأحوال الجوية المتوقعة مساء اليوم",
-   "url": "https://news.google.com/rss/articles/CBMikARBVV95cUxQZ3Fvejc1aWUwX1VVNWxkdk9KV1dKWTI3M0ltV3k2eW14OXVwRXlsQVlCaFRfN3RBeEt3T0ZEN0I1U2VaWm45M1RNSXRnYnlNQ3lqN1hUaUl0TUJyd3Y2YjlsQWpwQUxjWlYxcFFCaHNRWlhOZndMY3N4VHN5a04tRVBIUWlwNVI3LV9vR1kxdW9mZk5CMzhoem96WlBiVVhKcEt5aTUyeHZNeHV4X1RrUGNfenFjWlVURUVaXzNYRk9sSkpZLV85TDNtT3RWTW84SlBJS0QtYVJXSUdsdDRBVUREblZTMHcwaVZueFVHVFhKQVM2RUdNSWNqbTA5MnNNWi1UOFFKVjJRVl9UYlpBRDVUTldQdndtSno5ekFCYXlXR0RDTTZ3dWp6bVRjLXFBOVYtMzZ0YVRaR2dvcFdMNllHQmF1bUhnaTlBT1c2Y1gwUGh0Tjcxc3NHWFl3aE5WTzZ0VzVlenlhUHUxMm9fbHVzS0FOdmtkUUh5Mm5zSWo4UGNFYWNjWlNGaGlENnUxSHNMMU1YYWlub1hsSFFMVFNmZExZUV9lYXBTM0dlWUNwcW50ZTdyOTlyaWJjdUZobzBOVWJRaGpFUU5XUmc1ZXZOM3drTHByQTdlZ3JIRmpwUHdwYlB2NE5GYXhtT0tzQno3YkdHaU5NdDQzX2dSOWptaExsQzVoMXl4MDN5ZEs?oc=5",
+   "url": "https://news.google.com/rss/articles/CBMihARBVV95cUxQUHBXN0ZUUExEUmdSYlBXejVhVGx5d3ZFcDZfcmpPdDh6UjhhNTNqWmlOLWFwWGRyVlBkaW5EeEZiQkt1Q3Y5TXVkZUFIVWlQRHcxU1R3N2pjdjFZQ3pGWEd2NkpRWGdvYmdZWWJjNUpNV1lwd1NuQm56Nmg5REJOeE8zYkNtOUpUWTd3aGFSNHltM3Vhb3o5V1JwN2VKYXdaaTVtUHVTcVgtX0NsQW9idzEza3NTRHlSdkdTaU1Wb3RrZ2lVZTRIU2t1YWpBTGxscGxmN2NpRDdhdU9iYzRMNjZ0Rkd3dGFGOVVxV1l1T1NxZTdHNm5yZk5QYkt4Q015RTBmR1VHclEzN2ltNVh4eFNFSU9vZkdIRzVOalVncHM0cTVsM2hMa1UxTkc4ZUVTdVFQdVVZc0NaS2o0UnN2UFJXUmcxSmI2czlmTHNOUGtsM2JCUENUVFd5VW05NDd0Q19MVTYwLWwxa2J6WHVtV3NuOFlWUk5YbFlnVkg3OFVQb29rcUZ5a2pzVFh0b29wZFVobDlhc3JfVlo3QlB3M0pvaGttbXNXMDNKaUc3OWxMdXdELWZ3UDBHUXFZNE5ROG42TFdSNkVEUzNhM2RISVd5R0xoMjFpdkYwQ0JGV1hYelBHbS1zN2YyekVUb0luUnBxLVFQZ3RoeHVzQ1NoQm91bFU?oc=5",
    "summary": "",
-   "date": "١٢‏/١١‏/٢٠٢٦، ١٧:١٩",
-   "publishedAt": "2026-11-12T14:19:25.000Z"
+   "date": "١٤‏/١١‏/٢٠٢٦، ٠٦:٥٣",
+   "publishedAt": "2026-11-14T03:53:52.000Z"
   }
  ],
  "debug": {
   "pages": [
    {
     "url": "news:\"الأمن العام\" الأحوال الجوية",
-    "items": 9
+    "items": 10
    },
    {
     "url": "news:\"الأمن العام\" حالة الطرق",
-    "items": 7
+    "items": 6
    },
    {
     "url": "news:\"الأمن العام\" تحذر منخفض جوي",
-    "items": 5
+    "items": 4
    },
    {
     "url": "news:\"مديرية الأمن العام\" ثلوج",
@@ -31,19 +31,19 @@
    },
    {
     "url": "news:\"مديرية الأمن العام\" سيول",
-    "items": 10
+    "items": 11
    },
    {
     "url": "news:\"الأمن العام\" إغلاق طريق الطقس",
-    "items": 5
+    "items": 6
    },
    {
     "url": "news:site:petra.gov.jo الأمن العام الطقس",
     "items": 0
    }
   ],
-  "anchors": 36,
-  "matched": 29,
+  "anchors": 37,
+  "matched": 31,
   "errors": [
    "fetch failed",
    "fetch failed"
