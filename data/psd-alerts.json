@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-15T15:22:23.720Z",
+ "updatedAt": "2026-11-15T20:29:29.836Z",
  "ok": true,
  "source": "psd.gov.jo",
  "items": [
@@ -15,7 +15,7 @@
   "pages": [
    {
     "url": "news:\"الأمن العام\" الأحوال الجوية",
-    "items": 8
+    "items": 7
    },
    {
     "url": "news:\"الأمن العام\" حالة الطرق",
@@ -42,8 +42,8 @@
     "items": 0
    }
   ],
-  "anchors": 34,
-  "matched": 30,
+  "anchors": 33,
+  "matched": 28,
   "errors": [
    "fetch failed",
    "fetch failed"
