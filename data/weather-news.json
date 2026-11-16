@@ -1,9 +1,9 @@
 {
- "updatedAt": "2026-11-15T22:08:25.050Z",
+ "updatedAt": "2026-11-16T01:57:36.360Z",
  "ok": true,
  "items": [
   {
-   "title": "انخفاض ملموس على درجات الحرارة في الأردن خلال الأيام المقبلة .. وأجواء باردة ليلاً دون أمطار مرتقبة",
+   "title": "وكالة سرايا : انخفاض ملموس على درجات الحرارة في الأردن خلال الأيام المقبلة .. وأجواء باردة ليلاً دون أمطار مرتقبة",
    "url": "https://news.google.com/rss/articles/CBMi-gNBVV95cUxQaUxsOXlnaHNHU3IxdGltcGltSzNpN2JKS3BPNU5HSDBvWFhHWWkxODlwR08tOFVoY2doMEJNY2hraUVFZlFIdGswa2NjaDh5dDdIU1YxaEY4VTF2VDZxdUN4RHg2d1JBMW1fMUtvNlVPWnNZMVk2NHpUMGJwd3l3aDJJT2hCUUY2VjAwRnBKVlFmOHU4XzhtQVYtR1hPdkd6V21lYVlSRGZBQ2NsamptQ0FwUEJaUTFhVko4aktzOUhkNUdIekowSVJKUVdoWUhUR0NNcXNEUkltckJ6MkotY0plbDRmbDZyVTVRQzQ3dDlMelktSENSYnNYNmdqUEIzUU93Q2YxdmhGQW1aU29obFQtcFJycHl3MERaM3pDMV9vV1poZWd6X1c3T0NmOWhadFdDQVNGVkd1VmRndm5zMUxmNTJ3MXEyWVQ0R1QtSlgzWXc3S3lVMEVzMXVpeUFvdTVhV0dOOGdzMUtsSXczbDlSaGpUczBBcGpScVU4TXZSZFJrRGJvVHoxZUFFdjF5dldKOHZWZWxXR3BRa0RRXzYwUGV5NzN4czZXbHdhcEk4UmRzTEZra2NiS3k2M2tOZ18waGtkbWlubl9DSXFZVXFUdmxYb2FGTllLdXk5MUw0YVpEQ1ZqdzVDQzRRZjlRb3dtUUNSNHhBZw?oc=5",
    "publishedAt": "2026-11-15T18:06:00.000Z"
   },
@@ -67,31 +67,31 @@
   "queries": [
    {
     "q": "طقس الأردن",
-    "items": 61
+    "items": 63
    },
    {
     "q": "حالة الطقس في الأردن",
-    "items": 19
+    "items": 18
    },
    {
     "q": "الأرصاد الجوية الأردنية",
-    "items": 59
+    "items": 62
    },
    {
     "q": "طقس العرب الأردن",
-    "items": 46
+    "items": 48
    },
    {
     "q": "منخفض جوي الأردن",
-    "items": 59
+    "items": 60
    },
    {
     "q": "كتلة هوائية الأردن",
-    "items": 49
+    "items": 50
    },
    {
     "q": "أمطار الأردن",
-    "items": 59
+    "items": 62
    },
    {
     "q": "ثلوج الأردن",
@@ -119,11 +119,11 @@
    },
    {
     "q": "site:jo24.net طقس",
-    "items": 55
+    "items": 57
    },
    {
     "q": "site:arabiaweather.com الأردن",
-    "items": 89
+    "items": 88
    },
    {
     "q": "site:jometeo.gov.jo",
@@ -144,6 +144,6 @@
   ],
   "errors": [],
   "kept": 12,
-  "total": 1063
+  "total": 1075
  }
 }
