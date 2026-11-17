@@ -1,12 +1,40 @@
 {
- "updatedAt": "2026-11-17T00:45:00.099Z",
+ "updatedAt": "2026-11-17T08:33:11.705Z",
  "ok": true,
  "source": "psd.gov.jo",
- "items": [],
+ "items": [
+  {
+   "title": "مديرية الأمن العام تحذر من الأحوال الجوية المتوقعة مساء اليوم",
+   "url": "https://news.google.com/rss/articles/CBMihgRBVV95cUxNcktIOVRveVVqdXpVczBwaDJqeWowWURBa093WGEwZGpvZmoyZ2ZnSTJLS0lIYmNSV0tkSGlwYWw0NnkwMFFrX085VGZfazF1VVBKcmNPbWhxZnhVUGlaby03eGVUaDBFMzFoWnpUckFVLTB3Z1lUUFkwNzh2WmRSOXhaemxaN2dpQXRLME1GcXNhZjhzRExzQlBneDV5akNGMmtOVFRoX01OQWZWdjFCRFNtLU56S1RCdldtTGhSdmY0U1BIVUU2dGczcVc3aDg3bThWUHJGUmphdVRzYUhFMi1rVnY3Y1p0VlE2TFAwZm1CTHRjM09YVXVFdU9peTQ4a3VNYklrQ25Ldk1qTmhRTjF2dVFmMmdyamZndTdvVUdnZHVSZmxta3I5YnU4dHNhWlF1NElmV1RoZ0tPV0REVXVUVnJNYlNMOENmUnlhdTRqNllRVV81aS0xeHZLLXJCWFM2RlBzN05TbGFIWWFEYmJram84ZUtsWnEzVlFfVWozcFlTMWlGWXRJMl9GNG16OWhVaktodTB2a1BVbzZ3WTM3NndqelJvSExGNnhRM256Wi1ldXQ5QkN4NlBodlF1bVpEUFFPdVltU1hJc3p4OVhVM3FZZUdFakpBbXNmdlZRcWRVZFRlWHBWQXhWcnQtQ0dMTHNpZ0J0UXJnSjgycEE4U1FIdw?oc=5",
+   "summary": "",
+   "date": "١٤‏/١١‏/٢٠٢٦، ١٨:٤٣",
+   "publishedAt": "2026-11-14T15:43:52.000Z"
+  }
+ ],
  "debug": {
   "pages": [
    {
+    "url": "news:\"الأمن العام\" الأحوال الجوية",
+    "items": 8
+   },
+   {
     "url": "news:\"الأمن العام\" حالة الطرق",
+    "items": 5
+   },
+   {
+    "url": "news:\"الأمن العام\" تحذر منخفض جوي",
+    "items": 2
+   },
+   {
+    "url": "news:\"مديرية الأمن العام\" ثلوج",
+    "items": 1
+   },
+   {
+    "url": "news:\"مديرية الأمن العام\" سيول",
+    "items": 10
+   },
+   {
+    "url": "news:\"الأمن العام\" إغلاق طريق الطقس",
     "items": 5
    },
    {
@@ -14,16 +42,11 @@
     "items": 0
    }
   ],
-  "anchors": 5,
-  "matched": 5,
+  "anchors": 31,
+  "matched": 27,
   "errors": [
    "fetch failed",
-   "fetch failed",
-   "news \"الأمن العام\" الأحوال الجوية: HTTP 429 https://news.google.com/rss/search?q=%22%D8%A7%D9%84%D8%A3%D9%85%D9%86%20%D8%A7%D9%84%D8%B9%D8%A7%D9%85%22%20%D8%A7%D9%84%D8%A3%D8%AD%D9%88%D8%A7%D9%84%20%D8%A7%D9%84%D8%AC%D9%88%D9%8A%D8%A9&hl=ar&gl=JO&ceid=JO:ar",
-   "news \"الأمن العام\" تحذر منخفض جوي: HTTP 429 https://news.google.com/rss/search?q=%22%D8%A7%D9%84%D8%A3%D9%85%D9%86%20%D8%A7%D9%84%D8%B9%D8%A7%D9%85%22%20%D8%AA%D8%AD%D8%B0%D8%B1%20%D9%85%D9%86%D8%AE%D9%81%D8%B6%20%D8%AC%D9%88%D9%8A&hl=ar&gl=JO&ceid=JO:ar",
-   "news \"مديرية الأمن العام\" ثلوج: HTTP 429 https://news.google.com/rss/search?q=%22%D9%85%D8%AF%D9%8A%D8%B1%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A3%D9%85%D9%86%20%D8%A7%D9%84%D8%B9%D8%A7%D9%85%22%20%D8%AB%D9%84%D9%88%D8%AC&hl=ar&gl=JO&ceid=JO:ar",
-   "news \"مديرية الأمن العام\" سيول: HTTP 429 https://news.google.com/rss/search?q=%22%D9%85%D8%AF%D9%8A%D8%B1%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A3%D9%85%D9%86%20%D8%A7%D9%84%D8%B9%D8%A7%D9%85%22%20%D8%B3%D9%8A%D9%88%D9%84&hl=ar&gl=JO&ceid=JO:ar",
-   "news \"الأمن العام\" إغلاق طريق الطقس: HTTP 429 https://news.google.com/rss/search?q=%22%D8%A7%D9%84%D8%A3%D9%85%D9%86%20%D8%A7%D9%84%D8%B9%D8%A7%D9%85%22%20%D8%A5%D8%BA%D9%84%D8%A7%D9%82%20%D8%B7%D8%B1%D9%8A%D9%82%20%D8%A7%D9%84%D8%B7%D9%82%D8%B3&hl=ar&gl=JO&ceid=JO:ar"
+   "fetch failed"
   ]
  }
 }
