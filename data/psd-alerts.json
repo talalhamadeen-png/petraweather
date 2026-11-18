@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-18T17:03:30.532Z",
+ "updatedAt": "2026-11-18T23:24:06.096Z",
  "ok": true,
  "source": "psd.gov.jo",
  "items": [
@@ -19,7 +19,7 @@
    },
    {
     "url": "news:\"الأمن العام\" حالة الطرق",
-    "items": 5
+    "items": 4
    },
    {
     "url": "news:\"الأمن العام\" تحذر منخفض جوي",
@@ -42,8 +42,8 @@
     "items": 0
    }
   ],
-  "anchors": 34,
-  "matched": 29,
+  "anchors": 33,
+  "matched": 28,
   "errors": [
    "fetch failed",
    "fetch failed"
