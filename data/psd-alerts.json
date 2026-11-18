@@ -1,17 +1,29 @@
 {
- "updatedAt": "2026-11-18T00:33:47.620Z",
+ "updatedAt": "2026-11-18T07:57:34.214Z",
  "ok": true,
  "source": "psd.gov.jo",
- "items": [],
+ "items": [
+  {
+   "title": "مديرية الأمن العام تحذر من الأحوال الجوية المتوقعة مساء اليوم",
+   "url": "https://news.google.com/rss/articles/CBMiiARBVV95cUxQM0ZTUjNnRnBFRUI2bGFTNnY5cFBsNUdNYllaazZqVlliOElHSTRhZFlZQzJ0eG9nT1NDaFNOLU9sYWFodFFhT3plMnRrU2hTMko4WmxaeUR3bl9veFFXbzdRSi1uR1JTZXRkNUdSYWx5T1ZOeThuNjJ0TmRsbVI2WUdielY3YTduN3ZURGVWS1ZjYllsZzVEVzZxVVNRUDdKN281RnpPNlA2RHVwMXNVOFVNYmJDalQyUWk1d21Uai14ZmtiZzhHT0tsR3ptUVVUUG9Ja2FSdkZWM1owSUZscnBYZHd0MFB2U0M4Q3RaVG5mdTJCSnJUeEJfY2pZdXVDa3ZPMEtiTjFyejhpWFFQdXBlWHhFeGFzV05oR19PYmNmXzc4WkZVSUkxVWhzdmxDd29sbEFuS0RUMVhNYy1aeFpsWmItWXpCNV94LUNaXzRTT0JDZXcwREk0aXlyNGREclR1emxqd1RpVXRLRnNBSC0xb2NHbmNkaUpITjNmNVF4OTExOF9aN2IwRk5WMThDWFFzenN0R05oYmNZakJ4bkM5OUJvc180NzFSZWxldTMxMDJpcFZVWHZnRm5BYUN0T0t3R1ZiTG9YRWkyLXdxTjVaNG8zcmcyODV3YjcwYTRPT2V6MXZURFpTWEpNQkNMRVFZLUJva0J1YjlNNmJHVTRvc05PcnR3?oc=5",
+   "summary": "",
+   "date": "١٨‏/١١‏/٢٠٢٦، ٠٢:١٦",
+   "publishedAt": "2026-11-17T23:16:56.000Z"
+  }
+ ],
  "debug": {
   "pages": [
+   {
+    "url": "news:\"الأمن العام\" الأحوال الجوية",
+    "items": 10
+   },
    {
     "url": "news:\"الأمن العام\" حالة الطرق",
     "items": 5
    },
    {
     "url": "news:\"الأمن العام\" تحذر منخفض جوي",
-    "items": 3
+    "items": 2
    },
    {
     "url": "news:\"مديرية الأمن العام\" ثلوج",
@@ -19,20 +31,22 @@
    },
    {
     "url": "news:\"مديرية الأمن العام\" سيول",
-    "items": 13
+    "items": 12
    },
    {
     "url": "news:\"الأمن العام\" إغلاق طريق الطقس",
-    "items": 5
+    "items": 4
+   },
+   {
+    "url": "news:site:petra.gov.jo الأمن العام الطقس",
+    "items": 0
    }
   ],
-  "anchors": 27,
-  "matched": 23,
+  "anchors": 34,
+  "matched": 29,
   "errors": [
    "fetch failed",
-   "fetch failed",
-   "news \"الأمن العام\" الأحوال الجوية: HTTP 429 https://news.google.com/rss/search?q=%22%D8%A7%D9%84%D8%A3%D9%85%D9%86%20%D8%A7%D9%84%D8%B9%D8%A7%D9%85%22%20%D8%A7%D9%84%D8%A3%D8%AD%D9%88%D8%A7%D9%84%20%D8%A7%D9%84%D8%AC%D9%88%D9%8A%D8%A9&hl=ar&gl=JO&ceid=JO:ar",
-   "news site:petra.gov.jo الأمن العام الطقس: HTTP 429 https://news.google.com/rss/search?q=site%3Apetra.gov.jo%20%D8%A7%D9%84%D8%A3%D9%85%D9%86%20%D8%A7%D9%84%D8%B9%D8%A7%D9%85%20%D8%A7%D9%84%D8%B7%D9%82%D8%B3&hl=ar&gl=JO&ceid=JO:ar"
+   "fetch failed"
   ]
  }
 }
