@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-19T04:23:04.337Z",
+ "updatedAt": "2026-11-19T13:43:28.888Z",
  "ok": true,
  "source": "psd.gov.jo",
  "items": [
@@ -26,7 +26,7 @@
    },
    {
     "url": "news:\"الأمن العام\" حالة الطرق",
-    "items": 4
+    "items": 3
    },
    {
     "url": "news:\"الأمن العام\" تحذر منخفض جوي",
@@ -34,7 +34,7 @@
    },
    {
     "url": "news:\"مديرية الأمن العام\" ثلوج",
-    "items": 2
+    "items": 1
    },
    {
     "url": "news:\"مديرية الأمن العام\" سيول",
@@ -49,8 +49,8 @@
     "items": 0
    }
   ],
-  "anchors": 36,
-  "matched": 30,
+  "anchors": 34,
+  "matched": 29,
   "errors": [
    "fetch failed",
    "fetch failed"
