@@ -1,8 +1,15 @@
 {
- "updatedAt": "2026-11-18T23:24:06.096Z",
+ "updatedAt": "2026-11-19T04:23:04.337Z",
  "ok": true,
  "source": "psd.gov.jo",
  "items": [
+  {
+   "title": "الأمن العام يجدد تحذيراته للمواطنين في ظل الأحوال الجوية السائدة",
+   "url": "https://news.google.com/rss/articles/CBMinARBVV95cUxPZ3V0MkFEakVEOTNkX1BKWlRZc21mSEtPNW1zYkxYUWxxNXhSQTRndHBKWkhoS2d5OGc4UW1iQlpON2dQeHhWbXVaOFpOTldWZ2JrSGZ1c05ZeVBsdDFfSVMzcVJUS1FMUUdrRXMyQ1VJbGl1MzlKTmFYM3JobDgzMEdlRmtyWVZ4WExjcUFqRFpKOXZyQXp4S25uVzRNRWZwQzF2czBiNkZlTWhISTJkdWUtLTNaT3ZKVnhheWtRcmlmVlpMRXo4WnJWYi1pTHNlZzFPdFFadWU0VVRoZThwQ2ROTkw3YXFaUDFrRkhEODNaMnJUWVpWR09jQjZhWThkU3F5LXJQMUNBYkhtbGhocEZycWxkV194SzdUNzRjaVVUWkdfYjN4cHgwd2hjY01kYnpfZmtibDc1X0JHazVERGhGeG05NUk2YlBZNkRnX1dNUzBycWhiNDlKYUh2cHFTZUlxdDJTNW1uUnQ0QVZtdzV0U2lLcF9BX3VrQnFqeDl6dTQ4SGliRWNnMklMV045cjZVd2Y1TWdGZzl4ZTQxWnRzUDJlS2lzM2x5OFJQTnBhTjIzZXlOMC10UkVka0RxWW5CMlBBbXhYQXpRRC1vQmJfbmc2emQ2SGVveDNPbTZSaFNidkk1N2t3NU5CVXVkZk1xR2ZDRmdKc05JZUxWUG41S2JTb05OZkZDbzNYWk42SE5ZVC16NGNzbkI?oc=5",
+   "summary": "",
+   "date": "١٨‏/١١‏/٢٠٢٦، ٢٣:٤٥",
+   "publishedAt": "2026-11-18T20:45:23.000Z"
+  },
   {
    "title": "مديرية الأمن العام تحذر من الأحوال الجوية المتوقعة مساء اليوم",
    "url": "https://news.google.com/rss/articles/CBMiiARBVV95cUxQM0ZTUjNnRnBFRUI2bGFTNnY5cFBsNUdNYllaazZqVlliOElHSTRhZFlZQzJ0eG9nT1NDaFNOLU9sYWFodFFhT3plMnRrU2hTMko4WmxaeUR3bl9veFFXbzdRSi1uR1JTZXRkNUdSYWx5T1ZOeThuNjJ0TmRsbVI2WUdielY3YTduN3ZURGVWS1ZjYllsZzVEVzZxVVNRUDdKN281RnpPNlA2RHVwMXNVOFVNYmJDalQyUWk1d21Uai14ZmtiZzhHT0tsR3ptUVVUUG9Ja2FSdkZWM1owSUZscnBYZHd0MFB2U0M4Q3RaVG5mdTJCSnJUeEJfY2pZdXVDa3ZPMEtiTjFyejhpWFFQdXBlWHhFeGFzV05oR19PYmNmXzc4WkZVSUkxVWhzdmxDd29sbEFuS0RUMVhNYy1aeFpsWmItWXpCNV94LUNaXzRTT0JDZXcwREk0aXlyNGREclR1emxqd1RpVXRLRnNBSC0xb2NHbmNkaUpITjNmNVF4OTExOF9aN2IwRk5WMThDWFFzenN0R05oYmNZakJ4bkM5OUJvc180NzFSZWxldTMxMDJpcFZVWHZnRm5BYUN0T0t3R1ZiTG9YRWkyLXdxTjVaNG8zcmcyODV3YjcwYTRPT2V6MXZURFpTWEpNQkNMRVFZLUJva0J1YjlNNmJHVTRvc05PcnR3?oc=5",
@@ -15,7 +22,7 @@
   "pages": [
    {
     "url": "news:\"الأمن العام\" الأحوال الجوية",
-    "items": 10
+    "items": 12
    },
    {
     "url": "news:\"الأمن العام\" حالة الطرق",
@@ -27,7 +34,7 @@
    },
    {
     "url": "news:\"مديرية الأمن العام\" ثلوج",
-    "items": 1
+    "items": 2
    },
    {
     "url": "news:\"مديرية الأمن العام\" سيول",
@@ -42,8 +49,8 @@
     "items": 0
    }
   ],
-  "anchors": 33,
-  "matched": 28,
+  "anchors": 36,
+  "matched": 30,
   "errors": [
    "fetch failed",
    "fetch failed"
