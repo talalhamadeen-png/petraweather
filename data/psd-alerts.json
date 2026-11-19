@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-19T13:43:28.888Z",
+ "updatedAt": "2026-11-19T21:50:50.971Z",
  "ok": true,
  "source": "psd.gov.jo",
  "items": [
@@ -16,17 +16,24 @@
    "summary": "",
    "date": "١٨‏/١١‏/٢٠٢٦، ٠٢:١٦",
    "publishedAt": "2026-11-17T23:16:56.000Z"
+  },
+  {
+   "title": "الأمن العام: فرق البحث تعثر على جثة الشخص المفقود بسيول الرويشد",
+   "url": "https://news.google.com/rss/articles/CBMihwRBVV95cUxNbWhMQ2NrakJaUnByMHlGdk53akh0SW1FQ002eVhCdWhISVlaZ0E3bjJxTThabWtUbkZTVUFtNUhGTzY0S1VtWFZwWWJPUlJOMWFGT2JHU2VueVZFMmVwckVCeUtQQXRiVkF0a1pFX3JCTm9sbXVMc0VTR05JZXBMTkpWeFhYb2oyUGxuQlluNERIb2dqSml1QXdPcC1YZWRtZGhic0daRXZPZVozSGxLS2hCcVJBUExWWEZIenNmb09PNmw1c0NSTGVKNmNlRUFVTVZfMFRJd0VqVWpURnVudGxRQzV5aC1uWWR5cnM1eEZ6RE9xUHRrMlJtakpCNzRHdUl3ck45OUt3alR0SzNqQ1p3V3ZUR0dMQWJIaUkwZzdJTFV0c0dUTWxLZ0k0a3dsSkNDNW92eGtUTktFVzQwczRhS2ItcTN2UnhxV0dDMll6NEc4NGhjSWpVR2lqamZHeDJwMUlnNnZ2MW5mc0xYemU4bDFkVjZ0a00yV3pSZThJcGJnVEp2UkNuQnFxX2hJV1RkT2doMWExUGRhNGJ0bWV0b2ZvNmI4WXlXNjN1OWlvSDRfS0hLWk9KaVZGZS1PSTlVTGpOSHV6c0sxQUM2OUVZcHVhWFNtNDBLYm1HV3FqaDE3Z2xCRFpsbXZHbVJJTkVrRjVBVEtmU29KNXZSU1M0dHA3SDA?oc=5",
+   "summary": "",
+   "date": "١٧‏/١١‏/٢٠٢٦، ١٤:١٢",
+   "publishedAt": "2026-11-17T11:12:50.000Z"
   }
  ],
  "debug": {
   "pages": [
    {
     "url": "news:\"الأمن العام\" الأحوال الجوية",
-    "items": 12
+    "items": 13
    },
    {
     "url": "news:\"الأمن العام\" حالة الطرق",
-    "items": 3
+    "items": 5
    },
    {
     "url": "news:\"الأمن العام\" تحذر منخفض جوي",
@@ -38,19 +45,19 @@
    },
    {
     "url": "news:\"مديرية الأمن العام\" سيول",
-    "items": 12
+    "items": 21
    },
    {
     "url": "news:\"الأمن العام\" إغلاق طريق الطقس",
-    "items": 4
+    "items": 5
    },
    {
     "url": "news:site:petra.gov.jo الأمن العام الطقس",
     "items": 0
    }
   ],
-  "anchors": 34,
-  "matched": 29,
+  "anchors": 47,
+  "matched": 39,
   "errors": [
    "fetch failed",
    "fetch failed"
