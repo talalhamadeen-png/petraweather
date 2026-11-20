@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-20T10:28:42.932Z",
+ "updatedAt": "2026-11-20T18:42:22.445Z",
  "ok": true,
  "items": [
   {
@@ -51,26 +51,21 @@
    "title": "منخفضات جوية قوية وموجة برد مرتقبة تؤثر على الأردن نهاية الشهر",
    "url": "https://news.google.com/rss/articles/CBMi-wNBVV95cUxQRC1RZE9MNFBXNTBscnhkWWRKVXh5eW1PQzFYQ1hPNU1GUGhZbGRHODhXdEswd2NOb05zZU5yUFJ5bXZsRHloQ0hTOUM1ekIybzNMRVJKVzh3X3hodWw5V1lKamVPbTg3U3NuQ3NKczliZi1hdTJ5M2lnZDdLNV9NSmpOdmJFNnVPNjJrRGQydXFkdS0wYUJLTGpVUzVhdlp6RENKOFN4bzJBeU8za3N5M2FHbFQxbGplamlpdExVeERSYmxfSlVubVR1WmRRMktTbkRoZU1NU3BTUXR5R0ZiWlRqZU9LaG5ZTHdOeWdoY0s3c3FJWDMyb2dhVHFzWDYtZFNhem1RTEhTY3lFUmZyQnVSbGFkV0Vka3RoTEYzZlVEM0dVS2g4NUtnOXZyWXpNelJxVUpONUtvS1lGQlRNRTBtVC1hNUFkeUlISDVxYVFfam81eGVTYUdyT2x3WHJzaGFCQk15dWJHVmxyNXh6cDZVY0Y4WXZUMXBhMjBpUkRnOGZMQ1pPNjZYeEV4dDZuVjQ3SEtYZzJsb0xhYXB0ckFwOTE2NDlMc3YzSmVSVlVod05WNDNZUWJPWUdEVU0tX2J2WEFzMzB6ME5fN1VRcldHNy16VlM2ZzBwdzItM2N5OE10WTlUbWItMTdqS2lFd2wxMTRCVEE1aUk?oc=5",
    "publishedAt": "2026-11-19T09:02:48.000Z"
-  },
-  {
-   "title": "الخميس .. طقس لطيف الحرارة في اغلب المناطق",
-   "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFB0cjc4QmJKSndaRHVJQkpXUktJQ2ctTTNiRGFTVFdoT0J6RGFCbVRNVXdhVFJiSUtlVlg2LVhMOTJCYXk0ZjAwdE9JblZhUjNXbk9v?oc=5",
-   "publishedAt": "2026-11-19T05:09:50.000Z"
   }
  ],
  "debug": {
   "queries": [
    {
     "q": "طقس الأردن",
-    "items": 48
+    "items": 44
    },
    {
     "q": "حالة الطقس في الأردن",
-    "items": 22
+    "items": 21
    },
    {
     "q": "الأرصاد الجوية الأردنية",
-    "items": 57
+    "items": 50
    },
    {
     "q": "طقس العرب الأردن",
@@ -82,7 +77,7 @@
    },
    {
     "q": "كتلة هوائية الأردن",
-    "items": 49
+    "items": 48
    },
    {
     "q": "أمطار الأردن",
@@ -90,7 +85,7 @@
    },
    {
     "q": "ثلوج الأردن",
-    "items": 54
+    "items": 55
    },
    {
     "q": "غبار الأردن",
@@ -114,7 +109,7 @@
    },
    {
     "q": "site:jo24.net طقس",
-    "items": 45
+    "items": 42
    },
    {
     "q": "site:arabiaweather.com الأردن",
@@ -130,15 +125,15 @@
    },
    {
     "q": "site:ammonnews.net طقس",
-    "items": 52
+    "items": 42
    },
    {
     "q": "site:petra.gov.jo الأرصاد",
-    "items": 30
+    "items": 28
    }
   ],
   "errors": [],
-  "kept": 11,
-  "total": 1098
+  "kept": 10,
+  "total": 1071
  }
 }
