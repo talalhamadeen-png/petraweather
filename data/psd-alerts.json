@@ -1,15 +1,8 @@
 {
- "updatedAt": "2026-11-21T07:44:23.466Z",
+ "updatedAt": "2026-11-21T15:39:38.591Z",
  "ok": true,
  "source": "psd.gov.jo",
  "items": [
-  {
-   "title": "الأمن العام: فرق البحث تعثر على جثة الشخص المفقود بسيول الرويشد",
-   "url": "https://news.google.com/rss/articles/CBMiigRBVV95cUxNeTBMa1REazBpbDRqTEh6VG1OQUE0UlplajhPanlnd2hZcVpiWmROaXNUOHlacDBpTC14Nl9FMzlhbW1IUlh3UW00YnI1clM1T1hab1kyaldhc3F0REhEZGk1MGlKanQ2OUxSQzlJWG5WNko3aU05TG40MUpCT012VFY3cnQzZVhIUHhGLVYza2RxT0VzTDVib01xcldacVFVS25rdnFCUVNmR2JjQl9qY2I0aG1LRjU4N2VQbFV2dm10UlVGbzU0YktEYkFRNFdqRlV6dTdheTkzNGJhVEZPS1BoTXkzZ0hEbW1icUxCdzZzMW92OGZXb1BraURZVi1JWU5lVHVmZ08xU0pHdzdsUWU0Z0NEcnQwX2U0cFlqVHpMSjN3WTZSeUk0T1RzT1dUcHRMcGc3SFpMdXV0Z3VtbWl0X3ZBZ24wakdlb3ZkeVFRdXpJSmxqbVdpZ21SanNJV1Rvc011N3B3MmJRejl0dXFGdzFIdzNOYzlIZWtlbjhkT3c1OThidGh5OXJONUY0RE5keWM3Q1JIX3pqdi1xWEh0SFM0ekdRVElXNnVWT01JcF84eF84cnRaTWZmT05MNXpEeXdkbTNoWHRxX19sZTJqNW9LdVg0LVpUX2hiWDZnWThDdFVvdzlRNWNnWWdxN21XRkk2ZDdzeUQ4Ql8yM21BdFROZTFQLVE?oc=5",
-   "summary": "",
-   "date": "٢٠‏/١١‏/٢٠٢٦، ١٢:١٤",
-   "publishedAt": "2026-11-20T09:14:00.000Z"
-  },
   {
    "title": "مديرية الأمن العام تدعو إلى أخذ الحيطة والحذر خلال الأحوال الجوية",
    "url": "https://news.google.com/rss/articles/CBMimwRBVV95cUxQcTc2UFlnVjJtT3htT25tZTI0RGxwckRkb0JLeUQzRHA3aFFwLUx1Q2N2RXJYay1ha0NQZmhJRVdhTU9yblBtcWVhb2p4aG8zNWdNTkcwSzhCc0tjalhRMnIwUUdmTmVxcV90c1Y0dW5rbzVYZ0ZzYVVockgwcHdrSW1KbUo5bFZKT2tES0xicnhlQWZFem5wYnVmaHFHdGdvSVM2NDhzY2dpcmI4WW0yaDduUG41VndOME5IR0kwV2kzY2M3cS1vYjBIV2ozcW45QnQzbElFVXZYSUJvUC1HaTA5TTI3dzlaMkpYOVN0SGhROEdnM2xHMkJhNEQ5eGZUTk0zbG85RUs4S09yaTVzazNlNjl6YUllY1RnRjUyai0zT0VybGExN2dpZndNN2ZBa1AtWkZ5ZTNNRDVvaXdZUlhxV3RQUHpvbjhacTBLWkhuTm5KdGJVQUpFaFpUREF2QjZhMjlzTkd1aFkzaldkWlFnNXVJTGlxTmtVS0h0RG1iMjNKcjBrR0gycWJ4U19YU3pJaG5ScTlWX1pRbTRKNDFDcExOdklLaHdXSTRfWWJ5YjlSeDg3N0U3a280WVhhME9Hb2RXTk4wOVVHOXJNVE1vMlVCY0txa0x6YXVqQ1I0TFdiNXBzaS1tYWJUY1lEOFFKYm0yODFOdmJCVWlLc2YxTnphTVctYTdQOTZFdzFNdE9vaWZUUzVNbw?oc=5",
@@ -29,7 +22,7 @@
   "pages": [
    {
     "url": "news:\"الأمن العام\" الأحوال الجوية",
-    "items": 13
+    "items": 10
    },
    {
     "url": "news:\"الأمن العام\" حالة الطرق",
@@ -37,7 +30,7 @@
    },
    {
     "url": "news:\"الأمن العام\" تحذر منخفض جوي",
-    "items": 3
+    "items": 1
    },
    {
     "url": "news:\"مديرية الأمن العام\" ثلوج",
@@ -45,19 +38,19 @@
    },
    {
     "url": "news:\"مديرية الأمن العام\" سيول",
-    "items": 21
+    "items": 12
    },
    {
     "url": "news:\"الأمن العام\" إغلاق طريق الطقس",
-    "items": 5
+    "items": 4
    },
    {
     "url": "news:site:petra.gov.jo الأمن العام الطقس",
     "items": 0
    }
   ],
-  "anchors": 49,
-  "matched": 39,
+  "anchors": 34,
+  "matched": 31,
   "errors": [
    "fetch failed",
    "fetch failed"
