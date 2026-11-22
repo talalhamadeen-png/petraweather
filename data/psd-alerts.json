@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-22T08:30:58.133Z",
+ "updatedAt": "2026-11-22T16:39:02.857Z",
  "ok": true,
  "source": "psd.gov.jo",
  "items": [],
@@ -7,29 +7,38 @@
   "pages": [
    {
     "url": "news:\"الأمن العام\" الأحوال الجوية",
-    "items": 10
+    "items": 11
    },
    {
     "url": "news:\"الأمن العام\" حالة الطرق",
     "items": 5
    },
    {
+    "url": "news:\"الأمن العام\" تحذر منخفض جوي",
+    "items": 1
+   },
+   {
+    "url": "news:\"مديرية الأمن العام\" ثلوج",
+    "items": 2
+   },
+   {
+    "url": "news:\"مديرية الأمن العام\" سيول",
+    "items": 13
+   },
+   {
     "url": "news:\"الأمن العام\" إغلاق طريق الطقس",
-    "items": 4
+    "items": 5
    },
    {
     "url": "news:site:petra.gov.jo الأمن العام الطقس",
     "items": 0
    }
   ],
-  "anchors": 19,
-  "matched": 16,
+  "anchors": 37,
+  "matched": 32,
   "errors": [
    "fetch failed",
-   "fetch failed",
-   "news \"الأمن العام\" تحذر منخفض جوي: HTTP 429 https://news.google.com/rss/search?q=%22%D8%A7%D9%84%D8%A3%D9%85%D9%86%20%D8%A7%D9%84%D8%B9%D8%A7%D9%85%22%20%D8%AA%D8%AD%D8%B0%D8%B1%20%D9%85%D9%86%D8%AE%D9%81%D8%B6%20%D8%AC%D9%88%D9%8A&hl=ar&gl=JO&ceid=JO:ar",
-   "news \"مديرية الأمن العام\" ثلوج: HTTP 429 https://news.google.com/rss/search?q=%22%D9%85%D8%AF%D9%8A%D8%B1%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A3%D9%85%D9%86%20%D8%A7%D9%84%D8%B9%D8%A7%D9%85%22%20%D8%AB%D9%84%D9%88%D8%AC&hl=ar&gl=JO&ceid=JO:ar",
-   "news \"مديرية الأمن العام\" سيول: HTTP 429 https://news.google.com/rss/search?q=%22%D9%85%D8%AF%D9%8A%D8%B1%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A3%D9%85%D9%86%20%D8%A7%D9%84%D8%B9%D8%A7%D9%85%22%20%D8%B3%D9%8A%D9%88%D9%84&hl=ar&gl=JO&ceid=JO:ar"
+   "fetch failed"
   ]
  }
 }
