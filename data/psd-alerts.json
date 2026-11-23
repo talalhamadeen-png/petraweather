@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-22T22:04:26.286Z",
+ "updatedAt": "2026-11-23T02:45:08.540Z",
  "ok": true,
  "source": "psd.gov.jo",
  "items": [],
@@ -7,7 +7,7 @@
   "pages": [
    {
     "url": "news:\"الأمن العام\" الأحوال الجوية",
-    "items": 11
+    "items": 10
    },
    {
     "url": "news:\"الأمن العام\" حالة الطرق",
@@ -27,7 +27,7 @@
    },
    {
     "url": "news:\"الأمن العام\" إغلاق طريق الطقس",
-    "items": 3
+    "items": 4
    },
    {
     "url": "news:site:petra.gov.jo الأمن العام الطقس",
@@ -35,7 +35,7 @@
    }
   ],
   "anchors": 35,
-  "matched": 31,
+  "matched": 29,
   "errors": [
    "fetch failed",
    "fetch failed"
