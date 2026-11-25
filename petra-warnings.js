@@ -7,15 +7,12 @@
     warn:  { label: 'تحذير',  color: '#ef4444' }
   };
   var REFRESH_MS = 5 * 60 * 1000;
+  var MAX_AGE = 5 * 60 * 60 * 1000; /* لا يُعرض أي تحذير مضى على نشره أكثر من 5 ساعات */
   var FS_MIN = 17, FS_MAX = 34, FS_DEF = 22;
   var warnSec = null, bulSec = null;
 
   function css() {
     if (document.getElementById('pw-style')) return;
-    var lk = document.createElement('link');
-    lk.rel = 'stylesheet';
-    lk.href = 'https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&display=swap';
-    document.head.appendChild(lk);
     var st = document.createElement('style');
     st.id = 'pw-style';
     st.textContent =
@@ -30,7 +27,7 @@
       '#pwSection .pw-note{font-size:11.5px;opacity:.7;margin:2px 0 0}' +
       /* النشرة المفصلة */
       '#bulSection{margin:0 0 20px;direction:rtl}' +
-      '#bulSection .bul-box{background:linear-gradient(160deg,#0b3b3f 0%,#0f2f3d 100%);color:#e8fffb;border:1px solid #14b8a6;border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(20,184,166,.18);font-family:"Noto Naskh Arabic","Amiri","Traditional Arabic",serif}' +
+      '#bulSection .bul-box{background:linear-gradient(160deg,#0b3b3f 0%,#0f2f3d 100%);color:#e8fffb;border:1px solid #14b8a6;border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(20,184,166,.18);font-family:Tajawal,system-ui,Tahoma,sans-serif}' +
       '#bulSection .bul-head{background:linear-gradient(90deg,#0d9488,#0e7490);padding:13px 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}' +
       '#bulSection .bul-title{font-size:23px;font-weight:700;color:#fff;margin:0;line-height:1.5}' +
       '#bulSection .bul-date{font-size:14px;color:#ccfbf1;margin-right:auto}' +
@@ -69,6 +66,10 @@
     } catch (e) { return ''; }
   }
 
+  function ago(ms) {
+    var m = Math.max(1, Math.round((Date.now() - ms) / 60000));
+    return m < 60 ? 'قبل ' + m + ' دقيقة' : 'قبل ' + Math.floor(m / 60) + ' ساعة' + (m % 60 >= 10 ? ' و' + (m % 60) + ' دقيقة' : '');
+  }
   function safeUrl(u) { return typeof u === 'string' && /^https:\/\//i.test(u) ? u : ''; }
 
   function ensureSections() {
@@ -95,6 +96,8 @@
     var now = Date.now();
     var list = (items || []).filter(function (it) {
       if (!it || !it.text) return false;
+      var at = toMs(it.at);
+      if (!at || now - at > MAX_AGE) return false; /* بدون وقت نشر أو أقدم من 5 ساعات: يُخفى */
       var u = toMs(it.until);
       return !u || u > now;
     });
@@ -109,9 +112,9 @@
       card.appendChild(el('div', 'pw-text', String(it.text)));
       var meta = el('div', 'pw-meta');
       var at = toMs(it.at);
-      if (at) meta.appendChild(el('span', null, 'نُشر: ' + fmt(at)));
-      var un = toMs(it.until);
-      if (un) meta.appendChild(el('span', null, 'ساري حتى: ' + fmt(un)));
+      if (at) meta.appendChild(el('span', null, 'نُشر: ' + fmt(at) + ' (' + ago(at) + ')'));
+      var un = Math.min(toMs(it.until) || Infinity, at + MAX_AGE);
+      if (isFinite(un)) meta.appendChild(el('span', null, 'يُخفى تلقائياً: ' + fmt(un)));
       var u = safeUrl(it.url);
       if (u) {
         var a = el('a', null, 'المنشور الأصلي على فيسبوك');
@@ -194,6 +197,32 @@
     bulSec.hidden = false;
   }
 
+  var NAV = [['pwSection','التحذيرات'],['bulSection','النشرة المفصلة'],['detailedBulletin','النشرة الجوية'],['currentWeatherSection','الطقس الآن'],['rainfallTotalsPanel','الأمطار'],['tenDayForecastPanel','10 أيام'],['windySatellitePanel','الأقمار']];
+  function refreshNav() {
+    var host = document.querySelector('.container');
+    if (!host) return;
+    var nav = document.getElementById('pwNav');
+    if (!nav) {
+      nav = document.createElement('nav');
+      nav.id = 'pwNav';
+      nav.setAttribute('aria-label', 'التنقل السريع');
+      host.insertBefore(nav, host.firstChild);
+    }
+    nav.textContent = '';
+    NAV.forEach(function (x) {
+      var t = document.getElementById(x[0]);
+      if (!t || t.hidden) return;
+      var a = el('a', null, x[1]);
+      a.href = '#' + x[0];
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      nav.appendChild(a);
+    });
+    nav.hidden = !nav.childNodes.length;
+  }
+
   function load() {
     fetch('warnings.json?t=' + Date.now(), { cache: 'no-store' })
       .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
@@ -201,6 +230,7 @@
         ensureSections();
         renderWarnings(d && Array.isArray(d.items) ? d.items : []);
         renderBulletin(d && d.bulletin ? d.bulletin : null);
+        refreshNav();
       })
       .catch(function () { /* عند أي خطأ: تبقى الصفحة كما هي */ });
   }
