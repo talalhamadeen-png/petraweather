@@ -3,7 +3,7 @@
 
 <html dir="rtl" lang="ar">
 <head>
-<meta name="site-version" content="2.0.0">
+<meta name="site-version" content="2.0.1">
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>فريق طقس البتراء - منصة الرصد الجوي الميداني</title>
@@ -3953,41 +3953,15 @@ html body #psdPublicSafetyAlerts{order:6!important}html body #weatherNewsPanel{o
 </script>
 
 <style id="pw-final">
-/* ===== خط تجوّل + تنسيق احترافي موحّد (يعمل فوق التنسيقات الحالية) ===== */
+/* ===== خط تجوّل + شريط التنقل (الإصدار 2.0.1) - لا يغيّر شبكة الصفحة الأصلية ===== */
 html:root body,html:root body *{font-family:'Tajawal',system-ui,-apple-system,'Segoe UI',Tahoma,Arial,sans-serif!important}
 html:root code,html:root pre,html:root kbd,html:root samp{font-family:ui-monospace,Menlo,Consolas,monospace!important}
-html:root body{line-height:1.8!important;font-weight:400}
-html:root h1,html:root h2,html:root h3,html:root h4{font-weight:800!important;letter-spacing:0!important}
 html{scroll-behavior:smooth}
 [id]{scroll-margin-top:74px}
-/* الحاوية والشبكة */
-html:root .container{max-width:1240px!important;margin:0 auto!important;column-gap:24px!important;row-gap:0!important}
-@media(min-width:992px){html:root .container{grid-template-columns:minmax(0,1.75fr) minmax(0,1fr)!important}}
-html:root .container>#pwNav{grid-column:1/-1;grid-row:1}
-html:root .container>#pwSection{grid-column:1/-1!important;grid-row:2!important}
-html:root .container>#bulSection{grid-column:1/-1!important;grid-row:3!important}
-html:root .container>main{grid-column:1!important;grid-row:4!important;display:flex!important;flex-direction:column!important;min-width:0!important}
-html:root .container>aside{grid-column:2!important;grid-row:4!important;min-width:0!important}
-@media(max-width:991px){html:root .container>aside{grid-column:1!important;grid-row:5!important}}
-/* أولوية العرض داخل المحتوى الرئيسي */
-html:root main>.bulletin-warning-grid{order:1}
-html:root main>.location-toolbar{order:2}
-html:root main>.weather-now-box{order:3}
-html:root main>section.panel:not([id]){order:4}
-html:root main>.early-warning-box{order:5}
-html:root main>.rainfall-totals-panel{order:6}
-html:root main>#tenDayForecastPanel{order:7}
-html:root main>#windySatellitePanel{order:8}
-html:root main>.notification-subscribe-panel{order:9}
-/* بطاقات موحّدة */
-html:root .panel,html:root .weather-now-box,html:root .early-warning-box,html:root .social-footer-box{border-radius:18px!important;padding:clamp(14px,2.4vw,22px)!important;margin:0 0 18px!important}
-html:root .panel h2,html:root .early-warning-box h2,html:root .weather-now-box h2{font-size:clamp(1.08rem,2.7vw,1.3rem)!important;line-height:1.5!important;margin:0 0 12px!important}
-html:root button,html:root .gps-btn,html:root .social-btn,html:root .direct-link-btn,html:root .gfs-open-link{min-height:44px}
-html:root img,html:root iframe,html:root video{max-width:100%}
-/* شريط التنقل السريع */
-#pwNav{position:sticky;top:0;z-index:60;display:flex;gap:8px;overflow-x:auto;padding:10px 2px;margin:0 0 16px;direction:rtl;scrollbar-width:none;background:var(--pw-card,rgba(255,255,255,.92));border-bottom:1px solid var(--pw-line,rgba(148,163,184,.3));-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+html:root .container>#pwNav,html:root .container>#pwSection,html:root .container>#bulSection{grid-column:1/-1}
+#pwNav{position:sticky;top:0;z-index:60;display:flex;gap:8px;overflow-x:auto;padding:10px 4px;margin:0 0 6px;direction:rtl;scrollbar-width:none;background:rgba(8,14,28,.94);border-bottom:1px solid rgba(148,163,184,.3);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-radius:0 0 14px 14px}
 #pwNav::-webkit-scrollbar{display:none}
-#pwNav a{flex:none;padding:8px 16px;border-radius:999px;border:1px solid var(--pw-line,rgba(148,163,184,.4));color:var(--pw-ink,#172b3a);text-decoration:none;font-size:14.5px;font-weight:700;line-height:1.4;white-space:nowrap}
+#pwNav a{flex:none;padding:8px 16px;border-radius:999px;border:1px solid rgba(148,163,184,.45);color:#e8edf8;text-decoration:none;font-size:14.5px;font-weight:700;line-height:1.4;white-space:nowrap}
 #pwNav a:active,#pwNav a:hover{background:#14b8a6;border-color:#14b8a6;color:#04262b}
 @media(min-width:992px){#pwNav{justify-content:center;gap:10px}}
 </style>

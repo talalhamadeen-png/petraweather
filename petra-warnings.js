@@ -1,4 +1,4 @@
-/* الإصدار 2.0.0 | تحذيرات سلطة إقليم البترا + النشرة المفصلة للواء البترا - تقرأ من ملف warnings.json */
+/* الإصدار 2.0.1 | تحذيرات سلطة إقليم البترا + النشرة المفصلة للواء البترا - تقرأ من ملف warnings.json */
 (function () {
   'use strict';
   var LEVELS = {
@@ -33,6 +33,7 @@
       '#bulSection .bul-date{font-size:14px;color:#ccfbf1;margin-right:auto}' +
       '#bulSection .bul-body{padding:18px 18px 8px;font-size:var(--bul-fs,22px)!important;line-height:2.1;position:relative}\n' +
       '#bulSection .bul-body *{font-size:inherit}' +
+      '#bulSection .bul-box,#bulSection .bul-body,#bulSection .bul-p,#bulSection .bul-tx{color:#e8fffb!important}' +
       '#bulSection .bul-p{margin:0 0 12px;white-space:pre-line;word-break:break-word}' +
       '#bulSection .bul-h{font-size:1.12em!important;font-weight:700;color:#5eead4;margin:16px 0 6px;padding-bottom:4px;border-bottom:1px dashed rgba(94,234,212,.4)}' +
       '#bulSection .bul-li{display:flex;gap:10px;margin:0 0 6px;align-items:flex-start}' +
