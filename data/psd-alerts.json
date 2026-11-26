@@ -1,8 +1,15 @@
 {
- "updatedAt": "2026-11-25T21:41:08.626Z",
+ "updatedAt": "2026-11-26T03:47:02.769Z",
  "ok": true,
  "source": "psd.gov.jo",
  "items": [
+  {
+   "title": "الأمن العام يحذّر من تشكّل الضباب في عدة مناطق ويدعو المواطنين إلى توخي الحذر",
+   "url": "https://news.google.com/rss/articles/CBMiugNBVV95cUxQWFdKRDVPeXoyN3pUN2JRNnNaa1dvUXU1bFhwRGx3ZHpvLTBYR3YydmNOdlZWT3NTN0R5dU5McUVUV2NyMmh0OFVtakdNbzRZV1BjaU4yVVhraTJNamVkTWlWS203dzBqbDRkMlgzNkxCMjNiWGxxNWhxOU1xTkYxbDRzNmxPZXgzVFhJZkEyYXM1ZzRxS3NLTGwxaV8wWDhmbGVkOVEyS3J5bXMxYXNYR2t2UU9ISlo1UzFLTUdOQXBYTWhMVHQzcDM1LTFoNHhFc3pISmF1T3VwSk10Y1hsTzlOLTZ6WDd6WlhfVnMtNzdWVk9sRWg2Mk1IUEVua1pNSDFjRHZ6VTd3aWd6a0M0bTRyTTdlOVpBei1rSHo3U0RMMlBoVl9BM1FjUVdPM25QTEg2SHFiTE1mbHAyWHktMnh3THRuWEVrUDNraG94LWZqX0xBb1Q0eEpLQ2U1alI5Zi1ZeXVHNGYtR3ZhaEZBZW9GcE5FMWVyX21rWi1XaXdERG4wdzhydHFBdzdJNnZNMVNrZmZFNnRFdGxHWXZ5M2ZGRVdDakp5bXlnVXgxUm1MOWh1bzc0TjBB?oc=5",
+   "summary": "",
+   "date": "٢٥‏/١١‏/٢٠٢٦، ٠٩:٣٦",
+   "publishedAt": "2026-11-25T06:36:00.000Z"
+  },
   {
    "title": "الأمن العام يجدد تحذيراته للمواطنين في ظل الأحوال الجوية السائدة",
    "url": "https://news.google.com/rss/articles/CBMimgRBVV95cUxQMDRYS3BFdzlRckRaNFFwMi1sblhhT0wxM2QzVTRDOV9Bc0Jxb0gwOEppaVhwSElSYXZtczlLOFhCeExmWTBLVkZPT2UtcTB5d25maHRpWTdDUlVESmlZaHBSSjI5R3pmUGp3UmZLTWdEU3NOQ0dUWkRSRTBySEtCOVZrdlJvZXZ1WGpORlFRMkhoZ0JiSUJLWVZlMzQ0WjVvdjg1aGpFX1Z4TFVJZjFqODRremVRekNVelA4V0liSm5lOTB2WTF1OU5oVml1aVR2RnAwQlJYdlMtb0RPV2w2WUxBNDNTTUdrcWxtN0dmdDlxZW9MWHFJLXlWbDF6NDF1VG9aN3V0ZW9CbnhMRE44UjlWZ2MxSDJ2eVhJX0pDWmlKbXY3VE5haWZHZWVmdERfRVVvdTRVZjU2ZEpRRjNZS0R3N2E4bHlacFlRQUZ4bFNJYUJsWWg1QmlRRVBXaHpaOGJmMnowdk1sU2J5aUsyOFJQMl85a2o2TVNOTmw1WXZuck5BNmlsVUZjWDZwV2loeU5fY3YzSU9kMFQyemdoUkVhV2RnNVFRM0hwV1pjVkRaYl9rb0dIMUNmMm1yc2hpQTUtOE9HQ1R1WlRQeC1LTXM0bUU2cmtXNVkxVFdHeUxfRWZ0NjBvRUlWY1U1UFBzaWQzaDNFTm5GUHdqR21KekF0YWRmdnF1bGJxZ0pYelpOcXhoWmJoTjdn?oc=5",
@@ -22,11 +29,11 @@
   "pages": [
    {
     "url": "news:\"الأمن العام\" الأحوال الجوية",
-    "items": 13
+    "items": 14
    },
    {
     "url": "news:\"الأمن العام\" حالة الطرق",
-    "items": 5
+    "items": 4
    },
    {
     "url": "news:\"الأمن العام\" تحذر منخفض جوي",
@@ -38,19 +45,19 @@
    },
    {
     "url": "news:\"مديرية الأمن العام\" سيول",
-    "items": 13
+    "items": 19
    },
    {
     "url": "news:\"الأمن العام\" إغلاق طريق الطقس",
-    "items": 4
+    "items": 6
    },
    {
     "url": "news:site:petra.gov.jo الأمن العام الطقس",
     "items": 0
    }
   ],
-  "anchors": 40,
-  "matched": 33,
+  "anchors": 48,
+  "matched": 37,
   "errors": [
    "fetch failed",
    "fetch failed"
